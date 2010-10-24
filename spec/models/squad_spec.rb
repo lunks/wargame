@@ -4,28 +4,54 @@ describe Squad do
   let(:squad) {Factory :squad}
   it {should have_many :planets}
   it {should have_and_belong_to_many :ships }
+  it {should have_many :owned_ships}
   context 'buying and selling ships' do
+    let(:ship) {Factory :ship}
     before(:each) do
-      @ship = Factory :ship
-      squad.ships << @ship
+      squad.ships << ship
     end
-    it 'should be able to buy ships and remove credits accordingly' do
-      squad.credits = 1000
-      @ship.price = 1000
-     # squad.ships.push ship
-      squad.buy @ship
-      squad.credits.should be_zero
+    context 'buying ships' do
+      it 'should be able to buy ships and remove credits accordingly' do
+        squad.credits = 2000
+        squad.ships.first.price = 1000
+        squad.buy squad.ships.first, 2
+        squad.credits.should be_zero
+      end
+
+      it 'should not be able to buy a ship they dont have access to' do
+        squad.ships.clear
+        squad.buy(ship, 1).should be_false
+      end
+
+      it 'should be able to buy a ship they have access to' do
+        squad.buy(ship, 1).should be_true
+      end
+
+      it 'should add the ship to the list of Owned Ships' do
+        squad.buy ship, 1
+        squad.owned_ships.should_not be_empty
+      end
     end
 
-    it 'should not be able to buy a ship they dont have access to' do
-      squad.ships.clear
-      squad.buy(@ship).should be_false
+    context 'selling ships' do
+      before(:each) do
+        squad.ships.first.price = 1000
+        squad.ships.first.save!
+        squad.buy squad.ships.first, 2
+        squad.credits = 0
+      end
+
+      it 'should restore credits when selling a ship' do
+        squad.sell squad.ships.first, 2
+        squad.credits.should be 2000
+      end
+
+      it 'should remove the adequate quantity' do
+        squad.sell squad.ships.first, 1
+        squad.owned_ships.should_not be_empty
+      end
     end
 
-    it 'should be able to buy a ship they have access to' do
-      #squad.ships << ship
-      squad.buy(@ship).should be_true
-    end
   end
 
 end
