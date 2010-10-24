@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101009201355) do
+ActiveRecord::Schema.define(:version => 20101024194137) do
 
   create_table "owned_ships", :force => true do |t|
     t.integer  "squad_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20101009201355) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "ship_id"
+    t.boolean  "moving"
+    t.integer  "destination_id"
   end
 
   create_table "planets", :force => true do |t|
