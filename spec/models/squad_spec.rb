@@ -31,6 +31,21 @@ describe Squad do
         squad.buy ship, 1
         squad.owned_ships.should_not be_empty
       end
+
+      it 'should be able to accumulate same ship models' do
+        squad.buy ship, 1
+        squad.buy ship, 1
+        squad.owned_ships.count.should be 1
+      end
+
+      it 'should be able buy ships and send them specifically to pool' do
+        squad.buy ship, 1
+        first = squad.owned_ships.first
+        first.planet = Factory :planet
+        first.save
+        squad.buy ship, 1
+        squad.owned_ships.count.should be 2
+      end
     end
 
     context 'selling ships' do
@@ -49,6 +64,13 @@ describe Squad do
       it 'should remove the adequate quantity' do
         squad.sell squad.ships.first, 1
         squad.owned_ships.should_not be_empty
+      end
+    end
+
+    context 'moving through phases' do
+      it 'should be able to go through the move phase' do
+        squad.end_move_round
+        squad.move?.should be_true
       end
     end
 
