@@ -53,7 +53,7 @@ class Squad < ActiveRecord::Base
 
   def warp_facility_on_random_planet
     facility_model = facilities.last
-    facility_fleets << FacilityFleet.create(:facility => facility_model, :balance => 7500, :planet => planets.first)
+    facility_fleets << FacilityFleet.create(:facility => facility_model, :balance => 8000, :planet => planets.first)
   end
 
   def warp_capital_ship_on planet

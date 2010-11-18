@@ -3,7 +3,7 @@ class FacilityFleet < GenericFleet
   belongs_to :facility, :foreign_key => :generic_unit_id
   def produce!
     self.balance ||= 0
-    self.balance += facility.price/5
+    self.balance += facility.price/4
     return if producing_unit.nil?
     unit_price = producing_unit.price
     units = 0

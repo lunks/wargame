@@ -21,7 +21,7 @@ describe FacilityFleet do
   context 'on every new turn' do
     let(:facility) {facility_fleet.facility}
     before(:each) do
-      facility.price = 7500
+      facility.price = 8000
       unit.price = 300
       facility_fleet.producing_unit = unit
       facility_fleet.planet = Factory :planet
@@ -30,7 +30,7 @@ describe FacilityFleet do
     it 'should set its balance on every new turn' do
       facility_fleet.producing_unit = nil
       facility_fleet.produce!
-      facility_fleet.balance.should == facility.price/5
+      facility_fleet.balance.should == facility.price/4
     end
     it 'should produce fleet if we have enough credits' do
       facility_fleet.produce!
@@ -42,10 +42,10 @@ describe FacilityFleet do
       Fleet.count.should be 1
     end
     it 'should create a correct number of units according to balance' do
-      facility_fleet.balance = 7500
-      facility_fleet.producing_unit.price = 1500
+      facility_fleet.balance = 8000
+      facility_fleet.producing_unit.price = 2000
       facility_fleet.produce!
-      Fleet.first.quantity.should == 5
+      Fleet.first.quantity.should == 4
     end
   end
 
