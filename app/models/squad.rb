@@ -35,6 +35,13 @@ class Squad < ActiveRecord::Base
     save
   end
 
+  def generate_profits!
+    planets.each do |planet|
+      raise planet.credits_per_turn.inspect
+      credits += planet.credits_per_turn
+    end
+  end
+
   def end_move_round
     self.move = true
     save

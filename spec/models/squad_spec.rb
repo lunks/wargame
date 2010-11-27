@@ -66,7 +66,21 @@ describe Squad do
         squad.owned_ships.should_not be_empty
       end
     end
+    context 'aggregating profits' do
+      let(:planet) {Factory :planet}
+      before(:each) do
+        planet.save
+        planet.credits = 1000
+        squad.planets << planet
+        squad.credits = 0
+        squad.save
+      end
 
+      pending 'should generate profits only when you have a ship on it' do
+        squad.generate_profits!
+        squad.credits.should == 0
+      end
+    end
     context 'moving through phases' do
       it 'should be able to go through the move phase' do
         squad.end_move_round
