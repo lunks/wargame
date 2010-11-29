@@ -37,8 +37,7 @@ class Squad < ActiveRecord::Base
 
   def generate_profits!
     planets.each do |planet|
-      raise planet.credits_per_turn.inspect
-      credits += planet.credits_per_turn
+      self.credits = self.credits + planet.credits_per_turn
     end
   end
 

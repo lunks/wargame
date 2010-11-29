@@ -76,7 +76,7 @@ describe Squad do
         squad.save
       end
 
-      pending 'should generate profits only when you have a ship on it' do
+      it 'should generate profits only when you have a ship on it' do
         squad.generate_profits!
         squad.credits.should == 0
       end
