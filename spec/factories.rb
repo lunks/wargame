@@ -1,4 +1,4 @@
-Factory.define :ship do |f|
+Factory.define :unit do |f|
   f.name Forgery::Name.full_name
   f.price Forgery::Basic.number
 end
@@ -6,15 +6,15 @@ end
 Factory.define :squad do |f|
   f.name Forgery::Name.full_name
   f.credits Forgery::Basic.number
-  f.ships {|a| [a.association(:ship)] }
+  f.units {|a| [a.association(:unit)] }
 end
 
 Factory.define :planet do |f|
   f.name Forgery::Name.full_name
 end
 
-Factory.define :owned_ship do |f|
-  f.ship {|a| a.association(:ship) }
+Factory.define :fleet do |f|
+  f.unit {|a| a.association(:unit) }
   f.squad {|a| a.association(:squad) }
   f.quantity Forgery::Basic.number
 end

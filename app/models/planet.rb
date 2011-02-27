@@ -1,9 +1,9 @@
 class Planet < ActiveRecord::Base
   belongs_to :squad
-  has_many :owned_ships
+  has_many :fleets
 
   def credits_per_turn
-    if owned_ships.empty?
+    if fleets.empty?
       0
     else
       credits

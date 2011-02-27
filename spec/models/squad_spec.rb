@@ -3,67 +3,67 @@ require 'spec_helper'
 describe Squad do
   let(:squad) {Factory :squad}
   it {should have_many :planets}
-  it {should have_and_belong_to_many :ships }
-  it {should have_many :owned_ships}
-  context 'buying and selling ships' do
-    let(:ship) {Factory :ship}
+  it {should have_and_belong_to_many :units }
+  it {should have_many :fleets}
+  context 'buying and selling units' do
+    let(:unit) {Factory :unit}
     before(:each) do
-      squad.ships << ship
+      squad.units << unit
     end
     context 'buying ships' do
-      it 'should be able to buy ships and remove credits accordingly' do
+      it 'should be able to buy units and remove credits accordingly' do
         squad.credits = 2000
-        squad.ships.first.price = 1000
-        squad.buy squad.ships.first, 2
+        squad.units.first.price = 1000
+        squad.buy squad.units.first, 2
         squad.credits.should be_zero
       end
 
-      it 'should not be able to buy a ship they dont have access to' do
-        squad.ships.clear
-        squad.buy(ship, 1).should be_false
+      it 'should not be able to buy a unit they dont have access to' do
+        squad.units.clear
+        squad.buy(unit, 1).should be_false
       end
 
-      it 'should be able to buy a ship they have access to' do
-        squad.buy(ship, 1).should be_true
+      it 'should be able to buy a unit they have access to' do
+        squad.buy(unit, 1).should be_true
       end
 
-      it 'should add the ship to the list of Owned Ships' do
-        squad.buy ship, 1
-        squad.owned_ships.should_not be_empty
+      it 'should add the unit to the list of Fleets' do
+        squad.buy unit, 1
+        squad.fleets.should_not be_empty
       end
 
       it 'should be able to accumulate same ship models' do
-        squad.buy ship, 1
-        squad.buy ship, 1
-        squad.owned_ships.count.should be 1
+        squad.buy unit, 1
+        squad.buy unit, 1
+        squad.fleets.count.should be 1
       end
 
-      it 'should be able buy ships and send them specifically to pool' do
-        squad.buy ship, 1
-        first = squad.owned_ships.first
+      it 'should be able buy units and send them specifically to pool' do
+        squad.buy unit, 1
+        first = squad.fleets.first
         first.planet = Factory :planet
         first.save
-        squad.buy ship, 1
-        squad.owned_ships.count.should be 2
+        squad.buy unit, 1
+        squad.fleets.count.should be 2
       end
     end
 
-    context 'selling ships' do
+    context 'selling units' do
       before(:each) do
-        squad.ships.first.price = 1000
-        squad.ships.first.save!
-        squad.buy squad.ships.first, 2
+        squad.units.first.price = 1000
+        squad.units.first.save!
+        squad.buy squad.units.first, 2
         squad.credits = 0
       end
 
-      it 'should restore credits when selling a ship' do
-        squad.sell squad.ships.first, 2
+      it 'should restore credits when selling a unit' do
+        squad.sell squad.units.first, 2
         squad.credits.should be 2000
       end
 
       it 'should remove the adequate quantity' do
-        squad.sell squad.ships.first, 1
-        squad.owned_ships.should_not be_empty
+        squad.sell squad.units.first, 1
+        squad.fleets.should_not be_empty
       end
     end
     context 'aggregating profits' do

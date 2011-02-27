@@ -2,36 +2,36 @@ class Squad < ActiveRecord::Base
   default_scope :order => 'id ASC'
 
   has_many :planets
-  has_many :owned_ships do
-    def add_ships_to_pool ship, quantity
-      owned_ship = find_or_initialize_by_ship_id_and_planet_id ship.id, nil
-      if owned_ship.new_record?
-        owned_ship.quantity = quantity
+  has_many :fleets do
+    def add_units_to_pool unit, quantity
+      fleet = find_or_initialize_by_unit_id_and_planet_id unit.id, nil
+      if fleet.new_record?
+        fleet.quantity = quantity
       else
-        owned_ship.quantity += quantity
+        fleet.quantity += quantity
       end
-      owned_ship.save!
+      fleet.save!
     end
   end
 
-  has_and_belongs_to_many :ships
+  has_and_belongs_to_many :units
 
 
-  def buy ship, quantity
-    if ships.include? ship
-      self.credits = self.credits - (ship.price * quantity)
-      owned_ships.add_ships_to_pool ship, quantity
+  def buy unit, quantity
+    if units.include? unit
+      self.credits = self.credits - (unit.price * quantity)
+      fleets.add_units_to_pool unit, quantity
       save
     else
       false
     end
   end
 
-  def sell ship, quantity
-    selling_ship = owned_ships.where({:ship_id => ship}).first
-    self.credits = self.credits + (selling_ship.ship.price * quantity)
-    selling_ship.quantity -= quantity
-    owned_ships.delete selling_ship if selling_ship.quantity == 0
+  def sell unit, quantity
+    selling_unit = fleets.where({:unit_id => unit}).first
+    self.credits = self.credits + (selling_unit.unit.price * quantity)
+    selling_unit.quantity -= quantity
+    fleets.delete selling_unit if selling_unit.quantity == 0
     save
   end
 
