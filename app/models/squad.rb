@@ -29,7 +29,7 @@ class Squad < ActiveRecord::Base
 
   def sell unit, quantity
     selling_unit = fleets.where({:unit_id => unit}).first
-    self.credits = self.credits + (selling_unit.unit.price * quantity)
+    self.credits = self.credits + (selling_unit.unit.price/2 * quantity)
     selling_unit.quantity -= quantity
     fleets.delete selling_unit if selling_unit.quantity == 0
     save

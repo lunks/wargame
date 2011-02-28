@@ -56,9 +56,9 @@ describe Squad do
         squad.credits = 0
       end
 
-      it 'should restore credits when selling a unit' do
+      it 'should restore half credits when selling a unit' do
         squad.sell squad.units.first, 2
-        squad.credits.should be 2000
+        squad.credits.should be 1000
       end
 
       it 'should remove the adequate quantity' do
