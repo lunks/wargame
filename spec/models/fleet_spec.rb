@@ -22,11 +22,37 @@ describe Fleet do
   end
 
   context 'capturing units' do
-    let(:fleet) {Factory :fleet}
-    it 'should change units to another squad' do
-      fleet.capture squad
-      fleet.should be_captured
+    let(:squad) {Factory :squad}
+    before(:each) do
+      unit.quantity = 1
     end
+
+    it 'should remove units from the current fleet' do
+      unit.captured! 1, squad
+      unit.quantity.should be 0
+    end
+
+    it 'should remove fleet if quantity equals zero' do
+      unit.captured! 1, squad
+      unit.should be_new_record
+    end
+
+    it 'should transfer fleet to another squad' do
+      unit.captured! 1, squad
+      squad.fleets.count.should be 1
+    end
+
+    context 'related to captured fleet' do
+      before(:each) do
+        unit.captured! 1, squad
+      end
+      let(:captured_unit) {squad.fleets.first}
+  
+      it 'should have the captured quantity' do
+        captured_unit.quantity.should be 1
+      end 
+    end
+   
 
   end
 

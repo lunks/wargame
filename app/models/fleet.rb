@@ -9,9 +9,15 @@ class Fleet < ActiveRecord::Base
     self.destination = planet
   end
 
-  def capture squad
-    Fleet.update({:squad_id => squad})
-    save
+  def captured! quantity, squad
+    self.quantity = self.quantity - quantity
+    self.destroy if self.quantity == 0
+
+    captured_fleet = self.clone
+    captured_fleet.squad = squad
+    captured_fleet.quantity = quantity
+    captured_fleet.save
+    
   end
      
 end
