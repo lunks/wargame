@@ -3,23 +3,23 @@ require 'spec_helper'
 describe Squad do
   let(:squad) {Factory :squad}
   it {should have_many :planets}
-  it {should have_and_belong_to_many :units }
-  it {should have_many :fleets}
+  it {should have_and_belong_to_many :generic_units }
+  it {should have_many :generic_fleets}
   context 'buying and selling units' do
-    let(:unit) {Factory :unit}
+    let(:unit) {Factory :generic_unit}
     before(:each) do
-      squad.units << unit
+      squad.generic_units << unit
     end
     context 'buying ships' do
       it 'should be able to buy units and remove credits accordingly' do
         squad.credits = 2000
-        squad.units.first.price = 1000
-        squad.buy squad.units.first, 2
+        squad.generic_units.first.price = 1000
+        squad.buy squad.generic_units.first, 2
         squad.credits.should be_zero
       end
 
       it 'should not be able to buy a unit they dont have access to' do
-        squad.units.clear
+        squad.generic_units.clear
         squad.buy(unit, 1).should be_false
       end
 
@@ -29,13 +29,13 @@ describe Squad do
 
       it 'should add the unit to the list of Fleets' do
         squad.buy unit, 1
-        squad.fleets.should_not be_empty
+        squad.generic_fleets.should_not be_empty
       end
 
       it 'should be able to accumulate same ship models' do
         squad.buy unit, 1
         squad.buy unit, 1
-        squad.fleets.count.should be 1
+        squad.generic_fleets.count.should be 1
       end
 
       it 'should be able buy units and send them specifically to pool' do

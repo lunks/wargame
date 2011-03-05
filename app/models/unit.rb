@@ -1,2 +1,2 @@
-class Unit < ActiveRecord::Base
+class Unit < GenericUnit
 end

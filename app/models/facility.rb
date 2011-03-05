@@ -1,0 +1,3 @@
+class Facility < GenericUnit
+end
+

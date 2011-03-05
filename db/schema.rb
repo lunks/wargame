@@ -10,17 +10,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110226234539) do
+ActiveRecord::Schema.define(:version => 20110305182848) do
 
-  create_table "fleets", :force => true do |t|
+  create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
     t.integer  "planet_id"
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "unit_id"
+    t.integer  "generic_unit_id"
     t.boolean  "moving"
     t.integer  "destination_id"
+    t.string   "type"
+  end
+
+  create_table "generic_units", :force => true do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type"
   end
 
   create_table "planets", :force => true do |t|
@@ -52,13 +61,6 @@ ActiveRecord::Schema.define(:version => 20110226234539) do
   create_table "squads_units", :id => false, :force => true do |t|
     t.integer "unit_id"
     t.integer "squad_id"
-  end
-
-  create_table "units", :force => true do |t|
-    t.string   "name"
-    t.integer  "price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
