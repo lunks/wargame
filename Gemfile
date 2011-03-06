@@ -16,5 +16,6 @@ group :development, :test do
   gem "autotest"
   gem "autotest-rails"
   gem 'autotest-growl'
+  gem 'capybara'
 end
 

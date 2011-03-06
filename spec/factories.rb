@@ -40,3 +40,7 @@ end
 Factory.define :empire, :parent => :squad do |f|
   f.units {|a| [a.association(:unit)]}
 end
+
+Factory.define :user do |f|
+  f.email Forgery::Internet.email_address
+end
