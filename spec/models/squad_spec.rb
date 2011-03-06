@@ -6,14 +6,14 @@ describe Squad do
   it {should have_and_belong_to_many :generic_units }
   it {should have_many :generic_fleets}
   context 'buying and selling units' do
-    let(:unit) {Factory :generic_unit}
+    let(:unit) {Factory :facility}
     before(:each) do
       squad.generic_units << unit
     end
-    context 'buying ships' do
-      it 'should be able to buy units and remove credits accordingly' do
+    context 'buying facilities' do
+      it 'should be able to buy facilities and remove credits accordingly' do
         squad.credits = 2000
-        squad.generic_units.first.price = 1000
+        squad.facilities.first.price = 1000
         squad.buy squad.generic_units.first, 2
         squad.credits.should be_zero
       end
