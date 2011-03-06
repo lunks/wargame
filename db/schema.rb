@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110305182848) do
+ActiveRecord::Schema.define(:version => 20110306053111) do
 
   create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(:version => 20110305182848) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
+  end
+
+  create_table "generic_units_squads", :id => false, :force => true do |t|
+    t.integer "generic_unit_id"
+    t.integer "squad_id"
   end
 
   create_table "planets", :force => true do |t|
@@ -56,11 +61,6 @@ ActiveRecord::Schema.define(:version => 20110305182848) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "move"
-  end
-
-  create_table "squads_units", :id => false, :force => true do |t|
-    t.integer "unit_id"
-    t.integer "squad_id"
   end
 
   create_table "users", :force => true do |t|

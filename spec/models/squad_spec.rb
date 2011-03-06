@@ -40,30 +40,30 @@ describe Squad do
 
       it 'should be able buy units and send them specifically to pool' do
         squad.buy unit, 1
-        first = squad.fleets.first
+        first = squad.generic_fleets.first
         first.planet = Factory :planet
         first.save
         squad.buy unit, 1
-        squad.fleets.count.should be 2
+        squad.generic_fleets.count.should be 2
       end
     end
 
     context 'selling units' do
       before(:each) do
-        squad.units.first.price = 1000
-        squad.units.first.save!
-        squad.buy squad.units.first, 2
+        squad.generic_units.first.price = 1000
+        squad.generic_units.first.save!
+        squad.buy squad.generic_units.first, 2
         squad.credits = 0
       end
 
       it 'should restore half credits when selling a unit' do
-        squad.sell squad.units.first, 2
+        squad.sell squad.generic_units.first, 2
         squad.credits.should be 1000
       end
 
       it 'should remove the adequate quantity' do
-        squad.sell squad.units.first, 1
-        squad.fleets.should_not be_empty
+        squad.sell squad.generic_units.first, 1
+        squad.generic_fleets.should_not be_empty
       end
     end
     context 'aggregating profits' do

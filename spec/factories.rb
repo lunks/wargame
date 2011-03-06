@@ -6,7 +6,7 @@ end
 Factory.define :squad do |f|
   f.name Forgery::Name.full_name
   f.credits Forgery::Basic.number
-  f.units {|a| [a.association(:generic_unit)] }
+  f.generic_units {|a| [a.association(:generic_unit)] }
 end
 
 Factory.define :planet do |f|
@@ -14,7 +14,7 @@ Factory.define :planet do |f|
 end
 
 Factory.define :generic_fleet do |f|
-  f.unit {|a| a.association(:generic_unit) }
+  f.generic_unit {|a| a.association(:generic_unit) }
   f.squad {|a| a.association(:squad) }
   f.quantity Forgery::Basic.number
 end
@@ -27,3 +27,4 @@ end
 
 Factory.define :unit, :class => Unit, :parent => :generic_unit do |f|
 end
+

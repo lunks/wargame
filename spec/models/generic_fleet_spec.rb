@@ -25,20 +25,21 @@ describe GenericFleet do
 
     it 'should transfer fleet to another squad' do
       unit.captured! 1, squad
-      squad.fleets.count.should be 1
+      squad.generic_fleets.count.should be 1
     end
 
     context 'related to captured fleet' do
       before(:each) do
         unit.captured! 1, squad
       end
-      let(:captured_unit) {squad.fleets.first}
-  
+      let(:captured_unit) {squad.generic_fleets.first}
+
       it 'should have the captured quantity' do
         captured_unit.quantity.should be 1
-      end 
+      end
     end
   end
 
 
 end
+
