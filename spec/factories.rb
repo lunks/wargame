@@ -28,3 +28,5 @@ end
 Factory.define :unit, :class => Unit, :parent => :generic_unit do |f|
 end
 
+Factory.define :facility_fleet, :class => FacilityFleet, :parent => :generic_fleet do |f|
+end
