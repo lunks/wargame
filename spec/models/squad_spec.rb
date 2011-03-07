@@ -5,65 +5,44 @@ describe Squad do
   it {should have_many :planets}
   it {should have_and_belong_to_many :generic_units }
   it {should have_many :generic_fleets}
-  context 'buying and selling units' do
-    let(:unit) {Factory :facility}
+  context 'buying and selling facilities' do
+    let(:facility) {Factory :facility, :price => 1000}
+    let(:planet) {Factory :planet}
     before(:each) do
-      squad.generic_units << unit
+      squad.facilities << facility
     end
     context 'buying facilities' do
       it 'should be able to buy facilities and remove credits accordingly' do
         squad.credits = 2000
-        squad.facilities.first.price = 1000
-        squad.buy squad.generic_units.first, 2
-        squad.credits.should be_zero
+        squad.buy squad.facilities.first, 2, planet
+        squad.credits.should be 0
       end
 
-      it 'should not be able to buy a unit they dont have access to' do
-        squad.generic_units.clear
-        squad.buy(unit, 1).should be_false
+      it 'should not be able to buy a facility they dont have access to' do
+        squad.facilities.clear
+        squad.buy(facility, 1, planet).should be_false
       end
 
-      it 'should be able to buy a unit they have access to' do
-        squad.buy(unit, 1).should be_true
+      it 'should not buy a ship that is not a facility' do
+        squad.buy(facility, 1, planet).should be_true
+        normal_ship = Factory :unit
+        squad.units << normal_ship
+        squad.buy(normal_ship, 1, planet).should be_false
       end
 
-      it 'should add the unit to the list of Fleets' do
-        squad.buy unit, 1
+      it 'should be able to buy a facility they have access to' do
+        squad.buy(facility, 1, planet).should be_true
+      end
+
+      it 'should add the facility to the list of Fleets' do
+        squad.buy facility, 1, planet
         squad.generic_fleets.should_not be_empty
       end
 
-      it 'should be able to accumulate same ship models' do
-        squad.buy unit, 1
-        squad.buy unit, 1
-        squad.generic_fleets.count.should be 1
-      end
-
-      it 'should be able buy units and send them specifically to pool' do
-        squad.buy unit, 1
-        first = squad.generic_fleets.first
-        first.planet = Factory :planet
-        first.save
-        squad.buy unit, 1
-        squad.generic_fleets.count.should be 2
-      end
-    end
-
-    context 'selling units' do
-      before(:each) do
-        squad.generic_units.first.price = 1000
-        squad.generic_units.first.save!
-        squad.buy squad.generic_units.first, 2
-        squad.credits = 0
-      end
-
-      it 'should restore half credits when selling a unit' do
-        squad.sell squad.generic_units.first, 2
-        squad.credits.should be 1000
-      end
-
-      it 'should remove the adequate quantity' do
-        squad.sell squad.generic_units.first, 1
-        squad.generic_fleets.should_not be_empty
+      it 'should be able buy facilitys and send them specifically to a planet' do
+        squad.buy facility, 1, planet
+        first = squad.facilities.first
+        squad.generic_fleets.first.planet.should == planet
       end
     end
     context 'aggregating profits' do
