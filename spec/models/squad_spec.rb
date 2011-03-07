@@ -60,6 +60,27 @@ describe Squad do
         squad.credits.should == 0
       end
     end
+    context 'changing producing unit on a facility fleet' do
+      before(:each) do
+        @facility_fleet = Factory :facility_fleet
+        squad.facility_fleets << @facility_fleet
+        @unit = Factory :unit
+      end
+      it 'should not change its credits if facility doesnt have a producing unit yet' do
+        current_credits = squad.credits
+        squad.change_producing_unit(@facility_fleet, @unit)
+        squad.credits.should == current_credits
+      end
+      it 'should change its credits if facility already have a producing unit' do
+        squad.credits = 1000
+        @facility_fleet.producing_unit = @unit
+        new_unit = Factory :unit
+        squad.change_producing_unit(@facility_fleet, new_unit)
+        squad.credits.should be 0
+      end
+    end
+
+
     context 'moving through phases' do
       it 'should be able to go through the move phase' do
         squad.end_move_round

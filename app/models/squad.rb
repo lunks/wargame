@@ -3,6 +3,7 @@ class Squad < ActiveRecord::Base
 
   has_many :planets
   has_many :generic_fleets
+  has_many :facility_fleets, :class_name => "FacilityFleet", :foreign_key => :generic_fleet_id
   has_and_belongs_to_many :facilities, :join_table => :generic_units_squads, :association_foreign_key => :generic_unit_id
   has_and_belongs_to_many :units, :join_table => :generic_units_squads, :association_foreign_key => :generic_unit_id
   has_and_belongs_to_many :generic_units
@@ -25,6 +26,14 @@ class Squad < ActiveRecord::Base
     end
   end
 
+  def change_producing_unit facility_fleet, unit
+    if facility_fleet.producing_unit.nil?
+   else
+      self.credits -= 1000
+   end
+      facility_fleet.producing_unit = unit
+      facility_fleet.save! 
+  end
   def end_move_round
     self.move = true
     save
