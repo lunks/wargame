@@ -41,7 +41,7 @@ class Squad < ActiveRecord::Base
       self.credits -= 1000
    end
       facility_fleet.producing_unit = unit
-      facility_fleet.save! 
+      facility_fleet.save!
   end
   def end_move_round
     self.move = true
