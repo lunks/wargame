@@ -24,6 +24,7 @@ describe FacilityFleet do
       facility.price = 7500
       unit.price = 300
       facility_fleet.producing_unit = unit
+      facility_fleet.planet = Factory :planet
       facility_fleet.save!
     end
     it 'should set its balance on every new turn' do
