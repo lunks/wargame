@@ -19,7 +19,27 @@ describe Fleet do
       unit.destination.should == planet
     end
   end
+  context 'related to fleeing fleet' do
+    it 'should destroy the fleet if we dont have any planets to go' do
+      planet = Factory :planet
+      unit.planet = planet
+      current_planet = unit.planet
+      unit.flee! 1
+      unit.should be_new_record
+    end
 
+    it 'should go to a new planet if we have planets to go' do
+      unit.squad = Factory :squad
+      unit.squad.planets << Factory(:planet)
+      unit.squad.planets << Factory(:planet)
+      unit.save!
+      unit.planet = unit.squad.planets.first
+      current_planet = unit.planet
+      unit.flee! 1
+      unit.squad.generic_fleets.first.planet.should_not == current_planet
+    end
+  end
+ 
   
 
 end
