@@ -3,7 +3,8 @@ class Squad < ActiveRecord::Base
 
   has_many :planets
   has_many :generic_fleets
-  has_many :facility_fleets, :class_name => "FacilityFleet", :foreign_key => :generic_fleet_id
+  has_many :facility_fleets
+  has_many :fleets
   has_and_belongs_to_many :facilities, :join_table => :generic_units_squads, :association_foreign_key => :generic_unit_id
   has_and_belongs_to_many :units, :join_table => :generic_units_squads, :association_foreign_key => :generic_unit_id
   has_and_belongs_to_many :generic_units
