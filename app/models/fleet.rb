@@ -17,5 +17,15 @@ class Fleet < GenericFleet
     end
   end
 
+  def self.create_from_facility unit, quantity, planet
+    fleet = find_or_create_by_generic_unit_id_and_planet_id(:generic_unit_id => :unit.id, :planet_id => planet.id)
+    if fleet.quantity?
+      fleet.quantity += quantity
+    else
+      fleet.quantity = quantity
+    end
+    fleet.save
+  end
+
 end
 

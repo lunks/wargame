@@ -85,7 +85,8 @@ describe Squad do
         5.times do
           squad.planets << Factory(:planet)
         end
-     end
+      end
+
       it 'should retrieve a planet' do
         current_planet = squad.planets.first
         random = squad.random_planet_but(current_planet).should_not == current_planet
@@ -97,13 +98,20 @@ describe Squad do
         squad.random_planet_but(current_planet).should be_false
       end
     end
+    
     context 'moving through phases' do
       it 'should be able to go through the move phase' do
         squad.end_move_round
         squad.move?.should be_true
       end
     end
+  end
+  context 'creating a random facility on a planet' do
+    let(:planet) {Factory :planet}
 
+    it 'should create a facility on a random planet' do
+      expect { squad.warp_facility_on_random_planet }.to change(FacilityFleet, :count).by 1
+    end
   end
 
 end

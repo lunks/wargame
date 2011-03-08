@@ -5,40 +5,38 @@ describe Round do
     Round.create!{[:number => 1]} if Round.last.nil?
   end
   let (:round) {Round.getInstance}
-  let (:squad1) {Factory :squad}
-  let (:squad2) {Factory :squad}
+  let! (:rebel) {Factory :rebels}
+  let! (:empire) {Factory :empire}
+
   it 'should end moving phase just when all squads ends the moving phase' do
-    squad1.end_move_round
-    squad2.save # shouldn't be needed, not sure
+    rebel.end_move_round
     round.should_not be_done_moving
-    squad2.end_move_round
+    empire.end_move_round
     round.should be_done_moving
   end
 
   it 'should be able to return whose turn is it' do
-    squad1.save
-    squad2.save
-    round.who?.should == squad1
-    squad1.end_move_round
-    round.who?.should == squad2
+    round.who?.should == rebel
+    rebel.end_move_round
+    round.who?.should == empire
   end
   context 'beginning a new round' do
     before(:each) do
-      @rebel = Factory :rebels
-      @rebel.planets.clear
-      @rebel.facility_fleets.clear
-      20.times {Factory.create :planet}
+      empire.destroy # stinking empire!
+      rebel.planets.clear
+      rebel.facility_fleets.clear
+      2.times {Factory.create :planet}
       round.new_game!
     end
 
     it 'should get a random planet for the squad' do
-      @rebel.planets(true).should_not be_empty
+      rebel.planets(true).should_not be_empty
     end
     it 'should place a factory on the new planet' do
-      @rebel.facilities(true).should_not be_empty
+      rebel.facilities(true).should_not be_empty
     end
     it 'should place random units on the planets' do
-      @rebel.fleets.count.should == 6
+      rebel.fleets.count.should == 6
     end
   end
 end
