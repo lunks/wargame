@@ -31,3 +31,12 @@ end
 Factory.define :facility_fleet, :class => FacilityFleet, :parent => :generic_fleet do |f|
   f.facility {|a| a.association(:facility) }
 end
+Factory.define :rebels, :parent => :squad do |f|
+  f.planets {|a| [a.association(:planet)]}
+  f.facilities {|a| [a.association(:facility)]}
+  f.units {|a| [a.association(:unit, :price => 350)]}
+end
+
+Factory.define :empire, :parent => :squad do |f|
+  f.units {|a| [a.association(:unit)]}
+end
