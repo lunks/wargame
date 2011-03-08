@@ -22,6 +22,24 @@ describe Round do
     squad1.end_move_round
     round.who?.should == squad2
   end
+  context 'beginning a new round' do
+    before(:each) do
+      @rebel = Factory :rebels
+      @rebel.planets.clear
+      @rebel.facility_fleets.clear
+      20.times {Factory.create :planet}
+      round.new_game!
+    end
 
+    it 'should get a random planet for the squad' do
+      @rebel.planets(true).should_not be_empty
+    end
+    it 'should place a factory on the new planet' do
+      @rebel.facilities(true).should_not be_empty
+    end
+    it 'should place random units on the planets' do
+      @rebel.fleets.count.should == 6
+    end
+  end
 end
 
