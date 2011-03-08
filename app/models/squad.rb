@@ -79,4 +79,3 @@ class Squad < ActiveRecord::Base
     save!
   end
 end
-
