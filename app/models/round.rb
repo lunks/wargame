@@ -1,6 +1,10 @@
 class Round < ActiveRecord::Base
   def self.getInstance
-    Round.last
+    if Round.count == 0
+      Round.create
+    else
+      Round.last
+    end
   end
 
   def done_moving?
