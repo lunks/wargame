@@ -38,5 +38,11 @@ class Squad < ActiveRecord::Base
     self.move = true
     save
   end
+
+  def random_planet_but planet
+    planets_array = planets.to_a - [planet]
+    return false if planets_array.empty?
+    random_planet = planets_array[rand(planets_array.size)]
+  end
 end
 

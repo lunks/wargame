@@ -80,7 +80,23 @@ describe Squad do
       end
     end
 
-
+    context 'randomizing a planet' do
+      before(:each) do
+        5.times do
+          squad.planets << Factory(:planet)
+        end
+     end
+      it 'should retrieve a planet' do
+        current_planet = squad.planets.first
+        random = squad.random_planet_but(current_planet).should_not == current_planet
+      end
+      it 'should return false if we just have one planet' do
+        squad.planets.clear
+        current_planet = Factory :planet
+        squad.planets << current_planet
+        squad.random_planet_but(current_planet).should be_false
+      end
+    end
     context 'moving through phases' do
       it 'should be able to go through the move phase' do
         squad.end_move_round
