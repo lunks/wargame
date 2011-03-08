@@ -34,5 +34,9 @@ describe Planet do
       planet.squad.should be @squad
     end
   end
+  it 'should get a random planet' do
+    3.times {Factory :planet}
+    Planet.randomize.should be_an_instance_of Planet
+  end
 end
 

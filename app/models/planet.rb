@@ -24,5 +24,9 @@ class Planet < ActiveRecord::Base
     end
     fleets_value
   end
+  def self.randomize
+    empty_planets = where(:squad_id => nil).all
+    empty_planets[rand(empty_planets.count-1)]
+  end
 end
 
