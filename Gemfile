@@ -8,7 +8,7 @@ gem 'simple_form'
 
 gem 'devise'
 
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'rails_admin', :git => 'https://github.com/sferik/rails_admin.git'
 
 gem 'meta_where'
 group :development, :test do
