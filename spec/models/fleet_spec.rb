@@ -22,23 +22,18 @@ describe Fleet do
   context 'related to fleeing fleet' do
 
     it 'should go to an adjacent planet' do
-      unit.squad = Factory :squad
       planet_origin = Factory(:planet)
-      planet_out_of_route = Factory(:planet)
       planet_destiny = Factory(:planet)
       route = Factory(:route)
       route.vector_a = planet_origin
       route.vector_b = planet_destiny
       route.save!
-      unit.squad.planets << planet_origin
-      unit.squad.planets << planet_out_of_route
-      unit.squad.planets << planet_destiny
+      unit.planet = planet_origin
       unit.save!
-      unit.planet = unit.squad.planets.first
       current_planet = unit.planet
       unit.flee! 1
       #unit.squad.generic_fleets.first.planet.should == current_planet
-      unit.squad.planets.last.should_not == current_planet  
+      Fleet.last.planet.should_not == current_planet
     end
 
     it 'should go first to an allied adjacent planet' do
