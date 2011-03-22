@@ -34,6 +34,7 @@ describe Fleet do
       unit.flee! 1
       #unit.squad.generic_fleets.first.planet.should == current_planet
       Fleet.last.planet.should_not == current_planet
+      Fleet.last.planet.should == planet_destiny
     end
 
     it 'should go first to an allied adjacent planet' do
