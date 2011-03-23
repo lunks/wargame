@@ -18,9 +18,6 @@ class Fleet < GenericFleet
     self.save
   end
 
-
-
-
   def flee! quantity
     fleeing_fleet = Fleet.create self.attributes
     fleeing_fleet.quantity = quantity

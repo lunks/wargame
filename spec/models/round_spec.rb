@@ -20,6 +20,7 @@ describe Round do
     rebel.end_move_round
     round.who?.should == empire
   end
+
   context 'beginning a new round' do
     before(:each) do
       empire.destroy # stinking empire!
@@ -34,7 +35,7 @@ describe Round do
     it 'should get a random planet for the squad' do
       rebel.planets(true).should_not be_empty
     end
-    it 'should place a factory on the new planet' do
+    it 'should place a facility on the new planet' do
       rebel.facility_fleets(true).should_not be_empty
     end
     it 'should place random units on the planets' do
