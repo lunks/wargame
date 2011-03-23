@@ -37,6 +37,7 @@ class Squad < ActiveRecord::Base
       facility_fleet.producing_unit = unit
       facility_fleet.save!
   end
+  
   def end_move_round
     self.move = true
     save
@@ -50,7 +51,6 @@ class Squad < ActiveRecord::Base
 
   def warp_facility_on planet
     facility_model = Facility.allowed_for(faction).last
-    #facility_fleets << FacilityFleet.create(:facility => facility_model, :balance => 8000, :planet => planets.first, :quantity => 1)
     facility_fleets.create(:generic_unit => facility_model, :planet => planet, :quantity => 1, :balance => 3000)
   end
 
