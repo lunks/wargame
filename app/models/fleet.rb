@@ -11,7 +11,7 @@ class Fleet < GenericFleet
     self.save
   end
 
-  def move! # TODO: Nao ta mudando o planet pro destination, nem o destination ficando nil
+  def move! # TODO: Verificar pois não estava funcionando direito.
     self.planet = self.destination
     self.destination = nil
     self.moving = false
@@ -22,7 +22,7 @@ class Fleet < GenericFleet
     fleeing_fleet = Fleet.create self.attributes
     fleeing_fleet.quantity = quantity
     fleeing_fleet.save
-    new_planet = fleeing_fleet.planet.routes.first # redefinir o metodo para pegar primeiro os allied planets
+    new_planet = fleeing_fleet.planet.routes.first # TODO redefinir o metodo para pegar primeiro os allied planets
     fleeing_fleet.planet = new_planet
     fleeing_fleet.save
     self.quantity -= quantity
