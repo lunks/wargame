@@ -12,7 +12,7 @@ class Planet < ActiveRecord::Base
   end
 
   def set_ownership
-    if has_a? CapitalShip
+    if has_a? CapitalShip or has_a? Facility
       self.squad = generic_fleets.first.squad
     else
       self.squad = nil

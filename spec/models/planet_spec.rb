@@ -50,6 +50,15 @@ describe Planet do
       planet.squad.should be @squad
     end
 
+    it 'should change its ownership if it has a facility on it' do
+      fleet = Factory :generic_fleet
+      fleet.squad = @squad
+      fleet.generic_unit = Factory :facility
+      planet.generic_fleets << fleet
+      planet.set_ownership
+      planet.squad.should be @squad
+    end
+
     it 'should remove its ground ownership if it doesnt have a trooper on it' do
       planet.set_ground_ownership
       planet.ground_squad_id.should be_nil
