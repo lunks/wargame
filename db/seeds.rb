@@ -84,26 +84,28 @@ Unit.create(:name => 'A-Wing', :price => 350 ).factions = reb
 Unit.create(:name => 'B-Wing', :price => 500 ).factions = reb
 Unit.create(:name => 'T-Wing', :price => 130 ).factions = merc_reb
 Unit.create(:name => 'Z-95', :price => 130 ).factions = merc_reb
-Unit.create(:name => 'Skipray Blastboat', :price => 400 ).factions = merc
+Unit.create(:name => 'Droid Fighter', :price => 60 ).factions = merc
+Unit.create(:name => 'Droid Bomber', :price => 70 ).factions = merc
+Unit.create(:name => 'Pinook Fighter', :price => 120 ).factions = merc
+Unit.create(:name => 'Preybird Fighter', :price => 150 ).factions = merc
 Unit.create(:name => 'R-41 Starchaser', :price => 200 ).factions = merc
+Unit.create(:name => 'Cloackshape Fighter', :price => 200 ).factions = merc
+Unit.create(:name => 'Planetary Fighter', :price => 200 ).factions = merc
+Unit.create(:name => 'Razor Fighter', :price => 225 ).factions = merc
+Unit.create(:name => 'Skipray Blastboat', :price => 375 ).factions = merc
+Unit.create(:name => 'Supa Fighter', :price => 250 ).factions = mand
 Unit.create(:name => 'Firespray', :price => 275 ).factions = mand
 Unit.create(:name => 'Pursuer', :price => 275 ).factions = mand
 Unit.create(:name => 'Star Viper', :price => 300 ).factions = mand
-Unit.create(:name => 'Cloackshape Fighter', :price => 200 ).factions = merc
-Unit.create(:name => 'Razor Fighter', :price => 225 ).factions = merc
-Unit.create(:name => 'Planetary Fighter', :price => 200 ).factions = merc
-Unit.create(:name => 'Supa Fighter', :price => 250 ).factions = merc
-Unit.create(:name => 'Pinook Fighter', :price => 120 ).factions = merc
-Unit.create(:name => 'Preybird Fighter', :price => 150 ).factions = merc
-Unit.create(:name => 'Tie Fighter', :price => 75 ).factions = imp
-Unit.create(:name => 'Tie Bomber', :price => 95 ).factions = imp
-Unit.create(:name => 'Tie Interceptor', :price => 115 ).factions = imp
-Unit.create(:name => 'Tie Advanced', :price => 400 ).factions = imp
-Unit.create(:name => 'Tie Defender', :price => 1250 ).factions = imp
-Unit.create(:name => 'Toscan Fighter', :price => 300 ).factions = imp
-Unit.create(:name => 'Missile Boat', :price => 1250 ).factions = imp
-Unit.create(:name => 'Assault Gunboat', :price => 450 ).factions = imp
+Unit.create(:name => 'Tie Fighter', :price => 60 ).factions = imp
+Unit.create(:name => 'Tie Bomber', :price => 70 ).factions = imp
+Unit.create(:name => 'Tie Interceptor', :price => 90 ).factions = imp
 Unit.create(:name => 'Authority IRD', :price => 115 ).factions = imp
+Unit.create(:name => 'Toscan Fighter', :price => 300 ).factions = imp
+Unit.create(:name => 'Tie Advanced', :price => 425 ).factions = imp
+Unit.create(:name => 'Assault Gunboat', :price => 450 ).factions = imp
+Unit.create(:name => 'Missile Boat', :price => 700 ).factions = imp
+Unit.create(:name => 'Tie Defender', :price => 1200 ).factions = imp
 
 Unit.create(:name => 'YT-1300', :price => 400 ).factions = merc_reb
 Unit.create(:name => 'YT-2000', :price => 1200 ).factions = merc
