@@ -1,8 +1,8 @@
 class Fleet < GenericFleet
   belongs_to :destination, :class_name => "Planet"
 
-  def move quantity, planet
-    moving_fleet = Fleet.create self.attributes
+  def move quantity, planet # Troquei Fleet.create por Fleet.new pois estava criando 2 fleets diferentes.
+    moving_fleet = Fleet.new self.attributes
     moving_fleet.destination = planet
     moving_fleet.quantity = quantity
     moving_fleet.moving = true
@@ -36,14 +36,17 @@ class Fleet < GenericFleet
     fleet.save
   end
 
-  def group_fleets
-    fleets = planet.generic_fleets(true).where(:generic_unit => self.generic_unit, :planet => self.planet, :squad => self.squad, :moving => nil )
+  def group_fleets # TODO não está agrupando direito, sempre sobra 1 fleet mais antiga
+    fleets = planet.generic_fleets.where(:generic_unit => self.generic_unit, :planet => self.planet, :squad => self.squad, :moving => nil )
     total_quantity = 0
     fleets.each do |fleet|
-      fleet.quantity = 0
-      fleet.save
+      unless fleet == self
+        total_quantity += fleet.quantity
+        fleet.quantity = 0
+        fleet.save
+      end
     end
-    self.quantity = total_quantity
+    self.quantity += total_quantity
     save
   end
 
