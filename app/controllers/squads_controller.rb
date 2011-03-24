@@ -10,7 +10,7 @@ class SquadsController < ApplicationController
     current_user.squad = squad
     squad.credits = 10000
     squad.save
-    redirect_to root_path
+    redirect_to :fleets
   end
 
 end
