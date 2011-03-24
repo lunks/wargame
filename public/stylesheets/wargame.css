@@ -1,4 +1,14 @@
 body
-{ background-color:black;
+{ 
+  background-color:black;
   color:white;
+}
+
+div.planet_content
+{
+  width:400px;
+  padding:10px;
+  border:3px solid gray;
+  margin:5px;
+  background:black;
 }

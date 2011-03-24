@@ -1,16 +1,17 @@
 
-<div>
   <% @planets.each do |planet| %>
+  <div class="planet_content">
     <h2> <%= planet.name %> </h2>
     <p>
     <% planet.generic_fleets.each do |fleet| %>
-      <font color = "<%= fleet.squad.color %>">
+      <span style=color:<%= fleet.squad.color %>>
       <%= "#{fleet.quantity} #{fleet.generic_unit.name} "%> 
       <% if fleet.moving? %> 
-         <%= "moving to #{fleet.destination.name} "%>
+         <span style=font-weight:bold><%= "moving to #{fleet.destination.name} "%></span>
       <% end %>
-      </font>
+      </span>
       <br>
     <% end %>
+  </div>
   <% end %>          
-</div>
+
