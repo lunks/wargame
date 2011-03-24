@@ -1,0 +1,6 @@
+<%= "#{fleet.quantity} #{fleet.generic_unit.name} "%> 
+<% if fleet.moving? %> 
+  <span style=font-weight:bold><%= "moving to #{fleet.destination.name} "%></span>
+<% end %>
+
+

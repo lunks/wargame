@@ -5,9 +5,11 @@
     <p>
     <% planet.generic_fleets.each do |fleet| %>
       <span style=color:<%= fleet.squad.color %>>
-      <%= "#{fleet.quantity} #{fleet.generic_unit.name} "%> 
-      <% if fleet.moving? %> 
-         <span style=font-weight:bold><%= "moving to #{fleet.destination.name} "%></span>
+      <% case fleet.generic_unit.type %>
+      <% when 'Facility' %>   
+         <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
+      <% else %>   
+         <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>
       <% end %>
       </span>
       <br>
