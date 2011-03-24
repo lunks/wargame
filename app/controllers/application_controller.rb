@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     unless current_user.squad
       new_squad_path # You can put whatever path you want here 
     else
-      root_path
+      fleets_path
     end
   end
 
