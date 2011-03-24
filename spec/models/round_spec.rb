@@ -26,8 +26,8 @@ describe Round do
       empire.destroy # stinking empire!
       rebel.planets.clear
       rebel.facility_fleets.clear
-      unit = Factory :unit, :price => 350
-      Factory :unit, :price => 2500
+      unit = Factory :fighter, :price => 350
+      Factory :capital_ship, :price => 2500
       3.times {Factory.create :planet}
       round.new_game!
     end

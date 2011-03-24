@@ -62,7 +62,7 @@ class Squad < ActiveRecord::Base
 
   def warp_fighters_on planet
     total_value = 5000
-    fighters = Unit.allowed_for(faction).fighter.all
+    fighters = Fighter.allowed_for(faction).fighter.all
     random_fighter = fighters[rand(fighters.size)]
     ship_count = 0
     while (total_value > random_fighter.price)
