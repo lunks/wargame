@@ -16,6 +16,7 @@ class Fleet < GenericFleet
     self.planet = self.destination
     self.destination = nil
     self.moving = nil
+    save
     group_fleets
   end
 
