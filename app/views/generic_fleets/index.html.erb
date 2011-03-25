@@ -5,8 +5,7 @@
     <p>
     <% planet.generic_fleets.each do |fleet| %>
       <span style=color:<%= fleet.squad.color %>>
-      <% case fleet.generic_unit.type %>
-      <% when 'Facility' %>   
+      <% if fleet.class == FacilityFleet %> 
          <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
       <% else %>   
          <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>

@@ -1,2 +1,5 @@
-<%= "#{fleet.quantity} !SomeUnit! #{fleet.generic_unit.name} "%>
+<%= fleet.quantity %>
+<%= fleet.producing_unit.name if fleet.producing_unit.present? %>
+<%= fleet.generic_unit.name %>
+<%= link_to 'setup', edit_facility_fleet_path(fleet) %>
 

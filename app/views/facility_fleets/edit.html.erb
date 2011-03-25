@@ -1,0 +1,8 @@
+Type: <%= @facility.generic_unit.name  %>
+<br>
+Balance: <%= @facility.balance  %>
+<br>
+<%= simple_form_for @facility do |f| %>
+<%= f.input :producing_unit, :collection => @units  %>
+<%= f.button :submit %>
+<% end %>

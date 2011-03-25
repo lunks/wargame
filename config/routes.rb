@@ -3,6 +3,7 @@ Rpg::Application.routes.draw do
 
    resources :squads
    resources :generic_units
+   resources :facility_fleets
    match 'fleets' => 'generic_fleets#index'
 
   # The priority is based upon order of creation:
