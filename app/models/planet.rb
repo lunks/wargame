@@ -4,7 +4,7 @@ class Planet < ActiveRecord::Base
   belongs_to :ground_squad_id, :class_name => "Squad", :foreign_key => 'ground_squad_id'
 
   def credits_per_turn
-    if self.squad? && self.squad_id == self.ground_squad_id # verificar isto <---
+    if self.squad != nil && self.squad == self.ground_squad_id # verificar isto <---
       credits
     else
       0
