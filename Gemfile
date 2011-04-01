@@ -4,7 +4,10 @@ gem 'rails', '3.0.5'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
+gem 'simple_form'
+
 gem 'devise'
+
 group :development, :test do
   gem 'simplecov', :platform => :ruby_19
   gem 'simplecov-html', :platform => :ruby_19

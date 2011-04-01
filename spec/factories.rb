@@ -6,6 +6,7 @@ end
 Factory.define :squad do |f|
   f.name Forgery::Name.full_name
   f.credits Forgery::Basic.number
+  f.color 'red'
   f.generic_units {|a| [a.association(:generic_unit)] }
 end
 
@@ -43,4 +44,5 @@ end
 
 Factory.define :user do |f|
   f.email Forgery::Internet.email_address
+  f.password Forgery::Basic.password
 end

@@ -1,4 +1,5 @@
 class Squad < ActiveRecord::Base
+  FACTIONS = %w[rebel empire mercenary]
   default_scope :order => 'id ASC'
 
   has_many :planets
@@ -53,7 +54,7 @@ class Squad < ActiveRecord::Base
 
   def warp_facility_on_random_planet
     facility_model = facilities.last
-    facility_fleets << FacilityFleet.create(:facility => facility_model, :balance => 8000, :planet => planets.first)
+    facility_fleets << FacilityFleet.create(:facility => facility_model, :balance => 8000, :planet => planets.first, :quantity => 1)
   end
 
   def warp_capital_ship_on planet
@@ -68,7 +69,7 @@ class Squad < ActiveRecord::Base
       fighter = units.fighter
       ship_count = 0
       while (total_value > fighter.price)
-        ship_count++
+        ship_count+=1
         total_value -= fighter.price
       end
       fleets.create(:generic_unit => fighter, :planet => planet, :quantity => ship_count)
