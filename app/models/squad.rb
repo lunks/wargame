@@ -1,5 +1,5 @@
 class Squad < ActiveRecord::Base
-  FACTIONS = %w[rebel empire mercenary]
+  FACTIONS = %w[rebel empire mercenary mandalorian]
   default_scope :order => 'id ASC'
 
   has_many :planets

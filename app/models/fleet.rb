@@ -5,6 +5,9 @@ class Fleet < GenericFleet
     self.moving = true
     self.destination = planet
   end
+
+
+
   def flee! quantity
     fleeing_fleet = self.dup
     fleeing_fleet.quantity = quantity
