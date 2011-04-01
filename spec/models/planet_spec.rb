@@ -71,5 +71,10 @@ describe Planet do
     3.times {Factory :planet}
     Planet.randomize.should be_an_instance_of Planet
   end
+  it 'should find planets adjacent of it' do
+    second_planet = Factory :planet
+    Factory :route, :vector_a => planet, :vector_b => second_planet
+    planet.routes.should include(second_planet)
+  end
 end
 

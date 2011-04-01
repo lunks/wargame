@@ -1,0 +1,15 @@
+Units:
+<ul>
+  <% @generic_units.each do |unit| -%>
+    <li>
+    <strong><%=unit.name %></strong>
+  <% FACTIONS.each do |faction| %>
+    <% unless unit.belongs?(faction) %>
+      <em><%= faction %></em>
+    <% else %>
+      <%= faction %>
+    <% end %>
+  <% end %>
+  </li>
+<% end %>
+</ul>

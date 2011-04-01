@@ -1,26 +1,22 @@
 class Squad < ActiveRecord::Base
-  FACTIONS = %w[rebel empire mercenary mandalorian]
+
   default_scope :order => 'id ASC'
 
   has_many :planets
   has_many :generic_fleets
   has_many :facility_fleets
   has_many :fleets
-  has_and_belongs_to_many :facilities, :join_table => :generic_units_squads, :association_foreign_key => :generic_unit_id
-  has_and_belongs_to_many :units, :join_table => :generic_units_squads, :association_foreign_key => :generic_unit_id do
-    def fighter
-      where("price >= ?", 350).first
-    end
-
-    def capital_ship
-      where(:price => 2500..3500).first
-    end
+  
+  def faction=(faction)
+    write_attribute(:faction, FACTIONS.rindex(faction))
   end
-  has_and_belongs_to_many :generic_units
 
+  def faction
+    FACTIONS[read_attribute(:faction)] if read_attribute(:faction)
+  end
 
   def buy unit, quantity, planet
-    if facilities.include?(unit)
+    if (unit.belongs?(faction)) and (unit.is_a? Facility)
       self.credits = self.credits - (unit.price * quantity)
       new_fleet = GenericFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet)
       generic_fleets << new_fleet
@@ -53,12 +49,12 @@ class Squad < ActiveRecord::Base
   end
 
   def warp_facility_on_random_planet
-    facility_model = facilities.last
+    facility_model = Facility.allowed_for(faction).last
     facility_fleets << FacilityFleet.create(:facility => facility_model, :balance => 8000, :planet => planets.first, :quantity => 1)
   end
 
   def warp_capital_ship_on planet
-    capital_ship = units.capital_ship
+    capital_ship = Unit.allowed_for(faction).capital_ship.first
     fleets.create(:generic_unit => capital_ship, :planet => planet, :quantity => 1)
   end
 
@@ -66,7 +62,7 @@ class Squad < ActiveRecord::Base
     planets.each do |planet|
       warp_capital_ship_on planet
       total_value = 5000
-      fighter = units.fighter
+      fighter = Unit.allowed_for(faction).fighter.first
       ship_count = 0
       while (total_value > fighter.price)
         ship_count+=1

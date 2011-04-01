@@ -5,8 +5,8 @@ describe Round do
     Round.create!{[:number => 1]} if Round.last.nil?
   end
   let (:round) {Round.getInstance}
-  let! (:rebel) {Factory :rebels}
-  let! (:empire) {Factory :empire}
+  let! (:rebel) {Factory :squad}
+  let! (:empire) {Factory :squad}
 
   it 'should end moving phase just when all squads ends the moving phase' do
     rebel.end_move_round
@@ -25,7 +25,9 @@ describe Round do
       empire.destroy # stinking empire!
       rebel.planets.clear
       rebel.facility_fleets.clear
-      2.times {Factory.create :planet}
+      unit = Factory :unit, :price => 350
+      Factory :unit, :price => 2500
+      3.times {Factory.create :planet}
       round.new_game!
     end
 
@@ -33,7 +35,7 @@ describe Round do
       rebel.planets(true).should_not be_empty
     end
     it 'should place a factory on the new planet' do
-      rebel.facilities(true).should_not be_empty
+      rebel.facility_fleets(true).should_not be_empty
     end
     it 'should place random units on the planets' do
       rebel.fleets.count.should == 6
