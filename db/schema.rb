@@ -10,7 +10,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20110405080221) do
 
   create_table "generic_fleets", :force => true do |t|
