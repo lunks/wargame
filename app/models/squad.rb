@@ -1,10 +1,21 @@
 class Squad < ActiveRecord::Base
+  FACTIONS = %w[rebel empire mercenary]
   default_scope :order => 'id ASC'
 
   has_many :planets
   has_many :generic_fleets
+  has_many :facility_fleets
+  has_many :fleets
   has_and_belongs_to_many :facilities, :join_table => :generic_units_squads, :association_foreign_key => :generic_unit_id
-  has_and_belongs_to_many :units, :join_table => :generic_units_squads, :association_foreign_key => :generic_unit_id
+  has_and_belongs_to_many :units, :join_table => :generic_units_squads, :association_foreign_key => :generic_unit_id do
+    def fighter
+      where("price >= ?", 350).first
+    end
+
+    def capital_ship
+      where(:price => 2500..3500).first
+    end
+  end
   has_and_belongs_to_many :generic_units
 
 
@@ -25,9 +36,44 @@ class Squad < ActiveRecord::Base
     end
   end
 
+  def change_producing_unit facility_fleet, unit
+      self.credits -= 1000 if facility_fleet.producing_unit
+      facility_fleet.producing_unit = unit
+      facility_fleet.save!
+  end
   def end_move_round
     self.move = true
     save
   end
-end
 
+  def random_planet_but planet
+    planets_array = planets.to_a - [planet]
+    return false if planets_array.empty?
+    random_planet = planets_array[rand(planets_array.size)]
+  end
+
+  def warp_facility_on_random_planet
+    facility_model = facilities.last
+    facility_fleets << FacilityFleet.create(:facility => facility_model, :balance => 8000, :planet => planets.first, :quantity => 1)
+  end
+
+  def warp_capital_ship_on planet
+    capital_ship = units.capital_ship
+    fleets.create(:generic_unit => capital_ship, :planet => planet, :quantity => 1)
+  end
+
+  def populate_planets
+    planets.each do |planet|
+      warp_capital_ship_on planet
+      total_value = 5000
+      fighter = units.fighter
+      ship_count = 0
+      while (total_value > fighter.price)
+        ship_count+=1
+        total_value -= fighter.price
+      end
+      fleets.create(:generic_unit => fighter, :planet => planet, :quantity => ship_count)
+    end
+    save!
+  end
+end

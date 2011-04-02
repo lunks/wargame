@@ -6,6 +6,7 @@ end
 Factory.define :squad do |f|
   f.name Forgery::Name.full_name
   f.credits Forgery::Basic.number
+  f.color 'red'
   f.generic_units {|a| [a.association(:generic_unit)] }
 end
 
@@ -28,3 +29,20 @@ end
 Factory.define :unit, :class => Unit, :parent => :generic_unit do |f|
 end
 
+Factory.define :facility_fleet, :class => FacilityFleet, :parent => :generic_fleet do |f|
+  f.facility {|a| a.association(:facility) }
+end
+Factory.define :rebels, :parent => :squad do |f|
+  f.planets {|a| [a.association(:planet)]}
+  f.facilities {|a| [a.association(:facility)]}
+  f.units {|a| [a.association(:unit, :price => 350)]}
+end
+
+Factory.define :empire, :parent => :squad do |f|
+  f.units {|a| [a.association(:unit)]}
+end
+
+Factory.define :user do |f|
+  f.email Forgery::Internet.email_address
+  f.password Forgery::Basic.password
+end

@@ -1,12 +1,16 @@
 class Round < ActiveRecord::Base
   def self.getInstance
-    Round.last
+    if Round.count == 0
+      Round.create
+    else
+      Round.last
+    end
   end
 
   def done_moving?
     done = true
     Squad.all.each do |squad|
-      done = false if squad.move.blank?
+      done = false unless squad.move?
     end
     save
     done
@@ -14,8 +18,15 @@ class Round < ActiveRecord::Base
 
   def who?
     Squad.all.each do |squad|
-      return squad if squad.move? == false
+      return squad unless squad.move?
     end
   end
-end
 
+  def new_game!
+    Squad.all.each do |squad|
+      3.times {squad.planets << Planet.randomize}
+      squad.warp_facility_on_random_planet
+      squad.populate_planets
+      end
+    end
+  end

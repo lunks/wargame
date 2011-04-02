@@ -1,0 +1,8 @@
+New Squad
+
+<%= simple_form_for @squad do |f| %>
+<%= f.input :name %>
+<%= f.input :color, :collection => @colors, :as => :select %>
+<%= f.button :submit %>
+<% end %>
+
