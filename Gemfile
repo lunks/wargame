@@ -8,6 +8,8 @@ gem 'simple_form'
 
 gem 'devise'
 
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+
 group :development, :test do
   gem 'simplecov', :platform => :ruby_19
   gem 'simplecov-html', :platform => :ruby_19
