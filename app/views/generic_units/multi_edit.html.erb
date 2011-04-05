@@ -1,0 +1,6 @@
+
+<%= simple_form_for @generic_units.first.becomes(GenericUnit) do |f|%>
+<%= f.input :name %>
+<%= f.collection_check_boxes :factions, GenericUnit::FACTIONS, :to_s, :to_s  %>
+<%= f.button :submit %>
+<% end %>
