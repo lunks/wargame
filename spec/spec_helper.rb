@@ -11,7 +11,6 @@ RSpec.configure do |config|
   config.include LoginHelper, :type => :acceptance
   config.mock_with :rspec
   config.fail_fast = true
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.use_transactional_fixtures = true
 
