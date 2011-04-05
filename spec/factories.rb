@@ -46,3 +46,8 @@ Factory.define :user do |f|
   f.email Forgery::Internet.email_address
   f.password Forgery::Basic.password
 end
+
+Factory.define :route do |f|
+  f.vector_a {|a| a.association(:planet)}
+  f.vector_b {|a| a.association(:planet)}
+end

@@ -27,5 +27,16 @@ class Planet < ActiveRecord::Base
     generic_fleets.any?{|fleet| fleet.type? type}
   end
 
+  def routes
+    route = Route.where({:vector_a => self} | {:vector_b => self})
+    planets = []
+    route.each do |route|
+      planets << route.vector_a
+      planets << route.vector_b
+    end
+    planets.reject! {|planet| planet == self}
+    planets.uniq
+  end
+
 end
 
