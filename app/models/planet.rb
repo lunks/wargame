@@ -3,30 +3,29 @@ class Planet < ActiveRecord::Base
   has_many :generic_fleets
 
   def credits_per_turn
-    if generic_fleets.empty? || total_fleet_value < 1000
-      0
-    else
+    if has_a? CapitalShip
       credits
+    else
+      0
     end
   end
 
   def set_ownership
-    if total_fleet_value > 1000
+    if has_a? CapitalShip
       self.squad = generic_fleets.first.squad
     else
       self.squad = nil
     end
   end
-  def total_fleet_value
-    fleets_value = 0
-    generic_fleets.each do |fleet|
-      fleets_value += fleet.generic_unit.price * fleet.quantity
-    end
-    fleets_value
-  end
+
   def self.randomize
     empty_planets = where(:squad_id => nil).all
     empty_planets[rand(empty_planets.count-1)]
   end
+
+  def has_a?(type)
+    generic_fleets.any?{|fleet| fleet.type? type}
+  end
+
 end
 

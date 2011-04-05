@@ -6,29 +6,32 @@ describe Planet do
   it {should belong_to :squad}
   it {should have_many :generic_fleets}
 
-  it 'should output its profits based on the ship they have on it fleets cost more than 1000' do
+  it 'should output its profits if they have a capital ship on it fleets' do
     planet.credits = 1000
     planet.credits_per_turn.should be 0
     fleet = Factory :generic_fleet
-    fleet.generic_unit.price = 20
+    unit = Factory :capital_ship
+    fleet.generic_unit = unit
     planet.generic_fleets << fleet
-    planet.credits_per_turn.should be 0
-    fleet.generic_unit.price = 2000
     planet.credits_per_turn.should be 1000
   end
+
+
+
   context 'changing ownership of the planet' do
     before(:each) do
       @squad = Factory :squad
       planet.squad = @squad
     end
-    it 'should remove its ownership if fleets dont worth enough' do
+    it 'should remove its ownership if it doesnt have a capital ship on it' do
       planet.set_ownership
       planet.squad.should be_nil
     end
-    it 'should change its ownership if fleets have enough value' do
+
+    it 'should change its ownership if it has a capital ship on it' do
       fleet = Factory :generic_fleet
       fleet.squad = @squad
-      fleet.generic_unit.price = 2000
+      fleet.generic_unit = Factory :capital_ship
       planet.generic_fleets << fleet
       planet.set_ownership
       planet.squad.should be @squad
