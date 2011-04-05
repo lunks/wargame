@@ -13,6 +13,10 @@ class GenericFleet < ActiveRecord::Base
     captured_fleet.save
   end
 
+  def type?(type)
+    generic_unit.is_a? type
+  end
+
   def to_s
     "Type: #{generic_unit.name} Planet: #{planet.name} Quantity: #{self.quantity}"
   end

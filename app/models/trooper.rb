@@ -1,0 +1,3 @@
+class Trooper < GenericUnit
+end
+
