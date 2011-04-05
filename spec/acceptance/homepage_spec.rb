@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe 'homepage' do
- 
+
   context 'not authenticated user' do
     it 'should see the homepage' do
       visit '/'
@@ -16,7 +16,7 @@ describe 'homepage' do
   context 'authenticated user' do
     let(:squad) {Factory.attributes_for(:squad)}
     before(:each) {login_user!}
-    
+
     it 'should show me the restricted area' do
       visit '/home/restricted'
       page.should have_content('Restricted')
@@ -28,7 +28,7 @@ describe 'homepage' do
 
     it 'should create a squad' do
       fill_in('Name', :with => squad[:name])
-      select('red', :from => 'Color')
+      select(squad[:color], :from => 'Color')
       click_button('Create Squad')
       User.first.squad.should_not be_nil
     end
