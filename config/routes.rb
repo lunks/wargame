@@ -2,7 +2,7 @@ Rpg::Application.routes.draw do
    devise_for :users
 
    resources :squads
-
+   resources :generic_units
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
