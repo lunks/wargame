@@ -3,6 +3,7 @@ class GenericUnit < ActiveRecord::Base
   def factions=(factions)
     factions = [factions] if factions.is_a? String
     self.faction_mask = (factions & FACTIONS).map { |r| 2**FACTIONS.index(r) }.sum
+    save
   end
 
   def factions
