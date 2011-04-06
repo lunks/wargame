@@ -1,5 +1,4 @@
 class GenericUnit < ActiveRecord::Base
-  FACTIONS = %w[rebel empire mercenary]
   scope :allowed_for, lambda {|faction| where('faction_mask & ?', 2**FACTIONS.rindex(faction))}
   def factions=(factions)
     factions = [factions] if factions.is_a? String

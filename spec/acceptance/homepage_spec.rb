@@ -29,6 +29,7 @@ describe 'homepage' do
     it 'should create a squad' do
       fill_in('Name', :with => squad[:name])
       select(squad[:color], :from => 'Color')
+      select(squad[:faction], :from => 'Faction')
       click_button('Create Squad')
       User.first.squad.should_not be_nil
     end

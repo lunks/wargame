@@ -1,5 +1,4 @@
 class Squad < ActiveRecord::Base
-  FACTIONS = %w[rebel empire mercenary]
   default_scope :order => 'id ASC'
 
   has_many :planets
@@ -12,7 +11,7 @@ class Squad < ActiveRecord::Base
   end
 
   def faction
-    FACTIONS[read_attribute(:faction)]
+    FACTIONS[read_attribute(:faction)] if read_attribute(:faction)
   end
 
   def buy unit, quantity, planet
