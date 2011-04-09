@@ -8,16 +8,11 @@ class Fleet < GenericFleet
 
 
 
-  def flee! quantity
+  def flee! quantity # nao consegui terminar...
     fleeing_fleet = self.dup
     fleeing_fleet.quantity = quantity
-    new_planet = squad.random_planet_but self.planet
-    unless new_planet == false
-      fleeing_fleet.planet = new_planet
-    else
-      fleeing_fleet.destroy
-      self.destroy
-    end
+    new_planet = fleeing_fleet.planet.routes.first # redefinir o metodo para pegar primeiro os allied planets
+    fleeing_fleet.planet = new_planet
   end
 
   def self.create_from_facility unit, quantity, planet
