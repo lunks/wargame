@@ -2,13 +2,26 @@ class Fleet < GenericFleet
   belongs_to :destination, :class_name => "Planet"
 
   def move quantity, planet
-    self.moving = true
-    self.destination = planet
+    moving_fleet = Fleet.create self.attributes
+    moving_fleet.destination = planet
+    moving_fleet.quantity = quantity
+    moving_fleet.moving = true
+    moving_fleet.save
+    self.quantity -= quantity
+    self.save
+  end
+
+  def move!
+    self.planet = self.destination
+    self.destination = nil
+    self.moving = false
+    self.save
   end
 
 
 
-  def flee! quantity # nao consegui terminar...
+
+  def flee! quantity
     fleeing_fleet = Fleet.create self.attributes
     fleeing_fleet.quantity = quantity
     fleeing_fleet.save

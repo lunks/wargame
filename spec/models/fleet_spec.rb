@@ -7,18 +7,30 @@ describe Fleet do
 
   let(:unit) {Factory :fleet}
 
-  context 'moving and attacking' do
+  context 'moving' do
     let(:planet) {Factory :planet}
+
     it 'should be flagged as a moving unit when moving' do
       unit.move 1, planet
-      unit.should be_moving
+      Fleet.last.should be_moving
     end
 
     it 'should have a destination planet when moving' do
       unit.move 1, planet
-      unit.destination.should == planet
+      Fleet.last.destination.should == planet
     end
+
+    it 'should effect moving orders' do
+      unit.moving = true
+      unit.destination = planet
+      destination = unit.destination
+      unit.move!
+      unit.should_not be_moving
+      unit.planet.should == destination
+    end
+
   end
+  
   context 'related to fleeing fleet' do
 
     it 'should go to an adjacent planet' do
