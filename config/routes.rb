@@ -2,8 +2,18 @@ Rpg::Application.routes.draw do
    devise_for :users
 
    resources :squads
-   resources :generic_units
+   resources :generic_units do
+     collection do
+       get :move
+     end
+   end
    resources :facility_fleets
+   resources :planets do
+     member do
+       get :move
+     end
+   end
+
    match 'fleets' => 'generic_fleets#index'
 
   # The priority is based upon order of creation:

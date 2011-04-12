@@ -1,0 +1,9 @@
+<% @fleets.each do |fleet| %>
+  <%= fleet.generic_unit.name %>
+  <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
+    <%= f.input :quantity, :collection => 1..fleet.quantity %>
+    <%= f.input :destination, :collection => @routes %>
+    <%= f.input :id %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>
