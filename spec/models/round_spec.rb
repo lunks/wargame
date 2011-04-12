@@ -41,5 +41,9 @@ describe Round do
       rebel.fleets.count.should == 6
     end
   end
+
+  context 'rounds logic' do
+  end
+
 end
 

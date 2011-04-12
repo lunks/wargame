@@ -27,6 +27,10 @@ class Round < ActiveRecord::Base
       3.times {squad.planets << Planet.randomize}
       squad.warp_facility_on_random_planet
       squad.populate_planets
-      end
     end
   end
+
+  def end_moving_phase!
+  end
+
+end

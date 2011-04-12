@@ -55,7 +55,7 @@ describe Planet do
       planet.ground_squad_id.should be_nil
     end
 
-    it 'should change its ground ownership if it has a troopers on it' do
+    it 'should change its ground ownership if it has troopers and a capital ship on it' do
       fleet = Factory :generic_fleet
       fleet.squad = @squad
       fleet.generic_unit = Factory :trooper
