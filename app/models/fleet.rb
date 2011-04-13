@@ -8,10 +8,10 @@ class Fleet < GenericFleet
     moving_fleet.moving = true
     moving_fleet.save
     self.quantity -= quantity
-    self.save
+    save
   end
 
-  def move! # TODO: Verificar pois não estava funcionando direito.
+  def move! # TODO nao curti esse metodo. acho que quando efetivar as ordens de movimento tem que somar a quantidade caso ja exista unidades do mesmo tipo no destino.
     self.planet = self.destination
     self.destination = nil
     self.moving = false
