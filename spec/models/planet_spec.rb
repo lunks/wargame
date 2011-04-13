@@ -72,4 +72,18 @@ describe Planet do
     Factory :route, :vector_a => planet, :vector_b => second_planet
     planet.routes.should include(second_planet)
   end
+
+  it 'should find an allied planet adjacent of it' do
+    second_planet = Factory :planet
+    third_planet = Factory :planet
+    squad = Factory :squad
+    planet.squad = squad
+    Factory :route, :vector_a => planet, :vector_b => second_planet
+    Factory :route, :vector_a => planet, :vector_b => third_planet
+    planet.best_route_for(squad).should == planet.routes
+    third_planet.squad = squad
+    third_planet.save
+    planet.best_route_for(squad).should_not include second_planet
+    planet.best_route_for(squad).should include third_planet
+  end
 end

@@ -47,5 +47,14 @@ class Planet < ActiveRecord::Base
     planets.uniq
   end
 
+  def best_route_for squad
+    best_routes = routes.reject {|planet| planet.squad != squad}
+    unless best_routes.empty?
+      best_routes
+    else
+      routes
+    end
+  end
+
 end
 
