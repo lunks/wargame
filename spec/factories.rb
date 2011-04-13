@@ -1,3 +1,4 @@
+require 'forgery'
 Factory.define :generic_unit do |f|
   f.name Forgery::Name.full_name
   f.price Forgery::Basic.number

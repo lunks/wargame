@@ -1,5 +1,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
+Bundler.require(:test)
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
