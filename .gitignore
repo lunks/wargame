@@ -5,3 +5,4 @@ tmp/**/*
 .rvmrc
 tags
 .swp
+!db/test.sqlite3
