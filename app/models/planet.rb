@@ -1,10 +1,10 @@
 class Planet < ActiveRecord::Base
   belongs_to :squad
   has_many :generic_fleets
-  belongs_to :ground_squad_id, :class_name => "Squad", :foreign_key => 'ground_squad_id'
+  belongs_to :ground_squad, :class_name => "Squad"
 
   def credits_per_turn
-    if self.squad != nil && self.squad == self.ground_squad_id # verificar isto <---
+    if self.squad != nil && self.squad == self.ground_squad
       credits
     else
       0
@@ -21,9 +21,9 @@ class Planet < ActiveRecord::Base
 
   def set_ground_ownership
     if has_a? Trooper
-      self.ground_squad_id = generic_fleets.first.squad
+      self.ground_squad = generic_fleets.first.squad
     else
-      self.ground_squad_id = nil
+      self.ground_squad = nil
     end
   end
 

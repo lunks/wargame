@@ -5,33 +5,24 @@ describe Planet do
 
   it {should belong_to :squad}
   it {should have_many :generic_fleets}
-  it {should belong_to :ground_squad_id}
+  it {should belong_to :ground_squad}
 
   it 'should output its profits if the squad has air and ground ownership' do
     planet.credits = 1000
     planet.credits_per_turn.should be 0
 
     squad = Factory :squad
+    capital_ship = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:capital_ship)
+    trooper = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:trooper)
 
-    fleet1 = Factory :generic_fleet
-    unit1 = Factory :capital_ship
-    fleet1.squad = squad
-    fleet1.generic_unit = unit1
-    planet.generic_fleets << fleet1
-
-    fleet2 = Factory :generic_fleet
-    unit2 = Factory :trooper
-    fleet2.squad = squad
-    fleet2.generic_unit = unit2
-    planet.generic_fleets << fleet2
+    planet.generic_fleets << capital_ship
+    planet.generic_fleets << trooper
 
     planet.set_ownership
-    planet.set_ground_ownership    
+    planet.set_ground_ownership
     planet.credits_per_turn.should be 1000
-
   end
-
-  context 'changing air and ground ownership of the planet' do
+  context 'regarding partial and full ownerships' do
     before(:each) do
       @squad = Factory :squad
       planet.squad = @squad
@@ -40,40 +31,36 @@ describe Planet do
       planet.set_ownership
       planet.squad.should be_nil
     end
-
-    it 'should change its ownership if it has a capital ship on it' do
-      fleet = Factory :generic_fleet
-      fleet.squad = @squad
-      fleet.generic_unit = Factory :capital_ship
-      planet.generic_fleets << fleet
-      planet.set_ownership
-      planet.squad.should be @squad
-    end
-
-    it 'should change its ownership if it has a facility on it' do
-      fleet = Factory :generic_fleet
-      fleet.squad = @squad
-      fleet.generic_unit = Factory :facility
-      planet.generic_fleets << fleet
-      planet.set_ownership
-      planet.squad.should be @squad
-    end
-
     it 'should remove its ground ownership if it doesnt have a trooper on it' do
       planet.set_ground_ownership
-      planet.ground_squad_id.should be_nil
+      planet.ground_squad.should be_nil
+    end
+    context 'air ownership' do
+      let(:capital_ship) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:capital_ship)}
+      let(:facility) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:facility)}
+
+      it 'should change its owner if it has a capital ship' do
+        planet.generic_fleets << capital_ship
+        planet.set_ownership
+        planet.squad.should be @squad
+      end
+
+      it 'should change its ownership if it has a facility on it' do
+        planet.generic_fleets << facility
+        planet.set_ownership
+        planet.squad.should be @squad
+      end
     end
 
-    it 'should change its ground ownership if it has troopers and a capital ship on it' do
-      fleet = Factory :generic_fleet
-      fleet.squad = @squad
-      fleet.generic_unit = Factory :trooper
-      planet.generic_fleets << fleet
-      planet.set_ground_ownership
-      planet.ground_squad_id.should be @squad
+    context 'ground ownership' do
+      let(:trooper) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:trooper)}
+
+      it 'should change its owner if planet has a trooper on it' do
+        planet.generic_fleets << trooper
+        planet.set_ground_ownership
+        planet.ground_squad.should be @squad
+      end
     end
-
-
   end
 
   it 'should get a random planet' do
@@ -86,4 +73,3 @@ describe Planet do
     planet.routes.should include(second_planet)
   end
 end
-
