@@ -23,10 +23,9 @@ describe Fleet do
     it 'should effect moving orders' do
       unit.moving = true
       unit.destination = planet
-      destination = unit.destination
       unit.move!
       unit.should_not be_moving
-      unit.planet.should == destination
+      unit.planet.should == planet
     end
 
   end
@@ -34,19 +33,13 @@ describe Fleet do
   context 'related to fleeing fleet' do
 
     it 'should go to an adjacent planet' do
-      planet_origin = Factory(:planet)
-      planet_destiny = Factory(:planet)
-      route = Factory(:route)
-      route.vector_a = planet_origin
-      route.vector_b = planet_destiny
-      route.save!
-      unit.planet = planet_origin
-      unit.save!
-      current_planet = unit.planet
+      origin = Factory(:planet)
+      destination = Factory(:planet)
+      route = Factory :route, :vector_a => origin, :vector_b => destination
+      unit.planet = origin
       unit.flee! 1
-      #unit.squad.generic_fleets.first.planet.should == current_planet
-      Fleet.last.planet.should_not == current_planet
-      Fleet.last.planet.should == planet_destiny
+      Fleet.last.planet.should_not == origin
+      Fleet.last.planet.should == destination
     end
 
     it 'should go first to an allied adjacent planet' do
