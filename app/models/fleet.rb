@@ -9,23 +9,21 @@ class Fleet < GenericFleet
     moving_fleet.save
     self.quantity -= quantity
     save
+    moving_fleet
   end
 
-  def move! # TODO nao curti esse metodo. acho que quando efetivar as ordens de movimento tem que somar a quantidade caso ja exista unidades do mesmo tipo no destino.
+  def move!
     self.planet = self.destination
     self.destination = nil
-    self.moving = false
+    self.moving = nil
     save
+    group_fleets
   end
 
   def flee! quantity
-    fleeing_fleet = Fleet.create self.attributes
-    fleeing_fleet.quantity = quantity
-    self.quantity -= quantity
-    new_planet = planet.routes.first # TODO redefinir o metodo para pegar primeiro os allied planets
-    fleeing_fleet.planet = new_planet
-    fleeing_fleet.save
-    save
+    fleeing_fleet = move quantity, planet.routes.first
+    fleeing_fleet.move!
+    fleeing_fleet
   end
 
   def self.create_from_facility unit, quantity, planet
@@ -36,6 +34,17 @@ class Fleet < GenericFleet
       fleet.quantity = quantity
     end
     fleet.save
+  end
+
+  def group_fleets
+    fleets = planet.generic_fleets(true).where(:generic_unit => self.generic_unit, :planet => self.planet, :squad => self.squad, :moving => nil )
+    total_quantity = 0
+    fleets.each do |fleet|
+      fleet.quantity = 0
+      fleet.save
+    end
+    self.quantity = total_quantity
+    save
   end
 
 end
