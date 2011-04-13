@@ -55,7 +55,7 @@ class Squad < ActiveRecord::Base
   end
 
   def warp_capital_ship_on planet
-    capital_ship = CapitalShip.allowed_for(faction).capital_ship.first
+    capital_ship = CapitalShip.allowed_for(faction).first
     fleets.create(:generic_unit => capital_ship, :planet => planet, :quantity => 1)
   end
 
