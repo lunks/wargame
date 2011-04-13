@@ -21,11 +21,10 @@ class Fleet < GenericFleet
   def flee! quantity
     fleeing_fleet = Fleet.create self.attributes
     fleeing_fleet.quantity = quantity
-    fleeing_fleet.save
-    new_planet = fleeing_fleet.planet.routes.first # TODO redefinir o metodo para pegar primeiro os allied planets
+    self.quantity -= quantity
+    new_planet = planet.routes.first # TODO redefinir o metodo para pegar primeiro os allied planets
     fleeing_fleet.planet = new_planet
     fleeing_fleet.save
-    self.quantity -= quantity
     save
   end
 
