@@ -86,4 +86,11 @@ describe Planet do
     planet.best_route_for(squad).should_not include second_planet
     planet.best_route_for(squad).should include third_planet
   end
+
+  it 'should have a disable switch for routes' do
+    2.times {Factory :planet}
+    Planet.disable_routes
+    planet.routes.should == Planet.all
+    Planet.enable_routes
+  end
 end

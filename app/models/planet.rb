@@ -2,6 +2,7 @@ class Planet < ActiveRecord::Base
   belongs_to :squad
   has_many :generic_fleets
   belongs_to :ground_squad, :class_name => "Squad"
+  @@disable_routes = false
 
   def credits_per_turn
     if self.squad != nil && self.squad == self.ground_squad
@@ -32,11 +33,20 @@ class Planet < ActiveRecord::Base
     empty_planets[rand(empty_planets.count-1)]
   end
 
+  def self.disable_routes
+    @@disable_routes = true
+  end
+
+  def self.enable_routes
+    @@disable_routes = false
+  end
+
   def has_a?(type)
     generic_fleets.any?{|fleet| fleet.type? type}
   end
 
   def routes
+    return Planet.all if @@disable_routes
     route = Route.where({:vector_a => self} | {:vector_b => self})
     planets = []
     route.each do |route|
