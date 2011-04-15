@@ -31,7 +31,7 @@ end
 Factory.define :unit, :class => Unit, :parent => :generic_unit do |f|
 end
 
-Factory.define :capital_ship, :class => CapitalShip, :parent => :generic_unit do |f|
+Factory.define :capital_ship, :class => CapitalShip, :parent => :unit do |f|
 end
 
 Factory.define :trooper, :class => Trooper, :parent => :generic_unit do |f|
