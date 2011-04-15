@@ -111,14 +111,15 @@ Unit.create(:name => 'YT-1300', :price => 400 ).factions = merc
 Unit.create(:name => 'YT-2000', :price => 1200 ).factions = merc
 Unit.create(:name => 'YT-2400', :price => 550 ).factions = mand
 Unit.create(:name => 'Millenium Falcon', :price => 1000 ).factions = merc_reb
-Unit.create(:name => 'Assault Transport', :price => 800 ).factions = all
-Unit.create(:name => 'Escort Transport', :price => 800 ).factions = all
-Unit.create(:name => 'Escort Shuttle', :price => 350 ).factions = all
-Unit.create(:name => 'Scout Craft', :price => 500 ).factions = all
-Unit.create(:name => 'Shuttle', :price => 250 ).factions = all
-Unit.create(:name => 'Stormtrooper Transport', :price => 250 ).factions = all
-Unit.create(:name => 'System Patrol Craft', :price => 1100 ).factions = imp
-Unit.create(:name => 'Assault Shuttle', :price => 700 ).factions = imp
+
+LightTransport.create(:name => 'Assault Transport', :price => 800 ).factions = all
+LightTransport.create(:name => 'Escort Transport', :price => 800 ).factions = all
+LightTransport.create(:name => 'Escort Shuttle', :price => 350 ).factions = all
+LightTransport.create(:name => 'Scout Craft', :price => 500 ).factions = all
+LightTransport.create(:name => 'Shuttle', :price => 250 ).factions = all
+LightTransport.create(:name => 'Stormtrooper Transport', :price => 250 ).factions = all
+LightTransport.create(:name => 'System Patrol Craft', :price => 1100 ).factions = imp
+LightTransport.create(:name => 'Assault Shuttle', :price => 700 ).factions = imp
 
 CapitalShip.create(:name => 'Calamari Cruiser', :price => 6100 ).factions = reb
 CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 2500 ).factions = reb
@@ -143,17 +144,17 @@ CapitalShip.create(:name => 'Imperial Star Destroyer', :price => 7600 ).factions
 CapitalShip.create(:name => 'Imperial Star Destroyer II', :price => 8100 ).factions = imp
 CapitalShip.create(:name => 'Super Star Destroyer', :price => 45000 ).factions = imp
 
-Unit.create(:name => 'Mag Pulse Torpedo', :price => 350 ).factions = all
-Unit.create(:name => 'Ion Pulse Torpedo', :price => 200 ).factions = reb
-Unit.create(:name => 'Concussion Missile', :price => 100 ).factions = all
-Unit.create(:name => 'Proton Torpedo', :price => 150 ).factions = all
-Unit.create(:name => 'Adv Missile', :price => 300 ).factions = all
-Unit.create(:name => 'Adv Torpedo', :price => 400 ).factions = all
-Unit.create(:name => 'Heavy Rocket', :price => 800 ).factions = all
-Unit.create(:name => 'Space Bomb', :price => 1000 ).factions = all
+Armament.create(:name => 'Mag Pulse Torpedo', :price => 350 ).factions = all
+Armament.create(:name => 'Ion Pulse Torpedo', :price => 200 ).factions = reb
+Armament.create(:name => 'Concussion Missile', :price => 100 ).factions = all
+Armament.create(:name => 'Proton Torpedo', :price => 150 ).factions = all
+Armament.create(:name => 'Adv Missile', :price => 300 ).factions = all
+Armament.create(:name => 'Adv Torpedo', :price => 400 ).factions = all
+Armament.create(:name => 'Heavy Rocket', :price => 800 ).factions = all
+Armament.create(:name => 'Space Bomb', :price => 1000 ).factions = all
 
-Unit.create(:name => 'Chaff', :price => 25 ).factions = all
-Unit.create(:name => 'Flare', :price => 125 ).factions = all
+Armament.create(:name => 'Chaff', :price => 25 ).factions = all
+Armament.create(:name => 'Flare', :price => 125 ).factions = all
 
 Trooper.create(:name => 'Trooper', :price => 5 ).factions = all
 

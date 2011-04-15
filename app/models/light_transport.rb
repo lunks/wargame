@@ -1,0 +1,2 @@
+class LightTransport < Unit
+end

@@ -1,0 +1,2 @@
+class Armament < Unit
+end
