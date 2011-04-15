@@ -26,7 +26,8 @@ describe Fleet do
     end
     context 'finishing movement' do
       before(:each) do
-        @merging_fleet = Factory :fleet, :planet => planet, :generic_unit => unit.generic_unit
+        @merging_fleet = Factory :fleet, :planet => planet, :generic_unit => unit.generic_unit, :squad => unit.squad
+        @moving_quantity = @moving_fleet.quantity
         @moving_fleet.move!
       end
 
@@ -37,7 +38,7 @@ describe Fleet do
 
       it 'should group fleets on the destination planet after moving has finished' do
         planet.generic_fleets.where(:generic_unit => unit.generic_unit).should have(1).fleet
-        @merging_fleet.quantity.should == (@merging_fleet.quantity + @moving_fleet.quantity)
+        @moving_fleet.quantity.should == (@merging_fleet.quantity + @moving_quantity)
       end
     end
   end

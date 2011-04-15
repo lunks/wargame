@@ -16,7 +16,6 @@ class Fleet < GenericFleet
     self.planet = self.destination
     self.destination = nil
     self.moving = nil
-    save
     group_fleets
   end
 
@@ -36,7 +35,7 @@ class Fleet < GenericFleet
     fleet.save
   end
 
-  def group_fleets # TODO não está agrupando direito, sempre sobra 1 fleet mais antiga
+  def group_fleets
     fleets = planet.generic_fleets.where(:generic_unit => self.generic_unit, :planet => self.planet, :squad => self.squad, :moving => nil )
     total_quantity = 0
     fleets.each do |fleet|
