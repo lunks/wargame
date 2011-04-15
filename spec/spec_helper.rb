@@ -10,6 +10,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 RSpec.configure do |config|
   config.include AcceptanceExampleGroup, :example_group => { :file_path => /\bspec\/acceptance\// }
   config.include LoginHelper, :type => :acceptance
+  config.include GameHelper, :type => :acceptance
   config.mock_with :rspec
   config.fail_fast = true
 
