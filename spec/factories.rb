@@ -32,6 +32,10 @@ Factory.define :unit, :class => Unit, :parent => :generic_unit do |f|
 end
 
 Factory.define :capital_ship, :class => CapitalShip, :parent => :unit do |f|
+  f.price 2700
+end
+Factory.define :fighter, :parent => :unit do |f|
+  f.price 350
 end
 
 Factory.define :trooper, :class => Trooper, :parent => :generic_unit do |f|

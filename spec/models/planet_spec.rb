@@ -7,6 +7,20 @@ describe Planet do
   it {should have_many :generic_fleets}
   it {should belong_to :ground_squad}
 
+  context '.seen_by squad' do
+    before do
+      @squad = Factory :squad
+      @fleet = Factory :generic_fleet, :planet => planet, :squad => @squad
+    end
+    it 'should find planets where planet has squads on it' do
+      Planet.seen_by(@squad).should include planet
+    end
+    it 'should not include a planet squad doesnt have any ships' do
+      not_seen = Factory :planet
+      Planet.seen_by(@squad).should_not include not_seen
+    end
+  end
+
   it 'should output its profits if the squad has air and ground ownership' do
     planet.credits = 1000
     planet.credits_per_turn.should be 0

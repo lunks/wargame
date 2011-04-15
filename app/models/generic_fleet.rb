@@ -1,4 +1,5 @@
 class GenericFleet < ActiveRecord::Base
+  scope :owned_by, lambda {|squad| where(:squad => squad)}
   belongs_to :squad
   belongs_to :planet
   belongs_to :generic_unit

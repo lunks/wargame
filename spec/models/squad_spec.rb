@@ -103,10 +103,26 @@ describe Squad do
       end
     end
   end
-  
+
   context 'using factions' do
     it 'should have a faction' do
       squad.faction.should == 'empire'
+    end
+  end
+  context 'warping ships' do
+    let(:planet) {Factory :planet}
+    context 'like capital ships' do
+      let!(:capital_ship) {Factory :capital_ship}
+      before do
+        squad.warp_capital_ship_on planet
+      end
+
+      it 'should create a fleet' do
+        squad.fleets.should be
+      end
+      it 'should be a capital ship' do
+        squad.fleets.first.generic_unit.should be_a CapitalShip
+      end
     end
   end
 end

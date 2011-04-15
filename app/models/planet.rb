@@ -1,4 +1,5 @@
 class Planet < ActiveRecord::Base
+  scope :seen_by, lambda {|squad| joins(:generic_fleets).where(:generic_fleets => {:squad => squad})}
   belongs_to :squad
   has_many :generic_fleets
   belongs_to :ground_squad, :class_name => "Squad"
