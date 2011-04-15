@@ -1,3 +1,3 @@
-class Trooper < GenericUnit
+class Trooper < Unit
 end
 
