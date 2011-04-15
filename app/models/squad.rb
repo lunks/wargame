@@ -1,4 +1,5 @@
 class Squad < ActiveRecord::Base
+
   default_scope :order => 'id ASC'
 
   has_many :planets
@@ -36,6 +37,7 @@ class Squad < ActiveRecord::Base
       facility_fleet.producing_unit = unit
       facility_fleet.save!
   end
+  
   def end_move_round
     self.move = true
     save
@@ -47,27 +49,32 @@ class Squad < ActiveRecord::Base
     random_planet = planets_array[rand(planets_array.size)]
   end
 
-  def warp_facility_on_random_planet
+  def warp_facility_on planet
     facility_model = Facility.allowed_for(faction).last
-    facility_fleets << FacilityFleet.create(:facility => facility_model, :balance => 8000, :planet => planets.first, :quantity => 1)
+    facility_fleets.create(:generic_unit => facility_model, :planet => planet, :quantity => 1, :balance => 3000)
   end
 
   def warp_capital_ship_on planet
-    capital_ship = Unit.allowed_for(faction).capital_ship.first
+    capital_ship = CapitalShip.allowed_for(faction).first
     fleets.create(:generic_unit => capital_ship, :planet => planet, :quantity => 1)
   end
+
+  def warp_fighters_on planet
+    total_value = 5000
+    fighter = Unit.allowed_for(faction).fighter.first
+    ship_count = 0
+    while (total_value > fighter.price)
+      ship_count+=1
+      total_value -= fighter.price
+    end
+    fleets.create(:generic_unit => fighter, :planet => planet, :quantity => ship_count)
+  end  
 
   def populate_planets
     planets.each do |planet|
       warp_capital_ship_on planet
-      total_value = 5000
-      fighter = Unit.allowed_for(faction).fighter.first
-      ship_count = 0
-      while (total_value > fighter.price)
-        ship_count+=1
-        total_value -= fighter.price
-      end
-      fleets.create(:generic_unit => fighter, :planet => planet, :quantity => ship_count)
+      warp_facility_on planet
+      warp_fighters_on planet
     end
     save!
   end

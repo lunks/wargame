@@ -103,13 +103,7 @@ describe Squad do
       end
     end
   end
-  context 'creating a random facility on a planet' do
-    let(:planet) {Factory :planet}
-
-    it 'should create a facility on a random planet' do
-      expect { squad.warp_facility_on_random_planet }.to change(FacilityFleet, :count).by 1
-    end
-  end
+  
   context 'using factions' do
     it 'should have a faction' do
       squad.faction.should == 'empire'

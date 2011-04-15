@@ -1,3 +1,4 @@
+# http://guides.rubyonrails.org/active_record_querying.html
 class GenericUnitsController < ApplicationController
   def index
     @generic_units = GenericUnit.all

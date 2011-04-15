@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20110405080221) do
     t.datetime "updated_at"
     t.integer  "squad_id"
     t.integer  "credits"
+    t.integer  "ground_squad_id"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

@@ -1,9 +1,10 @@
 class Planet < ActiveRecord::Base
   belongs_to :squad
   has_many :generic_fleets
+  belongs_to :ground_squad, :class_name => "Squad"
 
   def credits_per_turn
-    if has_a? CapitalShip
+    if self.squad != nil && self.squad == self.ground_squad
       credits
     else
       0
@@ -11,10 +12,18 @@ class Planet < ActiveRecord::Base
   end
 
   def set_ownership
-    if has_a? CapitalShip
+    if has_a? CapitalShip or has_a? Facility
       self.squad = generic_fleets.first.squad
     else
       self.squad = nil
+    end
+  end
+
+  def set_ground_ownership
+    if has_a? Trooper
+      self.ground_squad = generic_fleets.first.squad
+    else
+      self.ground_squad = nil
     end
   end
 
@@ -36,6 +45,15 @@ class Planet < ActiveRecord::Base
     end
     planets.reject! {|planet| planet == self}
     planets.uniq
+  end
+
+  def best_route_for squad
+    best_routes = routes.reject {|planet| planet.squad != squad}
+    unless best_routes.empty?
+      best_routes
+    else
+      routes
+    end
   end
 
 end

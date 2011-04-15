@@ -7,40 +7,55 @@ describe Fleet do
 
   let(:unit) {Factory :fleet}
 
-  context 'moving and attacking' do
+  context 'moving' do
     let(:planet) {Factory :planet}
-    it 'should be flagged as a moving unit when moving' do
-      unit.move 1, planet
-      unit.should be_moving
+    before(:each) do
+      @moving_fleet = unit.move 1, planet
     end
 
-    it 'should have a destination planet when moving' do
-      unit.move 1, planet
-      unit.destination.should == planet
+    context 'setting to move' do
+
+      it 'should be flagged as a moving unit when moving' do
+        @moving_fleet.should be_moving
+      end
+
+      it 'should have a destination planet when moving' do
+        @moving_fleet.destination.should == planet
+      end
+
+    end
+    context 'finishing movement' do
+      before(:each) do
+        @merging_fleet = Factory :fleet, :planet => planet, :generic_unit => unit.generic_unit
+        @moving_fleet.move!
+      end
+
+      it 'should effect moving orders' do
+        @moving_fleet.should_not be_moving
+        @moving_fleet.planet.should == planet
+      end
+
+      it 'should group fleets on the destination planet after moving has finished' do
+        planet.generic_fleets.where(:generic_unit => unit.generic_unit).should have(1).fleet
+        @merging_fleet.quantity.should == (@merging_fleet.quantity + @moving_fleet.quantity)
+      end
     end
   end
   context 'related to fleeing fleet' do
-    it 'should destroy the fleet if we dont have any planets to go' do
-      planet = Factory :planet
-      unit.planet = planet
-      current_planet = unit.planet
-      unit.flee! 1
-      unit.should be_new_record
+
+    it 'should go to an adjacent planet' do
+      origin = Factory(:planet)
+      destination = Factory(:planet)
+      route = Factory :route, :vector_a => origin, :vector_b => destination
+      unit.planet = origin
+      fleeing_fleet = unit.flee! 1
+      fleeing_fleet.planet.should_not == origin
+      fleeing_fleet.planet.should == destination
     end
 
-    it 'should go to a new planet if we have planets to go' do
-      unit.squad = Factory :squad
-      unit.squad.planets << Factory(:planet)
-      unit.squad.planets << Factory(:planet)
-      unit.save!
-      unit.planet = unit.squad.planets.first
-      current_planet = unit.planet
-      unit.flee! 1
-      unit.squad.generic_fleets.first.planet.should_not == current_planet
+    it 'should go first to an allied adjacent planet' do
+
     end
   end
- 
-  
-
 end
 
