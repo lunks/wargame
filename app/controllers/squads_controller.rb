@@ -8,7 +8,6 @@ class SquadsController < ApplicationController
   def create
     squad = Squad.create(params[:squad])
     current_user.squad = squad
-    GenericUnit.all.each {|unit| unit.factions = squad.faction }
     squad.credits = 10000
     squad.save
     redirect_to root_path
