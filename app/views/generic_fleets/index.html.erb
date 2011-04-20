@@ -1,0 +1,13 @@
+<table>
+  <% @planets.each do |planet| %>
+  <tr>
+  <td><%= planet.name %></td>
+  </tr>
+  <% planet.generic_fleets.each do |fleet| %>
+    <tr>
+    <td><%= fleet.quantity %></td>
+    <td><%= fleet.generic_unit.name %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
