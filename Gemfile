@@ -14,14 +14,14 @@ gem 'meta_where'
 group :development, :test do
   gem 'rspec-rails'
   gem "autotest"
+  gem 'factory_girl_rails'
+  gem 'forgery'
   gem "autotest-rails"
-  gem 'autotest-growl'
+  gem 'autotest-notification'
 end
 group :test do
   gem 'capybara'
   gem 'shoulda'
-  gem 'factory_girl_rails'
-  gem 'forgery'
   gem "ZenTest"
   gem 'simplecov', :platform => :ruby_19
   gem 'simplecov-html', :platform => :ruby_19
