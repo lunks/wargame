@@ -19,7 +19,7 @@ describe Planet do
       not_seen = Factory :planet
       Planet.seen_by(@squad).should_not include not_seen
     end
-    pending 'should not bring more than one instance of the planet' do
+    it 'should not bring more than one instance of the planet' do
       Factory :generic_fleet, :planet => planet, :squad => @squad
       planets = Planet.seen_by(@squad)
       planets.should == planets.uniq
