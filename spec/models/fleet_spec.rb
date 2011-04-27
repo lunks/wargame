@@ -33,12 +33,45 @@ describe Fleet do
       let(:capital_ship) {Factory :capital_ship}
       let(:light_transport) {Factory :light_transport}
       let(:trooper) {Factory :trooper}
+      before(:each) do
+        unit.planet = planet
+      end
 
-      pending 'should not let troopers move without a capital ship or transport' do
-        unit.generic_unit = trooper
-        @moving_fleet = unit.move 1, planet
+      it 'should not let troopers move without a capital ship or transport' do
+        trooper_fleet = unit
+        trooper_fleet.generic_unit = trooper
+        @moving_fleet = trooper_fleet.move 1, planet
         @moving_fleet.should_not be_moving
       end
+
+      it 'should let troopers move if a capital ship was moved before' do
+        capital_ship_fleet = unit
+        capital_ship_fleet.generic_unit = capital_ship
+        @moving_capital_ship = capital_ship_fleet.move 1, planet
+        trooper_fleet = unit
+        trooper_fleet.generic_unit = trooper
+        @moving_trooper = trooper_fleet.move 1, planet
+        @moving_trooper.should be_moving
+      end
+
+      it 'should let troopers move if a light transport was moved before' do
+        light_transport_fleet = unit
+        light_transport_fleet.generic_unit = light_transport
+        @moving_light_transport = light_transport_fleet.move 1, planet
+        trooper_fleet = unit
+        trooper_fleet.generic_unit = trooper
+        @moving_trooper = trooper_fleet.move 1, planet
+        @moving_trooper.should be_moving
+      end
+
+      pending 'should not let armaments move without a capital ship, transport or fighter'
+
+      pending 'should let armaments move if a capital ship was moved before'
+
+      pending 'should let armaments move if a light transport was moved before'
+
+      pending 'should let armaments move if enough amount of fighters was moved before'
+
 
     end
 

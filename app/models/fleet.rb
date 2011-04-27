@@ -1,7 +1,7 @@
 class Fleet < GenericFleet
   belongs_to :destination, :class_name => "Planet"
 
-  def move quantity, planet # Troquei Fleet.create por Fleet.new pois estava criando 2 fleets diferentes.
+  def move quantity, planet
     moving_fleet = Fleet.new self.attributes
     moving_fleet.destination = planet
     moving_fleet.quantity = quantity
@@ -9,7 +9,7 @@ class Fleet < GenericFleet
     moving_fleet.save
     self.quantity -= quantity
     save
-    moving_fleet
+    moving_fleet.validate_move
   end
 
   def cancel_move
@@ -17,6 +17,16 @@ class Fleet < GenericFleet
     self.moving = nil
     save
     group_fleets
+  end
+
+  def validate_move
+    if self.generic_unit.class == Trooper
+      moving_fleets = Fleet.where(:planet => self.planet, :destination => self.destination, :moving => true)
+      unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport }
+        self.cancel_move
+      end
+    end
+    self
   end
 
 
