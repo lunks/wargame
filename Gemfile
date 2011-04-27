@@ -14,7 +14,6 @@ gem 'meta_where'
 group :development, :test do
   gem 'rspec-rails'
   gem "autotest"
-  gem 'factory_girl_rails'
   gem 'forgery'
   gem "autotest-rails"
   gem 'autotest-notification'
@@ -25,4 +24,5 @@ group :test do
   gem "ZenTest"
   gem 'simplecov', :platform => :ruby_19
   gem 'simplecov-html', :platform => :ruby_19
+  gem 'factory_girl_rails'
 end
