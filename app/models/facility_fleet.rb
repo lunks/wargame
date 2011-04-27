@@ -1,6 +1,6 @@
 class FacilityFleet < GenericFleet
-  belongs_to :producing_unit, :class_name => "Unit"
   belongs_to :facility, :foreign_key => :generic_unit_id
+  belongs_to :producing_unit, :class_name => "Unit"
   def produce!
     self.balance ||= 0
     self.balance += facility.price/3

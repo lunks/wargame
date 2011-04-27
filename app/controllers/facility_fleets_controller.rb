@@ -11,8 +11,8 @@ class FacilityFleetsController < ApplicationController
 
   def update
     @facility = FacilityFleet.find(params[:id])
-    #TODO trazer a unidade escolhida na view
-    @facility.save
+    @producing_unit = GenericUnit.find(params[:facility_fleet][:producing_unit])
+    current_squad.change_producing_unit @facility, @producing_unit
     redirect_to :fleets
   end
 
