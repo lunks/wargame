@@ -3,17 +3,13 @@ class Fleet < GenericFleet
 
   def move quantity, planet
     valid_move = true
-    if self.generic_unit.class == Trooper
-      moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)
-      valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport }
-    end
-    if self.generic_unit.class == Armament
+    if self.generic_unit.class == Trooper  || self.generic_unit.class == Armament
       moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)     
       unit_count = 0
       moving_fleets.each do |fleet|
         unit_count += fleet.quantity if fleet.generic_unit.class == Fighter
       end  
-      valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport } || unit_count >= self.quantity
+      valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport } || unit_count >= quantity
     end
     
     if valid_move == true

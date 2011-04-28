@@ -63,13 +63,21 @@ describe Fleet do
         moving_armament.should be_moving
       end
 
-      pending 'should let armaments move if enough amount of fighters was moved before' do
+      it 'should let troopers or armaments move if enough amount of fighters was moved before' do
+        Fleet.destroy_all
+        @armament_fleet = Factory :fleet, :generic_unit => armament, :planet => @planet, :squad => @squad
         fighter_fleet = Factory :fleet, :generic_unit => fighter, :planet => @planet, :squad => @squad
-        moving_fighter = fighter_fleet.move 20, planet
+        moving_fighter = fighter_fleet.move 5, planet
         moving_fighter.save
         moving_armament = @armament_fleet.move 5, planet      
         moving_armament.should be_moving
       end
+
+      it 'should not let units with no hyperdrive to move without a capital ship' do
+ 
+      end
+
+
     end
 
     context 'finishing movement' do
