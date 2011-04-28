@@ -125,5 +125,25 @@ describe Squad do
       end
     end
   end
-end
 
+  context 'transfering credits between squads' do
+    before(:each) do
+      squad.credits = 1000
+      @squad2 = Factory :squad
+      @squad2.credits = 0
+    end
+    it 'should debit credits if it has balance' do
+      squad.transfer_credits 1000, @squad2
+      squad.credits.should == 0
+    end
+    it 'should not debit credits if it doesnt have balance' do
+      squad.transfer_credits 1100, @squad2
+      squad.credits.should == 1000
+    end
+    it 'should deposit credits to another squad' do
+      squad.transfer_credits 1000, @squad2
+      @squad2.credits.should == 1000
+    end
+  end
+
+end
