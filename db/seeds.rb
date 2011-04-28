@@ -85,8 +85,8 @@ Fighter.create(:name => 'A-Wing', :price => 350 ).factions = reb
 Fighter.create(:name => 'B-Wing', :price => 475 ).factions = reb
 Fighter.create(:name => 'T-Wing', :price => 130 ).factions = merc_reb
 Fighter.create(:name => 'Z-95', :price => 130 ).factions = merc_reb
-Fighter.create(:name => 'Droid Fighter', :price => 90 ).factions = merc
-Fighter.create(:name => 'Droid Tri-fighter', :price => 80 ).factions = merc
+Fighter.create(:name => 'Droid Fighter', :hyperdrive => false, :price => 90 ).factions = merc
+Fighter.create(:name => 'Droid Tri-fighter', :hyperdrive => false, :price => 80 ).factions = merc
 Fighter.create(:name => 'Pinook Fighter', :price => 120 ).factions = merc
 Fighter.create(:name => 'Preybird Fighter', :price => 150 ).factions = merc
 Fighter.create(:name => 'R-41 Starchaser', :price => 200 ).factions = merc
@@ -101,11 +101,11 @@ Fighter.create(:name => 'Pursuer', :price => 275 ).factions = mand
 Fighter.create(:name => 'Star Viper', :price => 300 ).factions = mand
 Fighter.create(:name => 'V-Wing', :price => 150 ).factions = mand
 Fighter.create(:name => 'ARC-170', :price => 250 ).factions = mand
-Fighter.create(:name => 'Tie Fighter', :price => 60 ).factions = imp
-Fighter.create(:name => 'Tie Bomber', :price => 70 ).factions = imp
-Fighter.create(:name => 'Tie Interceptor', :price => 90 ).factions = imp
+Fighter.create(:name => 'Tie Fighter', :hyperdrive => false, :price => 60 ).factions = imp
+Fighter.create(:name => 'Tie Bomber', :hyperdrive => false, :price => 70 ).factions = imp
+Fighter.create(:name => 'Tie Interceptor', :hyperdrive => false, :price => 90 ).factions = imp
 Fighter.create(:name => 'Tie Avenger', :price => 400 ).factions = imp
-Fighter.create(:name => 'Authority IRD', :price => 115 ).factions = imp
+Fighter.create(:name => 'Authority IRD', :hyperdrive => false, :price => 115 ).factions = imp
 Fighter.create(:name => 'Toscan Fighter', :price => 300 ).factions = imp
 Fighter.create(:name => 'Tie Advanced X1', :price => 400 ).factions = imp
 Fighter.create(:name => 'Assault Gunboat', :price => 450 ).factions = imp

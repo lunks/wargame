@@ -73,8 +73,17 @@ describe Fleet do
         moving_armament.should be_moving
       end
 
-      it 'should not let units with no hyperdrive to move without a capital ship' do
- 
+      it 'should prevent units with no hyperdrive to move without a capital ship' do
+        tie_fighter = fighter
+        tie_fighter.hyperdrive = false
+        tie_fighter.save
+        fighter_fleet = Factory :fleet, :generic_unit => tie_fighter, :planet => @planet, :squad => @squad
+        moving_fighter = fighter_fleet.move 1, planet
+        moving_fighter.should_not be_moving
+        capital_ship_fleet = Factory :fleet, :generic_unit => capital_ship, :planet => @planet, :squad => @squad
+        moving_capital_ship = capital_ship_fleet.move 1, planet
+        moving_fighter = fighter_fleet.move 1, planet
+        moving_fighter.should be_moving
       end
 
 

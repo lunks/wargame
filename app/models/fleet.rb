@@ -11,6 +11,10 @@ class Fleet < GenericFleet
       end  
       valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport } || unit_count >= quantity
     end
+    if self.generic_unit.hyperdrive == false
+      moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)
+      valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip }
+    end
     
     if valid_move == true
       moving_fleet = Fleet.new self.attributes
