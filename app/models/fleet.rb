@@ -2,14 +2,33 @@ class Fleet < GenericFleet
   belongs_to :destination, :class_name => "Planet"
 
   def move quantity, planet
-    moving_fleet = Fleet.new self.attributes
-    moving_fleet.destination = planet
-    moving_fleet.quantity = quantity
-    moving_fleet.moving = true
-    moving_fleet.save
-    self.quantity -= quantity
-    save
-    moving_fleet.validate_move
+    valid_move = true
+    if self.generic_unit.class == Trooper
+      moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)
+      valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport }
+    end
+    if self.generic_unit.class == Armament
+      moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)     
+      unit_count = 0
+      moving_fleets.each do |fleet|
+        unit_count += fleet.quantity if fleet.generic_unit.class == Fighter
+      end  
+      valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport } || unit_count >= self.quantity
+    end
+    
+    if valid_move == true
+      moving_fleet = Fleet.new self.attributes
+      moving_fleet.destination = planet
+      moving_fleet.quantity = quantity
+      moving_fleet.moving = true
+      moving_fleet.save
+      self.quantity -= quantity
+      save
+      moving_fleet
+    else
+      self
+    end
+
   end
 
   def cancel_move
