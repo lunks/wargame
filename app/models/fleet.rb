@@ -12,6 +12,14 @@ class Fleet < GenericFleet
     moving_fleet
   end
 
+  def cancel_move
+    self.destination = nil
+    self.moving = nil
+    save
+    group_fleets
+  end
+
+
   def move!
     self.planet = self.destination
     self.destination = nil

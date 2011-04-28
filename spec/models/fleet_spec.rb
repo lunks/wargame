@@ -11,10 +11,10 @@ describe Fleet do
     let(:planet) {Factory :planet}
     before(:each) do
       @moving_fleet = unit.move 1, planet
+      @moving_fleet.planet = planet
     end
 
     context 'setting to move' do
-
       it 'should be flagged as a moving unit when moving' do
         @moving_fleet.should be_moving
       end
@@ -23,7 +23,19 @@ describe Fleet do
         @moving_fleet.destination.should == planet
       end
 
+      it 'should cancel a movement order' do
+        @moving_fleet.cancel_move
+        @moving_fleet.should_not be_moving
+      end
     end
+
+    context 'validating movement orders' do
+
+      pending 'should validates troopers movement' do
+      end
+
+    end
+
     context 'finishing movement' do
       before(:each) do
         @merging_fleet = Factory :fleet, :planet => planet, :generic_unit => unit.generic_unit, :squad => unit.squad
@@ -54,7 +66,7 @@ describe Fleet do
       fleeing_fleet.planet.should == destination
     end
 
-    it 'should go first to an allied adjacent planet' do
+    pending 'should go first to an allied adjacent planet' do
 
     end
   end
