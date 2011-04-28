@@ -30,8 +30,14 @@ describe Fleet do
     end
 
     context 'validating movement orders' do
+      let(:capital_ship) {Factory :capital_ship}
+      let(:light_transport) {Factory :light_transport}
+      let(:trooper) {Factory :trooper}
 
-      pending 'should validates troopers movement' do
+      pending 'should not let troopers move without a capital ship or transport' do
+        unit.generic_unit = trooper
+        @moving_fleet = unit.move 1, planet
+        @moving_fleet.should_not be_moving
       end
 
     end
