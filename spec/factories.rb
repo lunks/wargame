@@ -45,6 +45,9 @@ end
 Factory.define :light_transport, :class => LightTransport, :parent => :unit do |f|
 end
 
+Factory.define :armament, :class => Armament, :parent => :unit do |f|
+end
+
 Factory.define :facility_fleet, :class => FacilityFleet, :parent => :generic_fleet do |f|
   f.facility {|a| a.association(:facility) }
 end

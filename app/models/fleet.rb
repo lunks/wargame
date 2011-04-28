@@ -20,7 +20,7 @@ class Fleet < GenericFleet
   end
 
   def validate_move
-    if self.generic_unit.class == Trooper
+    if self.generic_unit.class == Trooper || self.generic_unit.class == Armament
       moving_fleets = Fleet.where(:planet => self.planet, :destination => self.destination, :moving => true)
       unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport }
         self.cancel_move

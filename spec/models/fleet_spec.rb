@@ -5,9 +5,8 @@ describe Fleet do
   it {should belong_to :destination}
   it {should belong_to :generic_unit}
 
-  let(:unit) {Factory :fleet}
-
   context 'moving' do
+    let(:unit) {Factory :fleet}
     let(:planet) {Factory :planet}
     before(:each) do
       @moving_fleet = unit.move 1, planet
@@ -33,42 +32,44 @@ describe Fleet do
       let(:capital_ship) {Factory :capital_ship}
       let(:light_transport) {Factory :light_transport}
       let(:trooper) {Factory :trooper}
+      let(:armament) {Factory :armament}
       before(:each) do
         unit.planet = planet
+        unit.save
+        @trooper_fleet = unit
+        @trooper_fleet.generic_unit = trooper
+        @trooper_fleet.save
+        @armament_fleet = unit
+        @armament_fleet.generic_unit = armament
+        @armament_fleet.save
       end
 
-      it 'should not let troopers move without a capital ship or transport' do
-        trooper_fleet = unit
-        trooper_fleet.generic_unit = trooper
-        @moving_fleet = trooper_fleet.move 1, planet
-        @moving_fleet.should_not be_moving
+      it 'should not let troopers or armaments move without a capital ship or transport' do
+        @moving_trooper = @trooper_fleet.move 1, planet
+        @moving_trooper.should_not be_moving
+        @moving_armament = @armament_fleet.move 1, planet
+        @moving_armament.should_not be_moving
       end
 
-      it 'should let troopers move if a capital ship was moved before' do
+      it 'should let troopers or armament move if a capital ship was moved before' do
         capital_ship_fleet = unit
         capital_ship_fleet.generic_unit = capital_ship
         @moving_capital_ship = capital_ship_fleet.move 1, planet
-        trooper_fleet = unit
-        trooper_fleet.generic_unit = trooper
-        @moving_trooper = trooper_fleet.move 1, planet
+        @moving_trooper = @trooper_fleet.move 1, planet
         @moving_trooper.should be_moving
+        @moving_armament = @armament_fleet.move 1, planet
+        @moving_armament.should be_moving
       end
 
-      it 'should let troopers move if a light transport was moved before' do
+      it 'should let troopers or armaments move if a light transport was moved before' do
         light_transport_fleet = unit
         light_transport_fleet.generic_unit = light_transport
         @moving_light_transport = light_transport_fleet.move 1, planet
-        trooper_fleet = unit
-        trooper_fleet.generic_unit = trooper
-        @moving_trooper = trooper_fleet.move 1, planet
+        @moving_trooper = @trooper_fleet.move 1, planet
         @moving_trooper.should be_moving
+        @moving_armament = @armament_fleet.move 1, planet
+        @moving_armament.should be_moving
       end
-
-      pending 'should not let armaments move without a capital ship, transport or fighter'
-
-      pending 'should let armaments move if a capital ship was moved before'
-
-      pending 'should let armaments move if a light transport was moved before'
 
       pending 'should let armaments move if enough amount of fighters was moved before'
 
@@ -94,6 +95,7 @@ describe Fleet do
     end
   end
   context 'related to fleeing fleet' do
+    let(:unit) {Factory :fleet}
 
     it 'should go to an adjacent planet' do
       origin = Factory(:planet)
