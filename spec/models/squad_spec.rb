@@ -63,18 +63,7 @@ describe Squad do
         @facility_fleet.generic_unit.factions= squad.faction
         @unit = Factory :unit
       end
-      it 'should not change its credits if facility doesnt have a producing unit yet' do
-        current_credits = squad.credits
-        squad.change_producing_unit(@facility_fleet, @unit)
-        squad.credits.should == current_credits
-      end
-      it 'should change its credits if facility already have a producing unit' do
-        squad.credits = 1000
-        @facility_fleet.producing_unit = @unit
-        new_unit = Factory :unit
-        squad.change_producing_unit(@facility_fleet, new_unit)
-        squad.credits.should be 0
-      end
+
     end
 
     context 'randomizing a planet' do

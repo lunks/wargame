@@ -6,7 +6,7 @@ class FacilityFleetsController < ApplicationController
   def edit
     #TODO @units = GenericUnit.allowed_for(current_squad)
     @facility = FacilityFleet.find(params[:id])
-    @units = GenericUnit.all #nao sei pq diabos ele nao mostra nada quando é da classe Unit!!!
+    @units = GenericUnit.allowed_for(current_squad.faction) #nao sei pq diabos ele nao mostra nada quando é da classe Unit!!!
   end
 
   def update

@@ -33,7 +33,6 @@ class Squad < ActiveRecord::Base
   end
 
   def change_producing_unit facility_fleet, unit
-      self.credits -= 1000 if facility_fleet.producing_unit
       facility_fleet.producing_unit = unit
       facility_fleet.save!
   end
