@@ -4,14 +4,13 @@ class FacilityFleetsController < ApplicationController
   end
 
   def edit
-    #TODO @units = GenericUnit.allowed_for(current_squad)
     @facility = FacilityFleet.find(params[:id])
-    @units = GenericUnit.allowed_for(current_squad.faction) #nao sei pq diabos ele nao mostra nada quando é da classe Unit!!!
+    @units = Unit.allowed_for(current_squad.faction) #nao sei pq diabos ele nao mostra nada quando é da classe Unit!!!
   end
 
   def update
     @facility = FacilityFleet.find(params[:id])
-    @producing_unit = GenericUnit.find(params[:facility_fleet][:producing_unit])
+    @producing_unit = Unit.find(params[:facility_fleet][:producing_unit])
     current_squad.change_producing_unit @facility, @producing_unit
     redirect_to :fleets
   end
