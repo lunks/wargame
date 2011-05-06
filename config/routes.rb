@@ -15,6 +15,7 @@ Rpg::Application.routes.draw do
      end
    end
 
+   match 'index' => 'home#index'
    match 'fleets' => 'generic_fleets#index'
 
   # The priority is based upon order of creation:
