@@ -9,6 +9,6 @@ Current Balance: $ <%= @facility.balance  %>
   Producing Capacity: $ <%= @facility.generic_unit.price / 4 %>
 <% end %>
 <%= simple_form_for @facility do |f| %>
-<%= f.input :producing_unit, :collection => @units %>
+<%= f.input :producing_unit, :collection => @units, :label => 'Producing Unit: ' %>
 <%= f.button :submit %>
 <% end %>
