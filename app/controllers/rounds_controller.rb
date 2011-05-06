@@ -5,32 +5,17 @@ class RoundsController < ApplicationController
   end
 
   def new_game
-    @round = Round.getInstance
-    @round.new_game!
-    @round.number = 1
-    @round.move = true
-    @round.save
+    @round = Round.getInstance.new_game!
     render :text => 'New Game OK'
   end
 
-  def pass_moving_phase
-    @moving_fleets = Fleet.where(:moving => true)
-    @moving_fleets.each {|fleet| fleet.move!}
-    @round = Round.last
-    @round.move = nil
-    @round.attack = true
-    @round.save
+  def end_moving_phase
+    round = Round.getInstance.end_moving_phase!
     render :text => 'Pass Moving Phase OK'
   end
 
-  def new_round
-    @squads = Squad.all
-    @squads.each do |f|
-      f.generate_profits!
-    end
-    last_round = Round.last
-    new_round_number = last_round.number + 1
-    Round.create(:number => new_round_number, :move => true)
+  def end_round
+    round = Round.getInstance.end_round!
     render :text => 'New Round ok'
   end
 
