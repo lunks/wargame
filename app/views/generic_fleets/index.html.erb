@@ -1,3 +1,8 @@
+<div class="squad_info">
+<span style=color:<%= @squad.color %>;font-weight:bold;font-size:18px><%= @squad.name %></span><br>
+<span> Round: <%= @round.number %> | Credits: $<%= @squad.credits %> </span>
+</div>
+
 <div class="planet_content">
   <% @planets.each do |planet| %>
     <h2> <%= planet.name %> </h2>
