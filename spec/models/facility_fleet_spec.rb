@@ -42,8 +42,7 @@ describe FacilityFleet do
       Fleet.count.should be 1
     end
     it 'should create a correct number of units according to balance' do
-      facility_fleet.balance = 8000
-      facility_fleet.producing_unit.price = 2000
+      facility_fleet.producing_unit.price = 500
       facility_fleet.produce!
       Fleet.first.quantity.should == 4
     end
