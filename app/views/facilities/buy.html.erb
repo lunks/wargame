@@ -1,5 +1,6 @@
-<%= simple_form_for @facilities, :url => url_for(:controller => 'facility_fleets', :action => 'buy') do |f| %>
-    <%= f.input :quantity, :label => 'Quantity: ' %>
-    <%= f.hidden_field :planet %>
-    <%= f.button :submit %>
-  <% end %>
+Buy Facility
+<%= simple_form_for :buy_facility, :url => url_for(:controller => 'facilities', :action => 'buy_facility')  do |f| %>
+  <%= f.input :id, :collection => @facilities, :label => 'Facility: ' %>
+  <%= f.input :planet, :collection => @planet, :label => 'Planet: ' %>
+  <%= f.button :submit %>
+<% end %>
