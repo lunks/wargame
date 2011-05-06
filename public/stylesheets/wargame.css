@@ -20,6 +20,15 @@ div.planet_content
   background:#111111;
 }
 
+div.squad_info
+{
+  width:400px;
+  padding:10px;
+  border:3px outset gray;
+  margin:5px;
+  background:#001111;
+}
+
 h2
 {
   background-color:#333333;

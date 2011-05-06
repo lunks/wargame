@@ -15,17 +15,21 @@ class Planet < ActiveRecord::Base
 
   def set_ownership
     if has_a? CapitalShip or has_a? Facility
-      self.squad = generic_fleets.first.squad
+      self.squad = self.generic_fleets.first.squad
+      save
     else
       self.squad = nil
+      save
     end
   end
 
   def set_ground_ownership
     if has_a? Trooper
-      self.ground_squad = generic_fleets.first.squad
+      self.ground_squad = self.generic_fleets.first.squad
+      save
     else
       self.ground_squad = nil
+      save
     end
   end
 
