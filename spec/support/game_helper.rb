@@ -5,6 +5,7 @@ module GameHelper
     @user.squad = @squad
     5.times { Factory :planet }
     Planet.disable_routes
+    Factory :trooper, :factions => 'empire'
     Factory :fighter, :factions => 'empire'
     Factory :capital_ship, :factions => 'empire'
     Factory :facility, :factions => 'empire'

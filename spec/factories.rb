@@ -40,6 +40,7 @@ Factory.define :capital_ship, :class => CapitalShip, :parent => :unit do |f|
 end
 
 Factory.define :trooper, :class => Trooper, :parent => :unit do |f|
+  f.price 2
 end
 
 Factory.define :light_transport, :class => LightTransport, :parent => :unit do |f|

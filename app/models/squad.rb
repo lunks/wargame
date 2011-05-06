@@ -69,6 +69,18 @@ class Squad < ActiveRecord::Base
       total_value -= random_fighter.price
     end
     fleets.create(:generic_unit => random_fighter, :planet => planet, :quantity => ship_count)
+  end
+
+  def warp_troopers_on planet
+    total_value = 1000
+    troopers = Trooper.allowed_for(faction).all
+    random_trooper = troopers[rand(troopers.size)]
+    unit_count = 0
+    while (total_value > random_trooper.price)
+      unit_count+=1
+      total_value -= random_trooper.price
+    end
+    fleets.create(:generic_unit => random_trooper, :planet => planet, :quantity => unit_count)
   end  
 
   def populate_planets
@@ -76,6 +88,7 @@ class Squad < ActiveRecord::Base
       warp_capital_ship_on planet
       warp_facility_on planet
       warp_fighters_on planet
+      warp_troopers_on planet
     end
     save!
   end

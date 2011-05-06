@@ -27,6 +27,10 @@ class Round < ActiveRecord::Base
       3.times {squad.planets << Planet.randomize}
       squad.populate_planets
     end
+    Planet.all.each do |planet|
+      planet.set_ownership
+      planet.set_ground_ownership
+    end
   end
 
   def end_moving!
