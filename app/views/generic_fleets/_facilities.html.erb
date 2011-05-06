@@ -1,10 +1,17 @@
 <%= fleet.quantity %>
 <%= fleet.generic_unit.name %>
-(
-<% if fleet.producing_unit.present? %>
-  <%= link_to "#{fleet.producing_unit.name}", edit_facility_fleet_path(fleet) %>
-<% else %>
-  <%= link_to 'inactive', edit_facility_fleet_path(fleet) %>
-<% end %>
+( <% if @round.move %>
+    <% if fleet.producing_unit.present? %>
+      <%= link_to "#{fleet.producing_unit.name}", edit_facility_fleet_path(fleet) %>
+    <% else %>
+      <%= link_to 'inactive', edit_facility_fleet_path(fleet) %>
+    <% end %>
+  <% else %>
+    <% if fleet.producing_unit.present? %>
+      <%= fleet.producing_unit.name %>
+    <% else %>
+      <%= 'inactive' %>
+    <% end %>
+  <% end %>
 )
 
