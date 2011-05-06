@@ -5,7 +5,7 @@ class FacilityFleetsController < ApplicationController
 
   def edit
     @facility = FacilityFleet.find(params[:id])
-    @units = Unit.allowed_for(current_squad.faction) #nao sei pq diabos ele nao mostra nada quando é da classe Unit!!!
+    @units = Unit.allowed_for(current_squad.faction)
   end
 
   def update

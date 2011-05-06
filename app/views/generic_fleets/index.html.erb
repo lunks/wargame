@@ -1,6 +1,5 @@
-
+<div class="planet_content">
   <% @planets.each do |planet| %>
-  <div class="planet_content">
     <h2> <%= planet.name %> </h2>
     <p>
     <% planet.generic_fleets.each do |fleet| %>
@@ -13,6 +12,6 @@
       </span>
       <br>
     <% end %>
-  </div>
-  <% end %>          
+  <% end %>
+</div>        
 

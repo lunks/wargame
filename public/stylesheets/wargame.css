@@ -12,3 +12,9 @@ div.planet_content
   margin:5px;
   background:black;
 }
+
+h2
+{
+  background-color:gray;
+  color:white;  
+}

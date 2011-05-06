@@ -1,7 +1,12 @@
 Type: <%= @facility.generic_unit.name  %>
 <br>
-Balance: <%= @facility.balance  %>
+Current Balance: <%= @facility.balance  %>
 <br>
+<% if @facility.producing_unit.present? %>
+  Producing Capacity: <%= @facility.producing_unit.name %> ( <%= @facility.generic_unit.price / 4 / @facility.producing_unit.price %> per turn )
+<% else %>
+  Producing Capacity: <%= @facility.generic_unit.price / 4 %>
+<% end %>
 <%= simple_form_for @facility do |f| %>
 <%= f.input :producing_unit, :collection => @units %>
 <%= f.button :submit %>
