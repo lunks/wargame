@@ -109,7 +109,7 @@ Fighter.create(:name => 'Authority IRD', :hyperdrive => false, :price => 40 ).fa
 Fighter.create(:name => 'Toscan Fighter', :price => 120 ).factions = imp
 Fighter.create(:name => 'Tie Advanced X1', :price => 130 ).factions = imp
 Fighter.create(:name => 'Assault Gunboat', :price => 180 ).factions = imp
-Fighter.create(:name => 'Missile Boat', :price => 200 ).factions = imp
+Fighter.create(:name => 'Missile Boat', :price => 220 ).factions = imp
 Fighter.create(:name => 'Tie Phantom', :price => 200 ).factions = imp
 Fighter.create(:name => 'Tie Defender', :price => 400 ).factions = imp
 
