@@ -6,8 +6,10 @@ class GenericFleetsController < ApplicationController
 
   def move
     @fleet = Fleet.find(params[:fleet][:id])
-    @planet = Planet.find(params[:fleet][:destination])
-    @fleet.move params[:fleet][:quantity].to_i, @planet
+    unless params[:fleet][:destination].empty?
+      @planet = Planet.find(params[:fleet][:destination])
+      @fleet.move params[:fleet][:quantity].to_i, @planet
+    end
     redirect_to :fleets
   end
 
