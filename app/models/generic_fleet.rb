@@ -26,7 +26,6 @@ class GenericFleet < ActiveRecord::Base
   def destroy_if_empty
     destroy if self.quantity == 0
   end
-
-
 end
+require 'fleet'
 
