@@ -7,7 +7,7 @@ class FacilityFleet < GenericFleet
     return if producing_unit.nil?
     unit_price = producing_unit.price
     units = 0
-    while unit_price < self.balance
+    while unit_price <= self.balance
       units += 1
       self.balance -= unit_price
     end
