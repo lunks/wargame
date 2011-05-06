@@ -50,7 +50,7 @@ class Squad < ActiveRecord::Base
 
   def warp_facility_on planet
     facility_model = Facility.allowed_for(faction).last
-    facility_fleets.create(:generic_unit => facility_model, :planet => planet, :quantity => 1, :balance => 3000)
+    facility_fleets.create(:generic_unit => facility_model, :planet => planet, :quantity => 1, :balance => 0)
   end
 
   def warp_capital_ship_on planet
