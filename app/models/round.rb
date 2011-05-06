@@ -27,10 +27,7 @@ class Round < ActiveRecord::Base
       3.times {squad.planets << Planet.randomize}
       squad.populate_planets
     end
-    Planet.all.each do |planet|
-      planet.set_ownership
-      planet.set_ground_ownership
-    end
+    set_map
   end
 
   def end_moving!
@@ -39,6 +36,7 @@ class Round < ActiveRecord::Base
     self.move = nil
     self.attack = true
     save
+    set_map
   end
 
   def end_round!
@@ -53,5 +51,13 @@ class Round < ActiveRecord::Base
     save
     new_round_number = self.number + 1
     Round.create(:number => new_round_number, :move => true)
+    set_map
+  end
+
+  def set_map
+    Planet.all.each do |planet|
+      planet.set_ownership
+      planet.set_ground_ownership
+    end
   end
 end
