@@ -18,7 +18,7 @@ class Squad < ActiveRecord::Base
   def buy unit, quantity, planet
     if (unit.belongs?(faction)) and (unit.is_a? Facility)
       self.credits = self.credits - (unit.price * quantity)
-      new_fleet = GenericFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet)
+      new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0)
       generic_fleets << new_fleet
       save
     else
