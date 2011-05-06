@@ -68,4 +68,4 @@ class Planet < ActiveRecord::Base
   end
 
 end
-require 'generic_fleet'
+
