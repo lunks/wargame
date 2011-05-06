@@ -65,7 +65,7 @@ class Squad < ActiveRecord::Base
     fighters = Fighter.allowed_for(faction).fighter.all
     random_fighter = fighters[rand(fighters.size)]
     ship_count = 0
-    while (total_value > random_fighter.price)
+    while (total_value >= random_fighter.price)
       ship_count+=1
       total_value -= random_fighter.price
     end
@@ -77,7 +77,7 @@ class Squad < ActiveRecord::Base
     troopers = Trooper.allowed_for(faction).all
     random_trooper = troopers[rand(troopers.size)]
     unit_count = 0
-    while (total_value > random_trooper.price)
+    while (total_value >= random_trooper.price)
       unit_count+=1
       total_value -= random_trooper.price
     end
