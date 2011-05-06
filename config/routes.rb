@@ -14,6 +14,7 @@ Rpg::Application.routes.draw do
        get :buy
      end
    end
+
    resources :planets do
      member do
        get :move
