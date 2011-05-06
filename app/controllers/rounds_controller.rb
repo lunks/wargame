@@ -10,7 +10,7 @@ class RoundsController < ApplicationController
   end
 
   def end_moving_phase
-    round = Round.getInstance.end_moving_phase!
+    round = Round.getInstance.end_moving!
     render :text => 'Pass Moving Phase OK'
   end
 

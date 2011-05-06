@@ -29,7 +29,7 @@ class Round < ActiveRecord::Base
     end
   end
 
-  def end_moving_phase!
+  def end_moving!
     moving_fleets = Fleet.where(:moving => true)
     moving_fleets.each {|fleet| fleet.move!}
     self.move = nil
