@@ -11,7 +11,7 @@ class FacilityFleet < GenericFleet
       units += 1
       self.balance -= unit_price
     end
-    Fleet.create_from_facility producing_unit, units, self.planet
+    Fleet.create_from_facility producing_unit, units, self.planet, self.squad
     save
   end
 end

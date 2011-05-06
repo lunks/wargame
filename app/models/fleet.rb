@@ -52,8 +52,8 @@ class Fleet < GenericFleet
     fleeing_fleet
   end
 
-  def self.create_from_facility unit, quantity, planet
-    fleet = find_or_create_by_generic_unit_id_and_planet_id(:generic_unit_id => unit.id, :planet_id => planet.id)
+  def self.create_from_facility unit, quantity, planet, squad
+    fleet = find_or_create_by_generic_unit_id_and_planet_id_and_squad_id(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id)
     if fleet.quantity
       fleet.quantity += quantity
     else
