@@ -8,7 +8,7 @@ class SquadsController < ApplicationController
   def create
     squad = Squad.create(params[:squad])
     current_user.squad = squad
-    squad.credits = 10000
+    squad.credits = 1000
     squad.save
     redirect_to :fleets
   end

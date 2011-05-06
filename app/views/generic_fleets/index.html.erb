@@ -1,7 +1,8 @@
 <div class="planet_content">
   <% @planets.each do |planet| %>
     <h2> <%= planet.name %> </h2>
-    <%= link_to 'move fleets', move_planet_path(planet) %>
+    <%= link_to 'move fleets', move_planet_path(planet) unless @round.move %>
+    <%= link_to 'post results', results_planet_path(planet) unless @round.attack %>
     <p>
     <% planet.generic_fleets.each do |fleet| %>
       <span style=color:<%= fleet.squad.color %>>

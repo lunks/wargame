@@ -11,6 +11,7 @@ Rpg::Application.routes.draw do
    resources :planets do
      member do
        get :move
+       get :results
      end
    end
 

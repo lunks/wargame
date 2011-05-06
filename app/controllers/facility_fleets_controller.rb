@@ -10,8 +10,10 @@ class FacilityFleetsController < ApplicationController
 
   def update
     @facility = FacilityFleet.find(params[:id])
-    @producing_unit = Unit.find(params[:facility_fleet][:producing_unit])
-    current_squad.change_producing_unit @facility, @producing_unit
+    unless params[:facility_fleet][:producing_unit].empty?
+      @producing_unit = Unit.find(params[:facility_fleet][:producing_unit])
+      current_squad.change_producing_unit @facility, @producing_unit
+    end
     redirect_to :fleets
   end
 

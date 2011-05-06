@@ -6,8 +6,14 @@ class PlanetsController < ApplicationController
 
   def move
     @planet = Planet.find(params[:id])
-    @fleets = @planet.generic_fleets.where(:squad => current_squad, :type => 'Fleet')
+    @fleets = @planet.generic_fleets.where(:squad => current_squad, :type => 'Fleet', :moving => nil)
     @routes = @planet.routes
+    redirect_to :fleets if @fleets.empty?
+  end
+
+  def results
+    @planet = Planet.find(params[:id])
+    @fleets = @planet.generic_fleets
   end
 
 
