@@ -1,5 +1,4 @@
 class GenericUnit < ActiveRecord::Base
-  require 'unit'
   scope :allowed_for, lambda {|faction| where('faction_mask & ?', 2**FACTIONS.rindex(faction))}
   def factions=(factions)
     factions = [factions] if factions.is_a? String
@@ -17,4 +16,4 @@ class GenericUnit < ActiveRecord::Base
     factions.include?(faction.to_s)
   end
 end
-
+require 'unit'
