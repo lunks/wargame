@@ -1,7 +1,7 @@
 class Round < ActiveRecord::Base
   def self.getInstance
     if Round.count == 0
-      Round.create
+      Round.create(:number => 1, :move => true)
     else
       Round.last
     end
@@ -27,9 +27,6 @@ class Round < ActiveRecord::Base
       3.times {squad.planets << Planet.randomize}
       squad.populate_planets
     end
-    self.number = 1
-    self.move = true
-    save
   end
 
   def end_moving_phase!
