@@ -5,7 +5,7 @@ class GenericFleetsController < ApplicationController
     @squad = current_squad
     @income = 0
     @squad.planets.each do |planet|
-      @income += planet.credits_per_turn
+      @income += planet.credits_per_turn if planet.credits_per_turn.present?
     end
   end
 
