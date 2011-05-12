@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428135702) do
+ActiveRecord::Schema.define(:version => 20110512112353) do
 
   create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
@@ -62,6 +62,20 @@ ActiveRecord::Schema.define(:version => 20110428135702) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
+
+  create_table "results", :force => true do |t|
+    t.integer  "generic_unit_id"
+    t.integer  "quantity"
+    t.integer  "planet_id"
+    t.integer  "generic_fleet_id"
+    t.integer  "blasted"
+    t.integer  "captured"
+    t.integer  "fled"
+    t.integer  "squad_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "round_id"
+  end
 
   create_table "rounds", :force => true do |t|
     t.integer  "number"

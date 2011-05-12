@@ -7,6 +7,17 @@ describe GenericFleet do
 
   let(:unit) {Factory :generic_fleet}
 
+  context 'blast units' do
+    before(:each) do
+      unit.quantity = 1
+    end
+    it 'should remove units from the current fleet' do
+      unit.blast! 1
+      unit.quantity.should be 0
+    end
+  end
+
+
   context 'capturing units' do
     let(:squad) {Factory :squad}
     before(:each) do

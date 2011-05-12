@@ -64,3 +64,18 @@ Factory.define :route do |f|
   f.vector_a {|a| a.association(:planet)}
   f.vector_b {|a| a.association(:planet)}
 end
+
+Factory.define :round do |f|
+  f.number 1
+end
+
+Factory.define :result do |f|
+  f.association :round
+  f.association :planet
+  f.association :squad
+  f.association :generic_unit
+  f.quantity 10
+  f.after_build do |f|
+    f.generic_fleet = Factory :generic_fleet, :generic_unit => f.generic_unit, :planet => f.planet, :quantity => f.quantity
+  end
+end

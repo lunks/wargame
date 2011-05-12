@@ -6,6 +6,11 @@ class GenericFleet < ActiveRecord::Base
 
   after_save :destroy_if_empty
 
+  def blast! quantity
+    self.quantity -= quantity
+    save 
+  end
+
   def captured! quantity, squad
     self.quantity = self.quantity - quantity
     captured_fleet = self.clone
@@ -17,10 +22,6 @@ class GenericFleet < ActiveRecord::Base
 
   def type?(type)
     generic_unit.is_a? type
-  end
-
-  def to_s
-    "Type: #{generic_unit.name} Planet: #{planet.name} Quantity: #{self.quantity}"
   end
 
   def destroy_if_empty
