@@ -8,6 +8,12 @@ Rpg::Application.routes.draw do
      end
    end
    resources :facility_fleets
+
+   resources :facilities do
+     member do
+       get :buy
+     end
+   end
    resources :planets do
      member do
        get :move

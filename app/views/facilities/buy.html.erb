@@ -1,0 +1,5 @@
+<%= simple_form_for @facilities, :url => url_for(:controller => 'facility_fleets', :action => 'buy') do |f| %>
+    <%= f.input :quantity, :label => 'Quantity: ' %>
+    <%= f.hidden_field :planet %>
+    <%= f.button :submit %>
+  <% end %>
