@@ -1,9 +1,9 @@
 New Squad
 
 <%= simple_form_for @squad do |f| %>
-<%= f.input :name %>
-<%= f.input :color, :collection => @colors  %>
-<%= f.input  :faction, :collection => FACTIONS %>
+<%= f.input :name, :label => 'Name: ' %>
+<%= f.input :color, :collection => @colors, :label => 'Color: ' %>
+<%= f.input  :faction, :collection => FACTIONS, :label => 'Faction: ' %>
 <%= f.button :submit %>
 <% end %>
 
