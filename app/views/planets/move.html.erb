@@ -1,5 +1,6 @@
+<h2><%= @fleets.first.planet.name %></h2>
 <% @fleets.each do |fleet| %>
-  <%= fleet.generic_unit.name %>
+  <span style=font-weight:bold><%= fleet.generic_unit.name %></span>
   <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
     <%= f.input :quantity, :collection => 1..fleet.quantity, :label => 'Quantity: ' %>
     <%= f.input :destination, :collection => @routes, :label => 'Destination: ' %>
