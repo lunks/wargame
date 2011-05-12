@@ -3,6 +3,10 @@ class GenericFleetsController < ApplicationController
     @planets = Planet.seen_by(current_squad)
     @round = Round.getInstance
     @squad = current_squad
+    @income = 0
+    @squad.planets.each do |planet|
+      @income += planet.credits_per_turn
+    end
   end
 
   def move
