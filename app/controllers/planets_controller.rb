@@ -1,5 +1,5 @@
 class PlanetsController < ApplicationController
-
+  respond_to :html, :xml
   def index
     @fleets = current_squad.generic_fleets.all
   end
@@ -15,6 +15,12 @@ class PlanetsController < ApplicationController
     @planet = Planet.find(params[:id])
     @fleets = @planet.generic_fleets
   end
+
+  def map
+    @planets = Planet.includes(:squad).all
+    respond_with @planets
+  end
+
 
 
 end

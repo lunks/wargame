@@ -20,6 +20,9 @@ Rpg::Application.routes.draw do
        get :move
        get :results
      end
+     collection do
+       get :map
+     end
    end
 
    match 'index' => 'home#index'
