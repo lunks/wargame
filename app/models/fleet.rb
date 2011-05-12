@@ -47,7 +47,9 @@ class Fleet < GenericFleet
   end
 
   def flee! quantity
-    fleeing_fleet = move quantity, planet.routes.first
+    routes = planet.routes.select { |planet| planet.squad == self.squad }
+    routes = planet.routes if routes.empty?
+    fleeing_fleet = move quantity, routes.first
     fleeing_fleet.move!
     fleeing_fleet
   end

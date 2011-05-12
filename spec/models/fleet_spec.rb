@@ -108,26 +108,27 @@ describe Fleet do
     end
   end
   context 'related to fleeing fleet' do
-    let(:unit) {Factory :fleet}
+    let(:unit) {Factory :fleet, :squad => squad}
     before(:each) do
       @origin = Factory(:planet)
       @destination = Factory(:planet)
-      @allied_destination = Factory(:planet)
-      @allied_destination.squad = squad
-      @allied_destination.save
+      unit.planet = @origin
       @route1 = Factory :route, :vector_a => @origin, :vector_b => @destination
-      @route2 = Factory :route, :vector_a => @origin, :vector_b => @allied_destination
     end
 
     it 'should go to an adjacent planet' do
-      unit.planet = @origin
       fleeing_fleet = unit.flee! 1
       fleeing_fleet.planet.should_not == @origin
       fleeing_fleet.planet.should == @destination
     end
 
-    pending 'should go first to an allied adjacent planet' do
-
+    it 'should go first to an allied adjacent planet' do
+      @allied_destination = Factory(:planet)
+      @allied_destination.squad = squad
+      @allied_destination.save
+      @route2 = Factory :route, :vector_a => @origin, :vector_b => @allied_destination
+      fleeing_fleet = unit.flee! 1
+      fleeing_fleet.planet.should == @allied_destination
     end
   end
 end
