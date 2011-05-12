@@ -8,7 +8,7 @@ end
 Factory.define :squad do |f|
   f.name Forgery::Name.full_name
   f.credits Forgery::Basic.number
-  f.color 'red'
+  f.color '00FF00'
   f.faction 'empire'
 end
 

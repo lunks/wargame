@@ -10,7 +10,7 @@
     <%= link_to 'buy facility', buy_facility_path(planet) if @round.move && planet.squad == @squad %> 
     <%= link_to 'post results', results_planet_path(planet) if @round.attack %>
     <p>
-    <span style=font-weight:bold><%= "Income: $ #{planet.credits}" if planet.credits_per_turn > 0 %></span>
+    <span style=font-weight:bold><%= "Income: $ #{planet.credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 %></span>
     <p>
     <% planet.generic_fleets.each do |fleet| %>
       <span style=color:#<%= fleet.squad.color %>>

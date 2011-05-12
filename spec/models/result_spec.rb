@@ -24,6 +24,12 @@ describe Result do
       #expect {result.blast!}.to change(@fleet.reload.first, :quantity).by(-1)
     end
   end
+  context 'when units were captured' do
+    before(:each) do
+      @fleet = GenericFleet.where(:generic_unit => result.generic_unit, :planet => result.planet, :squad => result.squad)
+    end
+  end
+
 
 
 end
