@@ -2,7 +2,7 @@ xml.instruct!
 xml.planetas do
   @planets.each do |planet|
     xml.planeta do
-      xml.nome planet.name
+      xml.nome planet.name.gsub(" ","")
       if planet.squad
         xml.espaco planet.squad.name
         xml.corespaco planet.squad.color
