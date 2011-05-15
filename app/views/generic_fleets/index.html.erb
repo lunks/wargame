@@ -1,5 +1,5 @@
 <div class="squad_info">
-<span style=color:<%= @squad.color %>;font-weight:bold;font-size:18px><%= @squad.name %></span><br>
+<span style=color:#<%= @squad.color %>;font-weight:bold;font-size:18px><%= @squad.name %></span><br>
 <span> Round: <%= @round.number %> | Credits: $<%= @squad.credits %> | Income: $<%= @income %></span>
 </div>
 
@@ -11,7 +11,7 @@
     <%= link_to 'post results', results_planet_path(planet) if @round.attack %>
     <p>
     <% planet.generic_fleets.each do |fleet| %>
-      <span style=color:<%= fleet.squad.color %>>
+      <span style=color:#<%= fleet.squad.color %>>
       <% if fleet.class == FacilityFleet %> 
          <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
       <% else %>   
