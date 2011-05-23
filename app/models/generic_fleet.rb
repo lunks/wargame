@@ -8,7 +8,7 @@ class GenericFleet < ActiveRecord::Base
 
   def blast! quantity
     self.quantity -= quantity
-    save 
+    save
   end
 
   def captured! quantity, squad
