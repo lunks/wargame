@@ -45,9 +45,17 @@ describe Result do
     end
   end
   context 'when units are captured' do
-    let!(:captor) {Factory :squad}
     before(:each) do
-      result.captor = captor
+      @captor = Factory :squad
+      @fleet = Factory :fleet, :quantity => 1
+      result.generic_fleet = @fleet
+      result.captor = @captor
+      result.captured = 1
+      result.capture!
+    end
+
+    it 'should belongs to captor' do
+      GenericFleet.last.squad.should == @captor
     end
   end
 end
