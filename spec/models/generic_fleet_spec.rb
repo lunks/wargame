@@ -25,23 +25,23 @@ describe GenericFleet do
     end
 
     it 'should remove units from the current fleet' do
-      unit.captured! 1, squad
+      unit.capture! 1, squad
       unit.quantity.should be 0
     end
 
     it 'should remove fleet if quantity equals zero' do
-      unit.captured! 1, squad
+      unit.capture! 1, squad
       unit.should be_new_record
     end
 
     it 'should transfer fleet to another squad' do
-      unit.captured! 1, squad
+      unit.capture! 1, squad
       squad.generic_fleets.count.should be 1
     end
 
     context 'related to captured fleet' do
       before(:each) do
-        unit.captured! 1, squad
+        unit.capture! 1, squad
       end
       let(:captured_unit) {squad.generic_fleets.first}
 
