@@ -31,6 +31,10 @@ class Round < ActiveRecord::Base
   end
 
   def end_moving!
+    Squad.all.each do |squad|
+      squad.move = nil
+      squad.save
+    end
     moving_fleets = Fleet.where(:moving => true)
     moving_fleets.each do |fleet|
       fleet.move!
@@ -50,12 +54,14 @@ class Round < ActiveRecord::Base
       squad.facility_fleets.each do |facility|
         facility.produce!
       end
+      squad.move = nil
+      squad.save
     end
-    Result.where(:round => Round.getInstance).each do |result|
-      result.blast! unless result.blasted == nil && result.blasted > 0
-      result.capture! unless result.captured == nil && result.captured > 0
-      result.flee! unless result.fled == nil && result.fled > 0
-    end
+    #Result.all.each do |result|
+     # result.blast! unless result.blasted == nil && result.blasted > 0
+     # result.capture! unless result.captured == nil && result.captured > 0
+     # result.flee! unless result.fled == nil && result.fled > 0
+   # end
     self.attack = nil
     self.done = true
     save

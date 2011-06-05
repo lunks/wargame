@@ -1,6 +1,13 @@
+<div class="planet_content">
 Buy Facility
 <%= simple_form_for :buy_facility, :url => url_for(:controller => 'facilities', :action => 'buy_facility')  do |f| %>
   <%= f.input :id, :collection => @facilities, :label => 'Facility: ' %>
   <%= f.input :planet, :collection => @planet, :label => 'Planet: ' %>
   <%= f.button :submit %>
 <% end %>
+</div>
+<div class="map">
+<IFRAME src="https://spreadsheets.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdC1aNzNwMU54clBiRTBOeUp6c3c1VEE&hl=pt_BR&authkey=CLTM4ogF#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right">
+
+</IFRAME> 
+</div>

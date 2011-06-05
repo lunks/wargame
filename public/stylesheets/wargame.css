@@ -13,7 +13,7 @@ a:hover {color:white; text-decoration:none; font-weight:bold;}
 
 div.planet_content
 {
-  width:400px;
+  width:370px;
   padding:10px;
   border:3px outset gray;
   margin:5px;
@@ -22,7 +22,7 @@ div.planet_content
 
 div.squad_info
 {
-  width:400px;
+  width:370px;
   padding:10px;
   border:3px outset gray;
   margin:5px;
@@ -33,13 +33,13 @@ div.map
 {
   position:absolute;
   top: 0%;
-  left: 30%;
-  margin-left: 20px;
-  margin-top: 10px;
-  padding:10px;
-  width:900px;
-  height:600px;
-  border:1px solid #d0d0d0;
+  left: 410px;
+  margin-left: 5px;
+  margin-top: 5px;
+  padding:5px;
+  width:1080px;
+  height:768px;
+  border:3px outset gray;
   z-index:10;
 }
 
