@@ -1,6 +1,6 @@
-<%= simple_form_for :results do |f| %>
+<%= form_tag "results" do %>
   <% @results.each do |result| %>
-    <%= simple_fields_for result do |result_form| %>
+    <%= simple_fields_for "results[]", result do |result_form| %>
        <%= result_form.object.quantity %>
        <%= result_form.object.generic_unit.name %>
        <%= result_form.input :quantity, :as => :hidden %>
@@ -16,5 +16,5 @@
        <br>
     <% end %>
   <% end %>
-  <%= f.button :submit %>
+  <%= submit_tag :submit %>
 <% end %>

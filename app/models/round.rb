@@ -32,7 +32,12 @@ class Round < ActiveRecord::Base
 
   def end_moving!
     moving_fleets = Fleet.where(:moving => true)
-    moving_fleets.each {|fleet| fleet.move!}
+    moving_fleets.each do |fleet|
+      fleet.move!
+    end
+    GenericFleet.all.each do |fleet|
+      Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad)
+    end
     self.move = nil
     self.attack = true
     save

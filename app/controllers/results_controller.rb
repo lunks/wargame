@@ -3,14 +3,17 @@ class ResultsController < ApplicationController
     @planet = Planet.find(params[:planet_id])
     @squads = @planet.squads
     @fleets = GenericFleet.where(:planet => @planet)
-    @results = @fleets.map do |fleet|
-      Result.find_or_initialize_by_generic_fleet_id_and_planet_id(:generic_fleet => fleet, :planet => @planet, :squad => fleet.squad, :round => Round.getInstance, :generic_unit_id => fleet.generic_unit.id, :quantity => fleet.quantity)
-    end
+    @results = Result.where(:round => Round.getInstance, :planet => @planet)
   end
 
   def create
-    render 'index'
-
+    results = params[:results]
+    results.each do |result_attributes|
+      result = Result.find(result_attributes[0])
+      result.update_attributes(result_attributes[1])
+    end
+    @results = results
+    redirect_to fleets_path
   end
 end
 
