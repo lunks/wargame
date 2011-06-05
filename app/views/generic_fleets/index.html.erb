@@ -8,7 +8,7 @@
     <h2> <%= planet.name %> </h2>
     <%= link_to 'move fleets', move_planet_path(planet) if @round.move %> 
     <%= link_to 'buy facility', buy_facility_path(planet) if @round.move && planet.squad == @squad %> 
-    <%= link_to 'post results', results_planet_path(planet) if @round.attack %>
+    <%= link_to 'post results', planet_results_path(planet) if @round.attack %>
     <p>
     <span style=font-weight:bold><%= "Income: $ #{planet.credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 %></span>
     <p>

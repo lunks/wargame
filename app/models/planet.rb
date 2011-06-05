@@ -71,5 +71,13 @@ class Planet < ActiveRecord::Base
     end
   end
 
+  def squads
+    squads = []
+    generic_fleets.each do |fleet|
+      squads << fleet.squad 
+    end
+    squads.uniq
+  end
+
 end
 
