@@ -51,6 +51,11 @@ class Round < ActiveRecord::Base
         facility.produce!
       end
     end
+    Result.where(:round => Round.getInstance).each do |result|
+      result.blast! unless result.blasted == nil && result.blasted > 0
+      result.capture! unless result.captured == nil && result.captured > 0
+      result.flee! unless result.fled == nil && result.fled > 0
+    end
     self.attack = nil
     self.done = true
     save

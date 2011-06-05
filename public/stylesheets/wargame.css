@@ -29,6 +29,21 @@ div.squad_info
   background:#001111;
 }
 
+div.map
+{
+  position:absolute;
+  top: 0%;
+  left: 30%;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding:10px;
+  width:900px;
+  height:600px;
+  border:1px solid #d0d0d0;
+  z-index:10;
+}
+
+
 h2
 {
   background-color:#333333;

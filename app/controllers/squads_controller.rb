@@ -13,5 +13,11 @@ class SquadsController < ApplicationController
     redirect_to :fleets
   end
 
+  def ready
+    current_squad.ready
+    redirect_to :fleets
+  end
+
+
 end
 

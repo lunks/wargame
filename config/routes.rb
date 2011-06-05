@@ -25,6 +25,7 @@ Rpg::Application.routes.draw do
      resources :results
    end
 
+   match 'ready' => 'squads#ready'
    match 'index' => 'home#index'
    match 'fleets' => 'generic_fleets#index'
 
