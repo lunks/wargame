@@ -49,6 +49,16 @@ class Round < ActiveRecord::Base
   end
 
   def end_round!
+    Result.where(:round => self).each do |result|
+      result.blast! unless result.blasted == nil || result.blasted <= 0
+      result.capture! unless result.captured == nil || result.captured <= 0
+      result.flee! unless result.fled == nil || result.fled <= 0
+    end
+    self.attack = nil
+    self.done = true
+    save
+    new_round_number = self.number + 1
+    Round.create(:number => new_round_number, :move => true)
     Squad.all.each do |squad|
       squad.generate_profits!
       squad.facility_fleets.each do |facility|
@@ -57,16 +67,6 @@ class Round < ActiveRecord::Base
       squad.move = nil
       squad.save
     end
-    #Result.all.each do |result|
-     # result.blast! unless result.blasted == nil && result.blasted > 0
-     # result.capture! unless result.captured == nil && result.captured > 0
-     # result.flee! unless result.fled == nil && result.fled > 0
-   # end
-    self.attack = nil
-    self.done = true
-    save
-    new_round_number = self.number + 1
-    Round.create(:number => new_round_number, :move => true)
     set_map
   end
 
