@@ -2,7 +2,7 @@
 <%= form_tag "results" do %>
   <% @results.each do |result| %>
     <%= simple_fields_for "results[]", result do |result_form| %>
-       <span style=font-weight:bold><%= result_form.object.quantity %>
+       <span style=color:#<%= result_form.object.squad.color %>;font-weight:bold;font-size:14px><%= result_form.object.quantity %>
        <%= result_form.object.generic_unit.name %></span>
        <%= result_form.input :quantity, :as => :hidden %>
        <%= result_form.association :generic_unit, :as => :hidden %>
@@ -10,9 +10,9 @@
        <%= result_form.association :planet, :as => :hidden %>
        <%= result_form.association :round, :as => :hidden %>
        <%= result_form.association :squad, :as => :hidden %>
-       <%= result_form.input :blasted, :length => 3 %>
-       <%= result_form.input :fled, :size => 3 %>
-       <%= result_form.input :captured, :size => 3 %>
+       <%= result_form.input :blasted, :input_html => { :size => 3 } %>
+       <%= result_form.input :fled, :input_html => { :size => 3 } %>
+       <%= result_form.input :captured, :input_html => { :size => 3 } %>
        <%= result_form.association :captor, :collection => @squads %>
        <br>
     <% end %>
