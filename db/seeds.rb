@@ -94,12 +94,12 @@ Fighter.create(:name => 'Planetary Fighter', :price => 80 ).factions = merc
 Fighter.create(:name => 'Razor Fighter', :price => 90 ).factions = merc
 Fighter.create(:name => 'IG-2000', :price => 170 ).factions = merc
 Fighter.create(:name => 'Skipray Blastboat', :price => 135 ).factions = merc
-Fighter.create(:name => 'Supa Fighter', :price => 100 ).factions = mand
+Fighter.create(:name => 'Supa Fighter', :price => 90 ).factions = mand
 Fighter.create(:name => 'Firespray', :price => 120 ).factions = mand
 Fighter.create(:name => 'Pursuer', :price => 100 ).factions = mand
 Fighter.create(:name => 'Star Viper', :price => 120 ).factions = mand
 Fighter.create(:name => 'V-Wing', :hyperdrive => false, :price => 50 ).factions = mand
-Fighter.create(:name => 'ARC-170', :price => 90 ).factions = mand
+Fighter.create(:name => 'ARC-170', :price => 100 ).factions = mand
 Fighter.create(:name => 'Tie Fighter', :hyperdrive => false, :price => 25 ).factions = imp
 Fighter.create(:name => 'Tie Bomber', :hyperdrive => false, :price => 30 ).factions = imp
 Fighter.create(:name => 'Tie Interceptor', :hyperdrive => false, :price => 30 ).factions = imp
@@ -147,7 +147,7 @@ CapitalShip.create(:name => 'Carrack Cruiser', :price => 470 ).factions = imp
 CapitalShip.create(:name => 'Nebulon B2 Frigate', :price => 700 ).factions = imp_reb
 CapitalShip.create(:name => 'Nebulon B Frigate', :price => 470 ).factions = imp_reb
 CapitalShip.create(:name => 'Strike Cruiser', :price => 800 ).factions = imp_reb
-CapitalShip.create(:name => 'Radiant VII Cruiser', :price => 500 ).factions = mand
+#CapitalShip.create(:name => 'Radiant VII Cruiser', :price => 500 ).factions = mand
 CapitalShip.create(:name => 'Venator Star Destroyer', :price => 2300 ).factions = mand
 CapitalShip.create(:name => 'Acclamator Assault Ship', :price => 2100 ).factions = mand
 CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 8000 ).factions = mand_merc
