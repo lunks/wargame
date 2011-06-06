@@ -59,6 +59,7 @@ class Round < ActiveRecord::Base
     save
     new_round_number = self.number + 1
     Round.create(:number => new_round_number, :move => true)
+    set_map
     Squad.all.each do |squad|
       squad.generate_profits!
       squad.facility_fleets.each do |facility|
@@ -67,7 +68,6 @@ class Round < ActiveRecord::Base
       squad.move = nil
       squad.save
     end
-    set_map
   end
 
   def set_map

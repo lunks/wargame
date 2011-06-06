@@ -15,7 +15,7 @@ class Planet < ActiveRecord::Base
 
   def set_ownership
     if has_a? CapitalShip or has_a? Facility
-      self.squad = self.generic_fleets.first.squad
+      self.squad = self.generic_fleets.first.squad #TODO ta pegando first squad, deve pegar quem é dono da CS
       save
     else
       self.squad = nil
