@@ -58,6 +58,8 @@ GEM
     celerity (0.8.9)
     childprocess (0.1.8)
       ffi (~> 1.0.6)
+    ci_reporter (1.6.4)
+      builder (>= 2.1.2)
     culerity (0.2.15)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
@@ -148,6 +150,7 @@ DEPENDENCIES
   autotest-notification
   autotest-rails
   capybara
+  ci_reporter
   devise
   factory_girl_rails
   forgery

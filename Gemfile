@@ -14,6 +14,7 @@ gem 'meta_where'
 group :development, :test do
   gem 'rspec-rails'
   gem "autotest"
+  gem 'ci_reporter'
   gem 'forgery'
   gem "autotest-rails"
   gem 'autotest-notification'
