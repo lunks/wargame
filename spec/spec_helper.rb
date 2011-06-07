@@ -1,3 +1,11 @@
+if ENV["COVERAGE"] == 'on'
+  require 'simplecov'
+  require 'simplecov-rcov'
+  SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+  SimpleCov.start 'rails' do
+    add_filter '/spec/'
+  end
+end
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 Bundler.require(:test)

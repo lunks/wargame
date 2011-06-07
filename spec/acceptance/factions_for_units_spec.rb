@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe "Choosing Factions for Units" do
   context 'when viewing only' do

@@ -55,14 +55,14 @@ class Squad < ActiveRecord::Base
   end
 
   def warp_capital_ship_on planet
-    capital_ships = CapitalShip.allowed_for(faction).capital_ship.all
+    capital_ships = CapitalShip.allowed_for(faction)
     random_capital_ship = capital_ships[rand(capital_ships.size)]
     fleets.create(:generic_unit => random_capital_ship, :planet => planet, :quantity => 1)
   end
 
   def warp_fighters_on planet
     total_value = 5000
-    fighters = Fighter.allowed_for(faction).fighter.all
+    fighters = Fighter.allowed_for(faction).all
     random_fighter = fighters[rand(fighters.size)]
     ship_count = 0
     while (total_value >= random_fighter.price)

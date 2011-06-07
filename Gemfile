@@ -8,12 +8,16 @@ gem 'simple_form'
 
 gem 'devise'
 
+gem 'unicorn'
+
 gem 'rails_admin', :git => 'https://github.com/sferik/rails_admin.git'
 
 gem 'meta_where'
 group :development, :test do
   gem 'rspec-rails'
   gem "autotest"
+  gem 'ci_reporter'
+  gem 'capistrano'
   gem 'forgery'
   gem "autotest-rails"
   gem 'autotest-notification'
@@ -24,5 +28,6 @@ group :test do
   gem "ZenTest"
   gem 'simplecov', :platform => :ruby_19
   gem 'simplecov-html', :platform => :ruby_19
+  gem 'simplecov-rcov', :platform => :ruby_19
   gem 'factory_girl_rails'
 end

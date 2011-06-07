@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe CapitalShip do
   it 'should be a capital ship' do
