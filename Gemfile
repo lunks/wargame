@@ -25,5 +25,6 @@ group :test do
   gem "ZenTest"
   gem 'simplecov', :platform => :ruby_19
   gem 'simplecov-html', :platform => :ruby_19
+  gem 'simplecov-rcov', :platform => :ruby_19
   gem 'factory_girl_rails'
 end
