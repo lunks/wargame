@@ -17,7 +17,7 @@ set :unicorn_config, "#{current_path}/config/unicorn.rb"
 set :unicorn_pid, "/tmp/wargame.pid"
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do 
-    run "RAILS_ENV=production rvm #{rvm_ruby_string} && cd #{current_path} && rm lib/tasks/ci.rake && rake db:migrate && bundle exec unicorn -c #{unicorn_config} -E production -D"
+    run "RAILS_ENV=production rvm #{rvm_ruby_string} && cd #{current_path} && bundle exec unicorn -c #{unicorn_config} -E production -D"
   end
   task :stop, :roles => :app, :except => { :no_release => true } do 
     run "kill `cat #{unicorn_pid}`"
@@ -32,9 +32,3 @@ namespace :deploy do
     reload
   end
 end
-namespace :delete_stuff do
-  task :cirake do
-    run "cd #{current_path} && rm lib/tasks/ci.rake"
-  end
-end
-after "bundle:install", "delete_stuff:cirake"
