@@ -47,6 +47,12 @@ GEM
       ZenTest
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    capistrano (2.6.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
@@ -77,8 +83,10 @@ GEM
     ffi (1.0.9)
     forgery (0.3.8)
       nokogiri (~> 1.4)
+    highline (1.6.2)
     i18n (0.5.0)
     json_pure (1.5.1)
+    kgio (2.4.1)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -89,6 +97,13 @@ GEM
       activesupport (~> 3.0.0)
       arel (~> 2.0.7)
     mime-types (1.16)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.1.4)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
     orm_adapter (0.0.5)
     polyglot (0.3.1)
@@ -143,6 +158,9 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.27)
+    unicorn (3.6.2)
+      kgio (~> 2.3)
+      rack
     warden (1.0.4)
       rack (>= 1.0)
     xpath (0.1.4)
@@ -156,6 +174,7 @@ DEPENDENCIES
   autotest
   autotest-notification
   autotest-rails
+  capistrano
   capybara
   ci_reporter
   devise
@@ -171,3 +190,4 @@ DEPENDENCIES
   simplecov-html
   simplecov-rcov
   sqlite3-ruby
+  unicorn
