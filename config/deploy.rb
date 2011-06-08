@@ -37,5 +37,4 @@ namespace :delete_stuff do
     run "cd #{current_path} && rm lib/tasks/ci.rake"
   end
 end
-
-before "deploy:migrations", "delete_stuff:cirake"
+after "bundle:install", "delete_stuff:cirake"
