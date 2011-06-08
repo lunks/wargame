@@ -21,7 +21,7 @@ namespace :deploy do
     run "rvm #{rvm_ruby_string} && cd #{current_path} && bundle exec unicorn -c #{unicorn_config} -E production -D"
   end
   task :stop, :roles => :app, :except => { :no_release => true } do 
-    run "#kill `cat #{unicorn_pid}`"
+    run "kill `cat #{unicorn_pid}`"
   end
   task :graceful_stop, :roles => :app, :except => { :no_release => true } do
     run "kill -s QUIT `cat #{unicorn_pid}`"
