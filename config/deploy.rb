@@ -34,7 +34,7 @@ namespace :deploy do
 end
 namespace :delete_stuff do
   task :cirake do
-    run "rm lib/tasks/ci.rake"
+    run "cd #{current_path} && rm lib/tasks/ci.rake"
   end
 end
 
