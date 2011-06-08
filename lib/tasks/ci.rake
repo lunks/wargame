@@ -1,12 +1,14 @@
-require 'ci/reporter/rake/rspec'
+unless Rails.env.production?
+  require 'ci/reporter/rake/rspec'
 
-namespace :hudson do
-  task :spec => ["hudson:setup:rspec", "rake:spec"]
+  namespace :hudson do
+    task :spec => ["hudson:setup:rspec", "rake:spec"]
 
-  namespace :setup do
-    task :pre_ci do
-      ENV["CI_REPORTS"] = 'tmp/reports/spec'
+    namespace :setup do
+      task :pre_ci do
+        ENV["CI_REPORTS"] = 'tmp/reports/spec'
+      end
+      task :rspec => [:pre_ci, "ci:setup:rspec"]
     end
-    task :rspec => [:pre_ci, "ci:setup:rspec"]
   end
 end
