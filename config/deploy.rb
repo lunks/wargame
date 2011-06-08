@@ -8,8 +8,7 @@ set :user, "unicorn"
 set :branch, "master"
 set :scm, :git
 
-role :app, APP_SERVER
-role :web, APP_SERVER
+server APP_SERVER, :web, :app, :db, :primary => true
 
 set :rvm_ruby_string, 'ree@wargame'
 set :deploy_to, "/var/www/#{application}"
@@ -33,3 +32,10 @@ namespace :deploy do
     reload
   end
 end
+namespace :delete_stuff do
+  task :cirake do
+    run "rm lib/tasks/ci.rake"
+  end
+end
+
+before "deploy:migrations", "delete_stuff:cirake"
