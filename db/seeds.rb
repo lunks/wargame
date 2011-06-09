@@ -126,7 +126,7 @@ LightTransport.create(:name => 'Stormtrooper Transport', :price => 90 ).factions
 LightTransport.create(:name => 'System Patrol Craft', :price => 430 ).factions = imp
 LightTransport.create(:name => 'Assault Shuttle', :price => 260 ).factions = imp
 
-CapitalShip.create(:name => 'Alliance Escort Carrier', :price => 550 ).factions = reb
+#CapitalShip.create(:name => 'Alliance Escort Carrier', :price => 550 ).factions = reb
 CapitalShip.create(:name => 'Reef Home Calamari Cruiser', :price => 2200 ).factions = reb
 CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 850 ).factions = reb
 CapitalShip.create(:name => 'Liberty Calamari Cruiser', :price => 2200 ).factions = reb
