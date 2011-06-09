@@ -8,12 +8,17 @@ class ResultsController < ApplicationController
 
   def create
     results = params[:results]
-    results.each do |result_attributes|
+    saved_results = results.all? do |result_attributes|
       result = Result.find(result_attributes[0])
-      result.update_attributes(result_attributes[1])
+      result.attributes = result_attributes[1]
+      result.save
     end
     @results = results
-    redirect_to fleets_path
+    if saved_results
+      redirect_to fleets_path
+    else
+      redirect_to planet_results_path(params[:planet_id])
+    end
   end
 end
 

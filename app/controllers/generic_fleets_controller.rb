@@ -18,8 +18,4 @@ class GenericFleetsController < ApplicationController
     redirect_to :fleets
   end
 
-  def results
-
-  end
-
 end

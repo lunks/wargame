@@ -7,7 +7,20 @@ describe Result do
   it {should belong_to :planet}
   it {should belong_to :generic_unit}
   it {should belong_to :round}
+
+  it {should validate_numericality_of :blasted}
+  it {should validate_numericality_of :fled}
+  it {should validate_numericality_of :captured}
+ 
   let!(:result) {Factory :result}
+  context 'validations' do
+    it 'captor if captured' do
+      result.captured = 1
+      result.should_not be_valid
+    end
+
+  end
+
   context 'when units were destroyed' do
     before(:each) do
       @fleet = GenericFleet.where(:generic_unit => result.generic_unit, :planet => result.planet)
