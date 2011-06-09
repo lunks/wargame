@@ -84,13 +84,6 @@ describe Squad do
         squad.random_planet_but(current_planet).should be_false
       end
     end
-
-    context 'moving through phases' do
-      it 'should be able to go through the move phase' do
-        squad.end_move_round
-        squad.move?.should be_true
-      end
-    end
   end
 
   context 'using factions' do
@@ -102,9 +95,9 @@ describe Squad do
   context 'warping units' do
     let(:planet) {Factory :planet}
     context 'like fighters' do
-      let(:fighter) {Factory :fighter}
       before do
-        squad.warp_ships Fighter, planet
+        fighter = Factory(:fighter)
+        squad.warp_units 5000, Fighter, planet
       end
       it 'should create a fleet' do
         squad.fleets.should be
@@ -112,8 +105,31 @@ describe Squad do
       it 'should be a fighter' do
         squad.fleets.first.generic_unit.should be_a Fighter
       end
-    end
+      it 'should create apropriate quantity' do
+        fighter = Factory(:fighter)
+        squad.fleets.first.quantity.should == 5000 / fighter.price
+      end
 
+    end
+    context 'like capital ships' do
+      before do
+        capital_ship = Factory(:capital_ship, :price => 1000)
+        squad.warp_units 5000, CapitalShip, planet
+      end
+      it 'should be a capital ship' do
+        squad.fleets.first.generic_unit.should be_a CapitalShip
+      end
+      it 'should cost between 500 and 2000 credits' do
+        squad.fleets.first.generic_unit.price.should >= 500 && squad.fleets.first.generic_unit.price.should <= 2000
+      end        
+    end
+    context 'like troopers' do
+      it 'should be a trooper' do
+        trooper = Factory(:trooper)
+        squad.warp_units 1000, Trooper, planet
+        squad.fleets.first.generic_unit.should be_a Trooper
+      end
+    end
   end
 
   context 'transfering credits between squads' do

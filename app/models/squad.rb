@@ -37,11 +37,6 @@ class Squad < ActiveRecord::Base
       facility_fleet.producing_unit = unit
       facility_fleet.save!
   end
-  
-  def end_move_round
-    self.move = true
-    save
-  end
 
   def random_planet_but planet
     planets_array = planets.to_a - [planet]
@@ -54,45 +49,27 @@ class Squad < ActiveRecord::Base
     facility_fleets.create(:generic_unit => facility_model, :planet => planet, :quantity => 1, :balance => 0)
   end
 
-  def warp_capital_ship_on planet
-    capital_ships = CapitalShip.allowed_for(faction)
-    random_capital_ship = capital_ships[rand(capital_ships.size)]
-    fleets.create(:generic_unit => random_capital_ship, :planet => planet, :quantity => 1)
-  end
-
-  def warp_fighters_on planet
-    total_value = 5000
-    fighters = Fighter.allowed_for(faction).all
-    random_fighter = fighters[rand(fighters.size)]
-    ship_count = 0
-    while (total_value >= random_fighter.price)
-      ship_count+=1
-      total_value -= random_fighter.price
+  def warp_units total_value, unit, planet
+    if unit == CapitalShip
+      units = unit.allowed_for(faction).where(:price => 500..2000)
+    else
+      units = unit.allowed_for(faction).all
     end
-    fleets.create(:generic_unit => random_fighter, :planet => planet, :quantity => ship_count)
-  end
-
-  def warp_troopers_on planet
-    total_value = 1000
-    troopers = Trooper.allowed_for(faction).all
-    random_trooper = troopers[rand(troopers.size)]
+    random_unit = units[rand(units.size)]
     unit_count = 0
-    while (total_value >= random_trooper.price)
-      unit_count+=1
-      total_value -= random_trooper.price
+    while (total_value >= random_unit.price)
+      unit_count += 1
+      total_value -= random_unit.price
     end
-    fleets.create(:generic_unit => random_trooper, :planet => planet, :quantity => unit_count)
-  end
-
-  def warp_ships unit, planet
+    fleets.create(:generic_unit => random_unit, :planet => planet, :quantity => unit_count)  
   end  
 
   def populate_planets
     planets.each do |planet|
-      warp_capital_ship_on planet
+      warp_units 4000, Fighter, planet
+      warp_units 2000, CapitalShip, planet
+      warp_units 1000, Trooper, planet
       warp_facility_on planet
-      warp_fighters_on planet
-      warp_troopers_on planet
     end
     save!
   end
