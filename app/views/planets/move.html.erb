@@ -6,7 +6,7 @@
     <%= f.input :quantity, :collection => 1..fleet.quantity, :label => 'Quantity: ' %>
     <%= f.input :destination, :collection => @routes, :label => 'Destination: ' %>
     <%= f.hidden_field :id %>
-    <%= f.button :submit %>
+    <%= f.submit 'Move it' %>
   <% end %>
   <br>
 <% end %>

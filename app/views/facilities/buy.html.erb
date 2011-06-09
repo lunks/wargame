@@ -1,9 +1,9 @@
 <div class="planet_content">
-Buy Facility
+<h2> <%= @planet.name %> </h2>
 <%= simple_form_for :buy_facility, :url => url_for(:controller => 'facilities', :action => 'buy_facility')  do |f| %>
-  <%= f.input :id, :collection => @facilities, :label => 'Facility: ' %>
-  <%= f.input :planet, :collection => @planet, :label => 'Planet: ' %>
-  <%= f.button :submit %>
+  <%= f.input :id, :collection => @facilities, :label => 'Choose a Facility: ' %>
+  <%= f.input :planet, :collection => @planet, :label => 'Confirm Planet: ' %>
+  <%= f.submit 'Build it' %>
 <% end %>
 </div>
 <div class="map">

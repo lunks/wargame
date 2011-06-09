@@ -4,11 +4,12 @@
 <br>
 <% if @facility.producing_unit.present? %>
   Capacity : $ <%= @producing_capacity %> 
- ( <%= @producing_capacity / @facility.producing_unit.price.to_f %> <%= @facility.producing_unit.name %>s / round )
+ ( <%= (@producing_capacity / @facility.producing_unit.price.to_f).round(2) %> <%= @facility.producing_unit.name %>s / round )
   <br>
   Current Balance: $ <%= @facility.balance  %>
   <br> 
-  Constructing: <%= @facility.producing_unit.name %> ( <%= @current_producing_unit_status %>% done )
+  Constructing: <%= @facility.producing_unit.name %> 
+  <%= "( #{@current_producing_unit_status}% done )" if @facility.producing_unit.is_a? CapitalShip %>
 <% else %>
   Producing Capacity: $ <%= @producing_capacity %>
   <br>
@@ -18,7 +19,7 @@
 <br>
 <%= simple_form_for @facility do |f| %>
 <%= f.input :producing_unit, :collection => @units, :label => 'Producing Unit: ' %>
-<%= f.button :submit %>
+<%= f.submit 'Change Unit' %>
 <% end %>
 </div>
 <div class="map">

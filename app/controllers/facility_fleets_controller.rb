@@ -9,7 +9,7 @@ class FacilityFleetsController < ApplicationController
     @planet = @facility.planet
     if @facility.producing_unit.present?
       @producing_capacity = @facility.generic_unit.price / 4
-      @current_producing_unit_status = @facility.balance / @facility.producing_unit.price.to_f * 100
+      @current_producing_unit_status = (@facility.balance / @facility.producing_unit.price.to_f * 100).round(2)
     else
       @producing_capacity = 0
       @current_producing_unit_status = 0
