@@ -7,21 +7,6 @@ class Round < ActiveRecord::Base
     end
   end
 
-  def done_moving?
-    done = true
-    Squad.all.each do |squad|
-      done = false unless squad.move?
-    end
-    save
-    done
-  end
-
-  def who?
-    Squad.all.each do |squad|
-      return squad unless squad.move?
-    end
-  end
-
   def new_game!
     Squad.all.each do |squad|
       3.times {squad.planets << Planet.randomize}

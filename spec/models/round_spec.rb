@@ -8,19 +8,6 @@ describe Round do
   let! (:rebel) {Factory :squad}
   let! (:empire) {Factory :squad}
 
-  it 'should end moving phase just when all squads ends the moving phase' do
-    rebel.end_move_round
-    round.should_not be_done_moving
-    empire.end_move_round
-    round.should be_done_moving
-  end
-
-  it 'should be able to return whose turn is it' do
-    round.who?.should == rebel
-    rebel.end_move_round
-    round.who?.should == empire
-  end
-
   context 'beginning a new round' do
     before(:each) do
       empire.destroy # stinking empire!
