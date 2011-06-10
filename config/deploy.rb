@@ -9,6 +9,7 @@ set :branch, "master"
 set :scm, :git
 
 server APP_SERVER, :web, :app, :db, :primary => true
+set(:shared_database_path) {"#{shared_path}/databases"}
 
 set :rvm_ruby_string, 'ree@wargame'
 set :deploy_to, "/var/www/#{application}"
@@ -32,3 +33,25 @@ namespace :deploy do
     reload
   end
 end
+namespace :sqlite3 do
+  desc "Generate a database configuration file"
+  task :build_configuration, :roles => :db do
+    db_options = {
+      "adapter"  => "sqlite3",
+      "database" => "#{shared_database_path}/production.sqlite3"
+    }
+    config_options = {"production" => db_options}.to_yaml
+    put config_options, "#{current_path}/config/database.yml"
+  end
+
+  desc "Make a shared database folder"
+  task :make_shared_folder, :roles => :db do
+    run "mkdir -p #{shared_database_path}"
+  end
+end
+after "deploy:setup", "sqlite3:make_shared_folder"
+after "deploy:setup", "sqlite3:build_configuration"
+
+before "deploy:migrate", "sqlite3:build_configuration"
+after "deploy:update_code", "sqlite3:build_configuration"
+
