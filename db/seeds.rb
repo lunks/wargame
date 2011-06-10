@@ -135,7 +135,7 @@ CapitalShip.create(:name => 'Liberator Cruiser', :price => 2450 ).factions = reb
 CapitalShip.create(:name => 'Dauntless Cruiser', :price => 2850 ).factions = reb
 CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 12000 ).factions = reb
 CapitalShip.create(:name => 'Mod Corvette', :price => 430 ).factions = merc
-CapitalShip.create(:name => 'Marauder Corvette', :price => 850 ).factions = merc
+CapitalShip.create(:name => 'Marauder Corvette', :price => 850 ).factions = mand_merc
 CapitalShip.create(:name => 'Providence Destroyer', :price => 2200 ).factions = merc
 CapitalShip.create(:name => 'Munificent Frigate', :price => 2000 ).factions = merc
 CapitalShip.create(:name => 'Dreadnaught', :price => 1250 ).factions = all
