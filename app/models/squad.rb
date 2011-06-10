@@ -82,6 +82,9 @@ class Squad < ActiveRecord::Base
       total_value -= random_trooper.price
     end
     fleets.create(:generic_unit => random_trooper, :planet => planet, :quantity => unit_count)
+  end
+
+  def warp_ships unit, planet
   end  
 
   def populate_planets
