@@ -6,7 +6,9 @@
   Capacity : $ <%= @producing_capacity %> 
  ( <%= @producing_capacity / @facility.producing_unit.price.to_f %> <%= @facility.producing_unit.name %>s / round )
   <br>
-  Balance: $ <%= @facility.balance  %> ( <%= @facility.producing_unit.name %> <%= @current_producing_unit_status %>% done )
+  Current Balance: $ <%= @facility.balance  %>
+  <br> 
+  Constructing: <%= @facility.producing_unit.name %> ( <%= @current_producing_unit_status %>% done )
 <% else %>
   Producing Capacity: $ <%= @producing_capacity %>
   <br>
