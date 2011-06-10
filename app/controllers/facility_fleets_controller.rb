@@ -6,6 +6,14 @@ class FacilityFleetsController < ApplicationController
   def edit
     @facility = FacilityFleet.find(params[:id])
     @units = Unit.allowed_for(current_squad.faction)
+    @planet = @facility.planet
+    if @facility.producing_unit.present?
+      @producing_capacity = @facility.generic_unit.price / 4
+      @current_producing_unit_status = @facility.balance / @facility.producing_unit.price.to_f * 100
+    else
+      @producing_capacity = 0
+      @current_producing_unit_status = 0
+    end
   end
 
   def update

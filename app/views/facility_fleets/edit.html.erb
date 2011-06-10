@@ -1,14 +1,19 @@
 <div class="planet_content">
-Type: <%= @facility.generic_unit.name  %>
-<br>
-Current Balance: $ <%= @facility.balance  %>
+<h2><%= @planet.name %></h2>
+<span style=font-weight:bold;font-size:14px><%= @facility.generic_unit.name  %></span>
 <br>
 <% if @facility.producing_unit.present? %>
-  Producing Capacity: $ <%= @facility.generic_unit.price / 4 %> 
- ( <%= @facility.generic_unit.price / 4 / @facility.producing_unit.price %> <%= @facility.producing_unit.name %>s per turn )
+  Capacity : $ <%= @producing_capacity %> 
+ ( <%= @producing_capacity / @facility.producing_unit.price.to_f %> <%= @facility.producing_unit.name %>s / round )
+  <br>
+  Balance: $ <%= @facility.balance  %> ( <%= @facility.producing_unit.name %> <%= @current_producing_unit_status %>% done )
 <% else %>
-  Producing Capacity: $ <%= @facility.generic_unit.price / 4 %>
+  Producing Capacity: $ <%= @producing_capacity %>
+  <br>
+  Balance: $ <%= @facility.balance  %>
 <% end %>
+
+<br>
 <%= simple_form_for @facility do |f| %>
 <%= f.input :producing_unit, :collection => @units, :label => 'Producing Unit: ' %>
 <%= f.button :submit %>
