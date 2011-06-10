@@ -64,7 +64,7 @@ describe Planet do
         planet.squad.should be @squad
       end
 
-      it 'should change its ownership if it has a facility on it' do
+      pending 'should change its ownership if it has a facility on it' do
         planet.generic_fleets << facility
         planet.set_ownership
         planet.squad.should be @squad
@@ -75,6 +75,8 @@ describe Planet do
       let(:trooper) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:trooper)}
 
       it 'should change its owner if planet has a trooper on it' do
+        other_trooper = Factory :generic_fleet, :squad => Factory(:squad)
+        planet.generic_fleets << other_trooper
         planet.generic_fleets << trooper
         planet.set_ground_ownership
         planet.ground_squad.should be @squad

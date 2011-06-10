@@ -14,8 +14,10 @@ class Planet < ActiveRecord::Base
   end
 
   def set_ownership
-    if has_a? CapitalShip or has_a? Facility
-      self.squad = self.generic_fleets.first.squad #TODO ta pegando first squad, deve pegar quem é dono da CS
+    air_unit = CapitalShip
+    if has_a? CapitalShip
+      air_units = generic_fleets.select {|fleet| fleet.type? air_unit}
+      self.squad = air_units.first.squad
       save
     else
       self.squad = nil
@@ -24,8 +26,10 @@ class Planet < ActiveRecord::Base
   end
 
   def set_ground_ownership
-    if has_a? Trooper
-      self.ground_squad = self.generic_fleets.first.squad
+    ground_unit = Trooper
+    if has_a? ground_unit
+      ground_units = generic_fleets.select {|fleet| fleet.type? ground_unit}
+      self.ground_squad = ground_units.first.squad
       save
     else
       self.ground_squad = nil
