@@ -9,11 +9,8 @@
     <% end %>
   <% else %>
     <% if fleet.producing_unit.present? %>
-      <% if fleet.producing_unit.is_a? CapitalShip %>
-        <%= fleet.producing_unit.name %> ( <%= (fleet.balance / fleet.producing_unit.price.to_f * 100).round(2) %> )
-      <% else %>
-        <%= fleet.producing_unit.name %>
-      <% end %>
+        <%= fleet.producing_unit.name %> <%= "#{(fleet.balance / fleet.producing_unit.price.to_f * 100).round(2)}%" if fleet.producing_unit.is_a? CapitalShip %>
+
     <% else %>
       <%= 'inactive' %>
     <% end %>
