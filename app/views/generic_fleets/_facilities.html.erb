@@ -2,14 +2,26 @@
 <%= fleet.generic_unit.name %>
 ( <% if @round.move && fleet.squad == @squad %>
     <% if fleet.producing_unit.present? %>
+<<<<<<< HEAD
       <%= link_to "#{fleet.producing_unit.name}", edit_facility_fleet_path(fleet) %>
       <%= link_to "#{(fleet.balance / fleet.producing_unit.price.to_f * 100).round(2)}%" if fleet.producing_unit.is_a? CapitalShip %>
+=======
+      <% if fleet.producing_unit.is_a? CapitalShip %>
+        <%= link_to "#{fleet.producing_unit.name} (#{(fleet.balance / fleet.producing_unit.price.to_f * 100).round(2)}%)", edit_facility_fleet_path(fleet) %>
+      <% else %>
+        <%= link_to "#{fleet.producing_unit.name}", edit_facility_fleet_path(fleet) %>
+      <% end %>
+>>>>>>> Add % done for producing units
     <% else %>
       <%= link_to 'inactive', edit_facility_fleet_path(fleet) %>
     <% end %>
   <% else %>
     <% if fleet.producing_unit.present? %>
-      <%= fleet.producing_unit.name %>
+      <% if fleet.producing_unit.is_a? CapitalShip %>
+        <%= fleet.producing_unit.name %> ( <%= (fleet.balance / fleet.producing_unit.price.to_f * 100).round(2) %> )
+      <% else %>
+        <%= fleet.producing_unit.name %>
+      <% end %>
     <% else %>
       <%= 'inactive' %>
     <% end %>
