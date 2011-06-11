@@ -64,7 +64,7 @@ describe Planet do
         planet.squad.should be @squad
       end
 
-      pending 'should change its ownership if it has a facility on it' do
+      it 'should change its ownership if it has a facility on it' do
         planet.generic_fleets << facility
         planet.set_ownership
         planet.squad.should be @squad
