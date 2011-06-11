@@ -8,12 +8,8 @@
   <br>
   Current Balance: $ <%= @facility.balance  %>
   <br> 
-<<<<<<< HEAD
   Constructing: <%= @facility.producing_unit.name %> 
   <%= "( #{@current_producing_unit_status}% done )" if @facility.producing_unit.is_a? CapitalShip %>
-=======
-  Constructing: <%= @facility.producing_unit.name %> ( <%= @current_producing_unit_status.round(2) %>% done )
->>>>>>> Add % done for producing units
 <% else %>
   Producing Capacity: $ <%= @producing_capacity %>
   <br>
