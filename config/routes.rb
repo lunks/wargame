@@ -28,6 +28,7 @@ Rpg::Application.routes.draw do
    match 'ready' => 'squads#ready'
    match 'index' => 'home#index'
    match 'fleets' => 'generic_fleets#index'
+   match 'transfer' => 'squads#transfer'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

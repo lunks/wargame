@@ -75,7 +75,7 @@ class Squad < ActiveRecord::Base
   end
   
   def transfer_credits quantity, destination
-    if self.credits >= quantity
+    if self.credits >= quantity && self != destination
       self.debit quantity
       destination.deposit quantity
     end
