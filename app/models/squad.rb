@@ -91,23 +91,10 @@ class Squad < ActiveRecord::Base
     save
   end
 
-  def ready
-    self.move = true
+  def ready!
+    self.ready = true
     save
-    if Round.getInstance.move == true
-      squads_not_ready = Squad.where(:move => nil)
-      if squads_not_ready.empty? 
-         Round.getInstance.end_moving!
-      end
-    else
-      squads_not_ready = Squad.where(:move => nil)
-      if squads_not_ready.empty? 
-         Round.getInstance.end_round!
-      end
-    end
+    Round.getInstance.check_state
   end
-
-
-
 
 end

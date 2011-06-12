@@ -17,16 +17,11 @@ class Round < ActiveRecord::Base
 
   def end_moving!
     Squad.all.each do |squad|
-      squad.move = nil
+      squad.ready = nil
       squad.save
     end
-    moving_fleets = Fleet.where(:moving => true)
-    moving_fleets.each do |fleet|
-      fleet.move!
-    end
-    GenericFleet.all.each do |fleet|
-      Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad)
-    end
+    self.move_fleets
+    self.check_conflicts
     self.move = nil
     self.attack = true
     save
@@ -34,23 +29,18 @@ class Round < ActiveRecord::Base
   end
 
   def end_round!
-    Result.where(:round => self).each do |result|
-      result.blast! unless result.blasted == nil || result.blasted <= 0
-      result.capture! unless result.captured == nil || result.captured <= 0
-      result.flee! unless result.fled == nil || result.fled <= 0
-    end
+    self.apply_results
     self.attack = nil
     self.done = true
     save
-    new_round_number = self.number + 1
-    Round.create(:number => new_round_number, :move => true)
+    Round.create(:number => self.number + 1, :move => true)
     set_map
     Squad.all.each do |squad|
       squad.generate_profits!
       squad.facility_fleets.each do |facility|
         facility.produce!
       end
-      squad.move = nil
+      squad.ready = nil
       squad.save
     end
   end
@@ -61,4 +51,35 @@ class Round < ActiveRecord::Base
       planet.set_ground_ownership
     end
   end
+
+  def check_state
+    squads_not_ready = Squad.where(:ready => nil)
+    if Round.getInstance.move?
+      Round.getInstance.end_moving! if squads_not_ready.empty?
+    else
+      Round.getInstance.end_round! if squads_not_ready.empty?
+    end
+  end
+
+  def move_fleets
+    moving_fleets = Fleet.where(:moving => true)
+    moving_fleets.each do |fleet|
+      fleet.move!
+    end
+  end
+
+  def check_conflicts #TODO criar os post results somente em planetas que tiverem conflito (2 squads no mesmo planeta)
+    GenericFleet.all.each do |fleet|
+      Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad)
+    end
+  end
+
+  def apply_results
+    Result.where(:round => self).each do |result|
+      result.blast! unless result.blasted == nil || result.blasted <= 0
+      result.capture! unless result.captured == nil || result.captured <= 0
+      result.flee! unless result.fled == nil || result.fled <= 0
+    end
+  end
+
 end

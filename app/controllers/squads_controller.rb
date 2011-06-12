@@ -14,7 +14,7 @@ class SquadsController < ApplicationController
   end
 
   def ready
-    current_squad.ready
+    current_squad.ready!
     redirect_to :fleets
   end
 
