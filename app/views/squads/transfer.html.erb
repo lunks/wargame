@@ -1,0 +1,8 @@
+<div class="planet_content">
+<h2> Transfer Credits </h2>
+<%= simple_form_for :transfer, :url => url_for(:controller => 'squads', :action => 'transfer_credits')  do |f| %>
+  <%= f.input :credits, :label => 'Credits: ', :input_html => { :size => 4 } %>
+  <%= f.input :squad, :collection => @squads, :label => 'To: ' %>
+  <%= f.submit 'Transfer' %>
+<% end %>
+</div>

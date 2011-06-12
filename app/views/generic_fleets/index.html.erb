@@ -1,8 +1,9 @@
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:18px><%= @squad.name %></span><br>
 <span style=font-weight:bold;font-size:14px> Round: <%= @round.number %> | Credits: $<%= @squad.credits %> | Income: $<%= @income %></span><br><br>
-<%= link_to "Is #{@squad.name} ready to go? ", :ready %>
-<%= "Yes, we're waiting!" if @squad.ready? %>
+<%= link_to "[transfer credits] ", :transfer %><br><br>
+<%= link_to "[click when ready] ", :ready %>
+<%= " OK, waiting other players " if @squad.ready? %>
 </div>
 
 <div class="planet_content">
