@@ -21,10 +21,12 @@ class Round < ActiveRecord::Base
       squad.save
     end
     self.move_fleets
-    self.check_conflicts
     self.move = nil
     self.attack = true
     save
+    GenericFleet.all.each do |fleet|
+      Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad)
+    end
     set_map
   end
 
@@ -69,9 +71,7 @@ class Round < ActiveRecord::Base
   end
 
   def check_conflicts #TODO criar os post results somente em planetas que tiverem conflito (2 squads no mesmo planeta)
-    GenericFleet.all.each do |fleet|
-      Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad)
-    end
+    
   end
 
   def apply_results
