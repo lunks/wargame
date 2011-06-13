@@ -61,7 +61,7 @@ class Squad < ActiveRecord::Base
       unit_count += 1
       total_value -= random_unit.price
     end
-    fleets.create(:generic_unit => random_unit, :planet => planet, :quantity => unit_count)  
+    fleets.create(:generic_unit_id => random_unit.id, :planet => planet, :quantity => unit_count)  
   end  
 
   def populate_planets
