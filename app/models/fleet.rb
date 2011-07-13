@@ -70,7 +70,7 @@ class Fleet < GenericFleet
   end
 
   def group_fleets
-    fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil )
+    fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil, :type => 'Fleet')
     total_quantity = 0
     fleets.each do |fleet|
       unless fleet == self
