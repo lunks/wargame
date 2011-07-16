@@ -1,24 +1,24 @@
 GIT
   remote: https://github.com/sferik/rails_admin.git
-  revision: 2b4573ee2e7a92fcfc408dbc32a10cd2ab5f3abc
+  revision: 59e1d6db8c9dbea7f64ece2c70df367f774a540f
   specs:
     rails_admin (0.0.1)
       builder (~> 2.1.0)
       fastercsv
-      haml (>= 3.0.0, < 3.2.0)
-      rails (~> 3.0.7)
+      haml (>= 3.1.0, < 3.3.0)
+      rails (~> 3.0.9)
 
 GEM
   remote: http://rubygems.org/
   specs:
     ZenTest (4.5.0)
     abstract (1.0.0)
-    actionmailer (3.0.7)
-      actionpack (= 3.0.7)
-      mail (~> 2.2.15)
-    actionpack (3.0.7)
-      activemodel (= 3.0.7)
-      activesupport (= 3.0.7)
+    actionmailer (3.0.9)
+      actionpack (= 3.0.9)
+      mail (~> 2.2.19)
+    actionpack (3.0.9)
+      activemodel (= 3.0.9)
+      activesupport (= 3.0.9)
       builder (~> 2.1.2)
       erubis (~> 2.6.6)
       i18n (~> 0.5.0)
@@ -26,19 +26,19 @@ GEM
       rack-mount (~> 0.6.14)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
-    activemodel (3.0.7)
-      activesupport (= 3.0.7)
+    activemodel (3.0.9)
+      activesupport (= 3.0.9)
       builder (~> 2.1.2)
       i18n (~> 0.5.0)
-    activerecord (3.0.7)
-      activemodel (= 3.0.7)
-      activesupport (= 3.0.7)
-      arel (~> 2.0.2)
+    activerecord (3.0.9)
+      activemodel (= 3.0.9)
+      activesupport (= 3.0.9)
+      arel (~> 2.0.10)
       tzinfo (~> 0.3.23)
-    activeresource (3.0.7)
-      activemodel (= 3.0.7)
-      activesupport (= 3.0.7)
-    activesupport (3.0.7)
+    activeresource (3.0.9)
+      activemodel (= 3.0.9)
+      activesupport (= 3.0.9)
+    activesupport (3.0.9)
     arel (2.0.10)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
@@ -84,7 +84,7 @@ GEM
     highline (1.6.2)
     i18n (0.5.0)
     json_pure (1.5.3)
-    kgio (2.5.0)
+    kgio (2.6.0)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -110,21 +110,23 @@ GEM
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
-    rails (3.0.7)
-      actionmailer (= 3.0.7)
-      actionpack (= 3.0.7)
-      activerecord (= 3.0.7)
-      activeresource (= 3.0.7)
-      activesupport (= 3.0.7)
+    rails (3.0.9)
+      actionmailer (= 3.0.9)
+      actionpack (= 3.0.9)
+      activerecord (= 3.0.9)
+      activeresource (= 3.0.9)
+      activesupport (= 3.0.9)
       bundler (~> 1.0)
-      railties (= 3.0.7)
-    railties (3.0.7)
-      actionpack (= 3.0.7)
-      activesupport (= 3.0.7)
+      railties (= 3.0.9)
+    railties (3.0.9)
+      actionpack (= 3.0.9)
+      activesupport (= 3.0.9)
       rake (>= 0.8.7)
+      rdoc (~> 3.4)
       thor (~> 0.14.4)
     raindrops (0.7.0)
     rake (0.9.2)
+    rdoc (3.8)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -181,9 +183,9 @@ DEPENDENCIES
   ci_reporter
   devise
   factory_girl_rails
-  forgery
+  forgery (= 0.3.10)
   meta_where
-  rails (= 3.0.7)
+  rails (= 3.0.9)
   rails_admin!
   rspec-rails
   shoulda

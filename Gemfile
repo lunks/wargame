@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '3.0.9'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
@@ -18,7 +18,7 @@ group :development, :test do
   gem "autotest"
   gem 'ci_reporter'
   gem 'capistrano'
-  gem 'forgery'
+  gem 'forgery', '0.3.10'
   gem "autotest-rails"
   gem 'autotest-notification'
 end
