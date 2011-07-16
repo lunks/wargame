@@ -6,6 +6,8 @@ class GenericFleet < ActiveRecord::Base
 
   after_save :destroy_if_empty
 
+  delegate :name, :to => :generic_unit
+
   def blast! quantity
     self.quantity -= quantity
     save
@@ -28,5 +30,8 @@ class GenericFleet < ActiveRecord::Base
     destroy if self.quantity == 0
   end
 
+  def to_s
+    name
+  end
 end
 

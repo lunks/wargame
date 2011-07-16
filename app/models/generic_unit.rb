@@ -15,5 +15,8 @@ class GenericUnit < ActiveRecord::Base
   def belongs?(faction)
     factions.include?(faction.to_s)
   end
+  def to_label
+    "#{name} - #{price}"
+  end
 end
 require 'unit'

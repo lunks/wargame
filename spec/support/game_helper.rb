@@ -1,5 +1,5 @@
 module GameHelper
-  def setup_game!
+  def start_game
     login_user!
     @squad = Factory :squad
     @user.squad = @squad
@@ -10,5 +10,6 @@ module GameHelper
     Factory :capital_ship, :factions => 'empire'
     Factory :facility, :factions => 'empire'
     Round.getInstance.new_game!
+    visit '/fleets'
   end
 end

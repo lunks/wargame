@@ -7,7 +7,6 @@ Rpg::Application.routes.draw do
        get :move
      end
    end
-   resources :facility_fleets
 
    resources :facilities do
      member do
@@ -15,7 +14,8 @@ Rpg::Application.routes.draw do
      end
    end
 
-   resources :planets do
+   resources :planets, :shallow => true do
+   resources :facility_fleets
      member do
        get :move
      end

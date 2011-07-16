@@ -14,6 +14,7 @@ describe Round do
       rebel.planets.clear
       rebel.facility_fleets.clear
       unit = Factory :fighter, :price => 140
+      Factory :facility
       Factory :capital_ship, :price => 1000
       Factory :trooper, :price => 2
       3.times {Factory.create :planet}

@@ -82,5 +82,9 @@ class Planet < ActiveRecord::Base
     squads.uniq
   end
 
+  def to_s
+    name
+  end
+
 end
 

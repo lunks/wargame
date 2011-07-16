@@ -1,13 +1,13 @@
 require 'forgery'
 Factory.define :generic_unit do |f|
-  f.name Forgery::Name.full_name
-  f.price Forgery::Basic.number
+  f.name { Forgery::Name.full_name }
+  f.price { Forgery::Basic.number }
   f.factions 'empire'
 end
 
 Factory.define :squad do |f|
   f.name Forgery::Name.full_name
-  f.credits Forgery::Basic.number
+  f.credits { Forgery::Basic.number(:at_least => 5000, :at_most => 10000) }
   f.color '00FF00'
   f.faction 'empire'
 end

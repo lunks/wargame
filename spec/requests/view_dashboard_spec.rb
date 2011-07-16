@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Viewing dashboard" do
   before do
-    setup_game!
+    start_game
     @planet_name =  @squad.fleets.first.planet.name
     @ship_name = @squad.fleets.first.generic_unit.name
     @moving_fleet = @squad.fleets.first
@@ -20,7 +20,6 @@ describe "Viewing dashboard" do
     it 'should show the planet name' do
       page.should have_content @planet_name
     end
-   
     it 'should show fleets on a planet' do
       page.should have_content @ship_name
     end

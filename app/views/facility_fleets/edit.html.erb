@@ -1,29 +1,20 @@
 <div class="planet_content">
-<h2><%= @planet.name %></h2>
-<span style=font-weight:bold;font-size:14px><%= @facility.generic_unit.name  %></span>
-<br>
+<h2><%= @planet %></h2>
+<h3><%= @facility  %></h3>
+  Balance: $<%= @facility.balance  %>
+  <br>
 <% if @facility.producing_unit.present? %>
-  Capacity : $ <%= @producing_capacity %> 
- ( <%= (@producing_capacity / @facility.producing_unit.price.to_f).round(2) %> <%= @facility.producing_unit.name %>s / round )
+  <%= "Capacity: $#{@facility.capacity}
+  (#{@facility.units_per_turn} #{@facility.producing_unit.name.pluralize}/round)" %>
   <br>
-  Current Balance: $ <%= @facility.balance  %>
-  <br> 
-  Constructing: <%= @facility.producing_unit.name %> 
-  <%= "( #{@current_producing_unit_status}% done )" if @facility.producing_unit.is_a? CapitalShip %>
+  <br>
+  Building: <%= @facility.producing_unit.name %>
+  <%= "( #{@facility.building_done}% done )" if @facility.units_per_turn < 1 %>
 <% else %>
-  Producing Capacity: $ <%= @producing_capacity %>
-  <br>
-  Balance: $ <%= @facility.balance  %>
+  Capacity: $<%= @facility.capacity %>
 <% end %>
-
-<br>
 <%= simple_form_for @facility do |f| %>
-<%= f.input :producing_unit, :collection => @units, :label => 'Producing Unit: ' %>
+<%= f.input :producing_unit, :collection => @units, :label => 'Producing Unit:' %>
 <%= f.submit 'Change Unit' %>
 <% end %>
-</div>
-<div class="map">
-<IFRAME src="https://spreadsheets.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdC1aNzNwMU54clBiRTBOeUp6c3c1VEE&hl=pt_BR&authkey=CLTM4ogF#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right">
-
-</IFRAME> 
 </div>

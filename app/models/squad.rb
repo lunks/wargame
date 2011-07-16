@@ -6,7 +6,7 @@ class Squad < ActiveRecord::Base
   has_many :generic_fleets
   has_many :facility_fleets
   has_many :fleets
-  
+
   def faction=(faction)
     write_attribute(:faction, FACTIONS.rindex(faction))
   end
@@ -46,7 +46,8 @@ class Squad < ActiveRecord::Base
 
   def warp_facility_on planet
     facility_model = Facility.allowed_for(faction).last
-    facility_fleets.create(:generic_unit => facility_model, :planet => planet, :quantity => 1, :balance => 0)
+    facility = facility_fleets.new(:facility => facility_model, :planet => planet)
+    facility.save!
   end
 
   def warp_units total_value, unit, planet
@@ -61,8 +62,9 @@ class Squad < ActiveRecord::Base
       unit_count += 1
       total_value -= random_unit.price
     end
-    fleets.create(:generic_unit_id => random_unit.id, :planet => planet, :quantity => unit_count)  
-  end  
+    fleet = fleets.new(:generic_unit_id => random_unit.id, :planet => planet, :quantity => unit_count)
+    fleet.save!
+  end
 
   def populate_planets
     planets.each do |planet|
@@ -73,7 +75,7 @@ class Squad < ActiveRecord::Base
     end
     save!
   end
-  
+
   def transfer_credits quantity, destination
     if self.credits >= quantity && self != destination
       self.debit quantity

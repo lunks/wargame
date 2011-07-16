@@ -1,16 +1,30 @@
 class FacilityFleetsController < ApplicationController
+  before_filter :find_resources, :only => [:new, :create]
 
   def index
   end
+
+  def new
+    @facility_fleet = FacilityFleet.new
+  end
+
+  def create
+    @facility_fleet = FacilityFleet.new params[:facility_fleet]
+    @facility_fleet.planet = @planet
+    @facility_fleet.squad = current_squad
+    if @facility_fleet.save
+      redirect_to fleets_path
+    else
+      render 'new'
+    end
+  end
+
 
   def edit
     @facility = FacilityFleet.find(params[:id])
     @units = Unit.allowed_for(current_squad.faction)
     @planet = @facility.planet
-    if @facility.producing_unit.present?
-      @producing_capacity = @facility.generic_unit.price / 4
-      @current_producing_unit_status = (@facility.balance / @facility.producing_unit.price.to_f * 100).round(2)
-    else
+    unless @facility.producing_unit.present?
       @producing_capacity = 0
       @current_producing_unit_status = 0
     end
@@ -23,6 +37,12 @@ class FacilityFleetsController < ApplicationController
       current_squad.change_producing_unit @facility, @producing_unit
     end
     redirect_to :fleets
+  end
+
+  private
+  def find_resources
+    @planet = Planet.find params[:planet_id]
+    @facilities = Facility.allowed_for(current_squad.faction)
   end
 
 end
