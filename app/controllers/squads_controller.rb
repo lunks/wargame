@@ -10,12 +10,12 @@ class SquadsController < ApplicationController
     current_user.squad = squad
     squad.credits = 0
     squad.save
-    redirect_to :fleets
+    redirect_to fleets_path
   end
 
   def ready
     current_squad.ready!
-    redirect_to :fleets
+    redirect_to fleets_path
   end
 
   def transfer

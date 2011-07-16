@@ -2,7 +2,7 @@
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:18px><%= @squad.name %></span><br>
 <span style=font-weight:bold;font-size:14px> Round: <%= @round.number %> | Credits: $<%= @squad.credits %> | Income: $<%= @income %></span><br><br>
 <%= link_to "[transfer credits] ", :transfer %><br><br>
-<%= link_to "[click when ready] ", :ready %>
+<%= link_to "[click when ready] ", ready_path %>
 <%= " OK, waiting other players " if @squad.ready? %>
 </div>
 
