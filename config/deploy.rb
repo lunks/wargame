@@ -35,7 +35,7 @@ namespace :deploy do
 end
 namespace :sqlite3 do
   desc "Generate a database configuration file"
-  task :build_configuration, :roles => :db do
+  task :build_configuration, :roles => [:db, :app] do
     db_options = {
       "adapter"  => "sqlite3",
       "database" => "#{shared_database_path}/production.sqlite3"
@@ -53,5 +53,5 @@ after "deploy:setup", "sqlite3:make_shared_folder"
 after "deploy:setup", "sqlite3:build_configuration"
 
 before "deploy:migrate", "sqlite3:build_configuration"
-after "deploy:update_code", "sqlite3:build_configuration"
+after "deploy:finalize_update", "sqlite3:build_configuration"
 
