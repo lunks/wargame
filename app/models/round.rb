@@ -1,4 +1,5 @@
 class Round < ActiveRecord::Base
+  has_many :results
   def self.getInstance
     if Round.count == 0
       Round.create(:number => 1, :move => true)
