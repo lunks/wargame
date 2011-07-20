@@ -3,6 +3,11 @@ class FacilityFleet < GenericFleet
   validates_presence_of :facility, :squad
   belongs_to :facility, :foreign_key => :generic_unit_id
   belongs_to :producing_unit, :class_name => "Unit"
+  class << self
+    def is_free
+      FacilityFleet.skip_callback(:create, :before, :subtract_credits_from_squad)
+    end
+  end
   def produce!
     self.balance += capacity
     return if producing_unit.nil?
@@ -33,21 +38,20 @@ class FacilityFleet < GenericFleet
     producing_unit_display << " (#{building_done}%)" if units_per_turn < 1
     producing_unit_display
   end
-end
+  private
 
-private
+  def default_values
+    self.quantity = 1
+    self.balance = 0
+  end
 
-def default_values
-  self.quantity = 1
-  self.balance = 0
-end
-
-def subtract_credits_from_squad
-  total_price = facility.price * self.quantity
-  if squad.credits >= total_price
-    squad.credits -= total_price
-    squad.save
-  else
-    false
+  def subtract_credits_from_squad
+    total_price = facility.price * self.quantity
+    if squad.credits >= total_price
+      squad.credits -= total_price
+      squad.save
+    else
+      false
+    end
   end
 end

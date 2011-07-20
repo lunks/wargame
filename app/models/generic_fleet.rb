@@ -14,6 +14,7 @@ class GenericFleet < ActiveRecord::Base
   end
 
   def capture! quantity, squad
+    FacilityFleet.is_free
     self.quantity = self.quantity - quantity
     captured_fleet = self.clone
     captured_fleet.squad = squad

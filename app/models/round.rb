@@ -11,7 +11,7 @@ class Round < ActiveRecord::Base
   def new_game!
     Squad.all.each do |squad|
       3.times {squad.planets << Planet.randomize}
-      FacilityFleet.skip_callback(:create, :before, :subtract_credits_from_squad)
+      FacilityFleet.is_free
       squad.populate_planets
     end
     set_map
