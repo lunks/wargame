@@ -26,7 +26,7 @@
     <p>
     <%= link_to 'move fleets ', move_planet_path(planet) if @round.move %>
     <%= link_to ' build facility ', new_planet_facility_fleet_path(planet) if @round.move && planet.squad == @squad %>
-    <%= link_to 'post results ', planet_results_path(planet) if @round.attack %> 
+    <%= link_to 'post results ', planet_results_path(planet) if @round.attack and planet.under_attack? %> 
   <% end %>
 </div>
 <br>

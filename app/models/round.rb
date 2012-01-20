@@ -29,7 +29,7 @@ class Round < ActiveRecord::Base
     self.attack = true
     save
     GenericFleet.all.each do |fleet|
-      Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad)
+      Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad) if fleet.planet.under_attack?
     end
     set_map
   end

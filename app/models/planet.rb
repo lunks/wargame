@@ -89,5 +89,13 @@ class Planet < ActiveRecord::Base
     name
   end
 
+  def under_attack?
+    if GenericFleet.where(:planet => self).count(:all, :group => :squad).count > 1
+      true
+    else
+      false
+    end
+  end
+
 end
 
