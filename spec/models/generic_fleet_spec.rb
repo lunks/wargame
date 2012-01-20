@@ -66,16 +66,15 @@ describe GenericFleet do
         captured_facility.balance.should == capacity - capacity * 2
       end
 
-      it 'should decrease its balance 20% if it is producing ships' do
+      it 'should decrease its balance 20% when captured' do
         facility_unit.balance = 100
+        facility_unit.facility.price = 2000
         facility_unit.producing_unit = capital_ship
         facility_unit.save
         facility_unit.capture! 1,squad
         captured_facility = squad.generic_fleets.first
-        capacity = captured_facility.generic_unit.price / 4
-        captured_facility.balance.should == 80
+        captured_facility.balance.should == facility_unit.balance - facility_unit.capacity * 0.20
       end
-
 
     end
 
