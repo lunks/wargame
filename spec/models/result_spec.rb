@@ -19,6 +19,14 @@ describe Result do
       result.should_not be_valid
     end
 
+    it 'posted quantities' do
+      result.quantity = 10
+      result.save
+      result.blasted = 5
+      result.fled = 6
+      result.should_not be_valid
+    end
+
   end
 
   context 'when units were destroyed' do

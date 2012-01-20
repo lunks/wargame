@@ -11,7 +11,8 @@ class Result < ActiveRecord::Base
 
   validates_presence_of :round, :generic_fleet, :generic_unit, :squad, :planet, :quantity 
   validates_numericality_of :blasted, :fled, :captured, :allow_nil => true
-  validate :captor_if_captured  
+  validate :captor_if_captured
+  validate :posted_results  
 
   def blast!
     self.generic_fleet.blast! self.blasted
@@ -32,5 +33,15 @@ class Result < ActiveRecord::Base
       true
     end
   end
+
+  def posted_results
+    posted_result = self.captured.to_i + self.blasted.to_i + self.fled.to_i
+    if posted_result > self.quantity.to_i
+      errors.add :blasted, 'exceed fleet quantity'
+    else
+      true
+    end
+  end
+
 
 end
