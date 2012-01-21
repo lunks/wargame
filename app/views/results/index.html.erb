@@ -14,7 +14,7 @@
        <%= result_form.input :blasted, :input_html => { :size => 3 } %>
        <%= result_form.input :fled, :input_html => { :size => 3 } %>
        <%= result_form.input :captured, :input_html => { :size => 3 } %>
-       <%= result_form.association :captor, :collection => (@squads - result.squad) %>
+       <%= result_form.association :captor, :collection => @squads %>
        <br>
     <% end %>
   <% end %>
