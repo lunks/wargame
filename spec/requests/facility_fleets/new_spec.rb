@@ -12,7 +12,7 @@ describe "facility fleets" do
     end
 
     it "after bought, shows up on the main page" do
-      click_link '[build facility]'
+      click_link 'build facility'
       page.should have_content Planet.first.name
       select @facility.name, :from => 'Choose a Facility:'
       click_button 'Build it'

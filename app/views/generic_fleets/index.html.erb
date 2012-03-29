@@ -1,19 +1,17 @@
 <div class="squad_info">
-<span style=color:#<%= @squad.color %>;font-weight:bold;font-size:18px><%= @squad.name %></span><br>
-<span style=font-weight:bold;font-size:14px> Round: <%= @round.number %> | Credits: $<%= @squad.credits %> | Income: $<%= @income %></span><br><br>
-<%= link_to "[transfer credits] ", :transfer %><br><br>
-<%= link_to "[click when ready] ", ready_path %>
-<%= " OK, waiting other players " if @squad.ready? %>
+<span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
+<span style=font-weight:bold;font-size:18px> Round: <%= @round.number %> <%= link_to "click when ready ", ready_path %></span><br>
+<span style=font-weight:bold;font-size:13px;color:yellow> Credits: $<%= @squad.credits %> <%= link_to "transfer credits ", :transfer %> </span><br>
+<span style=font-weight:bold;font-size:13px;color:#00FF00> Income: $<%= @income %> </span><br>
+<span style=font-weight:bold;font-size:13px;color:#FF0000> Wasted: $ -<%= @flee_tax.to_i %></span><br>
+<span style=text-decoration:blink;><%= " Strategy is ready! Waiting other players " if @squad.ready? %></span>
 </div>
 
 <div class="planet_content">
   <% @planets.each do |planet| %>
-    <h2> <%= planet.name %> </h2>
-    <%= link_to '[move fleets] ', move_planet_path(planet) if @round.move %>
-    <%= link_to ' [build facility] ', new_planet_facility_fleet_path(planet) if @round.move && planet.squad == @squad %>
-    <%= link_to '[post results] ', planet_results_path(planet) if @round.attack %>
+    <h2> <%= planet.name %></h2>
     <p>
-    <span style=font-weight:bold><%= "Income: $ #{planet.credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 %></span>
+    <%= "Planet Income: $#{planet.credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && planet.squad == @squad && planet.ground_squad == @squad %>
     <p>
     <% planet.generic_fleets.each do |fleet| %>
       <span style=color:#<%= fleet.squad.color %>>
@@ -25,12 +23,18 @@
       </span>
       <br>
     <% end %>
+    <p>
+    <%= link_to 'move fleets ', move_planet_path(planet) if @round.move %>
+    <%= link_to ' build facility ', new_planet_facility_fleet_path(planet) if @round.move && planet.squad == @squad %>
+    <%= link_to 'post results ', planet_results_path(planet) if @round.attack %> 
   <% end %>
 </div>
+<br>
+<a href="/users/sign_out"> Logout </a>
 
 <div class="map">
-<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1080" height="768" id="FlashID" title="Map 5.0">
-  <param name="movie" value="http://brnavies.dyndns.org:3000/mapa5.swf" />
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1080" height="768" id="FlashID" title="Map 6.0">
+  <param name="movie" value="http://brnavies.dyndns.org:3000/mapa.swf" />
   <param name="quality" value="high" />
 
   <param name="wmode" value="opaque" />
@@ -39,7 +43,7 @@
   <param name="expressinstall" value="Scripts/expressInstall.swf" />
   <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
   <!--[if !IE]>-->
-  <object type="application/x-shockwave-flash" data="http://brnavies.dyndns.org:3000/mapa5.swf" width="1080" height="768">
+  <object type="application/x-shockwave-flash" data="http://brnavies.dyndns.org:3000/mapa.swf" width="1080" height="768">
     <!--<![endif]-->
     <param name="quality" value="high" />
 
@@ -57,3 +61,4 @@
   <!--<![endif]-->
 </object>
 </div>
+

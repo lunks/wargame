@@ -4,6 +4,7 @@ class GenericFleetsController < ApplicationController
     @round = Round.getInstance
     @squad = current_squad
     @income = 0
+    @flee_tax = @squad.flee_tax @round
     @squad.planets.each do |planet|
       @income += planet.credits_per_turn if planet.credits_per_turn.present?
     end
@@ -15,6 +16,10 @@ class GenericFleetsController < ApplicationController
       @planet = Planet.find(params[:fleet][:destination])
       @fleet.move params[:fleet][:quantity].to_i, @planet
     end
+    redirect_to :fleets
+  end
+
+  def back_to_main
     redirect_to :fleets
   end
 

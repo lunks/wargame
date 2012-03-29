@@ -10,8 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_squad
-    current_user.squad  
+    if current_user
+      current_user.squad  
+    else
+      'NO SQUAD'
+    end
   end
-
 
 end

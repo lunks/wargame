@@ -1,5 +1,8 @@
 class PlanetsController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:map]
   respond_to :html, :xml
+
   def index
     @fleets = current_squad.generic_fleets.all
   end
@@ -17,11 +20,10 @@ class PlanetsController < ApplicationController
   end
 
   def map
+    @current_squad = current_squad
     @planets = Planet.includes(:squad).all
     respond_with @planets
   end
-
-
 
 end
 

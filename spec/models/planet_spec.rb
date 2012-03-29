@@ -50,10 +50,10 @@ describe Planet do
       planet.set_ownership
       planet.squad.should be_nil
     end
-    it 'should remove its ground ownership if it doesnt have a trooper on it' do
-      planet.set_ground_ownership
-      planet.ground_squad.should be_nil
-    end
+   # it 'should remove its ground ownership if it doesnt have a trooper on it' do
+   #   planet.set_ground_ownership
+   #   planet.ground_squad.should be_nil
+   # end
     context 'air ownership' do
       let(:capital_ship) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:capital_ship)}
       let(:facility) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:facility)}

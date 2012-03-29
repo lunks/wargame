@@ -21,12 +21,12 @@ class FacilityFleet < GenericFleet
     save
   end
 
-  def capacity
-    facility.price / 4
+  def units_per_turn
+    ((capacity + balance) / producing_unit.price.to_f).round(2)
   end
 
-  def units_per_turn
-    (capacity / producing_unit.price.to_f).round(2)
+  def capacity
+    facility.capacity
   end
 
   def building_done
@@ -34,8 +34,11 @@ class FacilityFleet < GenericFleet
   end
 
   def producing_unit_display
-    producing_unit_display = producing_unit.name
-    producing_unit_display << " (#{building_done}%)" if units_per_turn < 1
+    if units_per_turn < 1
+      producing_unit_display = producing_unit.name + " #{building_done}%"
+    else 
+      producing_unit_display = producing_unit.name
+    end
     producing_unit_display
   end
   private

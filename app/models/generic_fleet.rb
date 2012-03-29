@@ -1,4 +1,5 @@
 class GenericFleet < ActiveRecord::Base
+  default_scope :order => "updated_at DESC"
   scope :owned_by, lambda {|squad| where(:squad => squad)}
   belongs_to :squad
   belongs_to :planet
@@ -15,11 +16,22 @@ class GenericFleet < ActiveRecord::Base
 
   def capture! quantity, squad
     FacilityFleet.is_free
-    self.quantity = self.quantity - quantity
     captured_fleet = self.clone
     captured_fleet.squad = squad
     captured_fleet.quantity = quantity
+    captured_fleet.type = self.type
     captured_fleet.save
+    captured_fleet.balance = self.balance
+    captured_fleet.save
+    if captured_fleet.is_a? FacilityFleet
+      if captured_fleet.producing_unit.is_a? Trooper
+        captured_fleet.balance = self.capacity - self.capacity * 2 
+      else
+        captured_fleet.balance = self.balance * 0.80
+      end
+    end
+    captured_fleet.save
+    self.quantity = self.quantity - quantity
     save
   end
 

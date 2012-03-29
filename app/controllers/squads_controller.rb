@@ -2,7 +2,7 @@ class SquadsController < ApplicationController
 
   def new
     @squad = Squad.new
-    @colors = %w[FF0000 00FF00 FFFF00 0000FF FFFFFF EE82EE]
+    @colors = %w[FF0000 00FF00 FFFF00 00FFFF FFFFFF EE82EE]
   end
 
   def create

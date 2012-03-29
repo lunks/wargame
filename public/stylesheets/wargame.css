@@ -1,51 +1,100 @@
-body
-{ 
-  font-family:verdana;
-  background-color:black;
-  color:white;
-  font-size:12px
-
+body {
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: bold;
 }
 
-a:link {color:white; text-decoration:none;}
-a:visited {color:white; text-decoration:none;}
-a:hover {color:white; text-decoration:none; font-weight:bold;}
-
-div.planet_content
-{
-  width:340px;
-  padding:10px;
-  border:3px outset gray;
-  margin:5px;
-  background:#111111;
+h2 {
+    background: -moz-linear-gradient(left center , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+    background: -ms-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+    background: -o-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+    background: -webkit-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+    background: linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+    border-bottom-left-radius: 4px;
+    border-left: 8px solid #5E707D;
+    border-top-left-radius: 4px;
+    color: white;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 15px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-shadow: 0 0 3px black, 0 0 3px black
 }
 
-div.squad_info
-{
-  width:340px;
-  padding:10px;
-  border:3px outset gray;
-  margin:5px;
-  background:#001111;
+a:link {
+    background: -moz-linear-gradient(center top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
+    background: -ms-linear-gradient(top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
+    background: -o-linear-gradient(top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
+    background: -webkit-linear-gradient(top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
+    background: linear-gradient(top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
+    border: 1px solid #333333;
+    border-radius: 10px 10px 10px 10px;
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 11px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 12px;
+    margin-left: 2px;
+    padding: 2px;
+    text-decoration: none;
+}
+a:visited {
+    border: 1px solid #333333;
+    color: white;
+    font-size: 11px;
+    text-decoration: none;
+}
+a:hover {
+    background: -moz-linear-gradient(center top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
+    background: -ms-linear-gradient(top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
+    background: -o-linear-gradient(top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
+    background: -webkit-linear-gradient(top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
+    background: linear-gradient(top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
+    color: white;
+    font-size: 11px;
+    text-decoration: none;
+}
+div.planet_content {
+    background: none repeat scroll 0 0 black;
+    border: 0 outset black;
+    box-shadow: 0 0 6px #5D90AF;
+    margin: 5px 5px 5px 5px;
+    padding: 5px;
+    width: 350px;
+    padding-left: 8px;
+    border-radius: 14px;
+    margin-top: 9px;
+}
+
+div.squad_info {
+    border: 0 outset gray;
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 0 0 6px white;
+    margin: 5px;
+    padding: 5px;
+    width: 350px;
+    padding-left: 8px;
+    padding-top:22px;
+    padding-bottom: 8px;
+    margin-top:-20px;
+    margin-bottom: 12px;
 }
 
 div.map
 {
   position:absolute;
-  top: 1%;
-  left: 380px;
+  top: 0%;
+  left: 370px;
   margin-left: 5px;
-  margin-top: 5px;
-  padding:5px;
+  margin-top: 7px;
+  padding:4px;
   width:1080px;
   height:768px;
-  border:3px outset gray;
+  border:0px outset gray;
   z-index:10;
 }
 
-
-h2
-{
-  background-color:#333333;
-  color:white;  
-}

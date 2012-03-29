@@ -113,14 +113,14 @@ describe Squad do
     end
     context 'like capital ships' do
       before do
-        capital_ship = Factory(:capital_ship, :price => 1000)
-        squad.warp_units 5000, CapitalShip, planet
+        capital_ship = Factory(:capital_ship, :price => 500)
+        squad.warp_units 1000, CapitalShip, planet
       end
       it 'should be a capital ship' do
         squad.fleets.first.generic_unit.should be_a CapitalShip
       end
-      it 'should cost between 500 and 2000 credits' do
-        squad.fleets.first.generic_unit.price.should >= 500 && squad.fleets.first.generic_unit.price.should <= 2000
+      it 'should cost 500 credits' do
+        squad.fleets.first.generic_unit.price.should == 500
       end        
     end
     context 'like troopers' do

@@ -1,4 +1,5 @@
 class Planet < ActiveRecord::Base
+  default_scope :order => "name ASC"
   scope :seen_by, lambda {|squad| joins(:generic_fleets).where(:generic_fleets => {:squad => squad}).group("planets.id")}
   belongs_to :squad
   has_many :generic_fleets
@@ -15,8 +16,9 @@ class Planet < ActiveRecord::Base
 
   def set_ownership
     if has_a? CapitalShip or has_a? Facility
-      air_units = generic_fleets.select {|fleet| fleet.type? CapitalShip}
-      air_units = generic_fleets.select {|fleet| fleet.type? Facility} if air_units.empty?
+      air_units = generic_fleets.select {|fleet| fleet.type? Facility}
+      air_units = generic_fleets.select {|fleet| fleet.type? CapitalShip} if air_units.empty?
+      air_units.sort! { |one,other| one.updated_at <=> other.updated_at }
       self.squad = air_units.first.squad
       save
     else
@@ -28,6 +30,7 @@ class Planet < ActiveRecord::Base
   def set_ground_ownership
     if has_a? Trooper
       ground_units = generic_fleets.select {|fleet| fleet.type? Trooper}
+      ground_units.sort! { |one,other| one.updated_at <=> other.updated_at }
       self.ground_squad = ground_units.first.squad
       save
     else

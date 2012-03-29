@@ -1,0 +1,16 @@
+<% @rounds.each do |round| %>
+  <h2>Round <%= round.number %>:</h2>
+  <% round.results.group_by(&:planet).each do |planet, results| %>
+    <h3><%= planet.name %></h3>
+    <% results.group_by(&:squad).each do |squad, results| %>
+      <h4><%= squad.name %></h4>
+      <% results.each do |result| %>
+        <p><%= "#{result.generic_unit.name}: #{result.quantity} total,"%>
+        <%= "#{result.captured} captured by #{result.captor.name} " if result.captured %>
+        <%= "#{result.blasted} destroyed" if result.blasted %>
+        <%= "#{result.fled} fled" if result.fled %>
+        </p>
+      <% end -%>
+    <% end -%>
+  <% end -%>
+<% end -%>

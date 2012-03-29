@@ -13,6 +13,8 @@ class Round < ActiveRecord::Base
       3.times {squad.planets << Planet.randomize}
       FacilityFleet.is_free
       squad.populate_planets
+      squad.credits = 1000
+      squad.save
     end
     set_map
   end
@@ -45,6 +47,7 @@ class Round < ActiveRecord::Base
         facility.produce!
       end
       squad.ready = nil
+      squad.credits -= squad.flee_tax self
       squad.save
     end
   end

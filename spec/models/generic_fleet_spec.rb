@@ -6,6 +6,10 @@ describe GenericFleet do
   it {should belong_to :planet}
 
   let(:unit) {Factory :generic_fleet}
+  let(:trooper) {Factory :trooper}
+  let(:capital_ship) {Factory :capital_ship}
+  let(:facility_unit) {Factory :facility_fleet}
+  let(:facility) {Factory :facility}
 
   context 'blast units' do
     before(:each) do
@@ -49,8 +53,33 @@ describe GenericFleet do
         captured_unit.quantity.should be 1
       end
     end
-  end
 
+    context 'related to captured facility fleet' do
+
+      it 'should reset balance if it is a facility producing troopers' do
+        facility_unit.balance = 100
+        facility_unit.producing_unit = trooper
+        facility_unit.save
+        facility_unit.capture! 1,squad
+        captured_facility = squad.generic_fleets.first
+        capacity = captured_facility.generic_unit.price / 4
+        captured_facility.balance.should == capacity - capacity * 2
+      end
+
+      it 'should decrease its balance 20% if it is producing ships' do
+        facility_unit.balance = 100
+        facility_unit.producing_unit = capital_ship
+        facility_unit.save
+        facility_unit.capture! 1,squad
+        captured_facility = squad.generic_fleets.first
+        capacity = captured_facility.generic_unit.price / 4
+        captured_facility.balance.should == 80
+      end
+
+
+    end
+
+  end
 
 end
 

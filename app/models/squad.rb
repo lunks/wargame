@@ -45,16 +45,20 @@ class Squad < ActiveRecord::Base
   end
 
   def warp_facility_on planet
-    facility_model = Facility.allowed_for(faction).last
-    facility = facility_fleets.new(:facility => facility_model, :planet => planet)
+    # cria um facility grande e um pequeno
+    facility_model_small = Facility.allowed_for(faction).first
+    facility = facility_fleets.new(:facility => facility_model_small, :planet => planet)
+    facility.save!
+    facility_model_big = Facility.allowed_for(faction).last
+    facility = facility_fleets.new(:facility => facility_model_big, :planet => planet)
     facility.save!
   end
 
   def warp_units total_value, unit, planet
     if unit == CapitalShip
-      units = unit.allowed_for(faction).where(:price => 500..2000)
+      units = unit.allowed_for(faction).where(:price => 490..510)
     else
-      units = unit.allowed_for(faction).all
+      units = unit.allowed_for(faction).where(:price => 2..120)
     end
     random_unit = units[rand(units.size)]
     unit_count = 0
@@ -68,8 +72,9 @@ class Squad < ActiveRecord::Base
 
   def populate_planets
     planets.each do |planet|
-      warp_units 4000, Fighter, planet
-      warp_units 2000, CapitalShip, planet
+      warp_units 2000, Fighter, planet
+      warp_units 1000, CapitalShip, planet
+      warp_units 2000, Fighter, planet
       warp_units 1000, Trooper, planet
       warp_facility_on planet
     end
@@ -97,6 +102,14 @@ class Squad < ActiveRecord::Base
     self.ready = true
     save
     Round.getInstance.check_state
+  end
+
+  def flee_tax round
+    tax = 0
+    Result.where(:squad => self, :round => round).each do |result|
+      tax += result.generic_unit.price * result.fled * 0.20 unless result.fled == nil || result.fled <= 0
+    end
+    tax
   end
 
 end

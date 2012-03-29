@@ -13,9 +13,9 @@ describe Round do
       empire.destroy # stinking empire!
       rebel.planets.clear
       rebel.facility_fleets.clear
-      unit = Factory :fighter, :price => 140
+      Factory :fighter, :price => 100
       Factory :facility
-      Factory :capital_ship, :price => 1000
+      Factory :capital_ship, :price => 500
       Factory :trooper, :price => 2
       3.times {Factory.create :planet}
       round.new_game!
@@ -28,7 +28,7 @@ describe Round do
       rebel.facility_fleets(true).should_not be_empty
     end
     it 'should place random units on the planets' do
-      rebel.fleets.count.should == 9
+      rebel.generic_fleets.count.should == 18
     end
   end
 

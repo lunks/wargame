@@ -23,6 +23,7 @@ Factory.define :generic_fleet do |f|
 end
 
 Factory.define :facility, :class => Facility, :parent => :generic_unit do |f|
+  f.price 500
 end
 
 Factory.define :fleet, :class => Fleet, :parent => :generic_fleet do |f|
@@ -32,11 +33,11 @@ Factory.define :unit, :class => Unit, :parent => :generic_unit do |f|
 end
 
 Factory.define :fighter, :class => Fighter, :parent => :unit do |f|
-  f.price 140
+  f.price 100
 end
 
 Factory.define :capital_ship, :class => CapitalShip, :parent => :unit do |f|
-  f.price 1000
+  f.price 500
 end
 
 Factory.define :trooper, :class => Trooper, :parent => :unit do |f|
@@ -52,6 +53,7 @@ end
 Factory.define :facility_fleet, :class => FacilityFleet, :parent => :generic_fleet do |f|
   f.facility {|a| a.association(:facility) }
 end
+
 Factory.define :rebels, :parent => :squad do |f|
 end
 

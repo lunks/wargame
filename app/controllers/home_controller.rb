@@ -6,4 +6,5 @@ class HomeController < ApplicationController
     @rounds = Round.includes(:results)
   end
 
+
 end

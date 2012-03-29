@@ -32,4 +32,5 @@ class Result < ActiveRecord::Base
       true
     end
   end
+
 end
