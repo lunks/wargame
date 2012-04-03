@@ -117,6 +117,6 @@ describe Planet do
 
   it 'should verify if there is a conflict on planet' do
     2.times {Factory :generic_fleet, :planet => planet}
-    planet.under_attack?.should be true
+    planet.should be_under_attack
   end
 end
