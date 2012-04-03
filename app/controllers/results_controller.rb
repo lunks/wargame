@@ -7,13 +7,12 @@ class ResultsController < ApplicationController
   end
 
   def create
-    results = params[:results]
-    saved_results = results.all? do |result_attributes|
-      result = Result.find(result_attributes[0])
-      result.attributes = result_attributes[1]
+    @results = params[:results]
+    saved_results = @results.all? do |id, attributes|
+      result = Result.find(id)
+      result.attributes = attributes
       result.save
     end
-    @results = results
     if saved_results
       redirect_to fleets_path
     else

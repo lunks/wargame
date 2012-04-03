@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     unless current_user.squad
-      new_squad_path # You can put whatever path you want here 
+      new_squad_path # You can put whatever path you want here
     else
       fleets_path
     end
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def current_squad
     if current_user
-      current_user.squad  
+      current_user.squad
     else
       'NO SQUAD'
     end

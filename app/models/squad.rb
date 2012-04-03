@@ -16,14 +16,13 @@ class Squad < ActiveRecord::Base
   end
 
   def buy unit, quantity, planet
-    if (unit.belongs?(faction)) and (unit.is_a? Facility)
-      self.credits = self.credits - (unit.price * quantity)
-      new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0)
-      generic_fleets << new_fleet
-      save
-    else
-      false
+    unless (unit.belongs? faction) and (unit.is_a? Facility) and (credits >= unit.price)
+      return false
     end
+    self.credits = self.credits - (unit.price * quantity)
+    new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0)
+    generic_fleets << new_fleet
+    save
   end
 
   def generate_profits!
@@ -34,8 +33,8 @@ class Squad < ActiveRecord::Base
   end
 
   def change_producing_unit facility_fleet, unit
-      facility_fleet.producing_unit = unit
-      facility_fleet.save!
+    facility_fleet.producing_unit = unit
+    facility_fleet.save!
   end
 
   def random_planet_but planet
@@ -89,13 +88,11 @@ class Squad < ActiveRecord::Base
   end
 
   def debit quantity
-    self.credits -= quantity
-    save
+    update_attributes(:credits => credits - quantity)
   end
 
   def deposit quantity
-    self.credits += quantity
-    save
+    update_attributes(:credits => credits + quantity)
   end
 
   def ready!
