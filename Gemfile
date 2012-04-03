@@ -1,18 +1,12 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
-
-gem 'sqlite3-ruby', :require => 'sqlite3'
-
+gem 'sqlite3'
 gem 'simple_form'
-
 gem 'devise'
-
 gem 'unicorn'
-
-gem 'rails_admin', :git => 'https://github.com/sferik/rails_admin.git'
-
 gem 'meta_where'
+
 group :development, :test do
   gem 'rspec-rails'
   gem "autotest"
