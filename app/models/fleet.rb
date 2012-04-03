@@ -8,7 +8,7 @@ class Fleet < GenericFleet
       unit_count = 0
       moving_fleets.each do |fleet|
         unit_count += fleet.quantity if fleet.generic_unit.class == Fighter
-      end  
+      end
       valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport } || unit_count >= quantity
     end
     if self.generic_unit.hyperdrive == false
@@ -31,17 +31,12 @@ class Fleet < GenericFleet
   end
 
   def cancel_move
-    self.destination = nil
-    self.moving = nil
-    save
+    update_attributes(:destination => nil, :moving => nil)
     group_fleets
   end
 
   def move!
-    self.planet = self.destination
-    self.destination = nil
-    self.moving = nil
-    save
+    update_attributes(:planet => destination, :destination => nil, :moving => nil)
     group_fleets
   end
 
