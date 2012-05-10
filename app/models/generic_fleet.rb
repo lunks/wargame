@@ -23,13 +23,7 @@ class GenericFleet < ActiveRecord::Base
     captured_fleet.save
     captured_fleet.balance = self.balance
     captured_fleet.save
-    if captured_fleet.is_a? FacilityFleet
-      if captured_fleet.producing_unit.is_a? Trooper
-        captured_fleet.balance = self.capacity - self.capacity * 2 
-      else
-        captured_fleet.balance = self.balance - self.capacity * 0.20
-      end
-    end
+    captured_fleet.balance = self.capacity - self.capacity * 2 if captured_fleet.is_a? FacilityFleet
     captured_fleet.save
     self.quantity = self.quantity - quantity
     save
