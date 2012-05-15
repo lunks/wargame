@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
-gem 'sqlite3'
+gem 'mysql2'
 gem 'simple_form'
 gem 'devise'
 gem 'unicorn'
@@ -9,6 +9,7 @@ gem 'meta_where'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'sqlite3'
   gem "autotest"
   gem 'ci_reporter'
   gem 'capistrano'

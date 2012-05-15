@@ -83,6 +83,7 @@ GEM
       activesupport (~> 3.0.0)
       arel (~> 2.0.7)
     mime-types (1.16)
+    mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -171,6 +172,7 @@ DEPENDENCIES
   factory_girl_rails
   forgery (= 0.3.10)
   meta_where
+  mysql2
   rails (= 3.0.9)
   rspec-rails
   shoulda
