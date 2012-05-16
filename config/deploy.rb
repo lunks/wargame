@@ -8,9 +8,15 @@ set :application, "wargame"
 set :user, "bitnami"
 set :branch, "master"
 set :scm, :git
+set :use_sudo, false
 
 
 server APP_SERVER, :web, :app, :db, :primary => true
 
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :repository,  "git://github.com/lunks/wargame.git"
+namespace :deploy do
+  task :restart do
+    run "cd #{current_path} && touch tmp/restart.txt"
+  end
+end
