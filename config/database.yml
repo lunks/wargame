@@ -16,7 +16,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql2
+  adapter: mysql
   database: wargame_production
   host: 127.0.0.1
   pool: 5
