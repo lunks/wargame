@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
-gem 'mysql2'
+gem 'mysql'
 gem 'simple_form'
 gem 'devise'
 gem 'unicorn'
