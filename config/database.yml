@@ -19,5 +19,7 @@ production:
   adapter: mysql
   database: wargame_production
   host: 127.0.0.1
+  user: root
+  password: bitnami
   pool: 5
   timeout: 5000
