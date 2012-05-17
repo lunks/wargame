@@ -9,16 +9,23 @@ class FacilityFleetsController < ApplicationController
   end
 
   def create
-    #@facility_fleet = FacilityFleet.new params[:facility_fleet]
-    current_squad.buy params[:facility_fleet], 1, @planet
-    #@facility_fleet.planet = @planet
-    #@facility_fleet.squad = current_squad
-    #if @facility_fleet.save
-    #  redirect_to fleets_path
-    #else
-    #  render 'new'
-    #end
-    redirect_to :fleets
+    # deu merda geral aqui, ele criava facility mesmo sem squad nao ter grana. Tive q remendar. Ass: Morali
+    @facility_fleet = FacilityFleet.new params[:facility_fleet]
+    if current_squad.credits > @facility_fleet.generic_unit.price 
+      current_squad.credits -= @facility_fleet.generic_unit.price  
+      current_squad.save
+      @facility_fleet.planet = @planet
+      @facility_fleet.squad = current_squad
+      @facility_fleet.save
+      redirect_to fleets_path
+    else
+      render 'new'
+    end
+#    if @facility_fleet.save
+#      redirect_to fleets_path
+#    else
+#      render 'new'
+#    end
   end
 
 
