@@ -9,23 +9,15 @@ class FacilityFleetsController < ApplicationController
   end
 
   def create
-    # deu merda geral aqui, ele criava facility mesmo sem squad nao ter grana. Tive q remendar. Ass: Morali
     @facility_fleet = FacilityFleet.new params[:facility_fleet]
-    if current_squad.credits >= @facility_fleet.generic_unit.price 
-      current_squad.credits -= @facility_fleet.generic_unit.price  
-      current_squad.save
-      @facility_fleet.planet = @planet
-      @facility_fleet.squad = current_squad
-      @facility_fleet.save!
+    @facility_fleet.planet = @planet
+    @facility_fleet.squad = current_squad
+    @facility_fleet.save
+    if @facility_fleet.save
       redirect_to fleets_path
     else
       render 'new'
     end
-#    if @facility_fleet.save
-#      redirect_to fleets_path
-#    else
-#      render 'new'
-#    end
   end
 
 
