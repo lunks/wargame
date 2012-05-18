@@ -10,7 +10,7 @@ class Round < ActiveRecord::Base
 
   def new_game!
     Squad.all.each do |squad|
-      3.times {squad.planets << Planet.randomize}
+      5.times {squad.planets << Planet.randomize}
       FacilityFleet.is_free
       squad.populate_planets
       squad.update_attributes(:credits => 1000)
@@ -66,10 +66,6 @@ class Round < ActiveRecord::Base
 
   def move_fleets
     Fleet.moving.each(&:move!)
-  end
-
-  def check_conflicts #TODO criar os post results somente em planetas que tiverem conflito (2 squads no mesmo planeta)
-
   end
 
   def apply_results
