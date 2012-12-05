@@ -1,73 +1,74 @@
 alderaan_graveyard = Planet.create(:name => 'Alderaan Graveyard', :credits => 400 )
 bespin = Planet.create(:name => 'Bespin', :credits => 400 )
-#brnavies_spaceport = Planet.create(:name => 'BrNavies Spaceport', :credits => 400 )
 cimf_station = Planet.create(:name => 'CIMF Station', :credits => 400 )
 concord_dawn = Planet.create(:name => 'Concord Dawn', :credits => 400 )
 corellia = Planet.create(:name => 'Corellia', :credits => 400 )
 coruscant = Planet.create(:name => 'Coruscant', :credits => 400 )
-#dagobah = Planet.create(:name => 'Dagobah', :credits => 400 )
-#dantooine = Planet.create(:name => 'Dantooine', :credits => 400 )
-#endor = Planet.create(:name => 'Endor', :credits => 400 )
+dagobah = Planet.create(:name => 'Dagobah', :credits => 400 )
+dantooine = Planet.create(:name => 'Dantooine', :credits => 400 )
+deadalis_minefields = Planet.create(:name => 'Deadalis Minefields', :credits => 400 )
+deathstar_III = Planet.create(:name => 'Death Star III', :credits => 400 )
+endor = Planet.create(:name => 'Endor', :credits => 400 )
 felucia = Planet.create(:name => 'Felucia', :credits => 400 )
 geonosis = Planet.create(:name => 'Geonosis', :credits => 400 )
-#haruun_kal = Planet.create(:name => 'Haruun Kal', :credits => 400 )
-#hoth = Planet.create(:name => 'Hoth', :credits => 400 )
+haruun_kal = Planet.create(:name => 'Haruun Kal', :credits => 400 )
+hoth = Planet.create(:name => 'Hoth', :credits => 400 )
 hutt_space = Planet.create(:name => 'Hutts Minefields', :credits => 400 )
-#ilum = Planet.create(:name => 'Ilum', :credits => 400 )
+ilum = Planet.create(:name => 'Ilum', :credits => 400 )
 kamino = Planet.create(:name => 'Kamino', :credits => 400 )
 kashyyyk = Planet.create(:name => 'Kashyyyk', :credits => 400 )
-katarr_supernova = Planet.create(:name => 'Death Star III', :credits => 400 )
 kessel_asteroids = Planet.create(:name => 'Kessel Asteroids', :credits => 400 )
 kuat = Planet.create(:name => 'Kuat', :credits => 400 )
-#mandalore = Planet.create(:name => 'Mandalore', :credits => 400 )
+mandalore = Planet.create(:name => 'Mandalore', :credits => 400 )
 mon_calamari = Planet.create(:name => 'Mon Calamari', :credits => 400 )
-#mustafar = Planet.create(:name => 'Mustafar', :credits => 400 )
-#mygeeto = Planet.create(:name => 'Mygeeto', :credits => 400 )
+mustafar = Planet.create(:name => 'Mustafar', :credits => 400 )
+mygeeto = Planet.create(:name => 'Mygeeto', :credits => 400 )
 naboo = Planet.create(:name => 'Naboo', :credits => 400 )
 nal_hutta = Planet.create(:name => 'Nal Hutta', :credits => 400 )
-#ord_ibanna = Planet.create(:name => 'Ord Ibanna', :credits => 400 )
-#polis_massa = Planet.create(:name => 'Polis Massa', :credits => 400 )
-#rattatak = Planet.create(:name => 'Rattatak', :credits => 400 )
-#red_twins_system = Planet.create(:name => 'Deadalis Minefields', :credits => 400 )
+ord_ibanna = Planet.create(:name => 'Ord Ibanna', :credits => 400 )
+polis_massa = Planet.create(:name => 'Polis Massa', :credits => 400 )
+rattatak = Planet.create(:name => 'Rattatak', :credits => 400 )
+res_station = Planet.create(:name => 'RES Station', :credits => 400 )
 rhen_var = Planet.create(:name => 'Rhen Var', :credits => 400 )
-#silken_asteroids = Planet.create(:name => 'Silken Asteroids', :credits => 400 )
+silken_asteroids = Planet.create(:name => 'Silken Asteroids', :credits => 400 )
 tatooine = Planet.create(:name => 'Tatooine', :credits => 400 )
-#utapau = Planet.create(:name => 'Utapau', :credits => 400 )
+utapau = Planet.create(:name => 'Utapau', :credits => 400 )
 vergesso_asteroids = Planet.create(:name => 'Vergesso Asteroids', :credits => 400 )
-#yavin = Planet.create(:name => 'Yavin', :credits => 400 )
+yavin = Planet.create(:name => 'Yavin', :credits => 400 )
+wormhole = Planet.create(:name => 'Wormhole', :credits => 0 )
 
-#Route.create(:vector_a => dantooine, :vector_b => katarr_supernova, :distance => 1)
-#Route.create(:vector_a => dantooine, :vector_b => mandalore, :distance => 1)
-#Route.create(:vector_a => dantooine, :vector_b => yavin, :distance => 1)
+Route.create(:vector_a => dantooine, :vector_b => deathstar_III, :distance => 1)
+Route.create(:vector_a => dantooine, :vector_b => mandalore, :distance => 1)
+Route.create(:vector_a => dantooine, :vector_b => yavin, :distance => 1)
 
-#Route.create(:vector_a => yavin, :vector_b => mandalore, :distance => 1)
-#Route.create(:vector_a => yavin, :vector_b => rhen_var, :distance => 1)
+Route.create(:vector_a => yavin, :vector_b => mandalore, :distance => 1)
+Route.create(:vector_a => yavin, :vector_b => rhen_var, :distance => 1)
 
-#Route.create(:vector_a => ilum, :vector_b => rattatak, :distance => 1)
-#Route.create(:vector_a => ilum, :vector_b => red_twins_system, :distance => 1)
-#Route.create(:vector_a => ilum, :vector_b => mygeeto, :distance => 1)
+Route.create(:vector_a => ilum, :vector_b => rattatak, :distance => 1)
+Route.create(:vector_a => ilum, :vector_b => deadalis_minefields, :distance => 1)
+Route.create(:vector_a => ilum, :vector_b => mygeeto, :distance => 1)
 
-#Route.create(:vector_a => mygeeto, :vector_b => red_twins_system, :distance => 1)
-#Route.create(:vector_a => mygeeto, :vector_b => coruscant, :distance => 1)
-#Route.create(:vector_a => mygeeto, :vector_b => katarr_supernova, :distance => 1)
+Route.create(:vector_a => mygeeto, :vector_b => deadalis_minefields, :distance => 1)
+Route.create(:vector_a => mygeeto, :vector_b => coruscant, :distance => 1)
+Route.create(:vector_a => mygeeto, :vector_b => deathstar_III, :distance => 1)
 
-Route.create(:vector_a => katarr_supernova, :vector_b => coruscant, :distance => 1)
-Route.create(:vector_a => katarr_supernova, :vector_b => alderaan_graveyard, :distance => 1)
-#Route.create(:vector_a => katarr_supernova, :vector_b => mandalore, :distance => 1)
+Route.create(:vector_a => deathstar_III, :vector_b => coruscant, :distance => 1)
+Route.create(:vector_a => deathstar_III, :vector_b => alderaan_graveyard, :distance => 1)
+Route.create(:vector_a => deathstar_III, :vector_b => mandalore, :distance => 1)
 
-#Route.create(:vector_a => mandalore, :vector_b => alderaan_graveyard, :distance => 1)
-#Route.create(:vector_a => mandalore, :vector_b => concord_dawn, :distance => 1)
-#Route.create(:vector_a => mandalore, :vector_b => rhen_var, :distance => 1)
+Route.create(:vector_a => mandalore, :vector_b => alderaan_graveyard, :distance => 1)
+Route.create(:vector_a => mandalore, :vector_b => concord_dawn, :distance => 1)
+Route.create(:vector_a => mandalore, :vector_b => rhen_var, :distance => 1)
 
 Route.create(:vector_a => rhen_var, :vector_b => concord_dawn, :distance => 1)
 Route.create(:vector_a => rhen_var, :vector_b => felucia, :distance => 1)
 
-#Route.create(:vector_a => rattatak, :vector_b => endor, :distance => 1)
-#Route.create(:vector_a => rattatak, :vector_b => red_twins_system, :distance => 1)
+Route.create(:vector_a => rattatak, :vector_b => endor, :distance => 1)
+Route.create(:vector_a => rattatak, :vector_b => deadalis_minefields, :distance => 1)
 
-#Route.create(:vector_a => red_twins_system, :vector_b => endor, :distance => 1)
-#Route.create(:vector_a => red_twins_system, :vector_b => bespin, :distance => 1)
-#Route.create(:vector_a => red_twins_system, :vector_b => coruscant, :distance => 1)
+Route.create(:vector_a => deadalis_minefields, :vector_b => endor, :distance => 1)
+Route.create(:vector_a => deadalis_minefields, :vector_b => bespin, :distance => 1)
+Route.create(:vector_a => deadalis_minefields, :vector_b => coruscant, :distance => 1)
 
 Route.create(:vector_a => coruscant, :vector_b => bespin, :distance => 1)
 Route.create(:vector_a => coruscant, :vector_b => corellia, :distance => 1)
@@ -87,15 +88,15 @@ Route.create(:vector_a => felucia, :vector_b => mon_calamari, :distance => 1)
 
 Route.create(:vector_a => mon_calamari, :vector_b => kessel_asteroids, :distance => 1)
 
-#Route.create(:vector_a => endor, :vector_b => brnavies_spaceport, :distance => 1)
-#Route.create(:vector_a => endor, :vector_b => hoth, :distance => 1)
-#Route.create(:vector_a => endor, :vector_b => bespin, :distance => 1)
+Route.create(:vector_a => endor, :vector_b => res_station, :distance => 1)
+Route.create(:vector_a => endor, :vector_b => hoth, :distance => 1)
+Route.create(:vector_a => endor, :vector_b => bespin, :distance => 1)
 
-#Route.create(:vector_a => bespin, :vector_b => hoth, :distance => 1)
-#Route.create(:vector_a => bespin, :vector_b => haruun_kal, :distance => 1)
+Route.create(:vector_a => bespin, :vector_b => hoth, :distance => 1)
+Route.create(:vector_a => bespin, :vector_b => haruun_kal, :distance => 1)
 Route.create(:vector_a => bespin, :vector_b => corellia, :distance => 1)
 
-#Route.create(:vector_a => corellia, :vector_b => haruun_kal, :distance => 1)
+Route.create(:vector_a => corellia, :vector_b => haruun_kal, :distance => 1)
 Route.create(:vector_a => corellia, :vector_b => cimf_station, :distance => 1)
 Route.create(:vector_a => corellia, :vector_b => kuat, :distance => 1)
 
@@ -110,16 +111,16 @@ Route.create(:vector_a => kashyyyk, :vector_b => kessel_asteroids, :distance => 
 Route.create(:vector_a => kessel_asteroids, :vector_b => hutt_space, :distance => 1)
 Route.create(:vector_a => kessel_asteroids, :vector_b => kamino, :distance => 1)
 
-#Route.create(:vector_a => brnavies_spaceport, :vector_b => mustafar, :distance => 1)
-#Route.create(:vector_a => brnavies_spaceport, :vector_b => hoth, :distance => 1)
+Route.create(:vector_a => res_station, :vector_b => mustafar, :distance => 1)
+Route.create(:vector_a => res_station, :vector_b => hoth, :distance => 1)
 
-#Route.create(:vector_a => hoth, :vector_b => mustafar, :distance => 1)
-#Route.create(:vector_a => hoth, :vector_b => ord_ibanna, :distance => 1)
-#Route.create(:vector_a => hoth, :vector_b => haruun_kal, :distance => 1)
+Route.create(:vector_a => hoth, :vector_b => mustafar, :distance => 1)
+Route.create(:vector_a => hoth, :vector_b => ord_ibanna, :distance => 1)
+Route.create(:vector_a => hoth, :vector_b => haruun_kal, :distance => 1)
 
-#Route.create(:vector_a => haruun_kal, :vector_b => ord_ibanna, :distance => 1)
-#Route.create(:vector_a => haruun_kal, :vector_b => naboo, :distance => 1)
-#Route.create(:vector_a => haruun_kal, :vector_b => cimf_station, :distance => 1)
+Route.create(:vector_a => haruun_kal, :vector_b => ord_ibanna, :distance => 1)
+Route.create(:vector_a => haruun_kal, :vector_b => naboo, :distance => 1)
+Route.create(:vector_a => haruun_kal, :vector_b => cimf_station, :distance => 1)
 
 Route.create(:vector_a => cimf_station, :vector_b => naboo, :distance => 1)
 Route.create(:vector_a => cimf_station, :vector_b => vergesso_asteroids, :distance => 1)
@@ -132,31 +133,31 @@ Route.create(:vector_a => nal_hutta, :vector_b => hutt_space, :distance => 1)
 Route.create(:vector_a => hutt_space, :vector_b => tatooine, :distance => 1)
 Route.create(:vector_a => hutt_space, :vector_b => kamino, :distance => 1)
 
-#Route.create(:vector_a => mustafar, :vector_b => polis_massa, :distance => 1)
-#Route.create(:vector_a => mustafar, :vector_b => dagobah, :distance => 1)
-#Route.create(:vector_a => mustafar, :vector_b => ord_ibanna, :distance => 1)
+Route.create(:vector_a => mustafar, :vector_b => polis_massa, :distance => 1)
+Route.create(:vector_a => mustafar, :vector_b => dagobah, :distance => 1)
+Route.create(:vector_a => mustafar, :vector_b => ord_ibanna, :distance => 1)
 
-#Route.create(:vector_a => ord_ibanna, :vector_b => dagobah, :distance => 1)
-#Route.create(:vector_a => ord_ibanna, :vector_b => silken_asteroids, :distance => 1)
-#Route.create(:vector_a => ord_ibanna, :vector_b => naboo, :distance => 1)
+Route.create(:vector_a => ord_ibanna, :vector_b => dagobah, :distance => 1)
+Route.create(:vector_a => ord_ibanna, :vector_b => silken_asteroids, :distance => 1)
+Route.create(:vector_a => ord_ibanna, :vector_b => naboo, :distance => 1)
 
-#Route.create(:vector_a => naboo, :vector_b => silken_asteroids, :distance => 1)
-#Route.create(:vector_a => naboo, :vector_b => utapau, :distance => 1)
+Route.create(:vector_a => naboo, :vector_b => silken_asteroids, :distance => 1)
+Route.create(:vector_a => naboo, :vector_b => utapau, :distance => 1)
 Route.create(:vector_a => naboo, :vector_b => vergesso_asteroids, :distance => 1)
 
-#Route.create(:vector_a => vergesso_asteroids, :vector_b => utapau, :distance => 1)
+Route.create(:vector_a => vergesso_asteroids, :vector_b => utapau, :distance => 1)
 Route.create(:vector_a => vergesso_asteroids, :vector_b => tatooine, :distance => 1)
 Route.create(:vector_a => vergesso_asteroids, :vector_b => geonosis, :distance => 1)
 
 Route.create(:vector_a => tatooine, :vector_b => geonosis, :distance => 1)
 
-#Route.create(:vector_a => polis_massa, :vector_b => dagobah, :distance => 1)
+Route.create(:vector_a => polis_massa, :vector_b => dagobah, :distance => 1)
 
-#Route.create(:vector_a => dagobah, :vector_b => silken_asteroids, :distance => 1)
+Route.create(:vector_a => dagobah, :vector_b => silken_asteroids, :distance => 1)
 
-#Route.create(:vector_a => silken_asteroids, :vector_b => utapau, :distance => 1)
+Route.create(:vector_a => silken_asteroids, :vector_b => utapau, :distance => 1)
 
-#Route.create(:vector_a => geonosis, :vector_b => utapau, :distance => 1)
+Route.create(:vector_a => geonosis, :vector_b => utapau, :distance => 1)
 
 imp = ['empire']
 reb = ['rebel']
@@ -167,6 +168,7 @@ mand = ['mandalorian']
 mand_merc = ['mandalorian','mercenary']
 all = ['empire','rebel','mercenary','mandalorian']
 
+Fighter.create(:name => 'Inactive', :price => 99999 ).factions = all
 Fighter.create(:name => 'Z-95', :price => 50 ).factions = merc_reb
 Fighter.create(:name => 'T-Wing', :price => 50 ).factions = merc_reb
 Fighter.create(:name => 'Y-Wing', :price => 90 ).factions = reb
@@ -209,6 +211,7 @@ LightTransport.create(:name => 'Escort Transport', :price => 250 ).factions = al
 LightTransport.create(:name => 'Stormtrooper Transport', :price => 70 ).factions = all
 LightTransport.create(:name => 'Assault Shuttle', :price => 220 ).factions = imp
 LightTransport.create(:name => 'System Patrol Craft', :price => 350 ).factions = imp
+LightTransport.create(:name => 'Modular Conveyor', :price => 100 ).factions = imp
 
 CapitalShip.create(:name => 'Corellian Gunship', :price => 400 ).factions = all
 CapitalShip.create(:name => 'Corellian Corvette', :price => 400 ).factions = all
@@ -270,6 +273,15 @@ Facility.create(:name => 'Golan II', :price => 4200 ).factions = all
 Facility.create(:name => 'Golan III', :price => 5600 ).factions = all
 Facility.create(:name => 'Imperial Research Center', :price => 4800 ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 6000 ).factions = all
+
+Warrior.create(:name => 'Darth Vader', :price => 300 ).factions = imp
+Warrior.create(:name => 'Darth Sidious', :price => 300 ).factions = imp
+Warrior.create(:name => 'Kyle Katarn', :price => 300 ).factions = reb
+Warrior.create(:name => 'Luke Skywalker', :price => 300 ).factions = reb
+Warrior.create(:name => 'Boba Fett', :price => 300 ).factions = mand
+Warrior.create(:name => 'Mandalore Warrior', :price => 300 ).factions = mand
+Warrior.create(:name => 'Chewbacca', :price => 300 ).factions = merc
+Warrior.create(:name => 'Han Solo', :price => 300 ).factions = merc
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
