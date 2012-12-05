@@ -1,7 +1,7 @@
 class Facility < GenericUnit
  
   def capacity
-    self.price / 4
+    self.price / 3
   end
 
 end
