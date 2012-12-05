@@ -43,9 +43,10 @@ class Fleet < GenericFleet
 
   def flee! quantity
     routes = planet.routes.select { |planet| planet.squad == self.squad }
+    routes = planet.routes.select { |planet| planet.squad == nil} if routes.empty?
     routes = planet.routes if routes.empty?
     fleeing_fleet = Fleet.new self.attributes
-    fleeing_fleet.destination = routes.first
+    fleeing_fleet.destination = routes[rand(routes.size)]
     fleeing_fleet.quantity = quantity
     fleeing_fleet.moving = true
     fleeing_fleet.save
