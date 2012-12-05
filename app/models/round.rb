@@ -10,11 +10,21 @@ class Round < ActiveRecord::Base
 
   def new_game!
     Squad.all.each do |squad|
-      5.times {squad.planets << Planet.randomize}
+      squad.planets << Planet.where(:name => 'RES Station') and famous_squad = true if squad.name == 'RES'
+      squad.planets << Planet.where(:name => 'CIMF Station') and famous_squad = true if squad.name == 'CIMF'
+      squad.planets << Planet.where(:name => 'Hutts Minefields') and famous_squad = true if squad.name == 'BRR'
+      if famous_squad == true
+        squad.planets << Planet.randomize
+      else
+        2.times {squad.planets << Planet.randomize}
+      end
       FacilityFleet.is_free
       squad.populate_planets
-      squad.update_attributes(:credits => 1000)
+      squad.update_attributes(:credits => 1200)
     end
+    #cria 2 rotas pro wormhole diferente dos planetas ocupados
+    wormhole = Planet.where(:name => 'Wormhole').first
+    2.times {Route.create(:vector_a => wormhole, :vector_b => Planet.randomize, :distance => 1)}
     set_map
   end
 

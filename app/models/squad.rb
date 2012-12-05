@@ -44,7 +44,7 @@ class Squad < ActiveRecord::Base
   end
 
   def warp_facility_on planet
-    # cria um facility grande e um pequeno
+    # cria um facility grande e 1 pequeno
     facility_model_small = Facility.allowed_for(faction).first
     facility = facility_fleets.new(:facility => facility_model_small, :planet => planet)
     facility.save!
@@ -57,7 +57,7 @@ class Squad < ActiveRecord::Base
     if unit == CapitalShip
       units = unit.allowed_for(faction).where(:price => 490..510)
     else
-      units = unit.allowed_for(faction).where(:price => 2..120)
+      units = unit.allowed_for(faction).where(:price => 1..120)
     end
     random_unit = units[rand(units.size)]
     unit_count = 0
