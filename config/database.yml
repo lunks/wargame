@@ -18,7 +18,7 @@ test:
 production:
   adapter: mysql
   database: wargame_production
-  encoding: utf8
+  encoding: utf_unicode_ci
   host: 127.0.0.1
   user: root
   password: bitnami
