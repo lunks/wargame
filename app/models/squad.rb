@@ -70,11 +70,11 @@ class Squad < ActiveRecord::Base
 
   def populate_planets
     planets.each do |planet|
-      warp_units 1000, Trooper, planet
-      warp_units 2000, Fighter, planet
-      warp_units 2000, Fighter, planet
-      warp_units 1200, CapitalShip, planet
       warp_facility_on planet
+      warp_units 1200, CapitalShip, planet
+      warp_units 2000, Fighter, planet
+      warp_units 2000, Fighter, planet
+      warp_units 1000, Trooper, planet
     end
     save!
   end
