@@ -4,7 +4,7 @@
   Balanço: $<%= @facility.balance  %>
   <br>
 <% if @facility.producing_unit.present? %>
-  <%= "Capacidade: $#{@facility.capacity}
+  <%= "Capacidade: $#{@capacity}
   " %>
   <br>
   Produzindo: <%= @facility.producing_unit.name.pluralize %>
@@ -12,7 +12,7 @@
   <br>
   <%= "Previsão: #{@facility.units_per_turn} unidades para o próximo round" %>
 <% else %>
-  Capacidade: $<%= @facility.capacity %>
+  Capacidade: $<%= @capacity %>
 <% end %>
 <p>
 <%= "Sabotada" if @facility.sabotaged? %>
@@ -21,7 +21,8 @@
 <%= f.submit 'OK' %>
 <% end %>
 <br>
-Level: <%= @facility.level %>
+Nível de capacidade: <%= @facility.level %>
+<%= render :partial => 'aprimorar', :locals => { :facility => @facility } %>
 
 </div>
 <br>

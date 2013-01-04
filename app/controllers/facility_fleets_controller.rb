@@ -12,25 +12,12 @@ class FacilityFleetsController < ApplicationController
     @facility = GenericUnit.find(params[:facility_fleet][:generic_unit_id])
     current_squad.buy @facility, 1, @planet if current_squad.credits >= @facility.price
     redirect_to fleets_path
-
-    #@facility_fleet = FacilityFleet.new params[:facility_fleet]
-    #@facility_fleet.planet = @planet
-    #@facility_fleet.squad = current_squad
-    #if current_squad.credits >= @facility_fleet.generic_unit.price
-      #if @facility_fleet.save
-        #current_squad.debit @facility_fleet.generic_unit.price
-        #redirect_to fleets_path
-      #else
-        #render 'new'
-     # end
-    #else
-      #render 'new'
-   # end
   end
 
 
   def edit
     @facility = FacilityFleet.find(params[:id])
+    @capacity = @facility.capacity + (@facility.capacity * 0.20 * @facility.level).to_i
     @units = Unit.allowed_for(current_squad.faction)
     @planet = @facility.planet
     unless @facility.producing_unit.present?
@@ -47,6 +34,14 @@ class FacilityFleetsController < ApplicationController
     end
     redirect_to :fleets
   end
+
+  def upgrade
+    @facility = FacilityFleet.find(params[:facility][:id])
+    upgrade_cost = @facility.price * 0.20
+    @facility.upgrade! if current_squad.credits >= upgrade_cost
+    redirect_to :fleets
+  end
+
 
   private
   def find_resources

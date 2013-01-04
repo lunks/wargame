@@ -54,19 +54,22 @@ describe FacilityFleet do
       Fleet.first.quantity.should == 5
     end
     it 'should increase level' do
-      facility_fleet.upgrade!
-      facility_fleet.level.should == 1     
+      2.times {facility_fleet.upgrade!}
+      facility_fleet.level.should == 2   
     end
     it 'should produce 20% more when upgraded' do
       facility_fleet.producing_unit = nil
       facility_fleet.upgrade!
       facility_fleet.produce!
-      facility_fleet.balance.should == facility.price/3 + facility.price * 0.20
+      facility_fleet.balance.should == (facility.price/3) * 1.20
     end
-    it 'should debit credits for upgrade' do
-      squad = Factory(:squad, :credits => 1000)
+    it 'should debit squad credits for upgrade' do
+      squad = Factory(:squad, :credits => 10000)
+      upgrade_costs = facility.price * 0.20
+      facility_fleet.squad = squad
+      facility_fleet.save!
       facility_fleet.upgrade!
-      squad.credits.should == squad.credits - facility.price * 0.20
+      squad.credits.should == 10000 - upgrade_costs
     end
     it 'should decrease level' do
     end

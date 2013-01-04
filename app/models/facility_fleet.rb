@@ -5,13 +5,15 @@ class FacilityFleet < GenericFleet
   belongs_to :producing_unit, :class_name => "Unit"
 
   delegate :capacity, :to => :facility
+  delegate :capacity_upgraded, :to => :facility
+  delegate :price, :to => :facility
   class << self
     def is_free
       FacilityFleet.skip_callback(:create, :before, :subtract_credits_from_squad)
     end
   end
   def produce!
-    self.balance += capacity + (capacity * self.level)
+    self.balance += capacity + (capacity * 0.20 * self.level)
     return if producing_unit.nil?
     unit_price = producing_unit.price
     units = 0
@@ -24,7 +26,13 @@ class FacilityFleet < GenericFleet
   end
 
   def upgrade!
-    self.level += 1
+    upgrade_cost = price * 0.20
+    if self.squad.credits >= upgrade_cost
+      self.squad.credits -= upgrade_cost
+      self.squad.save
+      self.level += 1
+      self.save
+    end
   end
 
   def units_per_turn
