@@ -17,7 +17,7 @@
     <p>
     <%= "Ganhos previstos: $#{planet.credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && planet.squad == @squad && planet.ground_squad == @squad %>
     <p>
-    <% planet.generic_fleets.sort_by{|a| [a.generic_unit.type, a.generic_unit.name]}.each do |fleet| %>
+    <% planet.generic_fleets.sort_by{|a| [a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |fleet| %>
       <span style=color:#<%= fleet.squad.color %>>
       <% if fleet.generic_unit.type == 'Facility' %>
          <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
@@ -32,7 +32,13 @@
     <p>
     <%= link_to ' mover frotas ', move_planet_path(planet) if @round.move %>
     <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet) if @round.move && planet.squad == @squad %>
-    <%= link_to ' postar resultados ', planet_results_path(planet) if @round.attack and planet.under_attack? %> 
+    <% if (planet.squad.present? || planet.ground_squad.present?) && @round.attack && planet.under_attack? %>
+      <%= "Defensor ->" %>
+      <%= "Espaço: " if planet.squad.present? %><span style=color:#<%= planet.squad.color if planet.squad.present? %>><%= planet.squad.name if planet.squad.present? %></span>
+      <%= "Terra: " if planet.ground_squad.present? %><span style=color:#<%= planet.ground_squad.color if planet.ground_squad.present? %>><%= planet.ground_squad.name if planet.ground_squad.present? %></span>
+      <p>
+    <% end %>
+    <%= link_to ' postar resultados ', planet_results_path(planet) if @round.attack && planet.under_attack? %>
   <% end %>
 </div>
 

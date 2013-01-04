@@ -1,6 +1,6 @@
 <div class="planet_content">
 <h2><%= @fleets.first.planet.name %></h2>
-<% @fleets.sort_by{|a| [a.generic_unit.type, a.generic_unit.name]}.each do |fleet| %>
+<% @fleets.sort_by{|a| [a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |fleet| %>
   <span style=font-weight:bold><%= fleet.quantity %> <%= fleet.generic_unit.name %> <%= "'#{fleet.fleet_name}'" if fleet.fleet_name != fleet.squad.name %></span>
   <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
     <%= f.input :quantity, :collection => 1..fleet.quantity, :label => 'Quantidade: ' %>
