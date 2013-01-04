@@ -46,11 +46,8 @@ class Fleet < GenericFleet
     routes = planet.routes.select { |planet| planet.ground_squad == self.squad} if routes.empty?
     routes = planet.routes.select { |planet| planet.squad == nil} if routes.empty?
     routes = planet.routes if routes.empty?
-    fleeing_fleet = Fleet.new self.attributes
-    fleeing_fleet.destination = routes[rand(routes.size)]
-    fleeing_fleet.quantity = quantity
-    fleeing_fleet.moving = true
-    fleeing_fleet.save
+    fleeing_fleet = self.clone
+    fleeing_fleet.update_attributes(:quantity => quantity, :moving => true, :destination => routes[rand(routes.size)])
     self.quantity -= quantity
     save
     fleeing_fleet.move!
@@ -68,7 +65,7 @@ class Fleet < GenericFleet
   end
 
   def group_fleets
-    fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil, :type => 'Fleet', :fleet_name => self.squad.name)
+    fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil, :type => 'Fleet', :fleet_name => nil)
     total_quantity = 0
     fleets.each do |fleet|
       unless fleet == self

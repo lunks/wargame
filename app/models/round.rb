@@ -84,7 +84,6 @@ class Round < ActiveRecord::Base
 
   def apply_results
     Result.where(:round => self).each do |result|
-      result.add_experience
       result.blast! unless result.blasted == nil || result.blasted <= 0
       result.capture! unless result.captured == nil || result.captured <= 0
       result.flee! unless result.fled == nil || result.fled <= 0

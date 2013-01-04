@@ -40,13 +40,13 @@ class FacilityFleet < GenericFleet
     end
     producing_unit_display
   end
-  private
+  
+private
 
   def default_values
     self.quantity = 1
     self.balance = 0
     self.level = 0
-    self.fleet_name = 'Abc'
   end
 
   def subtract_credits_from_squad
@@ -58,4 +58,5 @@ class FacilityFleet < GenericFleet
       false
     end
   end
+
 end
