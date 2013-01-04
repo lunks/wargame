@@ -16,6 +16,8 @@ describe Fleet do
 
   context 'moving' do
     before(:each) do
+      unit.squad = squad
+      unit.save
       @moving_fleet = unit.move 1, planet
       @planet = planet
       @squad = squad
@@ -91,7 +93,7 @@ describe Fleet do
 
     context 'finishing movement' do
       before(:each) do
-        @merging_fleet = Factory :fleet, :planet => planet, :generic_unit => unit.generic_unit, :squad => unit.squad
+        @merging_fleet = Factory :fleet, :planet => planet, :generic_unit => unit.generic_unit, :squad => unit.squad, :fleet_name => unit.squad.name
         @moving_quantity = @moving_fleet.quantity
         @moving_fleet.move!
       end
