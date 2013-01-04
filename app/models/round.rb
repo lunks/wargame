@@ -29,7 +29,7 @@ class Round < ActiveRecord::Base
       eastside = empty_planets[rand(empty_planets.count - 1)]
       eastside.update_attributes(:wormhole => true)
       empty_planets = Planet.where(:squad_id => nil, :wormhole => nil)
-      westside = empty_planets[rand(empty_planets.count - 1)]
+      westside = empty_planets.except(eastside.routes)[rand(empty_planets.count - 1)]
       westside.update_attributes(:wormhole => true)
       Route.create(:vector_a => eastside, :vector_b => westside, :distance => 1)
     end
