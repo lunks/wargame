@@ -60,7 +60,9 @@ describe FacilityFleet do
     end
     
     it 'should training an individual warrior' do
-      
+      facility_fleet.planet = Factory :planet
+      facility_fleet.save!
+      facility_fleet.produce!
       Fleet.where(:generic_unit => warrior).count.should == 1
     end
 
