@@ -220,37 +220,37 @@ LightTransport.create(:name => 'Assault Shuttle', :price => 220 ).factions = imp
 LightTransport.create(:name => 'System Patrol Craft', :price => 350 ).factions = imp
 LightTransport.create(:name => 'Modular Conveyor', :price => 100 ).factions = imp
 
-CapitalShip.create(:name => 'Corellian Gunship¹', :price => 400 ).factions = all
-CapitalShip.create(:name => 'Corellian Corvette¹', :price => 400 ).factions = all
-CapitalShip.create(:name => 'Mod Corvette¹', :price => 430 ).factions = all
-CapitalShip.create(:name => 'Nebulon B Frigate¹', :price => 500 ).factions = all
-CapitalShip.create(:name => 'Nebulon B2 Frigate¹', :price => 700 ).factions = all
-CapitalShip.create(:name => 'Carrack Cruiser¹', :price => 500 ).factions = imp
-CapitalShip.create(:name => 'Lancer Frigate¹', :price => 550 ).factions = imp
-CapitalShip.create(:name => 'Marauder Corvette²', :price => 800 ).factions = mand_merc
-CapitalShip.create(:name => 'Dreadnaught²', :price => 1250 ).factions = all
-CapitalShip.create(:name => 'Escort Carrier²', :price => 900 ).factions = imp
-CapitalShip.create(:name => 'Lt Calamari Cruiser²', :price => 900 ).factions = reb
-CapitalShip.create(:name => 'Bulk Cruiser²', :price => 1000 ).factions = merc
-CapitalShip.create(:name => 'Strike Cruiser²', :price => 1400 ).factions = imp_reb
-CapitalShip.create(:name => 'Assault Frigate²', :price => 1700 ).factions = reb
-CapitalShip.create(:name => 'Munificent Frigate³', :price => 1800 ).factions = merc
-CapitalShip.create(:name => 'Acclamator Assault Ship³', :price => 1800 ).factions = mand
-CapitalShip.create(:name => 'Victory Star Destroyer³', :price => 1900 ).factions = imp
-CapitalShip.create(:name => 'Venator Star Destroyer³', :price => 2000 ).factions = mand
-CapitalShip.create(:name => 'Providence Destroyer³', :price => 2000 ).factions = merc
-CapitalShip.create(:name => 'Reef Home Calamari Cruiser³', :price => 2000 ).factions = reb
-CapitalShip.create(:name => 'Liberty Calamari Cruiser³', :price => 2000 ).factions = reb
-CapitalShip.create(:name => 'Victory Star Destroyer II³', :price => 2100 ).factions = imp
-CapitalShip.create(:name => 'Liberator Cruiser³', :price => 2200 ).factions = reb
-CapitalShip.create(:name => 'Interdictor³', :price => 2500 ).factions = imp
-CapitalShip.create(:name => 'Dauntless Cruiser³', :price => 2400 ).factions = reb
-CapitalShip.create(:name => 'Imperial Star Destroyer³', :price => 2450 ).factions = imp
-CapitalShip.create(:name => 'Dominator Interdictor³', :price => 2800 ).factions = imp
-CapitalShip.create(:name => 'Imperial Star Destroyer II³', :price => 2800 ).factions = imp
-CapitalShip.create(:name => 'Lucrehulk Battleship*', :price => 5500 ).factions = mand_merc
-CapitalShip.create(:name => 'Bulkwark Cruiser*', :price => 7200 ).factions = reb
-CapitalShip.create(:name => 'Super Star Destroyer*', :price => 8400 ).factions = imp
+CapitalShip.create(:name => 'Corellian Gunship', :price => 400 ).factions = all
+CapitalShip.create(:name => 'Corellian Corvette', :price => 400 ).factions = all
+CapitalShip.create(:name => 'Mod Corvette', :price => 430 ).factions = all
+CapitalShip.create(:name => 'Nebulon B Frigate', :price => 500 ).factions = all
+CapitalShip.create(:name => 'Nebulon B2 Frigate', :price => 700 ).factions = all
+CapitalShip.create(:name => 'Carrack Cruiser', :price => 500 ).factions = imp
+CapitalShip.create(:name => 'Lancer Frigate', :price => 550 ).factions = imp
+CapitalShip.create(:name => 'Marauder Corvette', :price => 800 ).factions = mand_merc
+CapitalShip.create(:name => 'Dreadnaught', :price => 1250 ).factions = all
+CapitalShip.create(:name => 'Escort Carrier', :price => 900 ).factions = imp
+CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 900 ).factions = reb
+CapitalShip.create(:name => 'Bulk Cruiser', :price => 1000 ).factions = merc
+CapitalShip.create(:name => 'Strike Cruiser', :price => 1400 ).factions = imp_reb
+CapitalShip.create(:name => 'Assault Frigate', :price => 1700 ).factions = reb
+CapitalShip.create(:name => 'Munificent Frigate', :price => 1800 ).factions = merc
+CapitalShip.create(:name => 'Acclamator Assault Ship', :price => 1800 ).factions = mand
+CapitalShip.create(:name => 'Victory Star Destroyer', :price => 1900 ).factions = imp
+CapitalShip.create(:name => 'Venator Star Destroyer', :price => 2000 ).factions = mand
+CapitalShip.create(:name => 'Providence Destroyer', :price => 2000 ).factions = merc
+CapitalShip.create(:name => 'Reef Home Calamari Cruiser', :price => 2000 ).factions = reb
+CapitalShip.create(:name => 'Liberty Calamari Cruiser', :price => 2000 ).factions = reb
+CapitalShip.create(:name => 'Victory Star Destroyer II', :price => 2100 ).factions = imp
+CapitalShip.create(:name => 'Liberator Cruiser', :price => 2200 ).factions = reb
+CapitalShip.create(:name => 'Interdictor', :price => 2500 ).factions = imp
+CapitalShip.create(:name => 'Dauntless Cruiser', :price => 2400 ).factions = reb
+CapitalShip.create(:name => 'Imperial Star Destroyer', :price => 2450 ).factions = imp
+CapitalShip.create(:name => 'Dominator Interdictor', :price => 2800 ).factions = imp
+CapitalShip.create(:name => 'Imperial Star Destroyer II', :price => 2800 ).factions = imp
+CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 5500 ).factions = mand_merc
+CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 7200 ).factions = reb
+CapitalShip.create(:name => 'Super Star Destroyer', :price => 8400 ).factions = imp
 
 Armament.create(:name => 'Concussion Missile', :price => 15 ).factions = all
 Armament.create(:name => 'Proton Torpedo', :price => 20 ).factions = all
