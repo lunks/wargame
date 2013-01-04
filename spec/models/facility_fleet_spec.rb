@@ -18,6 +18,12 @@ describe FacilityFleet do
     facility_fleet.producing_unit = unit
     facility_fleet.producing_unit.should be_an_instance_of Unit
   end
+
+  it 'should start with level 0' do
+    facility_fleet.level = 0
+    facility_fleet.level.should be 0
+  end
+
   context 'on every new turn' do
     let(:facility) {facility_fleet.facility}
     before(:each) do
@@ -25,6 +31,7 @@ describe FacilityFleet do
       unit.price = 300
       facility_fleet.producing_unit = unit
       facility_fleet.planet = Factory :planet
+      facility_fleet.level = 0
       facility_fleet.save!
     end
     it 'should set its balance on every new turn' do
@@ -46,6 +53,24 @@ describe FacilityFleet do
       facility_fleet.produce!
       Fleet.first.quantity.should == 5
     end
+    it 'should increase level' do
+      facility_fleet.upgrade!
+      facility_fleet.level.should == 1     
+    end
+    it 'should produce 20% more when upgraded' do
+      facility_fleet.producing_unit = nil
+      facility_fleet.upgrade!
+      facility_fleet.produce!
+      facility_fleet.balance.should == facility.price/3 + facility.price * 0.20
+    end
+    it 'should debit credits for upgrade' do
+      squad = Factory(:squad, :credits => 1000)
+      facility_fleet.upgrade!
+      squad.credits.should == squad.credits - facility.price * 0.20
+    end
+    it 'should decrease level' do
+    end
+
   end
 
   context 'Training Jedi Warriors' do
@@ -66,7 +91,7 @@ describe FacilityFleet do
       Fleet.where(:generic_unit => warrior).count.should == 1
     end
 
-    it 'should prevent that warriors have more than 10 lives' do
+    it 'should prevent warriors have more than 10 lives' do
       facility_fleet.produce!
       warrior_fleet = Fleet.where(:generic_unit => warrior)
       warrior_fleet.first.quantity.should == 10

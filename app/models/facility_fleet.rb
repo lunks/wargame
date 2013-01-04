@@ -11,7 +11,7 @@ class FacilityFleet < GenericFleet
     end
   end
   def produce!
-    self.balance += capacity
+    self.balance += capacity + (capacity * self.level)
     return if producing_unit.nil?
     unit_price = producing_unit.price
     units = 0
@@ -21,6 +21,10 @@ class FacilityFleet < GenericFleet
     end
     Fleet.create_from_facility producing_unit, units, self.planet, self.squad
     save
+  end
+
+  def upgrade!
+    self.level += 
   end
 
   def units_per_turn
