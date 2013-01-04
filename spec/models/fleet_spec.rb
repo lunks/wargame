@@ -13,6 +13,7 @@ describe Fleet do
   let(:unit) {Factory :fleet}
   let(:planet) {Factory :planet}
   let(:squad) {Factory :squad}
+  let(:facility_fleet) {Factory :facility_fleet}
 
   context 'moving' do
     before(:each) do
@@ -142,8 +143,27 @@ describe Fleet do
       fleeing_fleet.planet.should == @destination
       fleeing_fleet.planet.should_not == @enemy_destination    
     end
+  end
 
+  context 'Training Jedi Warriors' do
+    before(:each) do
+      @warrior = Factory(:warrior)
+      @warrior_fleet = Factory :fleet, :generic_unit => @warrior, :quantity => 1
+    end
+    
+    it 'should training an individual warrior' do
+      Factory :fleet, :generic_unit => @warrior
+      Fleet.where(:generic_unit => @warrior).count.should == 1
+    end
+
+    it 'should prevent that warriors have more than 10 lives' do
+      facility = Factory :facility_fleet, :producing_unit => @warrior, :balance => 1000
+      facility.produce!
+      @warrior_fleet = Fleet.where(:generic_unit => @warrior)
+      @warrior_fleet.quantity.should == 10
+    end
 
   end
+
 end
 

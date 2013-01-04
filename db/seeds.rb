@@ -40,11 +40,11 @@ yavin = Planet.create(:name => 'Yavin', :credits => 500 )
 #wormholeII = Planet.create(:name => 'Wormhole II', :credits => 0 )
 
 Route.create(:vector_a => mygeeto, :vector_b => yavin, :distance => 1)
-Route.create(:vector_a => mygeeto, :vector_b => mandalore, :distance => 1)
+Route.create(:vector_a => mygeeto, :vector_b => alderaan_asteroids, :distance => 1)
 Route.create(:vector_a => mygeeto, :vector_b => coruscant, :distance => 1)
 
 Route.create(:vector_a => yavin, :vector_b => rhen_var, :distance => 1)
-Route.create(:vector_a => yavin, :vector_b => mandalore, :distance => 1)
+Route.create(:vector_a => yavin, :vector_b => alderaan_asteroids, :distance => 1)
 Route.create(:vector_a => yavin, :vector_b => concord_dawn, :distance => 1)
 
 Route.create(:vector_a => rhen_var, :vector_b => felucia, :distance => 1)
@@ -52,19 +52,21 @@ Route.create(:vector_a => rhen_var, :vector_b => concord_dawn, :distance => 1)
 
 Route.create(:vector_a => deathstar_III, :vector_b => coruscant, :distance => 1)
 Route.create(:vector_a => deathstar_III, :vector_b => bespin, :distance => 1)
-Route.create(:vector_a => deathstar_III, :vector_b => endor, :distance => 1)
+Route.create(:vector_a => deathstar_III, :vector_b => rattatak, :distance => 1)
 
 Route.create(:vector_a => coruscant, :vector_b => mandalore, :distance => 1)
-Route.create(:vector_a => coruscant, :vector_b => corellia, :distance => 1)
+Route.create(:vector_a => coruscant, :vector_b => alderaan_asteroids, :distance => 1)
 Route.create(:vector_a => coruscant, :vector_b => bespin, :distance => 1)
 
-Route.create(:vector_a => mandalore, :vector_b => concord_dawn, :distance => 1)
-Route.create(:vector_a => mandalore, :vector_b => kuat, :distance => 1)
+Route.create(:vector_a => corellia, :vector_b => concord_dawn, :distance => 1)
+Route.create(:vector_a => corellia, :vector_b => kuat, :distance => 1)
+
 Route.create(:vector_a => mandalore, :vector_b => corellia, :distance => 1)
+Route.create(:vector_a => mandalore, :vector_b => alderaan_asteroids, :distance => 1)
 
 Route.create(:vector_a => concord_dawn, :vector_b => felucia, :distance => 1)
 Route.create(:vector_a => concord_dawn, :vector_b => kessel_asteroids, :distance => 1)
-Route.create(:vector_a => concord_dawn, :vector_b => kuat, :distance => 1)
+Route.create(:vector_a => concord_dawn, :vector_b => alderaan_asteroids, :distance => 1)
 
 Route.create(:vector_a => felucia, :vector_b => mon_calamari, :distance => 1)
 Route.create(:vector_a => felucia, :vector_b => kashyyyk, :distance => 1)
@@ -76,38 +78,42 @@ Route.create(:vector_a => mon_calamari, :vector_b => kashyyyk, :distance => 1)
 Route.create(:vector_a => endor, :vector_b => bespin, :distance => 1)
 Route.create(:vector_a => endor, :vector_b => hoth, :distance => 1)
 Route.create(:vector_a => endor, :vector_b => cimf_station, :distance => 1)
+Route.create(:vector_a => endor, :vector_b => rattatak, :distance => 1)
+Route.create(:vector_a => endor, :vector_b => ord_ibanna, :distance => 1)
 
-Route.create(:vector_a => bespin, :vector_b => corellia, :distance => 1)
-Route.create(:vector_a => bespin, :vector_b => haruun_kal, :distance => 1)
+Route.create(:vector_a => bespin, :vector_b => rattatak, :distance => 1)
+Route.create(:vector_a => bespin, :vector_b => mandalore, :distance => 1)
 Route.create(:vector_a => bespin, :vector_b => hoth, :distance => 1)
 
-Route.create(:vector_a => corellia, :vector_b => kuat, :distance => 1)
+Route.create(:vector_a => corellia, :vector_b => alderaan_asteroids, :distance => 1)
 Route.create(:vector_a => corellia, :vector_b => haruun_kal, :distance => 1)
 
 Route.create(:vector_a => kuat, :vector_b => kessel_asteroids, :distance => 1)
-Route.create(:vector_a => kuat, :vector_b => hutt_space, :distance => 1)
 
 Route.create(:vector_a => kessel_asteroids, :vector_b => kashyyyk, :distance => 1)
 Route.create(:vector_a => kessel_asteroids, :vector_b => nal_hutta, :distance => 1)
-Route.create(:vector_a => kessel_asteroids, :vector_b => hutt_space, :distance => 1)
+Route.create(:vector_a => kessel_asteroids, :vector_b => corellia, :distance => 1)
 
 Route.create(:vector_a => kashyyyk, :vector_b => res_station, :distance => 1)
 Route.create(:vector_a => kashyyyk, :vector_b => kamino, :distance => 1)
 Route.create(:vector_a => kashyyyk, :vector_b => nal_hutta, :distance => 1)
 
-Route.create(:vector_a => cimf_station, :vector_b => hoth, :distance => 1)
+Route.create(:vector_a => cimf_station, :vector_b => rattatak, :distance => 1)
 Route.create(:vector_a => cimf_station, :vector_b => mustafar, :distance => 1)
 
 Route.create(:vector_a => hoth, :vector_b => haruun_kal, :distance => 1)
 Route.create(:vector_a => hoth, :vector_b => ord_ibanna, :distance => 1)
-Route.create(:vector_a => hoth, :vector_b => mustafar, :distance => 1)
+Route.create(:vector_a => hoth, :vector_b => mandalore, :distance => 1)
+Route.create(:vector_a => hoth, :vector_b => naboo, :distance => 1)
 
 Route.create(:vector_a => haruun_kal, :vector_b => naboo, :distance => 1)
-Route.create(:vector_a => haruun_kal, :vector_b => ord_ibanna, :distance => 1)
+Route.create(:vector_a => haruun_kal, :vector_b => mandalore, :distance => 1)
+Route.create(:vector_a => haruun_kal, :vector_b => geonosis, :distance => 1)
+Route.create(:vector_a => haruun_kal, :vector_b => kuat, :distance => 1)
 
-Route.create(:vector_a => hutt_space, :vector_b => nal_hutta, :distance => 1)
-Route.create(:vector_a => hutt_space, :vector_b => tatooine, :distance => 1)
-Route.create(:vector_a => hutt_space, :vector_b => geonosis, :distance => 1)
+Route.create(:vector_a => kuat, :vector_b => nal_hutta, :distance => 1)
+Route.create(:vector_a => kuat, :vector_b => tatooine, :distance => 1)
+Route.create(:vector_a => kuat, :vector_b => geonosis, :distance => 1)
 
 Route.create(:vector_a => nal_hutta, :vector_b => kamino, :distance => 1)
 Route.create(:vector_a => nal_hutta, :vector_b => tatooine, :distance => 1)
@@ -115,6 +121,7 @@ Route.create(:vector_a => nal_hutta, :vector_b => tatooine, :distance => 1)
 Route.create(:vector_a => res_station, :vector_b => kamino, :distance => 1)
 
 Route.create(:vector_a => mustafar, :vector_b => ord_ibanna, :distance => 1)
+Route.create(:vector_a => mustafar, :vector_b => endor, :distance => 1)
 
 Route.create(:vector_a => ord_ibanna, :vector_b => naboo, :distance => 1)
 Route.create(:vector_a => ord_ibanna, :vector_b => dagobah, :distance => 1)
@@ -149,7 +156,7 @@ Fighter.create(:name => 'X-Wing', :price => 80).factions = reb
 Fighter.create(:name => 'A-Wing', :price => 110 ).factions = reb
 Fighter.create(:name => 'B-Wing', :price => 145 ).factions = reb
 Fighter.create(:name => 'Droid Fighter*', :hyperdrive => false, :price => 25 ).factions = merc
-Fighter.create(:name => 'Droid Tri-fighter*', :hyperdrive => false, :price => 35 ).factions = merc
+#Fighter.create(:name => 'Droid Tri-fighter*', :hyperdrive => false, :price => 35 ).factions = merc
 Fighter.create(:name => 'Pinook Fighter', :price => 35 ).factions = merc
 Fighter.create(:name => 'Preybird Fighter', :price => 50 ).factions = merc
 Fighter.create(:name => 'Cloackshape Fighter', :price => 55 ).factions = merc
@@ -251,14 +258,15 @@ Facility.create(:name => 'Golan III', :price => 6000 ).factions = all
 Facility.create(:name => 'Imperial Research Center', :price => 4200 ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 4500 ).factions = all
 
-Warrior.create(:name => 'BrR Vader', :price => 400 ).factions = all
-Warrior.create(:name => 'RES KamonBr', :price => 400 ).factions = all
-#Warrior.create(:name => 'Kyle Katarn', :price => 400 ).factions = reb
+Warrior.create(:name => 'BrR Vader', :price => 50 ).factions = mand
+Warrior.create(:name => 'BrR RAF', :price => 50 ).factions = mand
+Warrior.create(:name => 'RES KamonBr', :price => 50 ).factions = reb
+Warrior.create(:name => 'RES Jedi', :price => 50 ).factions = reb
 #Warrior.create(:name => 'Luke Skywalker', :price => 400 ).factions = reb
 #Warrior.create(:name => 'Boba Fett', :price => 400 ).factions = mand
 #Warrior.create(:name => 'Mandalore Warrior', :price => 400 ).factions = mand
-Warrior.create(:name => 'CIMF Neron', :price => 400 ).factions = all
-#Warrior.create(:name => 'Han Solo', :price => 400 ).factions = merc
+Warrior.create(:name => 'CIMF Neron', :price => 50 ).factions = imp
+Warrior.create(:name => 'CIMF Zoe', :price => 50 ).factions = imp
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
