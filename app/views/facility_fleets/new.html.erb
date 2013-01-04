@@ -1,12 +1,12 @@
 <div class="planet_content">
 <h2> <%= @planet.name %> </h2>
 <%= simple_form_for [@planet, @facility_fleet]  do |f| %>
-  <%= f.association :facility, :collection => @facilities, :label => 'Choose a Facility:' %>
-  <%= f.submit 'Build it' %>
+  <%= f.association :facility, :collection => @facilities, :label => 'Escolha uma Fábrica: ' %>
+  <%= f.submit 'Construir' %>
 <% end %>
 </div>
 <br>
-<%= link_to " back ", :back_to_main %>
+<%= link_to " voltar ", :back_to_main %>
 <div class="map">
 <IFRAME src="https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right"></IFRAME> 
 </div>

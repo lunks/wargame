@@ -23,4 +23,14 @@ class GenericFleetsController < ApplicationController
     redirect_to :fleets
   end
 
+  def edit
+    @fleet = GenericFleet.find(params[:id])
+    @planet = @fleet.planet
+  end
+
+  def update
+    @fleet = GenericFleet.find(params[:id])
+    @fleet.change_fleet_name(params[:fleet][:fleet_name])
+    redirect_to :fleets
+  end
 end

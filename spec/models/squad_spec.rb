@@ -12,8 +12,8 @@ describe Squad do
     end
     context 'buying facilities' do
       it 'should be able to buy facilities and remove credits accordingly' do
-        squad.credits = 2000
-        squad.buy facility, 2, planet
+        squad.credits = 1000
+        squad.buy facility, 1, planet
         squad.credits.should be 0
       end
 

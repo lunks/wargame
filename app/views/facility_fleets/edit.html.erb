@@ -1,27 +1,31 @@
 <div class="planet_content">
 <h2><%= @planet %></h2>
 <h3><%= @facility  %></h3>
-  Balance: $<%= @facility.balance  %>
+  Balanço: $<%= @facility.balance  %>
   <br>
 <% if @facility.producing_unit.present? %>
-  <%= "Capacity: $#{@facility.capacity}
+  <%= "Capacidade: $#{@facility.capacity}
   " %>
   <br>
-  Building: <%= @facility.producing_unit.name.pluralize %>
+  Produzindo: <%= @facility.producing_unit.name.pluralize %>
   <%= "( $#{@facility.producing_unit.price} )" %>
   <br>
-  <%= "Available: #{@facility.units_per_turn} units for next round" %>
+  <%= "Previsão: #{@facility.units_per_turn} unidades para o próximo round" %>
 <% else %>
-  Capacity: $<%= @facility.capacity %>
+  Capacidade: $<%= @facility.capacity %>
 <% end %>
 <p>
+<%= "Sabotada" if @facility.sabotaged? %>
 <%= simple_form_for @facility do |f| %>
-<%= f.input :producing_unit, :collection => @units, :label => 'Choose a unit to produce:' %>
-<%= f.submit 'Change Unit' %>
+<%= f.input :producing_unit, :collection => @units, :label => 'Escolha uma unidade para produção:' %>
+<%= f.submit 'OK' %>
 <% end %>
+<br>
+Level: <%= @facility.level %>
+
 </div>
 <br>
-<%= link_to " back ", :back_to_main %>
+<%= link_to " voltar ", :back_to_main %>
 <div class="map">
 <IFRAME src="https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right"></IFRAME> 
 </div>

@@ -1,5 +1,6 @@
 alderaan_graveyard = Planet.create(:name => 'Alderaan Graveyard', :credits => 400 )
 bespin = Planet.create(:name => 'Bespin', :credits => 400 )
+brnavies_spaceport = Planet.create(:name => 'BrNavies Spaceport', :credits => 400 )
 cimf_station = Planet.create(:name => 'CIMF Station', :credits => 400 )
 concord_dawn = Planet.create(:name => 'Concord Dawn', :credits => 400 )
 corellia = Planet.create(:name => 'Corellia', :credits => 400 )
@@ -35,7 +36,9 @@ tatooine = Planet.create(:name => 'Tatooine', :credits => 400 )
 utapau = Planet.create(:name => 'Utapau', :credits => 400 )
 vergesso_asteroids = Planet.create(:name => 'Vergesso Asteroids', :credits => 400 )
 yavin = Planet.create(:name => 'Yavin', :credits => 400 )
-wormhole = Planet.create(:name => 'Wormhole', :credits => 0 )
+wormholeI = Planet.create(:name => 'Wormhole I', :credits => 0 )
+wormholeII = Planet.create(:name => 'Wormhole II', :credits => 0 )
+
 
 Route.create(:vector_a => dantooine, :vector_b => deathstar_III, :distance => 1)
 Route.create(:vector_a => dantooine, :vector_b => mandalore, :distance => 1)
@@ -87,8 +90,11 @@ Route.create(:vector_a => felucia, :vector_b => kessel_asteroids, :distance => 1
 Route.create(:vector_a => felucia, :vector_b => mon_calamari, :distance => 1)
 
 Route.create(:vector_a => mon_calamari, :vector_b => kessel_asteroids, :distance => 1)
+Route.create(:vector_a => mon_calamari, :vector_b => res_station, :distance => 1)
 
-Route.create(:vector_a => endor, :vector_b => res_station, :distance => 1)
+Route.create(:vector_a => res_station, :vector_b => kessel_asteroids, :distance => 1)
+Route.create(:vector_a => res_station, :vector_b => kamino, :distance => 1)
+
 Route.create(:vector_a => endor, :vector_b => hoth, :distance => 1)
 Route.create(:vector_a => endor, :vector_b => bespin, :distance => 1)
 
@@ -97,10 +103,10 @@ Route.create(:vector_a => bespin, :vector_b => haruun_kal, :distance => 1)
 Route.create(:vector_a => bespin, :vector_b => corellia, :distance => 1)
 
 Route.create(:vector_a => corellia, :vector_b => haruun_kal, :distance => 1)
-Route.create(:vector_a => corellia, :vector_b => cimf_station, :distance => 1)
+Route.create(:vector_a => corellia, :vector_b => brnavies_spaceport, :distance => 1)
 Route.create(:vector_a => corellia, :vector_b => kuat, :distance => 1)
 
-Route.create(:vector_a => kuat, :vector_b => cimf_station, :distance => 1)
+Route.create(:vector_a => kuat, :vector_b => brnavies_spaceport, :distance => 1)
 Route.create(:vector_a => kuat, :vector_b => nal_hutta, :distance => 1)
 Route.create(:vector_a => kuat, :vector_b => kashyyyk, :distance => 1)
 
@@ -111,8 +117,9 @@ Route.create(:vector_a => kashyyyk, :vector_b => kessel_asteroids, :distance => 
 Route.create(:vector_a => kessel_asteroids, :vector_b => hutt_space, :distance => 1)
 Route.create(:vector_a => kessel_asteroids, :vector_b => kamino, :distance => 1)
 
-Route.create(:vector_a => res_station, :vector_b => mustafar, :distance => 1)
-Route.create(:vector_a => res_station, :vector_b => hoth, :distance => 1)
+Route.create(:vector_a => cimf_station, :vector_b => mustafar, :distance => 1)
+Route.create(:vector_a => cimf_station, :vector_b => hoth, :distance => 1)
+Route.create(:vector_a => cimf_station, :vector_b => endor, :distance => 1)
 
 Route.create(:vector_a => hoth, :vector_b => mustafar, :distance => 1)
 Route.create(:vector_a => hoth, :vector_b => ord_ibanna, :distance => 1)
@@ -120,11 +127,11 @@ Route.create(:vector_a => hoth, :vector_b => haruun_kal, :distance => 1)
 
 Route.create(:vector_a => haruun_kal, :vector_b => ord_ibanna, :distance => 1)
 Route.create(:vector_a => haruun_kal, :vector_b => naboo, :distance => 1)
-Route.create(:vector_a => haruun_kal, :vector_b => cimf_station, :distance => 1)
+Route.create(:vector_a => haruun_kal, :vector_b => brnavies_spaceport, :distance => 1)
 
-Route.create(:vector_a => cimf_station, :vector_b => naboo, :distance => 1)
-Route.create(:vector_a => cimf_station, :vector_b => vergesso_asteroids, :distance => 1)
-Route.create(:vector_a => cimf_station, :vector_b => nal_hutta, :distance => 1)
+Route.create(:vector_a => brnavies_spaceport, :vector_b => naboo, :distance => 1)
+Route.create(:vector_a => brnavies_spaceport, :vector_b => vergesso_asteroids, :distance => 1)
+Route.create(:vector_a => brnavies_spaceport, :vector_b => nal_hutta, :distance => 1)
 
 Route.create(:vector_a => nal_hutta, :vector_b => vergesso_asteroids, :distance => 1)
 Route.create(:vector_a => nal_hutta, :vector_b => tatooine, :distance => 1)
@@ -213,37 +220,37 @@ LightTransport.create(:name => 'Assault Shuttle', :price => 220 ).factions = imp
 LightTransport.create(:name => 'System Patrol Craft', :price => 350 ).factions = imp
 LightTransport.create(:name => 'Modular Conveyor', :price => 100 ).factions = imp
 
-CapitalShip.create(:name => 'Corellian Gunship', :price => 400 ).factions = all
-CapitalShip.create(:name => 'Corellian Corvette', :price => 400 ).factions = all
-CapitalShip.create(:name => 'Mod Corvette', :price => 430 ).factions = all
-CapitalShip.create(:name => 'Nebulon B Frigate', :price => 500 ).factions = all
-CapitalShip.create(:name => 'Nebulon B2 Frigate', :price => 700 ).factions = all
-CapitalShip.create(:name => 'Carrack Cruiser', :price => 500 ).factions = imp
-CapitalShip.create(:name => 'Lancer Frigate', :price => 550 ).factions = imp
-CapitalShip.create(:name => 'Marauder Corvette', :price => 800 ).factions = mand_merc
-CapitalShip.create(:name => 'Dreadnaught', :price => 1250 ).factions = all
-CapitalShip.create(:name => 'Escort Carrier', :price => 900 ).factions = imp
-CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 900 ).factions = reb
-CapitalShip.create(:name => 'Bulk Cruiser', :price => 1000 ).factions = merc
-CapitalShip.create(:name => 'Strike Cruiser', :price => 1400 ).factions = imp_reb
-CapitalShip.create(:name => 'Assault Frigate', :price => 1700 ).factions = reb
-CapitalShip.create(:name => 'Munificent Frigate', :price => 1800 ).factions = merc
-CapitalShip.create(:name => 'Acclamator Assault Ship', :price => 1800 ).factions = mand
-CapitalShip.create(:name => 'Victory Star Destroyer', :price => 1900 ).factions = imp
-CapitalShip.create(:name => 'Venator Star Destroyer', :price => 2000 ).factions = mand
-CapitalShip.create(:name => 'Providence Destroyer', :price => 2000 ).factions = merc
-CapitalShip.create(:name => 'Reef Home Calamari Cruiser', :price => 2000 ).factions = reb
-CapitalShip.create(:name => 'Liberty Calamari Cruiser', :price => 2000 ).factions = reb
-CapitalShip.create(:name => 'Victory Star Destroyer II', :price => 2100 ).factions = imp
-CapitalShip.create(:name => 'Liberator Cruiser', :price => 2200 ).factions = reb
-CapitalShip.create(:name => 'Interdictor', :price => 2500 ).factions = imp
-CapitalShip.create(:name => 'Dauntless Cruiser', :price => 2400 ).factions = reb
-CapitalShip.create(:name => 'Imperial Star Destroyer', :price => 2450 ).factions = imp
-CapitalShip.create(:name => 'Dominator Interdictor', :price => 2800 ).factions = imp
-CapitalShip.create(:name => 'Imperial Star Destroyer II', :price => 2800 ).factions = imp
-CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 5500 ).factions = mand_merc
-CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 7200 ).factions = reb
-CapitalShip.create(:name => 'Super Star Destroyer', :price => 8400 ).factions = imp
+CapitalShip.create(:name => 'Corellian Gunship¹', :price => 400 ).factions = all
+CapitalShip.create(:name => 'Corellian Corvette¹', :price => 400 ).factions = all
+CapitalShip.create(:name => 'Mod Corvette¹', :price => 430 ).factions = all
+CapitalShip.create(:name => 'Nebulon B Frigate¹', :price => 500 ).factions = all
+CapitalShip.create(:name => 'Nebulon B2 Frigate¹', :price => 700 ).factions = all
+CapitalShip.create(:name => 'Carrack Cruiser¹', :price => 500 ).factions = imp
+CapitalShip.create(:name => 'Lancer Frigate¹', :price => 550 ).factions = imp
+CapitalShip.create(:name => 'Marauder Corvette²', :price => 800 ).factions = mand_merc
+CapitalShip.create(:name => 'Dreadnaught²', :price => 1250 ).factions = all
+CapitalShip.create(:name => 'Escort Carrier²', :price => 900 ).factions = imp
+CapitalShip.create(:name => 'Lt Calamari Cruiser²', :price => 900 ).factions = reb
+CapitalShip.create(:name => 'Bulk Cruiser²', :price => 1000 ).factions = merc
+CapitalShip.create(:name => 'Strike Cruiser²', :price => 1400 ).factions = imp_reb
+CapitalShip.create(:name => 'Assault Frigate²', :price => 1700 ).factions = reb
+CapitalShip.create(:name => 'Munificent Frigate³', :price => 1800 ).factions = merc
+CapitalShip.create(:name => 'Acclamator Assault Ship³', :price => 1800 ).factions = mand
+CapitalShip.create(:name => 'Victory Star Destroyer³', :price => 1900 ).factions = imp
+CapitalShip.create(:name => 'Venator Star Destroyer³', :price => 2000 ).factions = mand
+CapitalShip.create(:name => 'Providence Destroyer³', :price => 2000 ).factions = merc
+CapitalShip.create(:name => 'Reef Home Calamari Cruiser³', :price => 2000 ).factions = reb
+CapitalShip.create(:name => 'Liberty Calamari Cruiser³', :price => 2000 ).factions = reb
+CapitalShip.create(:name => 'Victory Star Destroyer II³', :price => 2100 ).factions = imp
+CapitalShip.create(:name => 'Liberator Cruiser³', :price => 2200 ).factions = reb
+CapitalShip.create(:name => 'Interdictor³', :price => 2500 ).factions = imp
+CapitalShip.create(:name => 'Dauntless Cruiser³', :price => 2400 ).factions = reb
+CapitalShip.create(:name => 'Imperial Star Destroyer³', :price => 2450 ).factions = imp
+CapitalShip.create(:name => 'Dominator Interdictor³', :price => 2800 ).factions = imp
+CapitalShip.create(:name => 'Imperial Star Destroyer II³', :price => 2800 ).factions = imp
+CapitalShip.create(:name => 'Lucrehulk Battleship*', :price => 5500 ).factions = mand_merc
+CapitalShip.create(:name => 'Bulkwark Cruiser*', :price => 7200 ).factions = reb
+CapitalShip.create(:name => 'Super Star Destroyer*', :price => 8400 ).factions = imp
 
 Armament.create(:name => 'Concussion Missile', :price => 15 ).factions = all
 Armament.create(:name => 'Proton Torpedo', :price => 20 ).factions = all
@@ -260,19 +267,19 @@ Armament.create(:name => 'Flare', :price => 30 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 2 ).factions = all
 
 Facility.create(:name => 'Industrial Complex', :price => 1200 ).factions = all
-Facility.create(:name => 'Cargo Facility I', :price => 1600 ).factions = all
+Facility.create(:name => 'Cargo Facility I', :price => 1500 ).factions = all
 Facility.create(:name => 'Cargo Facility II', :price => 2400 ).factions = all
 Facility.create(:name => 'Derilyn Platform', :price => 1800 ).factions = mand_merc
-Facility.create(:name => 'Family Base', :price => 2000 ).factions = merc
+Facility.create(:name => 'Family Base', :price => 2100 ).factions = merc
 Facility.create(:name => 'Factory', :price => 2400 ).factions = all
 Facility.create(:name => 'Platforms', :price => 2400 ).factions = all
-Facility.create(:name => 'Rebel Platform', :price => 3400 ).factions = reb
+Facility.create(:name => 'Rebel Platform', :price => 3450 ).factions = reb
 Facility.create(:name => 'Asteroid Hangar', :price => 3000 ).factions = mand_merc
-Facility.create(:name => 'Golan I', :price => 2800 ).factions = all
-Facility.create(:name => 'Golan II', :price => 4200 ).factions = all
-Facility.create(:name => 'Golan III', :price => 5600 ).factions = all
-Facility.create(:name => 'Imperial Research Center', :price => 4800 ).factions = imp
-Facility.create(:name => 'Shipyard', :price => 6000 ).factions = all
+Facility.create(:name => 'Golan I', :price => 3000 ).factions = all
+Facility.create(:name => 'Golan II', :price => 3900 ).factions = all
+Facility.create(:name => 'Golan III', :price => 6000 ).factions = all
+Facility.create(:name => 'Imperial Research Center', :price => 4200 ).factions = imp
+Facility.create(:name => 'Shipyard', :price => 4500 ).factions = all
 
 Warrior.create(:name => 'Darth Vader', :price => 300 ).factions = imp
 Warrior.create(:name => 'Darth Sidious', :price => 300 ).factions = imp

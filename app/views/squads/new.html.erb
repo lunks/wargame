@@ -1,14 +1,14 @@
-<h2>New Squad</h2>
+<h2>Novo Esquadrão</h2>
 
 <%= simple_form_for @squad do |f| %>
-<%= f.input :name, :label => 'Name: ' %>
-<%= f.input  :faction, :collection => FACTIONS, :label => 'Faction: ' %>
-<%= f.input :color, :collection => @colors, :label => 'Color: ' %>
-<%= f.button :submit %>
+<%= f.input :name, :label => 'Nome: ' %>
+<%= f.input :faction, :collection => FACTIONS, :label => 'Facção: ' %>
+<%= f.input :color, :collection => @colors, :label => 'Cor: ' %>
+<%= f.button :submit, :label => ' OK ' %>
 <% end %>
 <b>Instruções</b><br><br>
 - Preencha Nome do Esquadrão <br>
-- Escolha a Faccao (define as naves que voce pode construir)<br>
+- Escolha a Facção (define as naves que você pode construir)<br>
 - Escolha a cor:<br><br>
 <span style=color:#FF0000>FF0000 - Vermelho</span><br>
 <span style=color:#00FF00>00FF00 - Verde</span><br>

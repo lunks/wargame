@@ -3,16 +3,16 @@
 <% @fleets.each do |fleet| %>
   <span style=font-weight:bold><%= fleet.quantity %> <%= fleet.generic_unit.name %></span>
   <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
-    <%= f.input :quantity, :collection => 1..fleet.quantity, :label => 'Quantity: ' %>
-    <%= f.input :destination, :collection => @routes, :label => 'Destination: ' %>
+    <%= f.input :quantity, :collection => 1..fleet.quantity, :label => 'Quantidade: ' %>
+    <%= f.input :destination, :collection => @routes, :label => 'Destino: ' %>
     <%= f.hidden_field :id %>
-    <%= f.submit 'Move it' %>
+    <%= f.submit 'Mover' %>
   <% end %>
   <br>
 <% end %>
 </div>
 <br>
-<%= link_to " back ", :back_to_main %>
+<%= link_to " voltar ", :back_to_main %>
 <div class="map">
 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1080" height="768" id="FlashID" title="Map 6.0">
   <param name="movie" value="http://brnavies.dyndns.org/mapa.swf" />

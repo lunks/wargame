@@ -4,13 +4,13 @@
     <% if fleet.producing_unit.present? %>
       <%= link_to "#{fleet.producing_unit_display}", edit_facility_fleet_path(fleet) %>
     <% else %>
-      <%= link_to 'inactive', edit_facility_fleet_path(fleet) %>
+      <%= link_to 'inativa', edit_facility_fleet_path(fleet) %>
     <% end %>
   <% else %>
     <% if fleet.producing_unit.present? %>
         <%= fleet.producing_unit_display %>
     <% else %>
-      <%= 'inactive' %>
+      <%= 'inativa' %>
     <% end %>
   <% end %>
 )

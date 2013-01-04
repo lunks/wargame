@@ -10,7 +10,7 @@ class Result < ActiveRecord::Base
   belongs_to :round
 
   validates_presence_of :round, :generic_fleet, :generic_unit, :squad, :planet, :quantity 
-  validates_numericality_of :blasted, :fled, :captured, :allow_nil => true
+  validates_numericality_of :blasted, :fled, :captured, :sabotaged, :allow_nil => true
   validate :captor_if_captured
   validate :posted_results  
 
@@ -26,6 +26,10 @@ class Result < ActiveRecord::Base
     self.generic_fleet.capture! self.captured, self.captor
   end
 
+  def sabotage!
+    self.generic_fleet.sabotage! self.sabotaged
+  end
+
   def captor_if_captured
     if self.captured and !captor.is_a?(Squad)
       errors.add :captor, :empty
@@ -35,7 +39,7 @@ class Result < ActiveRecord::Base
   end
 
   def posted_results
-    posted_result = self.captured.to_i + self.blasted.to_i + self.fled.to_i
+    posted_result = self.captured.to_i + self.blasted.to_i + self.fled.to_i + self.sabotaged.to_i
     if posted_result > self.quantity.to_i
       errors.add :blasted, 'exceed fleet quantity'
     else

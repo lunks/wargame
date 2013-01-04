@@ -23,13 +23,13 @@ describe 'homepage' do
     end
 
     it 'should show me new squad form if dont have a squad yet' do
-      page.should have_content('New Squad')
+      page.should have_content('Novo Esquadrão')
     end
 
     it 'should create a squad' do
-      fill_in('Name', :with => squad[:name])
-      select(squad[:color], :from => 'Color')
-      select(squad[:faction], :from => 'Faction')
+      fill_in('Nome', :with => squad[:name])
+      select(squad[:color], :from => 'Cor')
+      select(squad[:faction], :from => 'Facção')
       click_button('Create Squad')
       User.first.squad.should_not be_nil
     end

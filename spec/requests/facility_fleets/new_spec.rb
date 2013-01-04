@@ -12,10 +12,10 @@ describe "facility fleets" do
     end
 
     it "after bought, shows up on the main page" do
-      click_link 'build facility'
+      click_link 'construir fábrica'
       page.should have_content Planet.first.name
-      select @facility.name, :from => 'Choose a Facility:'
-      click_button 'Build it'
+      select @facility.name, :from => 'Escolha uma Fábrica:'
+      click_button 'Construir'
       page.should have_content @facility.name
     end
   end

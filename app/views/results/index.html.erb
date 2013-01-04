@@ -11,10 +11,10 @@
        <%= result_form.association :planet, :as => :hidden %>
        <%= result_form.association :round, :as => :hidden %>
        <%= result_form.association :squad, :as => :hidden %>
-       <%= result_form.input :blasted, :input_html => { :size => 3 } %>
-       <%= result_form.input :fled, :input_html => { :size => 3 } %>
-       <%= result_form.input :captured, :input_html => { :size => 3 } %>
-       <%= result_form.association :captor, :collection => @squads %>
+       <%= result_form.input :blasted, :input_html => { :size => 3 }, :label => 'Destruidos: ' %>
+       <%= result_form.input :fled, :input_html => { :size => 3 }, :label => 'Fugiram: ' %>
+       <%= result_form.input :captured, :input_html => { :size => 3 }, :label => 'Capturados: ' %>
+       <%= result_form.association :captor, :collection => @squads, :label => 'Por: ' %>
        <br>
     <% end %>
   <% end %>
@@ -22,4 +22,4 @@
 <% end %>
 </div>
 <br>
-<%= link_to " back ", :back_to_main %>
+<%= link_to " voltar ", :back_to_main %>

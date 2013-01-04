@@ -1,22 +1,24 @@
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
-<span style=font-weight:bold;font-size:18px> Round: <%= @round.number %> <%= link_to "click when ready ", ready_path %></span><br>
-<span style=font-weight:bold;font-size:13px;color:yellow> Credits: $<%= @squad.credits %> <%= link_to "transfer credits ", :transfer %> </span><br>
-<span style=font-weight:bold;font-size:13px;color:#00FF00> Income: $<%= @income %> </span><br>
-<span style=font-weight:bold;font-size:13px;color:#FF0000> Wasted: $ -<%= @flee_tax.to_i %></span><br>
-<span style=text-decoration:blink;><%= " Team is ready! Waiting other players " if @squad.ready? %></span>
+<span style=font-weight:bold;font-size:18px> Round: <%= @round.number %> <%= link_to " clique quando pronto ", ready_path %></span><br>
+<span style=font-weight:bold;font-size:13px;color:yellow> Créditos: $<%= @squad.credits %> <%= link_to "transferir créditos ", :transfer %> </span><br>
+<span style=font-weight:bold;font-size:13px;color:#00FF00> Ganhos: $<%= @income %> </span><br>
+<span style=font-weight:bold;font-size:13px;color:#FF0000> Perdas: $ -<%= @flee_tax.to_i %></span><br>
+<span style=text-decoration:blink;><%= " Time pronto! Aguardando outros jogadores " if @squad.ready? %></span>
 </div>
 
 <div class="planet_content">
   <% @planets.each do |planet| %>
     <h2> <%= planet.name %></h2>
     <p>
-    <%= "Planet Income: $#{planet.credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && planet.squad == @squad && planet.ground_squad == @squad %>
+    <%= "Ganhos previstos: $#{planet.credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && planet.squad == @squad && planet.ground_squad == @squad %>
     <p>
     <% planet.generic_fleets.each do |fleet| %>
       <span style=color:#<%= fleet.squad.color %>>
-      <% if fleet.class == FacilityFleet %>
+      <% if fleet.generic_unit.type == 'Facility' %>
          <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
+       <% elsif fleet.generic_unit.type == 'CapitalShip' %>
+         <%= render :partial => 'capital_ships', :locals => { :fleet => fleet } %>
        <% else %>
          <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>
       <% end %>
@@ -24,9 +26,9 @@
       <br>
     <% end %>
     <p>
-    <%= link_to 'move fleets ', move_planet_path(planet) if @round.move %>
-    <%= link_to ' build facility ', new_planet_facility_fleet_path(planet) if @round.move && planet.squad == @squad %>
-    <%= link_to 'post results ', planet_results_path(planet) if @round.attack and planet.under_attack? %> 
+    <%= link_to ' mover frotas ', move_planet_path(planet) if @round.move %>
+    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet) if @round.move && planet.squad == @squad %>
+    <%= link_to ' postar resultados ', planet_results_path(planet) if @round.attack and planet.under_attack? %> 
   <% end %>
 </div>
 <br>

@@ -1,0 +1,7 @@
+<%= fleet.quantity %>
+<% if @round.move && fleet.squad == @squad %>
+  <%= fleet.generic_unit.name %> "<%= link_to fleet.fleet_name, edit_generic_fleet_path(fleet) %>"
+<% else %>
+  <%= fleet.generic_unit.name %> "<%= fleet.fleet_name %>"
+<% end %>
+<span style=font-weight:bold><%= "indo para #{fleet.destination.name} " if fleet.moving?%></span>

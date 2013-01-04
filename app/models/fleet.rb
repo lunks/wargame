@@ -43,6 +43,7 @@ class Fleet < GenericFleet
 
   def flee! quantity
     routes = planet.routes.select { |planet| planet.squad == self.squad }
+    routes = planet.routes.select { |planet| planet.ground_squad == self.squad} if routes.empty?
     routes = planet.routes.select { |planet| planet.squad == nil} if routes.empty?
     routes = planet.routes if routes.empty?
     fleeing_fleet = Fleet.new self.attributes
@@ -57,7 +58,7 @@ class Fleet < GenericFleet
   end
 
   def self.create_from_facility unit, quantity, planet, squad
-    fleet = find_or_create_by_generic_unit_id_and_planet_id_and_squad_id(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id)
+    fleet = find_or_create_by_generic_unit_id_and_planet_id_and_squad_id(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id, :fleet_name => squad.name, :level => 0)
     if fleet.quantity
       fleet.quantity += quantity
     else
@@ -67,7 +68,7 @@ class Fleet < GenericFleet
   end
 
   def group_fleets
-    fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil, :type => 'Fleet')
+    fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil, :type => 'Fleet', :fleet_name => self.squad.name)
     total_quantity = 0
     fleets.each do |fleet|
       unless fleet == self

@@ -12,7 +12,7 @@ class Round < ActiveRecord::Base
     Squad.all.each do |squad|
       squad.planets << Planet.where(:name => 'RES Station') and famous_squad = true if squad.name == 'RES'
       squad.planets << Planet.where(:name => 'CIMF Station') and famous_squad = true if squad.name == 'CIMF'
-      squad.planets << Planet.where(:name => 'Hutts Minefields') and famous_squad = true if squad.name == 'BRR'
+      squad.planets << Planet.where(:name => 'BrNavies Spaceport') and famous_squad = true if squad.name == 'BRR'
       if famous_squad == true
         squad.planets << Planet.randomize
       else
@@ -22,14 +22,18 @@ class Round < ActiveRecord::Base
       squad.populate_planets
       squad.update_attributes(:credits => 1200)
     end
-    #cria 2 rotas pro wormhole diferente dos planetas ocupados
-    wormhole = Planet.where(:name => 'Wormhole').first
+    GenericFleet.update_all(:level => 0)
+    #cria 2 rotas pra 2 wormholes diferente dos planetas ocupados
+    wormhole = Planet.where(:name => 'Wormhole I').first
+    wormhole2 = Planet.where(:name => 'Wormhole II').first
     2.times {Route.create(:vector_a => wormhole, :vector_b => Planet.randomize, :distance => 1)}
+    2.times {Route.create(:vector_a => wormhole2, :vector_b => Planet.randomize, :distance => 1)}
     set_map
   end
 
   def end_moving!
     Squad.update_all(:ready => nil)
+    GenericFleet.update_all(:sabotaged => nil)
     self.move_fleets
     self.move = nil
     self.attack = true
@@ -80,9 +84,11 @@ class Round < ActiveRecord::Base
 
   def apply_results
     Result.where(:round => self).each do |result|
+      result.add_experience
       result.blast! unless result.blasted == nil || result.blasted <= 0
       result.capture! unless result.captured == nil || result.captured <= 0
       result.flee! unless result.fled == nil || result.fled <= 0
+      result.sabotage! unless result.sabotaged == nil || result.sabotaged <= 0
     end
   end
 

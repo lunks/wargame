@@ -7,8 +7,7 @@ class FacilityFleet < GenericFleet
   delegate :capacity, :to => :facility
   class << self
     def is_free
-      #FacilityFleet.skip_callback(:create, :before, :subtract_credits_from_squad)
-      FacilityFleet.skip_callback(:create, :before)
+      FacilityFleet.skip_callback(:create, :before, :subtract_credits_from_squad)
     end
   end
   def produce!
@@ -46,6 +45,8 @@ class FacilityFleet < GenericFleet
   def default_values
     self.quantity = 1
     self.balance = 0
+    self.level = 0
+    self.fleet_name = 'Abc'
   end
 
   def subtract_credits_from_squad
