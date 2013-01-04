@@ -1,6 +1,6 @@
-#alderaan_graveyard = Planet.create(:name => 'Alderaan Graveyard', :credits => 500 )
+alderaan_asteroids = Planet.create(:name => 'Alderaan Asteroids', :credits => 500 )
 bespin = Planet.create(:name => 'Bespin', :credits => 500 )
-brnavies_spaceport = Planet.create(:name => 'BrNavies Spaceport', :credits => 500 )
+brr_clan_tradeport = Planet.create(:name => 'BrR Clan Tradeport', :credits => 500 )
 cimf_station = Planet.create(:name => 'CIMF Station', :credits => 500 )
 concord_dawn = Planet.create(:name => 'Concord Dawn', :credits => 500 )
 corellia = Planet.create(:name => 'Corellia', :credits => 500 )
@@ -28,7 +28,7 @@ naboo = Planet.create(:name => 'Naboo', :credits => 500 )
 nal_hutta = Planet.create(:name => 'Nal Hutta', :credits => 500 )
 ord_ibanna = Planet.create(:name => 'Ord Ibanna', :credits => 500 )
 #polis_massa = Planet.create(:name => 'Polis Massa', :credits => 500 )
-#rattatak = Planet.create(:name => 'Rattatak', :credits => 500 )
+rattatak = Planet.create(:name => 'Rattatak', :credits => 500 )
 res_station = Planet.create(:name => 'RES Station', :credits => 500 )
 rhen_var = Planet.create(:name => 'Rhen Var', :credits => 500 )
 #silken_asteroids = Planet.create(:name => 'Silken Asteroids', :credits => 500 )
@@ -124,14 +124,14 @@ Route.create(:vector_a => naboo, :vector_b => utapau, :distance => 1)
 Route.create(:vector_a => naboo, :vector_b => dagobah, :distance => 1)
 
 Route.create(:vector_a => geonosis, :vector_b => tatooine, :distance => 1)
-Route.create(:vector_a => geonosis, :vector_b => brnavies_spaceport, :distance => 1)
+Route.create(:vector_a => geonosis, :vector_b => brr_clan_tradeport, :distance => 1)
 Route.create(:vector_a => geonosis, :vector_b => utapau, :distance => 1)
 
 Route.create(:vector_a => dagobah, :vector_b => utapau, :distance => 1)
 
-Route.create(:vector_a => utapau, :vector_b => brnavies_spaceport, :distance => 1)
+Route.create(:vector_a => utapau, :vector_b => brr_clan_tradeport, :distance => 1)
 
-Route.create(:vector_a => brnavies_spaceport, :vector_b => tatooine, :distance => 1)
+Route.create(:vector_a => brr_clan_tradeport, :vector_b => tatooine, :distance => 1)
 
 imp = ['empire']
 reb = ['rebel']
@@ -251,14 +251,14 @@ Facility.create(:name => 'Golan III', :price => 6000 ).factions = all
 Facility.create(:name => 'Imperial Research Center', :price => 4200 ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 4500 ).factions = all
 
-#Warrior.create(:name => 'Darth Vader', :price => 300 ).factions = imp
-#Warrior.create(:name => 'Darth Sidious', :price => 300 ).factions = imp
-#Warrior.create(:name => 'Kyle Katarn', :price => 300 ).factions = reb
-#Warrior.create(:name => 'Luke Skywalker', :price => 300 ).factions = reb
-#Warrior.create(:name => 'Boba Fett', :price => 300 ).factions = mand
-#Warrior.create(:name => 'Mandalore Warrior', :price => 300 ).factions = mand
-#Warrior.create(:name => 'Chewbacca', :price => 300 ).factions = merc
-#Warrior.create(:name => 'Han Solo', :price => 300 ).factions = merc
+Warrior.create(:name => 'BrR Vader', :price => 400 ).factions = all
+Warrior.create(:name => 'RES KamonBr', :price => 400 ).factions = all
+#Warrior.create(:name => 'Kyle Katarn', :price => 400 ).factions = reb
+#Warrior.create(:name => 'Luke Skywalker', :price => 400 ).factions = reb
+#Warrior.create(:name => 'Boba Fett', :price => 400 ).factions = mand
+#Warrior.create(:name => 'Mandalore Warrior', :price => 400 ).factions = mand
+Warrior.create(:name => 'CIMF Neron', :price => 400 ).factions = all
+#Warrior.create(:name => 'Han Solo', :price => 400 ).factions = merc
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
