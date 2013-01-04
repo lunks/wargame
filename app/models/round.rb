@@ -25,17 +25,14 @@ class Round < ActiveRecord::Base
     GenericFleet.update_all(:level => 0)
     #cria 2 wormholes (rotas diretas entre 2 planetas)
     2.times do
-      eastside = Planet.where(:squad_id => nil, :wormhole => nil).order("RANDOM()").first
+      empty_planets = Planet.where(:squad_id => nil, :wormhole => nil)
+      eastside = empty_planets[rand(empty_planets.count - 1)]
       eastside.update_attributes(:wormhole => true)
-      westside = Planet.where(:squad_id => nil, :wormhole => nil).order("RANDOM()").first
+      empty_planets = Planet.where(:squad_id => nil, :wormhole => nil)
+      westside = empty_planets[rand(empty_planets.count - 1)]
       westside.update_attributes(:wormhole => true)
       Route.create(:vector_a => eastside, :vector_b => westside, :distance => 1)
     end
-   
-    #wormhole = Planet.where(:name => 'Wormhole I').first
-    #wormhole2 = Planet.where(:name => 'Wormhole II').first
-    #2.times {Route.create(:vector_a => wormhole, :vector_b => Planet.randomize, :distance => 1)}
-    #2.times {Route.create(:vector_a => wormhole2, :vector_b => Planet.randomize, :distance => 1)}
     set_map
   end
 
