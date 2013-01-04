@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @rounds = Round.includes(:results)
+    redirect_to "/users/sign_in"
   end
 
 

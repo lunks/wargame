@@ -1,5 +1,5 @@
 class FacilityFleet < GenericFleet
-  before_create :default_values, :subtract_credits_from_squad
+  before_create :default_values
   validates_presence_of :facility, :squad
   belongs_to :facility, :foreign_key => :generic_unit_id
   belongs_to :producing_unit, :class_name => "Unit"
@@ -47,16 +47,6 @@ private
     self.quantity = 1
     self.balance = 0
     self.level = 0
-  end
-
-  def subtract_credits_from_squad
-    total_price = facility.price * self.quantity
-    if squad.credits >= total_price
-      squad.credits -= total_price
-      squad.save
-    else
-      false
-    end
   end
 
 end

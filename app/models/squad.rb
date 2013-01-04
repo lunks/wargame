@@ -19,7 +19,8 @@ class Squad < ActiveRecord::Base
     unless (unit.belongs? faction) and (unit.is_a? Facility) and (credits >= unit.price)
       return false
     end
-    new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet)
+    debit unit.price
+    new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :fleet_name => self.name)
     generic_fleets << new_fleet
     save
   end

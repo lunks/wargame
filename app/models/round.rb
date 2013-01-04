@@ -38,7 +38,6 @@ class Round < ActiveRecord::Base
 
   def end_moving!
     Squad.update_all(:ready => nil)
-    GenericFleet.update_all(:sabotaged => nil)
     self.move_fleets
     self.move = nil
     self.attack = true
@@ -46,6 +45,7 @@ class Round < ActiveRecord::Base
     GenericFleet.all.each do |fleet|
       Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad) if fleet.planet.under_attack?
     end
+    #GenericFleet.update_all(:sabotaged => nil)
     set_map
   end
 
