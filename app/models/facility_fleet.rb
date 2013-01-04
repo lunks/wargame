@@ -24,7 +24,7 @@ class FacilityFleet < GenericFleet
   end
 
   def upgrade!
-    self.level += 
+    self.level += 1
   end
 
   def units_per_turn
