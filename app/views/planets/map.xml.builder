@@ -20,7 +20,7 @@ xml.planetas do
       end
       has_fleet = planet.generic_fleets.select { |ships| ships.squad == @current_squad }
       if !has_fleet.empty?
-        planet.generic_fleets.where(:squad_id => @current_squad).each_with_index do |fleet, index|
+        planet.generic_fleets.where(:squad_id => @current_squad).sort_by{|a| [a.generic_unit.type, a.quantity, a.generic_unit.name]}.each_with_index do |fleet, index|
           xml.corfleet fleet.squad.color
           if !fleet.moving
             xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name 
