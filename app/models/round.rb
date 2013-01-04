@@ -12,7 +12,7 @@ class Round < ActiveRecord::Base
     Squad.all.each do |squad|
       squad.planets << Planet.where(:name => 'RES Station') and famous_squad = true if squad.name == 'RES'
       squad.planets << Planet.where(:name => 'CIMF Station') and famous_squad = true if squad.name == 'CIMF'
-      squad.planets << Planet.where(:name => 'BrNavies Spaceport') and famous_squad = true if squad.name == 'BRR'
+      squad.planets << Planet.where(:name => 'BrR Clan Tradeport') and famous_squad = true if squad.name == 'BRR'
       if famous_squad == true
         squad.planets << Planet.randomize
       else
