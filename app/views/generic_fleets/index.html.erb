@@ -17,7 +17,7 @@
     <p>
     <%= "Ganhos previstos: $#{planet.credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && planet.squad == @squad && planet.ground_squad == @squad %>
     <p>
-    <% planet.generic_fleets.sort_by{|a| [a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |fleet| %>
+    <% planet.generic_fleets.sort_by{|a| [a.generic_unit.type, a.updated_at]}.each do |fleet| %>
       <span style=color:#<%= fleet.squad.color %>>
       <% if fleet.generic_unit.type == 'Facility' %>
          <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
