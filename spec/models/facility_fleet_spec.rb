@@ -48,4 +48,28 @@ describe FacilityFleet do
     end
   end
 
+  context 'Training Jedi Warriors' do
+  let(:facility) {facility_fleet.facility}
+  let (:warrior) {Factory :warrior}
+    before(:each) do
+      facility.price = 3000
+      facility_fleet.producing_unit = warrior
+      facility_fleet.planet = Factory :planet
+      facility_fleet.save!
+      facility_fleet.produce!
+    end
+    
+    it 'should training an individual warrior' do
+      
+      Fleet.where(:generic_unit => warrior).count.should == 1
+    end
+
+    it 'should prevent that warriors have more than 10 lives' do
+      facility_fleet.produce!
+      warrior_fleet = Fleet.where(:generic_unit => warrior)
+      warrior_fleet.first.quantity.should == 10
+    end
+
+  end
+
 end
