@@ -16,7 +16,7 @@ class Round < ActiveRecord::Base
       if famous_squad == true
         squad.planets << Planet.randomize
       else
-        2.times {squad.planets << Planet.randomize}
+        3.times {squad.planets << Planet.randomize}
       end
       FacilityFleet.is_free
       squad.populate_planets
