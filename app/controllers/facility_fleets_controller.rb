@@ -17,7 +17,6 @@ class FacilityFleetsController < ApplicationController
 
   def edit
     @facility = FacilityFleet.find(params[:id])
-    @capacity = @facility.capacity + (@facility.capacity * 0.20 * @facility.level).to_i
     @units = Unit.allowed_for(current_squad.faction)
     @planet = @facility.planet
     unless @facility.producing_unit.present?
@@ -37,8 +36,7 @@ class FacilityFleetsController < ApplicationController
 
   def upgrade
     @facility = FacilityFleet.find(params[:facility][:id])
-    upgrade_cost = @facility.price * 0.20
-    @facility.upgrade! if current_squad.credits >= upgrade_cost
+    @facility.upgrade! if current_squad.credits >= @facility.upgrade_cost
     redirect_to :fleets
   end
 

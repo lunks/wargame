@@ -4,8 +4,9 @@
 <%= simple_form_for @fleet, :url => url_for(:controller => 'generic_fleets', :action => 'update') do |f| %>
 <%= f.input :fleet_name, :label => 'Nome da nave: ', :input_html => { :size => 12 }, :hint => 'Max. 15 char.' %>
 <%= f.submit 'Salvar' %>
-<% end %>
-<strong>Atenção:</strong> Depois de nomear a CS não é possivel alterar.
+<% end %><br>
+Atenção: Separe as capital ships antes de nomeá-las.
+Não é possível alterar depois.
 </div>
 <br>
 <%= link_to " voltar ", :back_to_main %>

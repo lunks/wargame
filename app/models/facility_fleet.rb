@@ -13,7 +13,7 @@ class FacilityFleet < GenericFleet
     end
   end
   def produce!
-    self.balance += capacity + (capacity * 0.20 * self.level)
+    self.balance += default_capacity
     return if producing_unit.nil?
     unit_price = producing_unit.price
     units = 0
@@ -26,7 +26,6 @@ class FacilityFleet < GenericFleet
   end
 
   def upgrade!
-    upgrade_cost = price * 0.20
     if self.squad.credits >= upgrade_cost
       self.squad.credits -= upgrade_cost
       self.squad.save
@@ -36,7 +35,27 @@ class FacilityFleet < GenericFleet
   end
 
   def units_per_turn
-    ((capacity + balance) / producing_unit.price.to_f).round(2)
+    (total_capacity / producing_unit.price.to_f).round(2)
+  end
+
+  def default_capacity
+    capacity + current_upgrade_ratio
+  end
+
+  def upgrade_cost
+    upgrade_ratio * 3
+  end
+
+  def upgrade_ratio
+    500
+  end
+
+  def current_upgrade_ratio
+    500 * level
+  end
+ 
+  def total_capacity
+    default_capacity + balance
   end
 
 
