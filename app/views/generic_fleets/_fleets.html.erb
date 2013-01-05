@@ -1,5 +1,11 @@
-<%= fleet.quantity %>
-<%= fleet.generic_unit.name %>
+<% if fleet.generic_unit.type == 'Warrior' %>
+  <span style=font-weight:strong;outline:dotted>     
+  <%= fleet.quantity %>
+  <%= fleet.generic_unit.name %></span>
+<% else %>  
+  <%= fleet.quantity %>
+  <%= fleet.generic_unit.name %>
+<% end %>
 <span style=font-weight:bold><%= "indo para #{fleet.destination.name} " if fleet.moving?%></span>
 
 
