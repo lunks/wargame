@@ -74,10 +74,8 @@ class Squad < ActiveRecord::Base
       warp_units 2000, Fighter, 1..120, planet
       warp_units 1000, Trooper, 1..2, planet
     end
-    planets.first do |planet|
-      warp_units 500, Warrior, 50, planet
-      warp_units 400, Warrior, 40, planet
-    end
+    warp_units 500, Warrior, 50, planets.first
+    warp_units 400, Warrior, 40, planets.first
     save!
   end
 
