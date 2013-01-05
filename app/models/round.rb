@@ -14,7 +14,7 @@ class Round < ActiveRecord::Base
       squad.planets << Planet.where(:name => 'CIMF Station') and famous_squad = true if squad.name == 'CIMF'
       squad.planets << Planet.where(:name => 'BrR Clan Tradeport') and famous_squad = true if squad.name == 'BRR'
       if famous_squad == true
-        2.time {squad.planets << Planet.randomize}
+        2.times {squad.planets << Planet.randomize}
       else
         3.times {squad.planets << Planet.randomize}
       end
