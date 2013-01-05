@@ -3,7 +3,7 @@
 <span style=font-weight:bold;font-size:18px> Round: <%= @round.number %> <%= link_to " Squad pronto! ", ready_path unless @squad.ready? %></span><br>
 <span style=font-weight:bold;font-size:13px;color:yellow> Créditos: $<%= @squad.credits %> <%= link_to "transferir créditos ", :transfer unless @squad.ready? %> </span><br>
 <span style=font-weight:bold;font-size:13px;color:#00FF00> Ganhos: $<%= @income %> </span><br>
-<span style=font-weight:bold;font-size:13px;color:#FF0000> Perdas: $ -<%= @flee_tax.to_i %></span><a href="http://brrclan.net/wg" target=_blank> Regras do Wargame </a> <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a><br>
+<span style=font-weight:bold;font-size:13px;color:#FF0000> Perdas: $ -<%= @flee_tax.to_i %></span><a href="http://brrclan.net/wg?KeepThis=true&TB_iframe=true&height=500&width=1150" class="thickbox"> Regras do Wargame </a> <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a><br>
   <% @all_squads.each do |squad| %>
     <span style=text-decoration:blink;color:#<%= squad.color %>>
     <%= squad.name + " pronto  " if squad.ready? %>
@@ -30,7 +30,7 @@
       <br>
     <% end %>
     <p>
-    <%= link_to ' mover frotas ', move_planet_path(planet) if @round.move && !@squad.ready? %>
+    <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "1150"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
     <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet) if @round.move && planet.squad == @squad && !@squad.ready? %>
     <% if (planet.squad.present? || planet.ground_squad.present?) && @round.attack && planet.under_attack? %>
       <%= "Defensor ->" %>

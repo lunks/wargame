@@ -98,33 +98,4 @@ div.map
   z-index:10;
 }
 
-.black_overlay{
-	display: none;
-	position: absolute;
-	top: 0%;
-	left: 0%;
-	width: 100%;
-	height: 100%;
-	background-color: black;
-	z-index:1001;
-	-moz-opacity: 0.8;
-	opacity:.80;
-	filter: alpha(opacity=80);
-}
- 
-.white_content {
-	display: none;
-	position: absolute;
-	top: 1%;
-	left: 2%;
-        width: 1080px;
-	padding: 10px;
-        margin: 5px 5px 5px 5px;
-        border: 0 outset black;
-        border-radius: 14px;
-        box-shadow: 0 0 6px #5D90AF;
-        background: none repeat scroll 0 0 black;
-	z-index:1002;
-	overflow: auto;
-}
 
