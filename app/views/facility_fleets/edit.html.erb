@@ -18,7 +18,7 @@ Aprimoramentos: <%= @facility.current_upgrade_ratio %> (Nível <%= @facility.lev
 <%= f.submit 'Produzir' %>
 <% end %>
 <p>
-<div align = center><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Tabela de naves</a></div>
+<div align = center><a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a></div>
 <p>
 Clique abaixo para aprimorar a fábrica.<br>
 O aprimoramento custa <%= @facility.upgrade_cost %> créditos<br>
@@ -27,5 +27,4 @@ Cada nível aumenta em <%= @facility.upgrade_ratio %> sua capacidade.
 <p>
 <div align="right"><%= link_to " voltar ", :back_to_main %> </div>
 </div>
-<div id="light" class="white_content"><IFRAME src="https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right"></IFRAME>
-<p><br><br><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Fechar</a></div>
+
