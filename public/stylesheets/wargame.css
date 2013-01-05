@@ -115,13 +115,16 @@ div.map
 .white_content {
 	display: none;
 	position: absolute;
-	top: 25%;
-	left: 25%;
-	width: 50%;
-	height: 50%;
-	padding: 16px;
-	border: 16px solid orange;
-	background-color: white;
+	top: 1%;
+	left: 2%;
+        width: 1080px;
+	padding: 10px;
+        margin: 5px 5px 5px 5px;
+        border: 0 outset black;
+        border-radius: 14px;
+        box-shadow: 0 0 6px #5D90AF;
+        background: none repeat scroll 0 0 black;
 	z-index:1002;
 	overflow: auto;
 }
+

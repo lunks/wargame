@@ -40,10 +40,12 @@
     <% end %>
     <%= link_to ' postar resultados ', planet_results_path(planet) if @round.attack && planet.under_attack? && !@squad.ready?%>
   <% end %>
+<p>
+<div align=right><a href="/users/sign_out"> Logout </a></div>
 </div>
 
 <br>
-<a href="/users/sign_out"> Logout </a>
+
 
 <div class="map">
 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1080" height="768" id="FlashID" title="Map 6.0">

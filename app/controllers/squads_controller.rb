@@ -19,6 +19,7 @@ class SquadsController < ApplicationController
   end
 
   def transfer
+    @squad = current_squad
     @squads = Squad.all
   end
 
