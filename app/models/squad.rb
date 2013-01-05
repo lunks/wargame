@@ -54,19 +54,6 @@ class Squad < ActiveRecord::Base
   end
 
   def warp_units total_value, unit, allowed_price, planet
-    if unit == Warrior
-      master = unit.allowed_for(faction).first
-      apprentice = unit.allowed_for(faction).last
-      unit_count = 0
-      while (total_value >= master.price)
-        unit_count += 1
-        total_value -= master.price
-      end
-      fleet = fleets.new(:generic_unit_id => master.id, :planet => planet, :quantity => unit_count, :fleet_name => self.name)
-    fleet.save!
-      fleet = fleets.new(:generic_unit_id => apprentice.id, :planet => planet, :quantity => unit_count, :fleet_name => self.name)
-    fleet.save!
-    else
       units = unit.allowed_for(faction).where(:price => allowed_price)
       random_unit = units[rand(units.size)]
       unit_count = 0
@@ -76,7 +63,6 @@ class Squad < ActiveRecord::Base
       end
       fleet = fleets.new(:generic_unit_id => random_unit.id, :planet => planet, :quantity => unit_count, :fleet_name => self.name)
     fleet.save!
-    end
   end
 
   def populate_planets
@@ -87,7 +73,10 @@ class Squad < ActiveRecord::Base
       warp_units 2000, Fighter, 1..120, planet
       warp_units 2000, Fighter, 1..120, planet
       warp_units 1000, Trooper, 1..2, planet
+    end
+    planets.first do |planet|
       warp_units 500, Warrior, 50, planet
+      warp_units 400, Warrior, 40, planet
     end
     save!
   end
