@@ -12,7 +12,9 @@ class PlanetsController < ApplicationController
     @fleets = @planet.generic_fleets.where(:squad => current_squad, :type => 'Fleet', :moving => nil)
     @routes = @planet.routes
     redirect_to :fleets if @fleets.empty?
+    move_planet_path(@planet)
   end
+ 
 
   def results
     @planet = Planet.find(params[:id])

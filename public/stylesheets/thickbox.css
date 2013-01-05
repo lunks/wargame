@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------------------------------------------*/
 /* ---------->>> global settings needed for thickbox <<<-----------------------------------------------------------*/
 /* ----------------------------------------------------------------------------------------------------------------*/
-*{padding: 0; margin: 0;}
+*{padding: 0; margin: 5;}
 
 /* ----------------------------------------------------------------------------------------------------------------*/
 /* ---------->>> thickbox specific link and font settings <<<------------------------------------------------------*/
@@ -37,9 +37,9 @@
 .TB_overlayMacFFBGHack {background: url(images/macFFBgHack.png) repeat;}
 .TB_overlayBG {
 	background-color:#000;
-	filter:alpha(opacity=75);
-	-moz-opacity: 0.75;
-	opacity: 0.75;
+	filter:alpha(opacity=20);
+	-moz-opacity: 0.20;
+	opacity: 0.20;
 }
 
 * html #TB_overlay { /* ie6 hack */
@@ -55,8 +55,8 @@
 	display:none;
 	border: 4px solid #525252;
 	text-align:left;
-	top:50%;
-	left:50%;
+	top: 50%;
+	left: 25%;
 }
 
 * html #TB_window { /* ie6 hack */

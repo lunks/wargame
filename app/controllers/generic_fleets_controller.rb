@@ -17,7 +17,7 @@ class GenericFleetsController < ApplicationController
       @planet = Planet.find(params[:fleet][:destination])
       @fleet.move params[:fleet][:quantity].to_i, @planet
     end
-    redirect_to :fleets
+    redirect_to :back
   end
 
   def back_to_main
