@@ -17,6 +17,7 @@ describe Round do
       Factory :facility
       Factory :light_transport, :price => 100
       Factory :warrior, :price => 50
+      Factory :warrior, :price => 40
       Factory :capital_ship, :price => 500
       Factory :trooper, :price => 2
       15.times {Factory.create :planet}

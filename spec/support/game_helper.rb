@@ -8,6 +8,7 @@ module GameHelper
     Factory :trooper, :factions => 'empire'
     Factory :light_transport, :factions => 'empire'
     Factory :warrior, :factions => 'empire'
+    Factory :warrior, :factions => 'empire', :price => 40
     Factory :fighter, :factions => 'empire'
     Factory :capital_ship, :factions => 'empire'
     Factory :facility, :factions => 'empire'
