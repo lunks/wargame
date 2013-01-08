@@ -11,11 +11,11 @@ describe Squad do
       facility.factions = squad.faction
     end
     context 'buying facilities' do
-      #it 'should be able to buy facilities and remove credits accordingly' do
-      #  squad.credits = 1000
-       # squad.buy facility, 1, planet
-       # squad.credits.should be 0
-      #end
+      it 'should be able to buy facilities and remove credits accordingly' do
+        squad.credits = 1000
+        squad.buy facility, 1, planet
+        squad.credits.should be 0
+      end
 
       it 'should not be able to buy a facility they dont have access to' do
         facility.factions = 'rebel'
