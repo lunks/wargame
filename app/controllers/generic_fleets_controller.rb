@@ -3,6 +3,7 @@ class GenericFleetsController < ApplicationController
     @planets = Planet.seen_by(current_squad)
     @round = Round.getInstance
     @squad = current_squad
+    @all_squads = Squad.all
     @income = 0
     @flee_tax = @squad.flee_tax @round
     @squad.planets.each do |planet|

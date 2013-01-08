@@ -4,12 +4,16 @@
 <span style=font-weight:bold;font-size:13px;color:yellow> Créditos: $<%= @squad.credits %> <%= link_to "transferir créditos ", :transfer %> </span><br>
 <span style=font-weight:bold;font-size:13px;color:#00FF00> Ganhos: $<%= @income %> </span><br>
 <span style=font-weight:bold;font-size:13px;color:#FF0000> Perdas: $ -<%= @flee_tax.to_i %></span><br>
-<span style=text-decoration:blink;><%= " Time pronto! Aguardando outros jogadores " if @squad.ready? %></span>
+  <% @all_squads.each do |squad| %>
+    <span style=text-decoration:blink;color:#<%= squad.color %>>
+    <%= squad.name + " pronto  " if squad.ready? %>
+  <% end %>
+</span>
 </div>
 
 <div class="planet_content">
   <% @planets.each do |planet| %>
-    <h2> <%= planet.name %></h2>
+    <h2> <%= planet.name %> <%= ' (wormhole)' if planet.wormhole? %></h2>
     <p>
     <%= "Ganhos previstos: $#{planet.credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && planet.squad == @squad && planet.ground_squad == @squad %>
     <p>
@@ -31,6 +35,7 @@
     <%= link_to ' postar resultados ', planet_results_path(planet) if @round.attack and planet.under_attack? %> 
   <% end %>
 </div>
+
 <br>
 <a href="/users/sign_out"> Logout </a>
 
