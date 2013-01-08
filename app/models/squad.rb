@@ -54,7 +54,7 @@ class Squad < ActiveRecord::Base
 
   def warp_units total_value, unit, planet
     if unit == CapitalShip
-      units = unit.allowed_for(faction).where(:price => 490..510)
+      units = unit.allowed_for(faction).where(:price => 500..600)
     else
       units = unit.allowed_for(faction).where(:price => 1..120)
     end
@@ -70,10 +70,10 @@ class Squad < ActiveRecord::Base
 
   def populate_planets
     planets.each do |planet|
-      warp_units 2000, Fighter, planet
-      warp_units 1000, CapitalShip, planet
-      warp_units 2000, Fighter, planet
       warp_units 1000, Trooper, planet
+      warp_units 2000, Fighter, planet
+      warp_units 2000, Fighter, planet
+      warp_units 1200, CapitalShip, planet
       warp_facility_on planet
     end
     save!

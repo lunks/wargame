@@ -83,6 +83,7 @@ describe Squad do
         squad.planets << current_planet
         squad.random_planet_but(current_planet).should be_false
       end
+
     end
   end
 
@@ -128,6 +129,13 @@ describe Squad do
         trooper = Factory(:trooper)
         squad.warp_units 1000, Trooper, planet
         squad.fleets.first.generic_unit.should be_a Trooper
+      end
+    end
+    context 'like transports' do
+      it 'should be a light transport' do
+        light_transport = Factory(:light_transport)
+        squad.warp_units 1000, LightTransport, planet
+        squad.fleets.first.generic_unit.should be_a LightTransport
       end
     end
   end

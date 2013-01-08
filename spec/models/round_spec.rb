@@ -17,12 +17,16 @@ describe Round do
       Factory :facility
       Factory :capital_ship, :price => 500
       Factory :trooper, :price => 2
-      2.times {Factory.create :planet}
+      10.times {Factory.create :planet}
       round.new_game!
     end
 
     it 'should get a random planet for the squad' do
       rebel.planets(true).should_not be_empty
+    end
+    it 'should create 2 wormholes' do
+      wormholes = Planet.where(:wormhole => true).all
+      wormholes.count.should == 4
     end
     it 'should place a facility on the new planet' do
       rebel.facility_fleets(true).should_not be_empty

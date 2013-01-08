@@ -36,8 +36,8 @@ tatooine = Planet.create(:name => 'Tatooine', :credits => 500 )
 utapau = Planet.create(:name => 'Utapau', :credits => 500 )
 vergesso_asteroids = Planet.create(:name => 'Vergesso Asteroids', :credits => 500 )
 yavin = Planet.create(:name => 'Yavin', :credits => 500 )
-wormholeI = Planet.create(:name => 'Wormhole I', :credits => 0 )
-wormholeII = Planet.create(:name => 'Wormhole II', :credits => 0 )
+#wormholeI = Planet.create(:name => 'Wormhole I', :credits => 0 )
+#wormholeII = Planet.create(:name => 'Wormhole II', :credits => 0 )
 
 
 Route.create(:vector_a => dantooine, :vector_b => deathstar_III, :distance => 1)

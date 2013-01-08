@@ -40,9 +40,10 @@ class Planet < ActiveRecord::Base
   end
 
   def self.randomize
-    empty_planets = where(:squad_id => nil).all
-    empty_planets[rand(empty_planets.count-1)]
+      self.where(:squad_id => nil, :wormhole => nil).order("RANDOM()").first
   end
+     #empty_planets = where(:squad_id => nil).all
+     #empty_planets[rand(empty_planets.count-1)]
 
   def self.disable_routes
     @@disable_routes = true

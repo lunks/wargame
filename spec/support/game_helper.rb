@@ -3,7 +3,7 @@ module GameHelper
     login_user!
     @squad = Factory :squad
     @user.squad = @squad
-    5.times { Factory :planet }
+    10.times { Factory :planet }
     Planet.disable_routes
     Factory :trooper, :factions => 'empire'
     Factory :fighter, :factions => 'empire'
