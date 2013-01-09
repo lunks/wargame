@@ -98,7 +98,7 @@ describe Squad do
     context 'like fighters' do
       before do
         fighter = Factory(:fighter)
-        squad.warp_units 5000, Fighter, planet
+        squad.warp_units 5000, Fighter, 100, planet
       end
       it 'should create a fleet' do
         squad.fleets.should be
@@ -115,7 +115,7 @@ describe Squad do
     context 'like capital ships' do
       before do
         capital_ship = Factory(:capital_ship, :price => 500)
-        squad.warp_units 1000, CapitalShip, planet
+        squad.warp_units 1000, CapitalShip, 1..600, planet
       end
       it 'should be a capital ship' do
         squad.fleets.first.generic_unit.should be_a CapitalShip
@@ -127,14 +127,14 @@ describe Squad do
     context 'like troopers' do
       it 'should be a trooper' do
         trooper = Factory(:trooper)
-        squad.warp_units 1000, Trooper, planet
+        squad.warp_units 1000, Trooper, 1..10, planet
         squad.fleets.first.generic_unit.should be_a Trooper
       end
     end
     context 'like transports' do
       it 'should be a light transport' do
         light_transport = Factory(:light_transport)
-        squad.warp_units 1000, LightTransport, planet
+        squad.warp_units 1000, LightTransport, 1..200, planet
         squad.fleets.first.generic_unit.should be_a LightTransport
       end
     end

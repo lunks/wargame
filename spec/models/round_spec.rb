@@ -15,9 +15,11 @@ describe Round do
       rebel.facility_fleets.clear
       Factory :fighter, :price => 100
       Factory :facility
+      Factory :light_transport, :price => 100
+      Factory :warrior, :price => 50
       Factory :capital_ship, :price => 500
       Factory :trooper, :price => 2
-      10.times {Factory.create :planet}
+      15.times {Factory.create :planet}
       round.new_game!
     end
 
@@ -32,7 +34,7 @@ describe Round do
       rebel.facility_fleets(true).should_not be_empty
     end
     it 'should place random units on the planets' do
-      rebel.generic_fleets.count.should == 12
+      rebel.generic_fleets.count.should == 18
     end
   end
 

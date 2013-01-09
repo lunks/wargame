@@ -1,7 +1,7 @@
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
-<span style=font-weight:bold;font-size:18px> Round: <%= @round.number %> <%= link_to " clique quando pronto ", ready_path %></span><br>
-<span style=font-weight:bold;font-size:13px;color:yellow> Créditos: $<%= @squad.credits %> <%= link_to "transferir créditos ", :transfer %> </span><br>
+<span style=font-weight:bold;font-size:18px> Round: <%= @round.number %> <%= link_to " clique quando pronto ", ready_path unless @squad.ready? %></span><br>
+<span style=font-weight:bold;font-size:13px;color:yellow> Créditos: $<%= @squad.credits %> <%= link_to "transferir créditos ", :transfer unless @squad.ready? %> </span><br>
 <span style=font-weight:bold;font-size:13px;color:#00FF00> Ganhos: $<%= @income %> </span><br>
 <span style=font-weight:bold;font-size:13px;color:#FF0000> Perdas: $ -<%= @flee_tax.to_i %></span><br>
   <% @all_squads.each do |squad| %>
@@ -30,15 +30,15 @@
       <br>
     <% end %>
     <p>
-    <%= link_to ' mover frotas ', move_planet_path(planet) if @round.move %>
-    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet) if @round.move && planet.squad == @squad %>
+    <%= link_to ' mover frotas ', move_planet_path(planet) if @round.move && !@squad.ready? %>
+    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet) if @round.move && planet.squad == @squad && !@squad.ready? %>
     <% if (planet.squad.present? || planet.ground_squad.present?) && @round.attack && planet.under_attack? %>
       <%= "Defensor ->" %>
       <%= "Espaço: " if planet.squad.present? %><span style=color:#<%= planet.squad.color if planet.squad.present? %>><%= planet.squad.name if planet.squad.present? %></span>
       <%= "Terra: " if planet.ground_squad.present? %><span style=color:#<%= planet.ground_squad.color if planet.ground_squad.present? %>><%= planet.ground_squad.name if planet.ground_squad.present? %></span>
       <p>
     <% end %>
-    <%= link_to ' postar resultados ', planet_results_path(planet) if @round.attack && planet.under_attack? %>
+    <%= link_to ' postar resultados ', planet_results_path(planet) if @round.attack && planet.under_attack? && !@squad.ready?%>
   <% end %>
 </div>
 

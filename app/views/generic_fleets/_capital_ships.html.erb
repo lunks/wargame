@@ -1,5 +1,5 @@
 <%= fleet.quantity %>
-<% if @round.move && fleet.squad == @squad && fleet.fleet_name == @squad.name  %>
+<% if @round.move && fleet.squad == @squad && fleet.fleet_name == @squad.name && !@squad.ready? %>
   <%= fleet.generic_unit.name %> "<%= link_to fleet.fleet_name, edit_generic_fleet_path(fleet) %>"
 <% else %>
   <%= fleet.generic_unit.name %> "<%= fleet.fleet_name %>"

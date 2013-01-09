@@ -1,6 +1,6 @@
 <%= fleet.quantity %>
 <%= fleet.name %>
-( <% if @round.move && fleet.squad == @squad %>
+( <% if @round.move && fleet.squad == @squad && !fleet.squad.ready?%>
     <% if fleet.producing_unit.present? %>
       <%= link_to "#{fleet.producing_unit_display}", edit_facility_fleet_path(fleet) %>
     <% else %>

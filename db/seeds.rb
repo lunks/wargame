@@ -258,15 +258,14 @@ Facility.create(:name => 'Golan III', :price => 6000 ).factions = all
 Facility.create(:name => 'Imperial Research Center', :price => 4200 ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 4500 ).factions = all
 
-Warrior.create(:name => 'BrR Vader', :price => 50 ).factions = mand
-Warrior.create(:name => 'BrR RAF', :price => 50 ).factions = mand
-Warrior.create(:name => 'RES KamonBr', :price => 50 ).factions = reb
-Warrior.create(:name => 'RES Jedi', :price => 50 ).factions = reb
-#Warrior.create(:name => 'Luke Skywalker', :price => 400 ).factions = reb
-#Warrior.create(:name => 'Boba Fett', :price => 400 ).factions = mand
-#Warrior.create(:name => 'Mandalore Warrior', :price => 400 ).factions = mand
-Warrior.create(:name => 'CIMF Neron', :price => 50 ).factions = imp
-Warrior.create(:name => 'CIMF Zoe', :price => 50 ).factions = imp
+Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
+Warrior.create(:name => 'Boba Fett', :price => 40 ).factions = mand
+Warrior.create(:name => 'Kyle Katarn', :price => 40 ).factions = reb
+Warrior.create(:name => 'Luke Skywalker', :price => 50 ).factions = reb
+Warrior.create(:name => 'Han Solo', :price => 50 ).factions = merc
+Warrior.create(:name => 'Chewbacca', :price => 40 ).factions = merc
+Warrior.create(:name => 'Darth Vader', :price => 40 ).factions = imp
+Warrior.create(:name => 'Emperor Palpatine', :price => 50 ).factions = imp
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).

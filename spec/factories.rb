@@ -45,6 +45,7 @@ Factory.define :trooper, :class => Trooper, :parent => :unit do |f|
 end
 
 Factory.define :light_transport, :class => LightTransport, :parent => :unit do |f|
+  f.price 100
 end
 
 Factory.define :armament, :class => Armament, :parent => :unit do |f|
