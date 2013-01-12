@@ -11,7 +11,7 @@ class FacilityFleetsController < ApplicationController
   def create
     @facility = GenericUnit.find(params[:facility_fleet][:generic_unit_id])
     current_squad.buy @facility, 1, @planet if current_squad.credits >= @facility.price
-    redirect_to fleets_path
+    redirect_to :close_popup
   end
 
 
@@ -31,13 +31,13 @@ class FacilityFleetsController < ApplicationController
       @producing_unit = Unit.find(params[:facility_fleet][:producing_unit])
       current_squad.change_producing_unit @facility, @producing_unit
     end
-    redirect_to :fleets
+    redirect_to :back
   end
 
   def upgrade
     @facility = FacilityFleet.find(params[:facility][:id])
     @facility.upgrade! if current_squad.credits >= @facility.upgrade_cost
-    redirect_to :fleets
+    redirect_to :back
   end
 
 

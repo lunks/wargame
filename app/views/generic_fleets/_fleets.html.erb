@@ -1,10 +1,14 @@
 <% if fleet.generic_unit.type == 'Warrior' %>
-  <span style=font-weight:strong;outline:dotted>     
-  <%= fleet.quantity %>
-  <%= fleet.generic_unit.name %></span>
-<% else %>  
-  <%= fleet.quantity %>
-  <%= fleet.generic_unit.name %>
+    <span style=font-weight:strong;outline:dotted>     
+    <%= fleet.quantity %>
+    <%= fleet.generic_unit.name %></span>
+<% elsif fleet.generic_unit.type == 'Trooper' %> 
+    <span style=font-weight:strong;background-color:#331100>
+    <%= fleet.quantity %>
+    <%= fleet.generic_unit.name %>
+  <% else %>
+    <%= fleet.quantity %>
+    <%= fleet.generic_unit.name %>
 <% end %>
 <span style=font-weight:bold><%= "indo para #{fleet.destination.name} " if fleet.moving?%></span>
 

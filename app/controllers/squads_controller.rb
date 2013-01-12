@@ -14,8 +14,8 @@ class SquadsController < ApplicationController
   end
 
   def ready
-    current_squad.ready!
-    redirect_to fleets_path
+    #current_squad.ready!
+    redirect_to fleets_path if current_squad.ready!
   end
 
   def transfer

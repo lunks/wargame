@@ -41,7 +41,7 @@ class Round < ActiveRecord::Base
     self.move_fleets
     self.move = nil
     self.attack = true
-    save
+    self.save!
     GenericFleet.all.each do |fleet|
       Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad) if fleet.planet.under_attack?
     end
@@ -51,9 +51,10 @@ class Round < ActiveRecord::Base
 
   def end_round!
     self.apply_results
+    self.move = nil
     self.attack = nil
     self.done = true
-    save
+    self.save!
     Round.create(:number => self.number + 1, :move => true)
     set_map
     Squad.all.each do |squad|
@@ -63,7 +64,7 @@ class Round < ActiveRecord::Base
       end
       squad.ready = nil
       squad.credits -= squad.flee_tax self
-      squad.save
+      squad.save!
     end
   end
 

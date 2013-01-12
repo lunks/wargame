@@ -15,7 +15,7 @@
        <%= result_form.input :blasted, :input_html => { :size => 3 }, :label => 'Destruidos: ' %>
        <%= result_form.input :fled, :input_html => { :size => 3 }, :label => 'Fugiram: ' %>
        <%= result_form.input :captured, :input_html => { :size => 3 }, :label => 'Capturados: ' %>
-       <%= result_form.association :captor, :collection => @squads, :label => 'Por: ' %>
+       <%= result_form.association :captor, :collection => @squads, :label => 'Capturador: ' %>
        <br>
     <% end %>
   <% end %>
@@ -23,4 +23,3 @@
 <% end %>
 </div>
 <br>
-<%= link_to " voltar ", :back_to_main %>

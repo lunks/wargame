@@ -1,6 +1,9 @@
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
-<span style=font-weight:bold;font-size:18px> Round: <%= @round.number %> <%= link_to " Squad pronto! ", ready_path unless @squad.ready? %></span><br>
+<span style=font-weight:bold;font-size:18px> Round: <%= @round.number %> - <%= @round_phase %></span><br>
+<% unless @squad.ready? %>
+  <%= link_to "Squad pronto!", ready_path%> - Clique só uma vez e aguarde!<br>
+<% end %>
 <span style=font-weight:bold;font-size:13px;color:yellow> Créditos: $<%= @squad.credits %> <%= link_to 'transferir créditos ', :transfer unless @squad.ready? %> </span><br>
 <span style=font-weight:bold;font-size:13px;color:#00FF00> Ganhos: $<%= @income %> </span><br>
 <span style=font-weight:bold;font-size:13px;color:#FF0000> Perdas: $ -<%= @flee_tax.to_i %></span><a href="http://brrclan.net/wg" target=_blank> Regras do Wargame </a> <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a><br>
@@ -30,8 +33,8 @@
       <br>
     <% end %>
     <p>
-    <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "355"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
-    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "355"), :class => "thickbox" if @round.move && planet.squad == @squad && !@squad.ready? %>
+    <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "370"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
+    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "370"), :class => "thickbox" if @round.move && planet.squad == @squad && !@squad.ready? %>
     <% if (planet.squad.present? || planet.ground_squad.present?) && @round.attack && planet.under_attack? %>
       <%= "Defensor ->" %>
       <%= "Espaço: " if planet.squad.present? %><span style=color:#<%= planet.squad.color if planet.squad.present? %>><%= planet.squad.name if planet.squad.present? %></span>

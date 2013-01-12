@@ -96,8 +96,9 @@ class Squad < ActiveRecord::Base
 
   def ready!
     self.ready = true
-    save
+    self.save!
     Round.getInstance.check_state
+    true
   end
 
   def flee_tax round

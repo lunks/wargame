@@ -11,7 +11,7 @@ class PlanetsController < ApplicationController
     @planet = Planet.find(params[:id])
     @fleets = @planet.generic_fleets.where(:squad => current_squad, :type => 'Fleet', :moving => nil)
     @routes = @planet.routes
-    redirect_to :fleets if @fleets.empty?
+    redirect_to :close_popup if @fleets.empty?
     move_planet_path(@planet)
   end
  

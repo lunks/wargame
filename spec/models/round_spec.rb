@@ -2,15 +2,16 @@ require 'spec_helper'
 
 describe Round do
   before(:each) do
-    Round.create!{[:number => 1]} if Round.last.nil?
+    #Round.create!{[:number => 1]} if Round.last.nil?
   end
-  let (:round) {Round.getInstance}
+  #let! (:round) {Round.getInstance}
   let! (:rebel) {Factory :squad}
   let! (:empire) {Factory :squad}
 
   context 'beginning a new round' do
     before(:each) do
-      empire.destroy # stinking empire!
+      #empire.destroy # stinking empire!
+      round = Round.getInstance
       rebel.planets.clear
       rebel.facility_fleets.clear
       Factory :fighter, :price => 100
@@ -40,7 +41,21 @@ describe Round do
   end
 
   context 'rounds logic' do
+    let (:round) {Round.getInstance}
+    it 'should set squad ready' do
+      rebel.ready!
+      rebel.ready.should be_true
+    end
+    it 'should go to attack phase when all squads ready' do
+      rebel.ready!
+      round.move.should be_true
+      round.attack.should be_nil
+      empire.ready!
+      round.move.should be_nil
+      round.attack.should be_true
+    end
+    it 'should reset state of squads' do
+    end
   end
-
 end
 

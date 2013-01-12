@@ -9,6 +9,11 @@ class GenericFleetsController < ApplicationController
     @squad.planets.each do |planet|
       @income += planet.credits_per_turn if planet.credits_per_turn.present?
     end
+    if @round.move?
+      @round_phase = 'Estratégia'
+    else
+      @round_phase = 'Combates'
+    end
   end
 
   def move
@@ -32,6 +37,6 @@ class GenericFleetsController < ApplicationController
   def update
     @fleet = GenericFleet.find(params[:id])
     @fleet.change_fleet_name(params[:fleet][:fleet_name])
-    redirect_to :fleets
+    redirect_to :back
   end
 end
