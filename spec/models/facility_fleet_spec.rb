@@ -87,7 +87,7 @@ describe FacilityFleet do
       facility_fleet.produce!
     end
     
-    it 'should training an individual warrior' do
+    it 'should training an unique warrior' do
       facility_fleet.planet = Factory :planet
       facility_fleet.save!
       facility_fleet.produce!

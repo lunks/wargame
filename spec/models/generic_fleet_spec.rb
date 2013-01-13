@@ -11,6 +11,15 @@ describe GenericFleet do
   let(:facility_unit) {Factory :facility_fleet}
   let(:facility) {Factory :facility}
 
+  it 'should give a fleet name' do
+    unit.generic_unit = capital_ship
+    unit.fleet_name = 'Original'      
+    unit.save
+    unit.change_fleet_name 'Nomeada'
+    unit.fleet_name.should == 'Nomeada'
+  end
+
+
   context 'blast units' do
     before(:each) do
       unit.quantity = 1

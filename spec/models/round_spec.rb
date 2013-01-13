@@ -1,17 +1,14 @@
 require 'spec_helper'
 
 describe Round do
-  before(:each) do
-    Round.create!{[:number => 1]} if Round.last.nil?
-  end
-  #let! (:round) {Round.getInstance}
-  let! (:rebel) {Factory :squad}
-  let! (:empire) {Factory :squad}
+    
+  rebel = Factory :squad
+  empire = Factory :squad
 
   context 'beginning a new round' do
     before(:each) do
       #empire.destroy # stinking empire!
-      round = Round.getInstance
+      @round = Round.getInstance
       rebel.planets.clear
       rebel.facility_fleets.clear
       Factory :fighter, :price => 100
@@ -21,8 +18,8 @@ describe Round do
       Factory :warrior, :price => 40
       Factory :capital_ship, :price => 500
       Factory :trooper, :price => 2
-      15.times {Factory.create :planet}
-      round.new_game!
+      15.times {Factory.create :planet, :credits => 100}
+      @round.new_game!
     end
 
     it 'should get a random planet for the squad' do
@@ -44,12 +41,15 @@ describe Round do
       rebel.ready.should be_true
     end
     it 'should go to attack phase when all squads ready' do
+#TODO o teste está meia boca pois ao dar ready! deveria checar e rodar o end_moving e end_round...
       rebel.ready!
-      round.move.should be_true
-      round.attack.should be_nil
       empire.ready!
-      round.move.should be_nil
-      round.attack.should be_true
+      @round.end_moving!
+      rebel.ready!
+      empire.ready!
+      @round.end_round!
+      Round.getInstance.number.should == 2
+      Round.getInstance.move.should be_true
     end
     it 'should reset state of squads' do
     end
