@@ -134,7 +134,16 @@ describe Fleet do
       fleeing_fleet.planet.should == @allied_destination
     end
 
-    it 'should go second to a neutral planet' do
+    it 'should go second to an neutral adjacent planet' do
+      @enemy_destination = Factory(:planet)
+      @enemy_destination.squad = Factory(:squad)
+      @enemy_destination.save
+      @route2 = Factory :route, :vector_a => @origin, :vector_b => @enemy_destination
+      fleeing_fleet = unit.flee! 1
+      fleeing_fleet.planet.should_not == @enemy_destination
+    end
+
+    it 'should go last to an enemy planet' do
       @enemy_destination = Factory(:planet)
       @enemy_destination.squad = Factory(:squad)
       @enemy_destination.save

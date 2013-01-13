@@ -1,8 +1,6 @@
 class Fleet < GenericFleet
   belongs_to :destination, :class_name => "Planet"
   scope :moving, where(:moving => true)
-  
-  after_save :destroy_if_not_unique_warrior
 
   def move quantity, planet
     valid_move = true
@@ -84,10 +82,6 @@ class Fleet < GenericFleet
     end
     self.quantity += total_quantity
     save
-  end
-
-  def destroy_if_not_unique_warrior
-
   end
 
 end
