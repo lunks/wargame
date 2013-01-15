@@ -10,7 +10,7 @@ class GenericFleetsController < ApplicationController
       @income += planet.credits_per_turn if planet.credits_per_turn.present?
     end
     if @round.move?
-      @round_phase = 'Estratégia'
+      @round_phase = 'Estrategia'
     else
       @round_phase = 'Combates'
     end
