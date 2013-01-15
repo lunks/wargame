@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Round do
   before(:each) do
-    #Round.create!{[:number => 1]} if Round.last.nil?
+    Round.create!{[:number => 1]} if Round.last.nil?
   end
   #let! (:round) {Round.getInstance}
   let! (:rebel) {Factory :squad}
@@ -38,10 +38,7 @@ describe Round do
     it 'should place random units on the planets' do
       rebel.generic_fleets.count.should == 23
     end
-  end
 
-  context 'rounds logic' do
-    let (:round) {Round.getInstance}
     it 'should set squad ready' do
       rebel.ready!
       rebel.ready.should be_true

@@ -37,7 +37,10 @@ class Round < ActiveRecord::Base
   end
 
   def end_moving!
-    Squad.update_all(:ready => nil)
+    Squad.all.each do |squad|
+      squad.ready = nil
+      squad.save!
+    end
     self.move_fleets
     self.move = nil
     self.attack = true
