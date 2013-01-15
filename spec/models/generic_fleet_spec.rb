@@ -19,6 +19,26 @@ describe GenericFleet do
     unit.fleet_name.should == 'Nomeada'
   end
 
+  it 'should show posted results on dashboard' do
+    result = Factory :result
+    planet = Factory :planet
+    unit.generic_unit = capital_ship
+    unit.save!
+    round = Round.getInstance
+    round.attack = true
+    round.save
+    result.planet = planet
+    result.round = round
+    result.blasted = 1
+    result.fled = 1
+    result.captured = 1
+    result.captor = Factory :squad
+    result.sabotaged = true
+    result.generic_fleet = unit
+    result.save!
+    unit.show_results.should == '1d 1f 1c sabot'
+  end
+
 
   context 'blast units' do
     before(:each) do

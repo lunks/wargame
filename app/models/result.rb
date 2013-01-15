@@ -10,7 +10,7 @@ class Result < ActiveRecord::Base
   belongs_to :round
 
   validates_presence_of :round, :generic_fleet, :generic_unit, :squad, :planet, :quantity 
-  validates_numericality_of :blasted, :fled, :captured, :sabotaged, :allow_nil => true
+  validates_numericality_of :blasted, :fled, :captured, :allow_nil => true
   validate :captor_if_captured
   validate :posted_results  
 

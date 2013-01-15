@@ -47,4 +47,17 @@ class GenericFleet < ActiveRecord::Base
     save
   end
 
+  def show_results
+    round = Round.getInstance
+    result = Result.where(:generic_fleet => self, :round => round).first
+    results = ''
+    if result.present? && round.attack?
+      results << result.blasted.to_s+'d ' if result.blasted != nil
+      results << result.fled.to_s+'f ' if result.fled != nil
+      results << result.captured.to_s+'c ' if result.captured != nil
+      results << 'sabot' if result.sabotaged == true
+    end
+    results
+  end
+
 end
