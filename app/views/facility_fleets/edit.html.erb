@@ -2,17 +2,20 @@
 <h2><%= @planet %></h2>
 <h3><%= @facility  %></h3>
 Produtividade padrão: <%= @facility.capacity %><br>
-Produção acumulada: <%= @facility.balance %><br>
-Aprimoramentos: <%= @facility.current_upgrade_ratio %> (Nível <%= @facility.level %>)<br>
-
+Produção acumulada: +<%= @facility.balance %><br>
+Aprimoramentos: +<%= @facility.current_upgrade_ratio %> (Nível <%= @facility.level %>)<br>
+<span style=font-weight:bold;font-size:13px;color:red>
+<%  if @facility.sabotaged? %>
+<%= "Fábrica Sabotada!: -" %><%= @facility.total_capacity %> (-50%)<br>
+<% end %>
+</span>
 <span style=font-weight:bold;font-size:13px;color:#00FF00>Produtividade total: <%= @facility.total_capacity %></span><br>
 <% if @facility.producing_unit.present? %>
   <span style=font-weight:bold;font-size:13px;color:yellow>Produzindo: <%= @facility.producing_unit.name.pluralize %>
-  <%= "( custo #{@facility.producing_unit.price} p/unid. )" %></span><br>
-  <span style=font-weight:bold;font-size:13px;color:00FF00><%= "Previsão: #{@facility.units_per_turn} unidades para o próximo round" %>
+  <%= "( custo #{@facility.producing_unit.price} )" %></span><br>
+  <span style=font-weight:bold;font-size:13px;color:00FF00><%= "Previsão: #{@facility.units_per_turn} unidades para o próximo turno" %>
 <% end %>
 <p>
-<%= "Sabotada" if @facility.sabotaged? %>
 <%= simple_form_for @facility do |f| %>
 <%= f.input :producing_unit, :collection => @units, :label => 'Escolha uma unidade para produção:' %>
 <%= f.submit 'Produzir' %>

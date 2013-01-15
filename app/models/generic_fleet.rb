@@ -24,14 +24,11 @@ class GenericFleet < ActiveRecord::Base
     save
   end
 
-  def sabotage! quantity
-    sabotaged_fleet = self.clone
-    sabotaged_fleet.quantity = quantity
-    sabotaged_fleet.sabotaged = true
-    sabotaged_fleet.save
-    self.quantity = self.quantity - quantity
-    save
+  def sabotage!
+    self.sabotaged = true
+    self.save
   end
+
 
   def type?(type)
     generic_unit.is_a? type

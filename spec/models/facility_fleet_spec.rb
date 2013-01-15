@@ -3,6 +3,7 @@ require 'spec_helper'
 describe FacilityFleet do
   it {should belong_to :producing_unit}
   let(:facility_fleet) {Factory :facility_fleet}
+  let(:facility) {facility_fleet.facility}
   let(:unit) {Factory :unit}
   it 'should be a fleet' do
     facility_fleet.should be_an_instance_of FacilityFleet
@@ -22,6 +23,11 @@ describe FacilityFleet do
   it 'should start with level 0' do
     facility_fleet.level = 0
     facility_fleet.level.should be 0
+  end
+  
+  it 'should flag as sabotaged' do
+    facility_fleet.sabotage!
+    facility_fleet.sabotaged.should be_true
   end
 
   context 'on every new turn' do
@@ -71,13 +77,19 @@ describe FacilityFleet do
       facility_fleet.upgrade!
       squad.credits.should == 10000 - upgrade_costs
     end
+    it 'should produce 50% less when sabotaged' do
+      facility_fleet.producing_unit = nil
+      facility_fleet.save
+      facility_fleet.sabotage!
+      facility_fleet.produce!
+      facility_fleet.balance.should == (facility.price / 3) * 0.50
+  end
     it 'should decrease level' do
     end
 
   end
 
   context 'Training Jedi Warriors' do
-  let(:facility) {facility_fleet.facility}
   let (:warrior) {Factory :warrior}
     before(:each) do
       facility.price = 3000

@@ -35,11 +35,15 @@ class FacilityFleet < GenericFleet
   end
 
   def units_per_turn
-    (total_capacity / producing_unit.price.to_f).round(2)
+    (total_capacity / producing_unit.price.to_f).to_i
   end
 
   def default_capacity
-    capacity + current_upgrade_ratio
+    if sabotaged?
+      (capacity + current_upgrade_ratio) * 0.50
+    else
+      capacity + current_upgrade_ratio
+    end
   end
 
   def upgrade_cost
@@ -60,7 +64,7 @@ class FacilityFleet < GenericFleet
 
 
   def building_done
-    (balance / producing_unit.price.to_f).round(2)
+    (balance / producing_unit.price.to_f * 100).to_i
   end
 
   def producing_unit_display

@@ -41,6 +41,10 @@ class Round < ActiveRecord::Base
       squad.ready = nil
       squad.save!
     end
+    FacilityFleet.where(:sabotaged => true).each do |facility|
+      facility.sabotaged = nil
+      facility.save
+    end
     self.move_fleets
     self.move = nil
     self.attack = true
@@ -96,7 +100,7 @@ class Round < ActiveRecord::Base
       result.blast! unless result.blasted == nil || result.blasted <= 0
       result.capture! unless result.captured == nil || result.captured <= 0
       result.flee! unless result.fled == nil || result.fled <= 0
-      result.sabotage! unless result.sabotaged == nil || result.sabotaged <= 0
+      result.sabotage! unless result.sabotaged == nil
     end
   end
 
