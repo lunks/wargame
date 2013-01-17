@@ -8,11 +8,11 @@ class Planet < ActiveRecord::Base
 
   def credits_per_turn
 #TODO Evitar o ganho de créditos se tiver algum inimigo no planeta
-    if self.squad != nil && self.squad == self.ground_squad
-      credits
-    else
-      0
-    end
+   if self.squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.squad}
+     0
+   else
+     credits
+   end
   end
 
   def set_ownership

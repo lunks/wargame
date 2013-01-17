@@ -52,10 +52,18 @@ describe Squad do
         squad.save
       end
 
-      it 'should generate profits only when you have a ship on it' do
+      it 'should generate profits when you have air control of a planet' do
+        squad.generate_profits!
+        squad.credits.should == 1000
+      end
+
+      it 'should not generate profits when you have air control but exists an enemy on planet' do
+        enemy_unit = Factory :generic_fleet, :squad => Factory(:squad), :generic_unit => Factory(:generic_unit)
+        planet.generic_fleets << enemy_unit
         squad.generate_profits!
         squad.credits.should == 0
       end
+
     end
     context 'changing producing unit on a facility fleet' do
       before(:each) do

@@ -26,7 +26,7 @@ describe Planet do
     end
   end
 
-  it 'should output its profits if the squad has air ownership and doesnt have an enemy on the planet' do
+  it 'should output its profits if the squad has air ownership and doesnt have an enemy on planet' do
     planet.credits = 1000
     planet.credits_per_turn.should be 0
 
@@ -42,8 +42,9 @@ describe Planet do
     planet.generic_fleets << enemy_trooper
     planet.set_ownership
     planet.set_ground_ownership
-    planet.credits_per_turn.should be 1000
+    planet.credits_per_turn.should be 0
   end
+
   context 'regarding partial and full ownerships' do
     before(:each) do
       @squad = Factory :squad
