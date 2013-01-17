@@ -1,5 +1,6 @@
 <%= fleet.quantity %>
 <%= fleet.name %>
+<%= ' *50%*' if fleet.sabotaged? %>
 ( <% if @round.move && fleet.squad == @squad && !fleet.squad.ready?%>
     <% if fleet.producing_unit.present? %>
       <%= link_to "#{fleet.producing_unit_display}", edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "450", :width => "370"), :class => "thickbox" %>
@@ -14,4 +15,5 @@
     <% end %>
   <% end %>
 )
+
 
