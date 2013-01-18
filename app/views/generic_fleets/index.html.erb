@@ -38,10 +38,15 @@
     <p>
     <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "370"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
     <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "370"), :class => "thickbox" if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
-    <% if (planet.squad.present? || planet.ground_squad.present?) && @round.attack && planet.under_attack? %>
+    <% if @round.attack && planet.under_attack? %>
       <%= "Defensor ->" %>
-      <%= "Espaço: " if planet.squad.present? %><span style=color:#<%= planet.squad.color if planet.squad.present? %>><%= planet.squad.name if planet.squad.present? %></span>
-      <%= "Terra: " if planet.ground_squad.present? %><span style=color:#<%= planet.ground_squad.color if planet.ground_squad.present? %>><%= planet.ground_squad.name if planet.ground_squad.present? %></span>
+      <% if planet.squad.present? %>
+      <span style=color:#<%= planet.squad.color %>><%= planet.squad.name %></span>
+        <% elsif planet.ground_squad.present? %> 
+        <span style=color:#<%= planet.ground_squad.color %>><%= planet.ground_squad.name %></span>
+       <% else %>
+        não há
+      <% end %>
       <p>
     <% end %>
     <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "370"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?%>
