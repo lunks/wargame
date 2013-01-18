@@ -7,12 +7,17 @@ class Planet < ActiveRecord::Base
   @@disable_routes = false
 
   def credits_per_turn
-#TODO Evitar o ganho de créditos se tiver algum inimigo no planeta
-   if self.squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.squad}
-     0
-   else
-     credits
-   end
+    (air_credits + ground_credits).to_i
+  end
+
+  def air_credits
+   return self.credits * 0.50 unless self.squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.squad}
+   0
+  end
+
+  def ground_credits
+   return self.credits * 0.50 unless self.ground_squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.ground_squad}
+   0
   end
 
   def set_ownership

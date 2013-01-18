@@ -14,6 +14,7 @@ end
 
 Factory.define :planet do |f|
   f.name Forgery::Name.full_name
+  f.credits 1000
 end
 
 Factory.define :generic_fleet do |f|

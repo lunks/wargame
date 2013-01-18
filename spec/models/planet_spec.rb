@@ -26,20 +26,60 @@ describe Planet do
     end
   end
 
-  it 'should output its profits if the squad has air ownership and doesnt have an enemy on planet' do
+  it 'should output its full profits if the squad has air and ground ownership and doesnt have an enemy on planet' do
+    planet.credits = 1000
+    planet.credits_per_turn.should be 0
+
+    squad = Factory :squad
+    facility = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:facility)
+    trooper = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:trooper)
+    enemy_unit = Factory :generic_fleet, :squad => Factory(:squad), :generic_unit => Factory(:unit)
+
+    planet.generic_fleets << facility
+    planet.generic_fleets << trooper
+    planet.set_ownership
+    planet.set_ground_ownership
+    planet.credits_per_turn.should be 1000
+
+    planet.generic_fleets << enemy_unit
+    planet.set_ownership
+    planet.set_ground_ownership
+    planet.credits_per_turn.should be 0
+  end
+
+  it 'should output 50% profits if the squad has air ownership and doesnt have an enemy on planet' do
     planet.credits = 1000
     planet.credits_per_turn.should be 0
 
     squad = Factory :squad
     facility = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:facility)
     enemy_trooper = Factory :generic_fleet, :squad => Factory(:squad), :generic_unit => Factory(:trooper)
-
+    
     planet.generic_fleets << facility
     planet.set_ownership
     planet.set_ground_ownership
-    planet.credits_per_turn.should be 1000
-
+    planet.credits_per_turn.should be 500
+   
     planet.generic_fleets << enemy_trooper
+    planet.set_ownership
+    planet.set_ground_ownership
+    planet.credits_per_turn.should be 0
+  end
+
+  it 'should output 50% profits if the squad has ground ownership and doesnt have an enemy on planet' do
+    planet.credits = 1000
+    planet.credits_per_turn.should be 0
+
+    squad = Factory :squad
+    trooper = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:trooper)
+    enemy_unit = Factory :generic_fleet, :squad => Factory(:squad), :generic_unit => Factory(:unit)
+    
+    planet.generic_fleets << trooper
+    planet.set_ownership
+    planet.set_ground_ownership
+    planet.credits_per_turn.should be 500
+   
+    planet.generic_fleets << enemy_unit
     planet.set_ownership
     planet.set_ground_ownership
     planet.credits_per_turn.should be 0
