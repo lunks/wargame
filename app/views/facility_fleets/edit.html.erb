@@ -6,7 +6,7 @@ Produção acumulada: +<%= @facility.balance %><br>
 Aprimoramentos: +<%= @facility.current_upgrade_ratio %> (Nível <%= @facility.level %>)<br>
 <span style=font-weight:bold;font-size:13px;color:red>
 <%  if @facility.sabotaged? %>
-<%= "Fábrica Sabotada!: -" %><%= @facility.default_capacity %> (-50%)<br>
+<%= "Fábrica Sabotada: -" %><%= @facility.default_capacity %> (-50%)<br>
 <% end %>
 </span>
 <span style=font-weight:bold;font-size:13px;color:#00FF00>Produtividade total: <%= @facility.total_capacity %></span><br>
