@@ -6,7 +6,7 @@
        <span style=color:#<%= result_form.object.squad.color %>;font-weight:bold;font-size:14px>
        <%= result_form.object.quantity %>
        <%= result_form.object.generic_unit.name %>
-       <% if result_form.object.generic_unit.type == 'Facility' %>
+       <% if result_form.object.generic_unit.type == 'Facility' && result_form.object.generic_unit.type.present? %>
          (<%= result_form.object.generic_fleet.producing_unit.name  %>)
        <% end %>
        <% if result_form.object.generic_unit.type == 'CapitalShip' %>
