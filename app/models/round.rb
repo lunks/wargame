@@ -97,10 +97,10 @@ class Round < ActiveRecord::Base
 
   def apply_results
     Result.where(:round => self).each do |result|
+      result.sabotage! unless result.sabotaged == nil
       result.blast! unless result.blasted == nil || result.blasted <= 0
       result.capture! unless result.captured == nil || result.captured <= 0
       result.flee! unless result.fled == nil || result.fled <= 0
-      result.sabotage! unless result.sabotaged == nil
     end
   end
 
