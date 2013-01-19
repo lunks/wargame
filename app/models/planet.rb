@@ -7,6 +7,7 @@ class Planet < ActiveRecord::Base
   @@disable_routes = false
 
   def credits_per_turn
+#TODO Evitar o ganho de créditos se tiver algum inimigo no planeta
     if self.squad != nil && self.squad == self.ground_squad
       credits
     else
@@ -15,9 +16,8 @@ class Planet < ActiveRecord::Base
   end
 
   def set_ownership
-    if has_a? CapitalShip or has_a? Facility
+    if has_a? Facility
       air_units = generic_fleets.select {|fleet| fleet.type? Facility}
-      air_units = generic_fleets.select {|fleet| fleet.type? CapitalShip} if air_units.empty?
       air_units.sort! { |one,other| one.updated_at <=> other.updated_at }
       self.squad = air_units.first.squad
       save
@@ -94,6 +94,14 @@ class Planet < ActiveRecord::Base
       true
     else
       false
+    end
+  end
+
+  def able_to_construct?(squad)
+    if !has_a? Trooper or generic_fleets.any?{|fleet| fleet.squad != squad}
+      nil
+    else
+      true
     end
   end
 

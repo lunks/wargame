@@ -26,17 +26,20 @@ describe Planet do
     end
   end
 
-  it 'should output its profits if the squad has air and ground ownership' do
+  it 'should output its profits if the squad has air ownership and doesnt have an enemy on the planet' do
     planet.credits = 1000
     planet.credits_per_turn.should be 0
 
     squad = Factory :squad
-    capital_ship = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:capital_ship)
-    trooper = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:trooper)
+    facility = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:facility)
+    enemy_trooper = Factory :generic_fleet, :squad => Factory(:squad), :generic_unit => Factory(:trooper)
 
-    planet.generic_fleets << capital_ship
-    planet.generic_fleets << trooper
+    planet.generic_fleets << facility
+    planet.set_ownership
+    planet.set_ground_ownership
+    planet.credits_per_turn.should be 1000
 
+    planet.generic_fleets << enemy_trooper
     planet.set_ownership
     planet.set_ground_ownership
     planet.credits_per_turn.should be 1000
@@ -46,7 +49,7 @@ describe Planet do
       @squad = Factory :squad
       planet.squad = @squad
     end
-    it 'should remove its ownership if it doesnt have a capital ship on it' do
+    it 'should remove its ownership if it doesnt have a facility on it' do
       planet.set_ownership
       planet.squad.should be_nil
     end
@@ -55,14 +58,7 @@ describe Planet do
       planet.ground_squad.should be_nil
     end
     context 'air ownership' do
-      let(:capital_ship) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:capital_ship)}
       let(:facility) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:facility)}
-
-      it 'should change its owner if it has a capital ship' do
-        planet.generic_fleets << capital_ship
-        planet.set_ownership
-        planet.squad.should be @squad
-      end
 
       it 'should change its ownership if it has a facility on it' do
         planet.generic_fleets << facility
@@ -119,4 +115,15 @@ describe Planet do
     2.times {Factory :generic_fleet, :planet => planet}
     planet.should be_under_attack
   end
+
+  it 'should verify if a squad can construct on planet' do
+    squad = Factory :squad
+    trooper = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:trooper)
+    capital_ship = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:capital_ship)
+    planet.generic_fleets << capital_ship
+    planet.able_to_construct?(squad).should_not be_true
+    planet.generic_fleets << trooper
+    planet.able_to_construct?(squad).should be_true
+  end
+
 end
