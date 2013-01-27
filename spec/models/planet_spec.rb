@@ -47,7 +47,7 @@ describe Planet do
     planet.credits_per_turn.should be 0
   end
 
-  it 'should output 50% profits if the squad has air ownership and doesnt have an enemy on planet' do
+  it 'should output 60% profits if the squad has air ownership and doesnt have an enemy on planet' do
     planet.credits = 1000
     planet.credits_per_turn.should be 0
 
@@ -58,7 +58,7 @@ describe Planet do
     planet.generic_fleets << facility
     planet.set_ownership
     planet.set_ground_ownership
-    planet.credits_per_turn.should be 500
+    planet.credits_per_turn.should be 600
    
     planet.generic_fleets << enemy_trooper
     planet.set_ownership
@@ -66,7 +66,7 @@ describe Planet do
     planet.credits_per_turn.should be 0
   end
 
-  it 'should output 50% profits if the squad has ground ownership and doesnt have an enemy on planet' do
+  it 'should output 40% profits if the squad has ground ownership and doesnt have an enemy on planet' do
     planet.credits = 1000
     planet.credits_per_turn.should be 0
 
@@ -77,7 +77,7 @@ describe Planet do
     planet.generic_fleets << trooper
     planet.set_ownership
     planet.set_ground_ownership
-    planet.credits_per_turn.should be 500
+    planet.credits_per_turn.should be 400
    
     planet.generic_fleets << enemy_unit
     planet.set_ownership

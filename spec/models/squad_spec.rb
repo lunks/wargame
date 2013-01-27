@@ -52,9 +52,9 @@ describe Squad do
         squad.save
       end
 
-      it 'should generate profits when you have air control of a planet' do
+      it 'should generate 60% of profits when you have air control of a planet' do
         squad.generate_profits!
-        squad.credits.should == 500
+        squad.credits.should == 600
       end
 
       it 'should not generate profits when you have air control but exists an enemy on planet' do
