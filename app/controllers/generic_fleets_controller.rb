@@ -7,7 +7,7 @@ class GenericFleetsController < ApplicationController
     @income = 0
     @flee_tax = @squad.flee_tax @round
     @squad.planets.each do |planet|
-      @income += planet.credits_per_turn if planet.credits_per_turn.present?
+      @income += planet.credits_per_turn if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && (planet.squad == @squad || planet.ground_squad == @squad)
     end
     if @round.move?
       @round_phase = 'Estrategia'
