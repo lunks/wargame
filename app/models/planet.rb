@@ -7,7 +7,7 @@ class Planet < ActiveRecord::Base
   @@disable_routes = false
 
   def credits_per_turn
-    (air_credits + ground_credits).to_i
+    (self.air_credits + self.ground_credits).to_i
   end
 
   def air_credits
