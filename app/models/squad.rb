@@ -26,10 +26,15 @@ class Squad < ActiveRecord::Base
   end
 
   def generate_profits!
-    planets.each do |planet|
-      self.credits = self.credits + planet.credits_per_turn
-      save
+    income = 0
+    Planet.where(:squad => self).each do |planet|
+      income += planet.air_credits if planet.air_credits.present?
     end
+    Planet.where(:ground_squad => self).each do |planet|
+      income += planet.ground_credits if planet.ground_credits.present?
+    end
+    self.credits += income
+    save
   end
 
   def change_producing_unit facility_fleet, unit
