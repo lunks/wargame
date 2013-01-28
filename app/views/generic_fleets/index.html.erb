@@ -6,7 +6,7 @@
 <% end %>
 <span style=font-weight:bold;font-size:13px;color:yellow> Créditos atuais: $<%= @squad.credits %> <%= link_to 'transferir créditos ', :transfer unless @squad.ready? %> </span><br>
 <span style=font-weight:bold;font-size:13px;color:#00FF00> Ganho previsto: $<%= @income %> </span><br>
-<span style=font-weight:bold;font-size:13px;color:#FF0000> Perdas: $ -<%= @flee_tax.to_i %></span><a href="http://brrclan.net/wg" target=_blank> Regras do Wargame </a> <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a><br>
+<span style=font-weight:bold;font-size:13px;color:#FF0000> Perdas: $ -<%= @flee_tax.to_i %></span><a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do Wargames </a> <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a><br>
   <% @all_squads.each do |squad| %>
     <span style=text-decoration:blink;color:#<%= squad.color %>>
     <%= squad.name + " pronto  " if squad.ready? %>
