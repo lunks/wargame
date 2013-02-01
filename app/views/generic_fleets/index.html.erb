@@ -32,8 +32,9 @@
       <% else %>
         <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>
       <% end %>
-      </span>
       <span style=color:#40E0D0><%= fleet.show_results %></span>
+      <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving?%></span>
+      </span>
       <br>
     <% end %>
     <p>

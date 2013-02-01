@@ -25,8 +25,7 @@ describe "Viewing dashboard" do
     end
 
     it 'should show moving fleets from a planet' do
-      #page.should have_content 'indo para'
-      #nao sei o q houve...
+      page.should have_content '-->'
     end
 
 
