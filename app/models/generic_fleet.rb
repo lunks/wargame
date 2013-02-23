@@ -1,9 +1,11 @@
 class GenericFleet < ActiveRecord::Base
   default_scope :order => "moving ASC, updated_at DESC"
   scope :owned_by, lambda {|squad| where(:squad => squad)}
+  scope :moving, where(:moving => true)
   belongs_to :squad
   belongs_to :planet
   belongs_to :generic_unit
+  belongs_to :destination, :class_name => "Planet"
 
   after_save :destroy_if_empty
 

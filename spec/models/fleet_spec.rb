@@ -88,8 +88,6 @@ describe Fleet do
         moving_fighter = fighter_fleet.move 1, planet
         moving_fighter.should be_moving
       end
-
-
     end
 
     context 'finishing movement' do

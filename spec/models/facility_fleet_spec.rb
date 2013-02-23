@@ -2,9 +2,14 @@ require 'spec_helper'
 
 describe FacilityFleet do
   it {should belong_to :producing_unit}
+  it {should belong_to :producing_unit2}
+  it {should belong_to :destination}
   let(:facility_fleet) {Factory :facility_fleet}
   let(:facility) {facility_fleet.facility}
   let(:unit) {Factory :unit}
+  let(:squad) {Factory :squad}
+  let(:planet) {Factory :planet}
+
   it 'should be a fleet' do
     facility_fleet.should be_an_instance_of FacilityFleet
     facility_fleet.should be_a_kind_of GenericFleet
@@ -29,6 +34,45 @@ describe FacilityFleet do
     facility_fleet.sabotage!
     facility_fleet.sabotaged.should be_true
   end
+#TODO movimentação de fabricas
+  context 'moving' do
+    before do
+      facility_fleet.squad = squad
+      facility_fleet.save
+      @moving_fleet = facility_fleet.move planet
+    end
+
+    context 'setting to move' do
+      it 'should be flagged as a moving unit when moving' do
+        @moving_fleet.should be_moving
+      end
+      it 'should have a destination planet when moving' do
+        @moving_fleet.destination.should == planet
+      end
+    end
+
+    context 'finishing movement' do
+      before(:each) do
+        @merging_fleet = Factory :facility_fleet, :planet => planet, :generic_unit => facility_fleet.generic_unit, :squad => facility_fleet.squad, :fleet_name => facility_fleet.squad.name
+        @moving_quantity = @moving_fleet.quantity
+        @moving_fleet.move!
+      end
+      it 'should effect moving orders' do
+        @moving_fleet.should be_moving
+        @moving_fleet.planet.should == planet
+      end
+    end
+
+    context 'reassembling facility' do
+      it 'should be unflagged as a moving unit when survive in combat phase' do
+        @moving_fleet.reassembly
+        @moving_fleet.should_not be_moving
+      end
+    end
+
+  end
+    
+
 
   context 'on every new turn' do
     let(:facility) {facility_fleet.facility}

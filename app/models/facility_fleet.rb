@@ -1,9 +1,11 @@
 class FacilityFleet < GenericFleet
   before_create :default_values
   validates_presence_of :facility, :squad
+
   belongs_to :facility, :foreign_key => :generic_unit_id
   belongs_to :producing_unit, :class_name => "Unit"
   belongs_to :producing_unit2, :class_name => "Unit"
+  belongs_to :destination, :class_name => "Planet"
 
   delegate :capacity, :to => :facility
   delegate :capacity_upgraded, :to => :facility
@@ -14,6 +16,26 @@ class FacilityFleet < GenericFleet
       FacilityFleet.skip_callback(:create, :before, :subtract_credits_from_squad)
     end
   end
+
+  def move planet
+    moving_facility = FacilityFleet.new self.attributes
+    moving_facility.destination = planet
+    moving_facility.quantity = 1
+    moving_facility.moving = true
+    moving_facility.save
+    self.quantity = 0
+    save
+    moving_facility
+  end
+
+  def move!
+    update_attributes(:planet => destination, :destination => nil)
+  end
+
+  def reassembly
+    update_attributes(:moving => nil)
+  end
+
   def produce!
     self.balance += default_capacity
     secondary_balance = secondary_capacity.to_f

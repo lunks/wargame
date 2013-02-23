@@ -24,7 +24,7 @@ describe Tradeport do
       Tradeport.first.show_negotiation_rate
     end
 
-    it 'should change negotiation rate of units in stock between 20 and 50' do
+    it 'should change negotiation rate of units in stock between 40 and 70' do
       squad = Factory(:squad, :credits => 1000)
       unit = Factory(:generic_unit, :price => 500)
       fleet = Factory(:generic_fleet, :squad => squad, :generic_unit => unit, :quantity => 1)    

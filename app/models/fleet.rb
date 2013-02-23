@@ -1,6 +1,4 @@
 class Fleet < GenericFleet
-  belongs_to :destination, :class_name => "Planet"
-  scope :moving, where(:moving => true)
 
   def move quantity, planet
     valid_move = true

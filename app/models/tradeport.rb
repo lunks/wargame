@@ -20,7 +20,7 @@ class Tradeport < ActiveRecord::Base
       end
     end
     Tradeport.all.each do |tradeport|
-      tradeport.negotiation_rate = 20 + rand(50 - 20)
+      tradeport.negotiation_rate = 40 + rand(70 - 40)
       tradeport.save
     end
   end
