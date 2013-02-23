@@ -5,6 +5,8 @@ describe Round do
   rebel = Factory :squad
   empire = Factory :squad
 
+  4.times { Factory :goal }
+
   context 'beginning a new round' do
     before(:each) do
       #empire.destroy # stinking empire!
