@@ -1,4 +1,3 @@
-<%= fleet.quantity %>
 <%= fleet.name %>
 <%= ' *50%*' if fleet.sabotaged? %>
 ( <% if @round.move && fleet.squad == @squad && !fleet.squad.ready?%>
