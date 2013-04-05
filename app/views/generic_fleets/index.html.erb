@@ -98,6 +98,7 @@
     <p>
     <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "370"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
     <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "370"), :class => "thickbox" if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
+    <%= link_to ' tradeport ', tradeport_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "370"), :class => "thickbox" if planet.tradeport? && !@squad.ready? %></span>
     <% if @round.attack && planet.under_attack? %>
       <%= "Defensor ->" %>
       <% if planet.squad.present? %>

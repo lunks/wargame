@@ -1,0 +1,5 @@
+<%= simple_form_for :fleet, :url => url_for(:controller => 'tradeports', :action => 'buy') do |f| %>
+  <%= f.input :id, :collection => @fleets, :label => 'Vender: ' %>
+  <%= f.input :quantity, :label => 'Quantidade: ', :input_html => { :size => 1 } %>
+  <%= f.submit 'Vender' %>
+<% end %>

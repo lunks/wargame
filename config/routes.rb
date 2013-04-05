@@ -2,6 +2,9 @@ Rpg::Application.routes.draw do
    devise_for :users
 
    resources :squads
+
+   resources :tradeports
+
    resources :generic_units do
      collection do
        get :move
