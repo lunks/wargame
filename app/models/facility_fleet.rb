@@ -3,10 +3,12 @@ class FacilityFleet < GenericFleet
   validates_presence_of :facility, :squad
   belongs_to :facility, :foreign_key => :generic_unit_id
   belongs_to :producing_unit, :class_name => "Unit"
+  belongs_to :producing_unit2, :class_name => "Unit"
 
   delegate :capacity, :to => :facility
   delegate :capacity_upgraded, :to => :facility
   delegate :price, :to => :facility
+
   class << self
     def is_free
       FacilityFleet.skip_callback(:create, :before, :subtract_credits_from_squad)
@@ -14,14 +16,27 @@ class FacilityFleet < GenericFleet
   end
   def produce!
     self.balance += default_capacity
-    return if producing_unit.nil?
-    unit_price = producing_unit.price
-    units = 0
-    while unit_price <= self.balance
-      units += 1
-      self.balance -= unit_price
+    secondary_balance = secondary_capacity
+    if producing_unit2.present?
+      unit_price = producing_unit2.price
+      units = 0
+      while unit_price <= secondary_balance
+        units += 1
+        secondary_balance -= unit_price
+      end
+      Fleet.create_from_facility producing_unit2, units, self.planet, self.squad
+      save
     end
-    Fleet.create_from_facility producing_unit, units, self.planet, self.squad
+    if producing_unit.present?
+      unit_price = producing_unit.price
+      units = 0
+      while unit_price <= self.balance
+        units += 1
+        self.balance -= unit_price
+      end
+      Fleet.create_from_facility producing_unit, units, self.planet, self.squad
+      save
+    end
     save
   end
 
@@ -36,6 +51,10 @@ class FacilityFleet < GenericFleet
 
   def units_per_turn
     (total_capacity / producing_unit.price.to_f).to_i
+  end
+
+  def units_per_turn2
+    (secondary_capacity / producing_unit2.price.to_f).to_i
   end
 
   def default_capacity
@@ -62,6 +81,10 @@ class FacilityFleet < GenericFleet
     default_capacity + balance
   end
 
+  def secondary_capacity
+    (default_capacity * 0.30).to_i
+  end
+
 
   def building_done
     (balance / producing_unit.price.to_f * 100).to_i
@@ -74,6 +97,15 @@ class FacilityFleet < GenericFleet
       producing_unit_display = producing_unit.name
     end
     producing_unit_display
+  end
+
+  def producing_unit2_display
+    if units_per_turn2 < 1
+      producing_unit2_display = producing_unit2.name + " #{building_done}%"
+    else
+      producing_unit2_display = producing_unit2.name
+    end
+    producing_unit2_display
   end
   
 private

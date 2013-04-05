@@ -64,7 +64,7 @@ div.planet_content {
     box-shadow: 0 0 6px #5D90AF;
     margin: 5px 5px 5px 5px;
     padding: 5px;
-    width: 350px;
+    width: 380px;
     padding-left: 8px;
     border-radius: 14px;
     margin-top: 9px;
@@ -76,7 +76,7 @@ div.squad_info {
     box-shadow: 0 0 6px white;
     margin: 5px;
     padding: 5px;
-    width: 350px;
+    width: 380px;
     padding-left: 8px;
     padding-top:22px;
     padding-bottom: 8px;
@@ -88,7 +88,7 @@ div.map
 {
   position:absolute;
   top: 0%;
-  left: 370px;
+  left: 400px;
   margin-left: 5px;
   margin-top: 7px;
   padding:4px;

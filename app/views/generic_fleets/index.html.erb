@@ -9,8 +9,10 @@
     <td style="background-color:#1C1C1C" align=right>
       <span style=font-weight:bold;font-size:13px;color:yellow> <%= @squad.credits %></span>
     </td>
-    <td>
+    <td>   
       <%= link_to 'transferir créditos ', :transfer unless @squad.ready? %> 
+    </td>
+    <td>
     </td>
   </tr>
   <tr>
@@ -19,6 +21,9 @@
     </td>
     <td align="right">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @income %> </span>
+    </td>
+    <td>
+      <a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do Wargames </a>
     </td>
     <td>
       <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a>
@@ -32,7 +37,8 @@
       <span style=font-weight:bold;font-size:13px;color:#00FF00> 0 </span>
     </td>
     <td>
-      <a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do Wargames </a>
+    </td>
+    <td>
     </td>
   </tr>
   <tr>

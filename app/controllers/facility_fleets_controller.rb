@@ -18,6 +18,7 @@ class FacilityFleetsController < ApplicationController
   def edit
     @facility = FacilityFleet.find(params[:id])
     @units = Unit.allowed_for(current_squad.faction)
+    @units2 = Unit.allowed_for(current_squad.faction).where("price <= ?", @facility.secondary_capacity)
     @planet = @facility.planet
     unless @facility.producing_unit.present?
       @producing_capacity = 0
@@ -30,6 +31,10 @@ class FacilityFleetsController < ApplicationController
     unless params[:facility_fleet][:producing_unit].empty?
       @producing_unit = Unit.find(params[:facility_fleet][:producing_unit])
       current_squad.change_producing_unit @facility, @producing_unit
+    end
+    unless params[:facility_fleet][:producing_unit2].empty?
+      @producing_unit2 = Unit.find(params[:facility_fleet][:producing_unit2])
+      current_squad.change_producing_unit2 @facility, @producing_unit2
     end
     redirect_to :back
   end

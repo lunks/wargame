@@ -42,6 +42,11 @@ class Squad < ActiveRecord::Base
     facility_fleet.save!
   end
 
+  def change_producing_unit2 facility_fleet, unit
+    facility_fleet.producing_unit2 = unit
+    facility_fleet.save!
+  end
+
   def random_planet_but planet
     planets_array = planets.to_a - [planet]
     return false if planets_array.empty?

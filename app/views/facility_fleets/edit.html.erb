@@ -9,15 +9,22 @@ Aprimoramentos: +<%= @facility.current_upgrade_ratio %> (Nível <%= @facility.le
 <%= "Fábrica Sabotada: -" %><%= @facility.default_capacity %> (-50%)<br>
 <% end %>
 </span>
-<span style=font-weight:bold;font-size:13px;color:#00FF00>Produtividade total: <%= @facility.total_capacity %></span><br>
+<span style=font-weight:bold;font-size:13px;color:#00FF00>Produtividade principal: <%= @facility.total_capacity %></span><br>
 <% if @facility.producing_unit.present? %>
-  <span style=font-weight:bold;font-size:13px;color:yellow>Produzindo: <%= @facility.producing_unit.name.pluralize %>
+  <span style=font-weight:bold;font-size:13px;color:yellow>Produzindo A: <%= @facility.producing_unit.name.pluralize %>
   <%= "( custo #{@facility.producing_unit.price} )" %></span><br>
-  <span style=font-weight:bold;font-size:13px;color:00FF00><%= "Previsão: #{@facility.units_per_turn} unidades para o próximo turno" %>
+  <span style=font-weight:bold;font-size:13px;color:00FF00><%= "Previsão: #{@facility.units_per_turn} unidades para o próximo turno" %><br>
+<% end %>
+<span style=font-weight:bold;font-size:13px;color:#00FF00>Produtividade secundária: <%= @facility.secondary_capacity %></span><br>
+<% if @facility.producing_unit2.present? %>
+  <span style=font-weight:bold;font-size:13px;color:yellow>Produzindo B: <%= @facility.producing_unit2.name.pluralize %>
+  <%= "( custo #{@facility.producing_unit2.price} )" %></span><br>
+  <span style=font-weight:bold;font-size:13px;color:00FF00><%= "Previsão: #{@facility.units_per_turn2} unidades" %>
 <% end %>
 <p>
 <%= simple_form_for @facility do |f| %>
-<%= f.input :producing_unit, :collection => @units, :label => 'Escolha uma unidade para produção:' %>
+<%= f.input :producing_unit, :collection => @units, :label => 'Escolha a produção principal:' %>
+<%= f.input :producing_unit2, :collection => @units2, :label => 'Escolha a produção secundária:' %>
 <%= f.submit 'Produzir' %>
 <% end %>
 <p>
