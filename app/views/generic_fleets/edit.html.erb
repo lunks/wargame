@@ -1,13 +1,13 @@
 <div class="planet_content">
-<h2><%= @planet %></h2>
-<h3><%= @fleet %> "<%= @fleet.fleet_name %>"</h3>
-<%= simple_form_for @fleet, :url => url_for(:controller => 'generic_fleets', :action => 'update') do |f| %>
-<%= f.input :fleet_name, :label => 'Nome da nave: ', :input_html => { :size => 12 }, :hint => 'Max. 15 char.' %>
-<%= f.submit 'Salvar' %>
-<% end %><br>
+  <h2><%= @planet %></h2>
+  <h3><%= @fleet %> "<%= @fleet.fleet_name %>"</h3>
+  <%= simple_form_for @fleet, :url => url_for(:controller => 'generic_fleets', :action => 'update') do |f| %>
+    <%= f.input :fleet_name, :label => 'Nome da nave: ', :input_html => { :size => 12 }, :hint => 'Max. 15 char.' %>
+    <%= f.submit 'Salvar' %>
+  <% end %><br>
 Atenção: NÃO use ACENTOS ou caracteres especiais<br>
-Separe as capital ships antes. O nome é definitivo.
-<p>
+Separe as CS movendo-as antes. O nome é definitivo.
+  <p>
 </div>
 
 

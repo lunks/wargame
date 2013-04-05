@@ -79,11 +79,13 @@
         <%= render :partial => 'capital_ships', :locals => { :fleet => fleet } %>
       <% when 'Warrior' %>
         <%= render :partial => 'warriors', :locals => { :fleet => fleet } %>
+      <% when 'Trooper' %>
+        <%= render :partial => 'troopers', :locals => { :fleet => fleet } %>
       <% else %>
         <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>
       <% end %>
       <span style=color:#40E0D0><%= fleet.show_results %></span>
-      <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? and fleet.squad == @squad %></span>
+      <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? && fleet.squad == @squad %></span>
       </span>
       <br>
     <% end %>
