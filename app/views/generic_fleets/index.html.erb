@@ -1,12 +1,62 @@
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
 <span style=font-weight:bold;font-size:18px> Turno: <%= @round.number %> - <%= @round_phase %></span><br>
+<table border="0">
+  <tr>
+    <td style="background-color:#1C1C1C">
+      <span style=font-weight:bold;font-size:13px;color:yellow> Disponível: </span> 
+    </td>
+    <td style="background-color:#1C1C1C" align=right>
+      <span style=font-weight:bold;font-size:13px;color:yellow> <%= @squad.credits %></span>
+    </td>
+    <td>
+      <%= link_to 'transferir créditos ', :transfer unless @squad.ready? %> 
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> + planetas:</span>
+    </td>
+    <td align="right">
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @income %> </span>
+    </td>
+    <td>
+      <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a>
+    </td>
+  </tr>
+  <tr>
+    <td style="background-color:#1C1C1C">
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> + transporte:</span>
+    </td>
+    <td style="background-color:#1C1C1C" align="right">
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> 0 </span>
+    </td>
+    <td>
+      <a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do Wargames </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span style=font-weight:bold;font-size:13px;color:#FF0000> - fugas: </span>
+    </td>
+    <td style="background-color:#1C1C1C" align="right">
+      <span style=font-weight:bold;font-size:13px;color:#FF0000><%= @flee_tax %> </span>
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td style="background-color:#1C1C1C">
+      <span style=font-weight:bold;font-size:13px;color:#00FFFF>Prox. turno:</span> 
+    </td>
+    <td style="background-color:#1C1C1C" align="right">
+      <span style=font-weight:bold;font-size:13px;color:#00FFFF><%= @provided %></span>
+    </td>
+  </tr>
+</table>
 <% unless @squad.ready? %>
-  <%= link_to "Squad pronto!", ready_path%> - Clique só uma vez e aguarde!<br>
+  <%= link_to "Esquadrão pronto", ready_path%> - Clique só uma vez e aguarde!<br>
 <% end %>
-<span style=font-weight:bold;font-size:13px;color:yellow> Créditos atuais: $<%= @squad.credits %> <%= link_to 'transferir créditos ', :transfer unless @squad.ready? %> </span><br>
-<span style=font-weight:bold;font-size:13px;color:#00FF00> Ganho previsto: $<%= @income %> </span><br>
-<span style=font-weight:bold;font-size:13px;color:#FF0000> Perdas: $ -<%= @flee_tax.to_i %></span><a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do Wargames </a> <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a><br>
   <% @all_squads.each do |squad| %>
     <span style=text-decoration:blink;color:#<%= squad.color %>>
     <%= squad.name + " pronto  " if squad.ready? %>
@@ -20,7 +70,7 @@
     <p>
     <%= "Ganhos previstos: $#{planet.credits_per_turn}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && (planet.squad == @squad || planet.ground_squad == @squad) %>
     <p>
-    <% planet.generic_fleets.sort_by{|a| [a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |fleet| %>
+    <% planet.generic_fleets.sort_by{|a| [a.squad.name, a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |fleet| %>
       <span style=color:#<%= fleet.squad.color %>>
       <% case fleet.generic_unit.type %>
       <% when 'Facility' %>
@@ -33,7 +83,7 @@
         <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>
       <% end %>
       <span style=color:#40E0D0><%= fleet.show_results %></span>
-      <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving?%></span>
+      <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? and fleet.squad == @squad %></span>
       </span>
       <br>
     <% end %>

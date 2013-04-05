@@ -5,13 +5,14 @@ class GenericFleetsController < ApplicationController
     @squad = current_squad
     @all_squads = Squad.all
     @income = 0
-    @flee_tax = @squad.flee_tax @round
+    @flee_tax = (@squad.flee_tax @round).to_i
     Planet.where(:squad => @squad).each do |planet|
-      @income += planet.air_credits if planet.air_credits.present?
+      @income += (planet.air_credits if planet.air_credits.present?).to_i
     end
     Planet.where(:ground_squad => @squad).each do |planet|
-      @income += planet.ground_credits if planet.ground_credits.present?
+      @income += (planet.ground_credits if planet.ground_credits.present?).to_i
     end
+    @provided = (current_squad.credits + @income - @flee_tax).to_i
     if @round.move?
       @round_phase = 'Estrategia'
     else
