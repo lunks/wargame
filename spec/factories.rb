@@ -88,3 +88,9 @@ Factory.define :result do |f|
     f.generic_fleet = Factory :generic_fleet, :generic_unit => f.generic_unit, :planet => f.planet, :quantity => f.quantity
   end
 end
+
+Factory.define :tradeport do |f|
+  f.association :generic_unit
+  f.association :planet
+
+end
