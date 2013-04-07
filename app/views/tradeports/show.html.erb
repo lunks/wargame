@@ -3,3 +3,9 @@
   <%= f.input :quantity, :label => 'Quantidade: ', :input_html => { :size => 1 } %>
   <%= f.submit 'Vender' %>
 <% end %>
+<p>
+<%= simple_form_for :fleet, :url => url_for(:controller => 'tradeports', :action => 'sell') do |f| %>
+  <%= f.input :id, :collection => @tradeport_stock, :label => 'Comprar: ' %>
+  <%= f.input :quantity, :label => 'Quantidade: ', :input_html => { :size => 1 } %>
+  <%= f.submit 'Vender' %>
+<% end %>

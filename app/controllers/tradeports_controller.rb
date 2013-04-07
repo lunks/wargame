@@ -1,21 +1,27 @@
 class TradeportsController < ApplicationController
 
+  def index
+    @planet = Planet.find(params[:id])
+  end
+
   def show
     @planet = Planet.find(params[:id])
     @squad = current_squad
-    @fleets = @planet.generic_fleets.all
+    @fleets = @planet.generic_fleets.where(:type => 'Fleet').all
+    @tradeport_stock = Tradeport.where(:planet => @planet).all
   end
 
   def buy
     @unit = Fleet.find(params[:fleet][:id])
     @quantity = params[:fleet][:quantity].to_i
-    Tradeport.buy_unit @planet, @unit, @quantity if @quantity <= @unit.quantity
+    Tradeport.buy_unit @unit.planet, @unit, @quantity if @quantity <= @unit.quantity
   end
 
   def sell
-    @unit = GenericFleet.find(params[:fleet][:id])
+    @unit = Tradeport.find(params[:fleet][:id])
     @quantity = params[:fleet][:quantity].to_i
-    Tradeport.buy_unit @planet, @unit, @quantity if @quantity <= @unit.quantity
+    @unit.sell_unit current_squad, @quantity
+    #Tradeport.buy_unit @planet, @unit, @quantity if @quantity <= @unit.quantity
   end
 
 

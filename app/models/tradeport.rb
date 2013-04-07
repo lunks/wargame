@@ -4,6 +4,9 @@ class Tradeport < ActiveRecord::Base
 
   after_save :destroy_if_empty
 
+  delegate :name, :to => :generic_unit
+  delegate :price, :to => :generic_unit
+
   def self.produce_units
     #depois filtrar onde planet.tradeport == yes
     Planet.all.each do |planet| 
@@ -19,7 +22,7 @@ class Tradeport < ActiveRecord::Base
   def sell_unit squad, quantity
     selling_price = self.generic_unit.price * negotiation_rate / 100
     if squad.credits >= selling_price * quantity
-      Fleet.create(:generic_unit => self.generic_unit, :planet => self.planet, :squad => squad, :fleet_name => squad.name, :quantity => quantity)     
+      GenericFleet.create(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => squad, :fleet_name => squad.name, :quantity => quantity)     
       squad.debit selling_price * quantity
       self.quantity -= quantity
       self.save
@@ -32,6 +35,15 @@ class Tradeport < ActiveRecord::Base
     unit.squad.deposit buying_price * quantity
     unit.quantity -= quantity
     unit.save  
+  end
+
+  def to_s
+    name
+  end
+ 
+ def to_label
+    selling_price = price * negotiation_rate / 100
+    "#{quantity} #{name} (#{negotiation_rate}% off $#{selling_price})"
   end
 
   def destroy_if_empty
