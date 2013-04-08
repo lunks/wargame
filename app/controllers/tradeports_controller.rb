@@ -8,7 +8,8 @@ class TradeportsController < ApplicationController
     @planet = Planet.find(params[:id])
     @squad = current_squad
     @fleets = @planet.generic_fleets.where(:type => 'Fleet', :moving => nil).all
-    @tradeport_stock = Tradeport.all
+    @tradeport_stock = Tradeport.where("squad_id == ?", @squad.id)
+    @tradeport_stock << Tradeport.where(:squad_id => nil).last
   end
 
   def buy

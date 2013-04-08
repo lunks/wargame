@@ -17,7 +17,7 @@ describe Tradeport do
     end
 
     it 'should have units on stock' do
-      Tradeport.count.should be 1
+      Tradeport.count.should be 4
     end
 
     it 'should show negotiation rate' do

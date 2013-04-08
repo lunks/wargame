@@ -34,6 +34,7 @@ class Round < ActiveRecord::Base
       Route.create(:vector_a => eastside, :vector_b => westside, :distance => 1)
     end
     set_map
+    2.times { Tradeport.start }
   end
 
   def end_moving!

@@ -1,5 +1,6 @@
 class Tradeport < ActiveRecord::Base
   belongs_to :generic_unit
+  belongs_to :squad
 
   after_save :destroy_if_empty
 
@@ -7,8 +8,17 @@ class Tradeport < ActiveRecord::Base
   delegate :price, :to => :generic_unit
 
   def self.start
-    random_unit = Unit.all[rand(Unit.all.count - 1)]
-    Tradeport.create(:generic_unit_id => random_unit.id, :quantity => 1, :negotiation_rate => 50)
+    2.times do
+      random_unit = Unit.where("price > ?", 100)[rand(Unit.where("price > ?", 100).count - 1)]
+      Squad.all.each do |squad|
+        if random_unit.price >= 1000
+          Tradeport.create(:generic_unit_id => random_unit.id, :squad_id => squad.id, :quantity => 1, :negotiation_rate => 50)
+        else
+          quantity = (1000 / random_unit.price).to_i
+          Tradeport.create(:generic_unit_id => random_unit.id, :squad_id => squad.id, :quantity => quantity, :negotiation_rate => 50)
+        end
+      end
+    end
     Tradeport.all.each do |tradeport|
       tradeport.negotiation_rate = 20 + rand(50 - 20)
       tradeport.save
@@ -40,6 +50,7 @@ class Tradeport < ActiveRecord::Base
     a = Tradeport.where(:generic_unit_id => unit.generic_unit.id).first
     if a.present?
       a.quantity += quantity
+      a.negotiation_rate = 50
       a.save
     else
       Tradeport.create(:generic_unit_id => unit.generic_unit.id, :quantity => quantity, :negotiation_rate => 50)
@@ -55,7 +66,7 @@ class Tradeport < ActiveRecord::Base
  
   def to_label
     selling_price = price * negotiation_rate / 100
-    "#{quantity} #{name} (#{negotiation_rate}% OFF - #{selling_price} cada)"
+    "#{quantity} #{name} (#{100 - negotiation_rate}% off - #{selling_price} cada)"
   end
 
   def destroy_if_empty
