@@ -188,7 +188,7 @@ LightTransport.create(:name => 'Millenium Falcon', :price => 270 ).factions = me
 
 LightTransport.create(:name => 'Assault Transport', :price => 200 ).factions = all
 LightTransport.create(:name => 'Escort Transport', :price => 200 ).factions = all
-LightTransport.create(:name => 'Stormtrooper Transport', :price => 55 ).factions = all
+LightTransport.create(:name => 'Stormtrooper Transp.', :price => 55 ).factions = all
 LightTransport.create(:name => 'Assault Shuttle', :price => 175 ).factions = imp
 LightTransport.create(:name => 'System Patrol Craft', :price => 280 ).factions = imp
 
@@ -212,19 +212,19 @@ CapitalShip.create(:name => 'Bulk Cruiser', :price => 800 ).factions = merc
 CapitalShip.create(:name => 'Strike Cruiser', :price => 1150 ).factions = imp_reb
 CapitalShip.create(:name => 'Assault Frigate', :price => 1350 ).factions = reb
 CapitalShip.create(:name => 'Munificent Frigate', :price => 1450 ).factions = merc
-CapitalShip.create(:name => 'Acclamator Assault Ship', :price => 1450 ).factions = mand
-CapitalShip.create(:name => 'Victory Star Destroyer', :price => 1500 ).factions = imp
-CapitalShip.create(:name => 'Venator Star Destroyer', :price => 1600 ).factions = mand
+CapitalShip.create(:name => 'Acclamator Ass Ship', :price => 1450 ).factions = mand
+CapitalShip.create(:name => 'Victory SD', :price => 1500 ).factions = imp
+CapitalShip.create(:name => 'Venator SD', :price => 1600 ).factions = mand
 CapitalShip.create(:name => 'Providence Destroyer', :price => 1600 ).factions = merc
-CapitalShip.create(:name => 'Reef Home Calamari Cruiser', :price => 1600 ).factions = reb
-CapitalShip.create(:name => 'Liberty Calamari Cruiser', :price => 1600 ).factions = reb
-CapitalShip.create(:name => 'Victory Star Destroyer II', :price => 1700 ).factions = imp
+CapitalShip.create(:name => 'ReefHome Cal Cruiser', :price => 1600 ).factions = reb
+CapitalShip.create(:name => 'Liberty Cal Cruiser', :price => 1600 ).factions = reb
+CapitalShip.create(:name => 'Victory SD II', :price => 1700 ).factions = imp
 CapitalShip.create(:name => 'Liberator Cruiser', :price => 1750 ).factions = reb
 CapitalShip.create(:name => 'Interdictor', :price => 2500 ).factions = imp
 CapitalShip.create(:name => 'Dauntless Cruiser', :price => 1950 ).factions = reb
-CapitalShip.create(:name => 'Imperial Star Destroyer', :price => 2000 ).factions = imp
+CapitalShip.create(:name => 'Imperial SD', :price => 2000 ).factions = imp
 CapitalShip.create(:name => 'Dominator Interdictor', :price => 2800 ).factions = imp
-CapitalShip.create(:name => 'Imperial Star Destroyer II', :price => 2250 ).factions = imp
+CapitalShip.create(:name => 'Imperial SD II', :price => 2250 ).factions = imp
 CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400 ).factions = mand_merc
 CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750 ).factions = reb
 CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700 ).factions = imp
@@ -243,7 +243,7 @@ Armament.create(:name => 'Flare', :price => 20 ).factions = all
 
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
-Facility.create(:name => 'Industrial Complex', :price => 1200 ).factions = all
+Facility.create(:name => 'Ind. Complex', :price => 1200 ).factions = all
 Facility.create(:name => 'Cargo Facility I', :price => 1500 ).factions = all
 Facility.create(:name => 'Cargo Facility II', :price => 2400 ).factions = all
 Facility.create(:name => 'Derilyn Platform', :price => 1800 ).factions = mand_merc
@@ -255,7 +255,7 @@ Facility.create(:name => 'Asteroid Hangar', :price => 3000 ).factions = mand_mer
 Facility.create(:name => 'Golan I', :price => 3000 ).factions = all
 Facility.create(:name => 'Golan II', :price => 3900 ).factions = all
 Facility.create(:name => 'Golan III', :price => 6000 ).factions = all
-Facility.create(:name => 'Imperial Research Center', :price => 4200 ).factions = imp
+Facility.create(:name => 'Imp Research Center', :price => 4200 ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 4500 ).factions = all
 
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand

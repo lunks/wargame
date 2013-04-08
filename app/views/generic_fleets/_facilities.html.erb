@@ -1,4 +1,4 @@
-<%= fleet.name %>
+<%= fleet.name %> L:<%= fleet.level %>
 <%= ' *50%*' if fleet.sabotaged? %>
 (<% if @round.move && fleet.squad == @squad && !fleet.squad.ready?%>
     <% if fleet.producing_unit.present? %>

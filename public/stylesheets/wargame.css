@@ -62,22 +62,24 @@ div.planet_content {
     background: none repeat scroll 0 0 black;
     border: 0 outset black;
     box-shadow: 0 0 6px #5D90AF;
-    margin: 4px 4px 4px 4px;
-    padding: 5px;
+    margin: 2px 2px 2px 2px;
+    padding: 2px;
     width: 395px;
     padding-left: 8px;
-    border-radius: 14px;
-    margin-top: 9px;
+    padding-right: 2px;
+    border-radius: 10px;
+    margin-top: 8px;
 }
 
 div.squad_info {
     border: 0 outset gray;
     border-radius: 14px 14px 14px 14px;
     box-shadow: 0 0 6px white;
-    margin: 4px;
-    padding: 5px;
+    margin: 2px;
+    padding: 2px;
     width: 395px;
     padding-left: 8px;
+    padding-right:2px;
     padding-top:22px;
     padding-bottom: 8px;
     margin-top:-20px;
