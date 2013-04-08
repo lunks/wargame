@@ -58,16 +58,21 @@
     <td style="background-color:#1C1C1C" align="right">
       <span style=font-weight:bold;font-size:13px;color:#00FFFF><%= @provided %></span>
     </td>
+    <% unless @squad.ready? %>
+    <td>
+      <%= link_to "Esquadrão pronto", ready_path%> 
+    </td>
+    <td>
+      Clique uma vez e aguarde!
+    </td>
+    <% end %>
   </tr>
 </table>
-<% unless @squad.ready? %>
-  <%= link_to "Esquadrão pronto", ready_path%> - Clique só uma vez e aguarde!<br>
-<% end %>
   <% @all_squads.each do |squad| %>
     <span style=text-decoration:blink;color:#<%= squad.color %>>
-    <%= squad.name + " pronto  " if squad.ready? %>
+      <%= squad.name + " pronto  " if squad.ready? %>
+    </span>
   <% end %>
-</span>
 </div>
 
 <div class="planet_content">

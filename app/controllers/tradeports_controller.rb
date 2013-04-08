@@ -7,7 +7,7 @@ class TradeportsController < ApplicationController
   def show
     @planet = Planet.find(params[:id])
     @squad = current_squad
-    @fleets = @planet.generic_fleets.where(:type => 'Fleet').all
+    @fleets = @planet.generic_fleets.where(:type => 'Fleet', :moving => nil).all
     @tradeport_stock = Tradeport.all
   end
 
