@@ -10,7 +10,7 @@
       <span style=font-weight:bold;font-size:13px;color:yellow> <%= @squad.credits %></span>
     </td>
     <td>   
-    <%= link_to ' Transferir créditos ', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "400"), :class => "thickbox" unless @squad.ready? %></span>
+    <%= link_to ' Transferir créditos ', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "400"), :class => "thickbox" %></span>
     </td>
     <td>
     <%= link_to ' Objetivos ', goal_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "600"), :class => "thickbox" %></span>
@@ -116,7 +116,7 @@
       <% end %>
       <p>
     <% end %>
-    <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "400"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?%>
+    <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "420"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?%>
   <% end %>
 <p>
 <div align=right><a href="/users/sign_out"> Logout </a></div>

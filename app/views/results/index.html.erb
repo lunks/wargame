@@ -7,6 +7,10 @@
        <%= result_form.object.quantity %>
        <%= result_form.object.generic_unit.name %>
 
+       <% if result_form.object.generic_unit.type == 'Facility' %>
+         (<%= result_form.object.generic_fleet.producing_unit.name if result_form.object.generic_fleet.producing_unit.present? %>)
+       <% end %>
+
        <% if result_form.object.generic_unit.type == 'CapitalShip' %>
          '<%= result_form.object.generic_fleet.fleet_name  %>'
        <% end %>
@@ -27,7 +31,7 @@
        <br>
     <% end %>
   <% end %>
-  <%= submit_tag :submit %>
+  <%= submit_tag 'Salvar resultados' %>
 <% end %>
 </div>
 <br>

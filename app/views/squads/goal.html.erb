@@ -1,10 +1,9 @@
-Seu objetivo ( <%= @squad.name %> )
+<span style=color:#<%= @squad.color %>>** Seu objetivo ** ( <%= @squad.name %> )</span>
 <br>
-<%= @squad.goal.description %>
-<br>
-<br>
+- <%= @squad.goal.description %>
+<br><br><br>
 Lista completa dos objetivos:
 <% @goals.each do |goal| %><p>
   Objetivo: <%= goal.id %><br>
-  <%= goal.description %>
+  - <%= goal.description %>
 <% end %>
