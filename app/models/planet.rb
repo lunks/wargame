@@ -103,7 +103,7 @@ class Planet < ActiveRecord::Base
   end
 
   def able_to_construct?(squad)
-    if !has_a? Trooper or generic_fleets.any?{|fleet| fleet.squad != squad}
+    if !has_a? Trooper or generic_fleets.any?{|fleet| fleet.squad != squad} or self.tradeport?
       nil
     else
       true
