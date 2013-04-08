@@ -1,17 +1,15 @@
 require 'spec_helper'
 
 describe Tradeport do
-  it {should belong_to :planet}
   it {should belong_to :generic_unit}
 
   let(:tradeport) {Factory :tradeport}
 
   context 'acting like a trade station' do
     before do
-      3.times {Factory.create :planet}
       3.times {Factory.create :capital_ship}
       3.times {Factory.create :armament}
-      Tradeport.produce_units
+      Tradeport.start
     end
 
     it 'should has a negotiation rate' do
@@ -19,11 +17,23 @@ describe Tradeport do
     end
 
     it 'should have units on stock' do
-      Tradeport.count.should be 3
+      Tradeport.count.should be 1
     end
 
     it 'should show negotiation rate' do
       Tradeport.first.show_negotiation_rate
+    end
+
+    it 'should change negotiation rate of units in stock between 20 and 50' do
+      squad = Factory(:squad, :credits => 1000)
+      unit = Factory(:generic_unit, :price => 500)
+      fleet = Factory(:generic_fleet, :squad => squad, :generic_unit => unit, :quantity => 1)    
+      Tradeport.buy_unit fleet, 1
+      stock_item = Tradeport.where(:generic_unit => unit).first
+      stock_item.negotiation_rate.should == 50
+      Tradeport.start
+      stock_item = Tradeport.where(:generic_unit => unit).first
+      stock_item.negotiation_rate.should_not == 50
     end
 
   end
@@ -33,9 +43,8 @@ describe Tradeport do
     before do
       @squad = Factory(:squad, :credits => 1000)
       unit = Factory(:generic_unit, :price => 500)
-      planet = Factory(:planet)
-      @fleet = Factory(:generic_fleet, :planet => planet, :squad => @squad, :generic_unit => unit, :quantity => 1)    
-      Tradeport.buy_unit planet, @fleet, 1
+      @fleet = Factory(:generic_fleet, :squad => @squad, :generic_unit => unit, :quantity => 1)    
+      Tradeport.buy_unit @fleet, 1
     end
 
     it 'should remove unit from squad fleet' do
@@ -55,9 +64,10 @@ describe Tradeport do
   context 'selling units' do
     before do
       @squad = Factory(:squad, :credits => 1000)
+      planet = Factory(:planet)
       unit = Factory(:generic_unit, :price => 500)
       @unit = Factory(:tradeport, :generic_unit => unit, :negotiation_rate => 50)
-      @unit.sell_unit @squad, 1
+      @unit.sell_unit planet, @squad, 1
     end
 
     it 'should add unit to squad fleet' do

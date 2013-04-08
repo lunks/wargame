@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405175823) do
+ActiveRecord::Schema.define(:version => 20130408030044) do
 
   create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(:version => 20130405175823) do
 
   create_table "tradeports", :force => true do |t|
     t.integer  "generic_unit_id"
-    t.integer  "planet_id"
     t.integer  "quantity"
     t.integer  "negotiation_rate"
     t.datetime "created_at"

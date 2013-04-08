@@ -91,7 +91,6 @@ end
 
 Factory.define :tradeport do |f|
   f.association :generic_unit
-  f.association :planet
   f.quantity 1
   f.negotiation_rate 50
 

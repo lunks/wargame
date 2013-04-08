@@ -1,3 +1,4 @@
+<div class="planet_content">
 <%= simple_form_for :fleet, :url => url_for(:controller => 'tradeports', :action => 'buy') do |f| %>
   <%= f.input :id, :collection => @fleets, :label => 'Vender: ' %>
   <%= f.input :quantity, :label => 'Quantidade: ', :input_html => { :size => 1 } %>
@@ -5,7 +6,9 @@
 <% end %>
 <p>
 <%= simple_form_for :fleet, :url => url_for(:controller => 'tradeports', :action => 'sell') do |f| %>
+  <%= f.hidden_field :planet, :value => @planet.id %>
   <%= f.input :id, :collection => @tradeport_stock, :label => 'Comprar: ' %>
   <%= f.input :quantity, :label => 'Quantidade: ', :input_html => { :size => 1 } %>
-  <%= f.submit 'Vender' %>
+  <%= f.submit 'Comprar' %>
 <% end %>
+</div>

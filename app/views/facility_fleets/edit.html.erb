@@ -23,8 +23,8 @@ Aprimoramentos: +<%= @facility.current_upgrade_ratio %> (Nível <%= @facility.le
 <% end %>
 <p>
 <%= simple_form_for @facility do |f| %>
-<%= f.input :producing_unit, :collection => @units, :label => 'Escolha a produção principal:' %>
-<%= f.input :producing_unit2, :collection => @units2, :label => 'Escolha a produção secundária:' %>
+<%= f.input :producing_unit, :collection => @units, :label => 'Produção principal:' %>
+<%= f.input :producing_unit2, :collection => @units2, :label => 'Produção secundária:' %>
 <%= f.submit 'Produzir' %>
 <% end %>
 <p>

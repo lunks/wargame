@@ -60,4 +60,9 @@ class GenericFleet < ActiveRecord::Base
     results
   end
 
+  def to_label
+    selling_price = (generic_unit.price * 0.50).to_i
+    "#{quantity} #{name} - #{selling_price} cada"
+  end
+
 end

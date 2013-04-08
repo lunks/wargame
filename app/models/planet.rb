@@ -3,7 +3,6 @@ class Planet < ActiveRecord::Base
   scope :seen_by, lambda {|squad| joins(:generic_fleets).where(:generic_fleets => {:squad => squad}).group("planets.id")}
   belongs_to :squad
   has_many :generic_fleets
-  has_many :tradeports
   belongs_to :ground_squad, :class_name => "Squad"
   @@disable_routes = false
 
