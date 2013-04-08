@@ -1,7 +1,11 @@
 Rpg::Application.routes.draw do
    devise_for :users
 
-   resources :squads
+   resources :squads do
+     member do
+       get :goal
+     end
+   end
 
    resources :tradeports
 

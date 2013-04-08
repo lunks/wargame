@@ -93,5 +93,8 @@ Factory.define :tradeport do |f|
   f.association :generic_unit
   f.quantity 1
   f.negotiation_rate 50
+end
 
+Factory.define :goal do |f|
+  f.description Forgery::Name.full_name
 end

@@ -62,9 +62,9 @@ div.planet_content {
     background: none repeat scroll 0 0 black;
     border: 0 outset black;
     box-shadow: 0 0 6px #5D90AF;
-    margin: 2px 2px 2px 2px;
+    margin: 4px 4px 4px 4px;
     padding: 5px;
-    width: 370px;
+    width: 395px;
     padding-left: 8px;
     border-radius: 14px;
     margin-top: 9px;
@@ -74,9 +74,9 @@ div.squad_info {
     border: 0 outset gray;
     border-radius: 14px 14px 14px 14px;
     box-shadow: 0 0 6px white;
-    margin: 2px;
+    margin: 4px;
     padding: 5px;
-    width: 370px;
+    width: 395px;
     padding-left: 8px;
     padding-top:22px;
     padding-bottom: 8px;
@@ -88,7 +88,7 @@ div.map
 {
   position:absolute;
   top: 0%;
-  left: 385px;
+  left: 415px;
   margin-left: 5px;
   margin-top: 7px;
   padding:4px;

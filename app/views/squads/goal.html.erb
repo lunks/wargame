@@ -1,0 +1,10 @@
+Seu objetivo ( <%= @squad.name %> )
+<br>
+<%= @squad.goal.description %>
+<br>
+<br>
+Lista completa dos objetivos:
+<% @goals.each do |goal| %><p>
+  Objetivo: <%= goal.id %><br>
+  <%= goal.description %>
+<% end %>

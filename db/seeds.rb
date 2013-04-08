@@ -267,6 +267,10 @@ Warrior.create(:name => 'Chewbacca', :price => 40 ).factions = merc
 Warrior.create(:name => 'Darth Vader', :price => 40 ).factions = imp
 Warrior.create(:name => 'Emperor Palpatine', :price => 50 ).factions = imp
 
+Goal.create(:description => 'Dominar 5 planetas')
+Goal.create(:description => 'Dominar Setor Norte')
+Goal.create(:description => 'Construir 3 SSD')
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #

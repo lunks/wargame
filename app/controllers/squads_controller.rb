@@ -14,7 +14,6 @@ class SquadsController < ApplicationController
   end
 
   def ready
-    #current_squad.ready!
     redirect_to fleets_path if current_squad.ready!
   end
 
@@ -30,6 +29,12 @@ class SquadsController < ApplicationController
       current_squad.transfer_credits @quantity, @squad_destination
     end
     redirect_to :fleets
+  end
+
+  def goal
+    @squad = Squad.find(params[:id])
+    @goal = @squad.goal
+    @goals = Goal.all
   end
 
 

@@ -20,7 +20,7 @@ class Round < ActiveRecord::Base
       end
       FacilityFleet.is_free
       squad.populate_planets
-      squad.update_attributes(:credits => 1200)
+      squad.update_attributes(:credits => 1200, :goal => Goal.get_goal)
     end
     GenericFleet.update_all(:level => 0)
     #cria 2 wormholes (rotas diretas entre 2 planetas)
@@ -53,7 +53,6 @@ class Round < ActiveRecord::Base
     GenericFleet.all.each do |fleet|
       Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad) if fleet.planet.under_attack?
     end
-    #GenericFleet.update_all(:sabotaged => nil)
     set_map
   end
 
