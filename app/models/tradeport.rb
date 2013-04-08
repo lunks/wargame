@@ -8,7 +8,7 @@ class Tradeport < ActiveRecord::Base
 
   def self.start
     random_unit = Unit.all[rand(Unit.all.count - 1)]
-    Tradeport.create(:generic_unit => random_unit, :quantity => 1, :negotiation_rate => 50)
+    Tradeport.create(:generic_unit_id => random_unit.id, :quantity => 1, :negotiation_rate => 50)
     Tradeport.all.each do |tradeport|
       tradeport.negotiation_rate = 20 + rand(50 - 20)
       tradeport.save
@@ -37,7 +37,13 @@ class Tradeport < ActiveRecord::Base
 
   def self.buy_unit unit, quantity
     buying_price = unit.generic_unit.price * 0.50
-    Tradeport.create(:generic_unit_id => unit.generic_unit.id, :quantity => quantity, :negotiation_rate => 50)
+    a = Tradeport.where(:generic_unit_id => unit.generic_unit.id).first
+    if a.present?
+      a.quantity += quantity
+      a.save
+    else
+      Tradeport.create(:generic_unit_id => unit.generic_unit.id, :quantity => quantity, :negotiation_rate => 50)
+    end
     unit.squad.deposit buying_price * quantity
     unit.quantity -= quantity
     unit.save  

@@ -73,6 +73,7 @@ class Round < ActiveRecord::Base
       squad.credits -= squad.flee_tax self
       squad.save!
     end
+    Tradeport.start
   end
 
   def set_map
