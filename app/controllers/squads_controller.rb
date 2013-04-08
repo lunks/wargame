@@ -27,8 +27,8 @@ class SquadsController < ApplicationController
       @squad_destination = Squad.find(params[:transfer][:squad])
       @quantity = (params[:transfer][:credits]).to_i
       current_squad.transfer_credits @quantity, @squad_destination
+      redirect_to :back
     end
-    redirect_to :fleets
   end
 
   def goal

@@ -4,6 +4,7 @@ Rpg::Application.routes.draw do
    resources :squads do
      member do
        get :goal
+       get :transfer
      end
    end
 
