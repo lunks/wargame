@@ -1,6 +1,6 @@
 alderaan_asteroids = Planet.create(:name => 'Alderaan Asteroids', :credits => 300 )
 bespin = Planet.create(:name => 'Bespin', :credits => 300 )
-brr_clan_tradeport = Planet.create(:name => 'BrR Clan Tradeport', :credits => 0, :tradeport => true )
+brr_clan_tradeport = Planet.create(:name => 'BrR Station', :credits => 0, :tradeport => true )
 cimf_station = Planet.create(:name => 'CIMF Station', :credits => 0, :tradeport => true )
 concord_dawn = Planet.create(:name => 'Concord Dawn', :credits => 300 )
 corellia = Planet.create(:name => 'Corellia', :credits => 300 )
