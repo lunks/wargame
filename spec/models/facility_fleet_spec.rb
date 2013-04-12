@@ -12,7 +12,7 @@ describe FacilityFleet do
 
   it 'should have a facility balance' do
     facility_fleet.balance = 1000
-    facility_fleet.balance.should be 1000
+    facility_fleet.balance.should == 1000
   end
 
   it 'should pick producing unit' do

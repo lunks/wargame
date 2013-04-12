@@ -2,7 +2,7 @@
 <h2><%= @planet %></h2>
 <h3><%= @facility  %></h3>
 Produtividade padrão: <%= @facility.capacity %><br>
-Produção acumulada: +<%= @facility.balance %><br>
+Produção acumulada: +<%= @facility.balance.to_i %><br>
 Aprimoramentos: +<%= @facility.current_upgrade_ratio %> (Nível <%= @facility.level %>)<br>
 <span style=font-weight:bold;font-size:13px;color:red>
 <%  if @facility.sabotaged? %>

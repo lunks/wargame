@@ -241,6 +241,10 @@ Armament.create(:name => 'Space Bomb', :price => 70 ).factions = all
 Armament.create(:name => 'Chaff', :price => 2 ).factions = all
 Armament.create(:name => 'Flare', :price => 20 ).factions = all
 
+Trooper.create(:name => 'Trooper (en. blaster)', :price => 1.2 ).factions = all
+Trooper.create(:name => 'Trooper (bacta tank)', :price => 1.3 ).factions = all
+Trooper.create(:name => 'Trooper (combat shield)', :price => 1.4 ).factions = all
+Trooper.create(:name => 'Trooper (energy boost)', :price => 1.4 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
 Facility.create(:name => 'Ind. Complex', :price => 1200 ).factions = all
@@ -270,6 +274,7 @@ Warrior.create(:name => 'Emperor Palpatine', :price => 50 ).factions = imp
 Goal.create(:description => 'Dominar 5 planetas')
 Goal.create(:description => 'Dominar Setor Norte')
 Goal.create(:description => 'Construir 3 SSD')
+Goal.create(:description => 'Dominar Setor Sul')
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).

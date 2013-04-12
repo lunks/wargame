@@ -92,7 +92,7 @@ describe GenericFleet do
         facility_unit.capture! 1,squad
         captured_facility = squad.generic_fleets.first
         capacity = captured_facility.generic_unit.price / 3
-        captured_facility.balance.should == capacity - capacity * 2
+        captured_facility.balance.should == (capacity - capacity * 2).to_i
       end
 
     end

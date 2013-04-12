@@ -16,7 +16,7 @@ class FacilityFleet < GenericFleet
   end
   def produce!
     self.balance += default_capacity
-    secondary_balance = secondary_capacity
+    secondary_balance = secondary_capacity.to_f
     if producing_unit2.present?
       unit_price = producing_unit2.price
       units = 0
@@ -50,18 +50,18 @@ class FacilityFleet < GenericFleet
   end
 
   def units_per_turn
-    (total_capacity / producing_unit.price.to_f).to_i
+    (total_capacity / producing_unit.price).to_i
   end
 
   def units_per_turn2
-    (secondary_capacity / producing_unit2.price.to_f).to_i
+    (secondary_capacity / producing_unit2.price).to_i
   end
 
   def default_capacity
     if sabotaged?
-      (capacity + current_upgrade_ratio) * 0.50
+      ((capacity + current_upgrade_ratio) * 0.50).to_i
     else
-      capacity + current_upgrade_ratio
+      (capacity + current_upgrade_ratio).to_i
     end
   end
 
@@ -78,7 +78,7 @@ class FacilityFleet < GenericFleet
   end
  
   def total_capacity
-    default_capacity + balance
+    (default_capacity + balance).to_i
   end
 
   def secondary_capacity
