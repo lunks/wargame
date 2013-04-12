@@ -27,9 +27,9 @@ describe Round do
     it 'should get a random planet for the squad' do
       rebel.planets(true).should_not be_empty
     end
-    it 'should create 2 wormholes' do
+    it 'should create 3 wormholes' do
       wormholes = Planet.where(:wormhole => true).all
-      wormholes.count.should == 4
+      wormholes.count.should == 6
     end
     it 'should place a facility on the new planet' do
       rebel.facility_fleets(true).should_not be_empty

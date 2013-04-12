@@ -11,12 +11,12 @@ class Planet < ActiveRecord::Base
   end
 
   def air_credits
-   return (self.credits * 0.60).to_i unless self.squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.squad}
+   return (self.credits * 0.50).to_i unless self.squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.squad}
    0
   end
 
   def ground_credits
-   return (self.credits * 0.40).to_i unless self.ground_squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.ground_squad}
+   return (self.credits * 0.50).to_i unless self.ground_squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.ground_squad}
    0
   end
 
