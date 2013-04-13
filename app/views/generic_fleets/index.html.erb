@@ -44,7 +44,7 @@
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @ground_income %> </span>
     </td>
     <td>
-    <%= link_to ' Objetivo do Squad ', goal_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "400"), :class => "thickbox" %></span>
+    <%= link_to ' Objetivos ', goal_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "400"), :class => "thickbox" %></span>
     </td>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> Caças: </span>
@@ -129,7 +129,7 @@
     <%= link_to ' tradeport ', tradeport_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "270", :width => "400"), :class => "thickbox" if @round.move && planet.tradeport? && !@squad.ready? %></span>
     <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "420"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?  %>
     <% if @round.attack && planet.under_attack? && !planet.tradeport? %>
-      Defensor (último a jogar) -> <span style=color:#<%= planet.last_player.color %>;font-weight:bold;font-size:14px><%= planet.last_player.name %></span>
+      Defesa (último a jogar) -> <span style=color:#<%= planet.last_player.color %>;font-weight:bold;font-size:14px><%= planet.last_player.name %></span>
     <% end %>
     <% if @round.attack && planet.under_attack? && planet.tradeport? %>
       Zona Neutra (trocas permitidas)
