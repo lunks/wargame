@@ -23,7 +23,7 @@ class Round < ActiveRecord::Base
       squad.update_attributes(:credits => 1200, :goal => Goal.get_goal)
     end
     GenericFleet.update_all(:level => 0)
-    #cria 2 wormholes (rotas diretas entre 2 planetas)
+
     3.times do
       empty_planets = Planet.where(:squad_id => nil, :wormhole => nil)
       eastside = empty_planets[rand(empty_planets.count - 1)]
@@ -52,6 +52,10 @@ class Round < ActiveRecord::Base
     self.save!
     GenericFleet.all.each do |fleet|
       Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad) if fleet.planet.under_attack?
+    end
+    Planet.all.each do |planet|
+      planet.last_player = planet.squads[rand(planet.squads.count)]
+      planet.save 
     end
     set_map
   end

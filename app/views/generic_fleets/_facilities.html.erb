@@ -14,8 +14,15 @@
     <% end %>
   <% else %>
     <% if fleet.producing_unit.present? %>
-        <%= fleet.producing_unit_display %>
+       <%= fleet.producing_unit_display %>
     <% else %>
+      <%= 'inativa' %>
+    <% end %>
+    <% if fleet.producing_unit2.present? %>
+        / 
+       <%= fleet.producing_unit2.name %>
+    <% else %>
+       /
       <%= 'inativa' %>
     <% end %>
   <% end %>)

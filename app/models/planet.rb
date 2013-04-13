@@ -4,6 +4,7 @@ class Planet < ActiveRecord::Base
   belongs_to :squad
   has_many :generic_fleets
   belongs_to :ground_squad, :class_name => "Squad"
+  belongs_to :last_player, :class_name => "Squad"
   @@disable_routes = false
 
   def credits_per_turn
