@@ -1,4 +1,6 @@
 body {
+    background-image: url(/images/planet_background.jpg);
+    background-attachment: fixed;
     background-color: black;
     color: white;
     font-size: 12px;
@@ -59,14 +61,28 @@ a:hover {
     text-decoration: none;
 }
 div.planet_content {
-    background: none repeat scroll 0 0 black;
+    border: 0 outset gray;
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 0 0 6px white;
+    margin: 2px;
+    padding: 2px;
+    width: 395px;
+    padding-left: 8px;
+    padding-right:5px;
+    padding-top:5px;
+    padding-bottom: 8px;
+    margin-top:10px;
+    margin-bottom: 12px;
+}
+div.planet_content_old {
+
     border: 0 outset black;
     box-shadow: 0 0 6px #5D90AF;
     margin: 2px 2px 2px 2px;
     padding: 2px;
     width: 395px;
     padding-left: 8px;
-    padding-right: 2px;
+    padding-right: 5px;
     border-radius: 10px;
     margin-top: 8px;
 }
@@ -79,18 +95,35 @@ div.squad_info {
     padding: 2px;
     width: 395px;
     padding-left: 8px;
-    padding-right:2px;
+    padding-right:5px;
     padding-top:22px;
     padding-bottom: 8px;
     margin-top:-20px;
     margin-bottom: 12px;
 }
-
 div.map
 {
   position:absolute;
   top: 0%;
-  left: 415px;
+  left: 430px;
+   border: 0 outset gray;
+   border-radius: 14px 14px 14px 14px;
+   box-shadow: 0 0 6px white;
+   margin: 2px;
+   padding: 2px;
+   width: 1050px;
+   padding-left: 8px;
+   padding-right:2px;
+   padding-top:10px;
+   padding-bottom: 8px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+div.map_old
+{
+  position:absolute;
+  top: 0%;
+  left: 430px;
   margin-left: 5px;
   margin-top: 7px;
   padding:4px;
