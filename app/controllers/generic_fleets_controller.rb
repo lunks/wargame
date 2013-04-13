@@ -18,6 +18,20 @@ class GenericFleetsController < ApplicationController
     else
       @round_phase = 'Combates'
     end
+     
+    @capital_ships = 0
+    @facilities = 0
+    @fighters = 0
+    @troopers = 0
+    @transports = 0
+    GenericFleet.all.each do |fleet|
+      @capital_ships += fleet.quantity if fleet.type?(CapitalShip)
+      @facilities += fleet.quantity if fleet.type?(Facility)
+      @fighters += fleet.quantity if fleet.type?(Fighter)
+      @troopers += fleet.quantity if fleet.type?(Trooper)
+      @transports += fleet.quantity if fleet.type?(LightTransport)
+    end
+
   end
 
   def move

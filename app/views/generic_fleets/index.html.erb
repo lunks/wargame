@@ -12,8 +12,11 @@
     <td>   
     <%= link_to ' Transferir créditos ', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "400"), :class => "thickbox" %></span>
     </td>
-    <td>
-    <%= link_to ' Objetivos ', goal_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "400"), :class => "thickbox" %></span>
+    <td style="background-color:#1C1C1C">
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> Fábricas: </span>
+    </td>
+    <td style="background-color:#1C1C1C" align=right>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @facilities %> </span>
     </td>
   </tr>
   <tr>
@@ -27,7 +30,10 @@
       <a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do Wargames </a>
     </td>
     <td>
-      <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00>Cap.Ships: </span>
+    </td>
+    <td align="right">
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @capital_ships %> </span>
     </td>
   </tr>
   <tr>
@@ -38,8 +44,13 @@
       <span style=font-weight:bold;font-size:13px;color:#00FF00> 0 </span>
     </td>
     <td>
+    <%= link_to ' Objetivos ', goal_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "400"), :class => "thickbox" %></span>
     </td>
-    <td>
+    <td style="background-color:#1C1C1C">
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> Caças: </span>
+    </td>
+    <td style="background-color:#1C1C1C" align=right>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @fighters %> </span>
     </td>
   </tr>
   <tr>
@@ -50,6 +61,13 @@
       <span style=font-weight:bold;font-size:13px;color:#FF0000><%= @flee_tax %> </span>
     </td>
     <td>
+      <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a>
+    </td>
+    <td>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00>Transportes: </span>
+    </td>
+    <td align=right>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @transports %> </span>
     </td>
   </tr>
   <tr>
@@ -59,16 +77,20 @@
     <td style="background-color:#1C1C1C" align="right">
       <span style=font-weight:bold;font-size:13px;color:#00FFFF><%= @provided %></span>
     </td>
-    <% unless @squad.ready? %>
     <td>
-      <%= link_to "Esquadrão pronto", ready_path%> 
     </td>
-    <td>
-      Clique e aguarde!!
+    <td style="background-color:#1C1C1C">
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> Troopers: </span>
     </td>
-    <% end %>
+    <td style="background-color:#1C1C1C" align=right>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @troopers %> </span>
+    </td>
   </tr>
+
 </table>
+  <% unless @squad.ready? %>
+    <%= link_to "Esquadrão pronto", ready_path %> Clique apenas uma vez!
+  <% end %>
   <% @all_squads.each do |squad| %>
     <span style=text-decoration:blink;color:#<%= squad.color %>>
       <%= squad.name + " pronto  " if squad.ready? %>
