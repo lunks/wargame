@@ -13,7 +13,7 @@
         / 
         <%= link_to "#{fleet.producing_unit2_display}", edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
       <% else %>
-        <%= link_to 'inativa', edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
+        / <%= link_to 'inativa', edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
       <% end %>
     <% else %>
       <% if fleet.producing_unit.present? %>
