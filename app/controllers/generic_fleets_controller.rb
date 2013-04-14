@@ -25,12 +25,14 @@ class GenericFleetsController < ApplicationController
     @fighters = 0
     @troopers = 0
     @transports = 0
+    @warriors = 0
     GenericFleet.where(:squad => @squad).each do |fleet|
       @capital_ships += fleet.quantity if fleet.type?(CapitalShip)
       @facilities += fleet.quantity if fleet.type?(Facility)
       @fighters += fleet.quantity if fleet.type?(Fighter)
       @troopers += fleet.quantity if fleet.type?(Trooper)
       @transports += fleet.quantity if fleet.type?(LightTransport)
+      @warriors += 1 if fleet.type?(Warrior)
     end
 
   end

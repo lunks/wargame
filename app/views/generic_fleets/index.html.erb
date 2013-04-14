@@ -1,7 +1,7 @@
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
 <span style=font-weight:bold;font-size:18px> Turno: <%= @round.number %> - <%= @round_phase %></span><br>
-<table border="0">
+<table border="0" width="395">
   <tr>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:yellow> Disponível: </span> 
@@ -10,7 +10,7 @@
       <span style=font-weight:bold;font-size:13px;color:yellow> <%= @squad.credits %></span>
     </td>
     <td>   
-    <%= link_to ' Transferir créditos ', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "400"), :class => "thickbox" unless @squad.ready? %></span>
+    <%= link_to 'Transfer créditos', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "400"), :class => "thickbox" unless @squad.ready? %></span>
     </td>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> Fábricas: </span>
@@ -27,7 +27,7 @@
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @air_income %> </span>
     </td>
     <td>
-      <a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do Wargames </a>
+      <a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do WG </a>
     </td>
     <td>
       <span style=font-weight:bold;font-size:13px;color:#00FF00>Cap.Ships: </span>
@@ -86,11 +86,21 @@
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @troopers %> </span>
     </td>
   </tr>
-
+  <tr>
+    <td>
+      <%= link_to "Esquadrão pronto", ready_path unless @squad.ready? %>
+    </td>
+    <td colspan="2">
+      <%= "Clique só uma vez!" unless @squad.ready? %>
+    </td>
+    <td>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> Guerreiros: </span>
+    </td>
+    <td align=right>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @warriors %> </span>
+    </td>
+  </tr>
 </table>
-  <% unless @squad.ready? %>
-    <%= link_to "Esquadrão pronto", ready_path %> Clique apenas uma vez!
-  <% end %><br>
   <% @all_squads.each do |squad| %>
     <span style=text-decoration:blink;color:#<%= squad.color %>>
       <%= squad.name + " pronto  " if squad.ready? %>
