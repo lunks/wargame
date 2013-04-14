@@ -18,18 +18,32 @@ class FacilityFleet < GenericFleet
   end
 
   def move planet
-    moving_facility = FacilityFleet.new self.attributes
-    moving_facility.destination = planet
-    moving_facility.quantity = 1
-    moving_facility.moving = true
-    moving_facility.save!
+      moving_facility = FacilityFleet.new self.attributes
+      moving_facility.destination = planet
+      moving_facility.moving = true
+      moving_facility.save!
+      self.quantity = 0
+      save
+      moving_facility
+  end
+
+  def flee! quantity
+    routes = planet.routes.select { |planet| planet.squad == self.squad }
+    routes = planet.routes.select { |planet| planet.ground_squad == self.squad} if routes.empty?
+    routes = planet.routes.select { |planet| planet.squad == nil} if routes.empty?
+    routes = planet.routes if routes.empty?
+    fleeing_facility = FacilityFleet.new self.attributes
+    fleeing_facility.destination = routes.first
+    fleeing_facility.moving = true
+    fleeing_facility.save!
     self.quantity = 0
     save
-    moving_facility
+    fleeing_facility.move!
+    fleeing_facility
   end
 
   def move!
-    update_attributes(:planet => destination, :destination => nil)
+    update_attributes(:planet => destination)
   end
 
   def reassembly

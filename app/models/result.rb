@@ -40,7 +40,7 @@ class Result < ActiveRecord::Base
 
   def posted_results
     posted_result = self.captured.to_i + self.blasted.to_i + self.fled.to_i
-    if posted_result > self.quantity.to_i
+    if posted_result > self.quantity.to_i || posted_result < 0
       errors.add :blasted, 'exceed fleet quantity'
     else
       true

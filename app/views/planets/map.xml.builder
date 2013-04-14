@@ -24,6 +24,8 @@ xml.planetas do
           xml.corfleet fleet.squad.color
           if !fleet.moving
             xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name 
+          elsif fleet.type?(Facility)
+            xml.fleet fleet.generic_unit.description
           else
             xml.fleet '.'
           end
