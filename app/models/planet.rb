@@ -23,7 +23,7 @@ class Planet < ActiveRecord::Base
 
   def set_ownership
     if has_a? Facility
-      air_units = generic_fleets.select {|fleet| fleet.type? Facility}
+      air_units = generic_fleets.select {|fleet| fleet.type? Facility and !fleet.moving?}
       air_units.sort! { |one,other| one.updated_at <=> other.updated_at }
       self.squad = air_units.first.squad
       save
