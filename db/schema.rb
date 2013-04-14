@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413143513) do
+ActiveRecord::Schema.define(:version => 20130414105238) do
 
   create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130413143513) do
     t.string   "type"
     t.integer  "faction_mask"
     t.boolean  "hyperdrive"
+    t.string   "description"
   end
 
   create_table "generic_units_squads", :id => false, :force => true do |t|

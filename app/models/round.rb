@@ -38,20 +38,9 @@ class Round < ActiveRecord::Base
   end
 
   def end_moving!
-   # Squad.all.each do |squad|
-     # squad.ready = nil
-    #  squad.save!
-   # end
-   # FacilityFleet.where(:sabotaged => true).each do |facility|
-   #   facility.sabotaged = nil
-   #   facility.save
-  #  end
     Squad.update_all(:ready => nil)
     FacilityFleet.update_all(:sabotaged => nil)
     self.move_fleets
-    #self.move = nil
-    #self.attack = true
-    #self.save!
     self.update_attributes(:move => nil, :attack => true)
     GenericFleet.all.each do |fleet|
       Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad) if fleet.planet.under_attack?
@@ -64,17 +53,9 @@ class Round < ActiveRecord::Base
   end
 
   def end_round!
-    #self.move = nil
-    #self.attack = nil
-    #self.done = true
-    #self.save!
     self.update_attributes(:move => nil, :attack => nil, :done => true)
     self.apply_results
-    FacilityFleet.where(:moving => true).each do |facility|
-      facility.reassembly unless facility.planet.under_attack?
-    end
     Round.create(:number => self.number + 1, :move => true)
-    set_map
     Squad.all.each do |squad|
       squad.generate_profits!
       squad.facility_fleets.each do |facility|
@@ -84,7 +65,11 @@ class Round < ActiveRecord::Base
       squad.credits -= squad.flee_tax self
       squad.save!
     end
+    FacilityFleet.where(:moving => true).each do |facility|
+      facility.reassembly unless facility.planet.under_attack?
+    end
     Tradeport.start
+    set_map
   end
 
   def set_map
@@ -104,7 +89,7 @@ class Round < ActiveRecord::Base
   end
 
   def move_fleets
-    Fleet.moving.each(&:move!)
+    GenericFleet.moving.each(&:move!)
   end
 
   def apply_results

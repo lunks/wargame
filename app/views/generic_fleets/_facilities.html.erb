@@ -1,32 +1,36 @@
-<%= fleet.name %> L:<%= fleet.level %>
-<%= ' *50%*' if fleet.sabotaged? %>
-(<% if @round.move && fleet.squad == @squad && !fleet.squad.ready?%>
-    <% if fleet.producing_unit.present? %>
-      <%= link_to "#{fleet.producing_unit_display}", edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
-    <% else %>
-      <%= link_to 'inativa', edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
-    <% end %>
-    <% if fleet.producing_unit2.present? %>
-      / 
-      <%= link_to "#{fleet.producing_unit2_display}", edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
-    <% else %>
-      <%= link_to 'inativa', edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
-    <% end %>
-  <% else %>
-    <% if fleet.producing_unit.present? %>
-       <%= fleet.producing_unit_display %>
-    <% else %>
-      <%= 'inativa' %>
-    <% end %>
-    <% if fleet.producing_unit2.present? %>
+<% if fleet.moving? %>
+  <%= fleet.name %>
+<% else %>
+  <%= fleet.name %> n<%= fleet.level %>
+  <%= ' *50%*' if fleet.sabotaged? %>
+  (<% if @round.move && fleet.squad == @squad && !fleet.squad.ready?%>
+      <% if fleet.producing_unit.present? %>
+        <%= link_to "#{fleet.producing_unit_display}", edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
+      <% else %>
+        <%= link_to 'inativa', edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
+      <% end %>
+      <% if fleet.producing_unit2.present? %>
         / 
-       <%= fleet.producing_unit2.name %>
+        <%= link_to "#{fleet.producing_unit2_display}", edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
+      <% else %>
+        <%= link_to 'inativa', edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "550", :width => "400"), :class => "thickbox" %>
+      <% end %>
     <% else %>
-       /
-      <%= 'inativa' %>
-    <% end %>
-  <% end %>)
-</span>
+      <% if fleet.producing_unit.present? %>
+         <%= fleet.producing_unit_display %>
+      <% else %>
+        <%= 'inativa' %>
+      <% end %>
+      <% if fleet.producing_unit2.present? %>
+          / 
+         <%= fleet.producing_unit2.name %>
+      <% else %>
+         /
+        <%= 'inativa' %>
+      <% end %>
+    <% end %>)
+<% end %>
+
 
 
 

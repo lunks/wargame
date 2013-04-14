@@ -124,8 +124,8 @@
       <br>
     <% end %>
     <p>
-    <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "400"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
-    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "400"), :class => "thickbox" if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
+    <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "420"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
+    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "420"), :class => "thickbox" if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
     <%= link_to ' tradeport ', tradeport_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "270", :width => "400"), :class => "thickbox" if @round.move && planet.tradeport? && !@squad.ready? %></span>
     <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "420"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?  %>
     <% if @round.attack && planet.under_attack? && !planet.tradeport? %>

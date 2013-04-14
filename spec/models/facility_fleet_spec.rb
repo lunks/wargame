@@ -34,7 +34,7 @@ describe FacilityFleet do
     facility_fleet.sabotage!
     facility_fleet.sabotaged.should be_true
   end
-#TODO movimentação de fabricas
+
   context 'moving' do
     before do
       facility_fleet.squad = squad
@@ -49,6 +49,11 @@ describe FacilityFleet do
       it 'should have a destination planet when moving' do
         @moving_fleet.destination.should == planet
       end
+      it 'should change display name when moving' do
+        @moving_fleet.name.should_not == facility_fleet.facility.name
+        @moving_fleet.name.should == facility_fleet.facility.description
+      end
+
     end
 
     context 'finishing movement' do
@@ -64,7 +69,7 @@ describe FacilityFleet do
     end
 
     context 'reassembling facility' do
-      it 'should be unflagged as a moving unit when survive in combat phase' do
+      it 'should be unflagged as a moving unit' do
         @moving_fleet.reassembly
         @moving_fleet.should_not be_moving
       end

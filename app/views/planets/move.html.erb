@@ -1,22 +1,36 @@
 <div class="planet_content">
-<h2><%= @fleets.first.planet.name %></h2>
-<% @fleets.sort_by{|a| [a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |fleet| %>
-  <span style=font-weight:bold><%= fleet.quantity %> <%= fleet.generic_unit.name %> <%= "'#{fleet.fleet_name}'" if fleet.type? CapitalShip %></span>
-<% unless fleet.type? Warrior %>
-  <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
-    <%= f.input :quantity, :collection => 1..fleet.quantity, :label => 'Quantidade: ' %>
-    <%= f.input :destination, :collection => @routes, :label => 'Destino: ' %>
-    <%= f.hidden_field :id %>
-    <%= f.submit 'Mover' %>
-  <% end %>
-<% else %>
-  <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
-    <%= f.input :quantity, :collection => fleet.quantity..fleet.quantity, :label => 'Quantidade: ' %>
-    <%= f.input :destination, :collection => @routes, :label => 'Destino: ' %>
-    <%= f.hidden_field :id %>
-    <%= f.submit 'Mover' %>
-  <% end %>
+<% if @fleets.present? %>
+  <h2><%= @fleets.first.planet.name %></h2>
+  <% elsif @facilities.present? %>
+  <h2><%= @facilities.first.planet.name %></h2>
 <% end %>
+<% @fleets.sort_by{|a| [a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |fleet| %>
+  <span style=font-weight:bold;color:#<%= fleet.squad.color %>><%= fleet.quantity unless fleet.type? Warrior %> <%= fleet.generic_unit.name %> <%= "'#{fleet.fleet_name}'" if fleet.type? CapitalShip %><%= "(#{fleet.quantity} vidas)" if fleet.type? Warrior %></span>
+  <% unless fleet.type? Warrior %>
+    <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
+      <%= f.input :quantity, :collection => 1..fleet.quantity, :label => 'Quantidade: ' %>
+      <%= f.input :destination, :collection => @routes, :label => 'Destino: ' %>
+      <%= f.hidden_field :id %>
+      <%= f.submit 'Mover' %>
+    <% end %>
+  <% else %>
+    <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
+      <%= f.hidden_field :quantity %>
+      <%= f.input :destination, :collection => @routes, :label => 'Destino: ' %>
+      <%= f.hidden_field :id %>
+      <%= f.submit 'Mover' %>
+    <% end %>
+  <% end %>
   <br>
 <% end %>
+<% @facilities.each do |facility| %>  
+  <span style=font-weight:bold;color:#<%= facility.squad.color %>><%= facility.generic_unit.name %> (<%= "#{facility.producing_unit.name} " if facility.producing_unit.present? %><%= " / #{facility.producing_unit2.name}" if facility.producing_unit2.present? %>)</span>
+  <%= simple_form_for facility, :url => url_for(:controller => 'generic_fleets', :action => 'move_facility') do |f| %>
+    <%= f.hidden_field :id %>
+    <%= f.hidden_field :quantity %>
+    <%= f.input :destination, :collection => @routes, :label => 'Destino: ' %>
+    <%= f.submit 'Mover' %>
+  <% end %>
+<% end %>
+
 

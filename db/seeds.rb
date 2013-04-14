@@ -247,7 +247,7 @@ Trooper.create(:name => 'Trooper (combat shield)', :price => 1.4 ).factions = al
 Trooper.create(:name => 'Trooper (energy boost)', :price => 1.4 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
-Facility.create(:name => 'Ind. Complex', :price => 1200 ).factions = all
+Facility.create(:name => 'Ind. Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
 Facility.create(:name => 'Cargo Facility I', :price => 1500 ).factions = all
 Facility.create(:name => 'Cargo Facility II', :price => 2400 ).factions = all
 Facility.create(:name => 'Derilyn Platform', :price => 1800 ).factions = mand_merc
@@ -260,7 +260,7 @@ Facility.create(:name => 'Golan I', :price => 3000 ).factions = all
 Facility.create(:name => 'Golan II', :price => 3900 ).factions = all
 Facility.create(:name => 'Golan III', :price => 6000 ).factions = all
 Facility.create(:name => 'Imp Research Center', :price => 4200 ).factions = imp
-Facility.create(:name => 'Shipyard', :price => 4500 ).factions = all
+Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(10 Bulk Freighter, 2 Mod.Transport)' ).factions = all
 
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40 ).factions = mand

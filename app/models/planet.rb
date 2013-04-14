@@ -59,7 +59,7 @@ class Planet < ActiveRecord::Base
   end
 
   def has_a?(type)
-    generic_fleets.any?{|fleet| fleet.type? type}
+    generic_fleets.any?{|fleet| fleet.type? type and fleet.moving != true}
   end
 
   def routes

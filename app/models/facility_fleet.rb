@@ -22,7 +22,7 @@ class FacilityFleet < GenericFleet
     moving_facility.destination = planet
     moving_facility.quantity = 1
     moving_facility.moving = true
-    moving_facility.save
+    moving_facility.save!
     self.quantity = 0
     save
     moving_facility
@@ -128,6 +128,14 @@ class FacilityFleet < GenericFleet
       producing_unit2_display = producing_unit2.name
     end
     producing_unit2_display
+  end
+
+  def name
+    if moving?
+      facility.description
+    else
+      facility.name
+    end
   end
   
 private

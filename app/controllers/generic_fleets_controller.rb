@@ -44,6 +44,15 @@ class GenericFleetsController < ApplicationController
     redirect_to :back
   end
 
+  def move_facility
+    @facility = FacilityFleet.find(params[:facility_fleet][:id])
+    unless params[:facility_fleet][:destination].empty?
+      @planet = Planet.find(params[:facility_fleet][:destination])
+      @facility.move @planet
+    end
+    redirect_to :back
+  end
+
   def back_to_main
     redirect_to :fleets
   end

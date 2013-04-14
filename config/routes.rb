@@ -36,6 +36,7 @@ Rpg::Application.routes.draw do
    resources :generic_fleets do
      member do
        put :move
+       put :move_facility
      end
    end
 

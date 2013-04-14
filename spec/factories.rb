@@ -3,6 +3,7 @@ Factory.define :generic_unit do |f|
   f.name { Forgery::Name.full_name }
   f.price { Forgery::Basic.number }
   f.factions 'empire'
+  f.description 'comboio'
 end
 
 Factory.define :squad do |f|
