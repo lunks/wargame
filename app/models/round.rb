@@ -59,7 +59,7 @@ class Round < ActiveRecord::Base
     Squad.all.each do |squad|
       squad.generate_profits!
       squad.facility_fleets.each do |facility|
-        facility.produce! unless facility.moving?
+        facility.produce! unless facility.moving? or facility.planet.tradeport?
       end
       squad.ready = nil
       squad.credits -= squad.flee_tax self
