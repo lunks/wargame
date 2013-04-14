@@ -9,21 +9,6 @@ class Round < ActiveRecord::Base
   end
 
   def new_game!
-    Squad.all.each do |squad|
-      squad.planets << Planet.where(:name => 'RES Station') and famous_squad = true if squad.name == 'RES'
-      squad.planets << Planet.where(:name => 'CIMF Station') and famous_squad = true if squad.name == 'CIMF'
-      squad.planets << Planet.where(:name => 'BrR Clan Tradeport') and famous_squad = true if squad.name == 'BRR'
-      if famous_squad == true
-        2.times {squad.planets << Planet.randomize}
-      else
-        3.times {squad.planets << Planet.randomize}
-      end
-      FacilityFleet.is_free
-      squad.populate_planets
-      squad.update_attributes(:credits => 1200, :goal => Goal.get_goal)
-    end
-    GenericFleet.update_all(:level => 0)
-
     3.times do
       empty_planets = Planet.where(:squad_id => nil, :wormhole => nil)
       eastside = empty_planets[rand(empty_planets.count - 1)]
@@ -33,8 +18,15 @@ class Round < ActiveRecord::Base
       westside.update_attributes(:wormhole => true)
       Route.create(:vector_a => eastside, :vector_b => westside, :distance => 1)
     end
-    set_map
+    Squad.all.each do |squad|
+      3.times {squad.planets << Planet.randomize}
+      FacilityFleet.is_free
+      squad.populate_planets
+      squad.update_attributes(:credits => 1200, :goal => Goal.get_goal)
+    end
+    GenericFleet.update_all(:level => 0)
     2.times { Tradeport.start }
+    set_map
   end
 
   def end_moving!
