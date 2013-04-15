@@ -23,14 +23,19 @@ Rpg::Application.routes.draw do
    end
 
    resources :planets, :shallow => true do
-   resources :facility_fleets
+     resources :facility_fleets
      member do
        get :move
      end
      collection do
        get :map
      end
-     resources :results
+     resources :results do
+       member do
+         get :show_results
+       end
+     end
+ 
    end
 
    resources :generic_fleets do

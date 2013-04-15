@@ -1,8 +1,10 @@
 class Planet < ActiveRecord::Base
   default_scope :order => "name ASC"
   scope :seen_by, lambda {|squad| joins(:generic_fleets).where(:generic_fleets => {:squad => squad}).group("planets.id")}
+  scope :fog_of_war_seen_by, lambda {|squad| joins(:results).where(:results => {:squad => squad}).group("planets.id")}
   belongs_to :squad
   has_many :generic_fleets
+  has_many :results
   belongs_to :ground_squad, :class_name => "Squad"
   belongs_to :last_player, :class_name => "Squad"
   @@disable_routes = false

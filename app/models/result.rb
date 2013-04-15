@@ -16,14 +16,20 @@ class Result < ActiveRecord::Base
 
   def blast!
     self.generic_fleet.blast! self.blasted
+    self.final_quantity = self.quantity - self.blasted
+    save
   end
 
   def flee!
     self.generic_fleet.flee! self.fled if self.generic_fleet.respond_to? :flee!
+    self.final_quantity = self.quantity - self.fled
+    save
   end
 
   def capture!
     self.generic_fleet.capture! self.captured, self.captor
+    self.squad = self.captor
+    save
   end
 
   def sabotage!
