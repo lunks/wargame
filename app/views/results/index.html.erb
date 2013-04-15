@@ -16,7 +16,7 @@
        <% end %>
 
        <% if result_form.object.generic_unit.type == 'Facility' %>
-         (<%= result_form.object.generic_fleet.producing_unit.name if result_form.object.generic_fleet.producing_unit.present? and result_form.object.generic_fleet.moving != true %>)
+         <%= "(#{result_form.object.generic_fleet.producing_unit.name})" if result_form.object.generic_fleet.producing_unit.present? and result_form.object.generic_fleet.moving != true %>
        <% end %>
 
        <% if result_form.object.generic_unit.type == 'CapitalShip' %>

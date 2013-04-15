@@ -14,10 +14,8 @@ class ResultsController < ApplicationController
       result.save
     end
     if saved_results
-      redirect_to :close_popup
-    else
-      redirect_to planet_results_path(params[:planet_id])
     end
+    redirect_to planet_results_path(params[:planet_id])
   end
 end
 
