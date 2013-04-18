@@ -1,9 +1,16 @@
-<div class="planet_content">
+<div class="result_content">
+<span style=font-size:11px>
 <h2><%= @results.first.planet.name %></h2>
 <%= form_tag "results" do %>
+  <table>
+  <tr>
+  <td></td><td>Destruidos</td><td>Fugiram</td><td>Capturados</td><td>Capturado Por</td><td>Sabotada?</td>
+  </tr>
+  <tr>
   <% @results.sort_by{|a| [a.squad.id, a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |result| %>
+  <td>
     <%= simple_fields_for "results[]", result do |result_form| %>
-       <span style=color:#<%= result_form.object.squad.color %>;font-weight:bold;font-size:14px>
+       <span style=color:#<%= result_form.object.squad.color %>;font-weight:bold>
        <% if result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving? %>
          <%= result_form.object.quantity %>
          <%= result_form.object.generic_unit.description %>
@@ -14,32 +21,43 @@
          <%= result_form.object.quantity %>
          <%= result_form.object.generic_unit.name %>
        <% end %>
-
        <% if result_form.object.generic_unit.type == 'Facility' %>
          <%= "(#{result_form.object.generic_fleet.producing_unit.name})" if result_form.object.generic_fleet.producing_unit.present? and result_form.object.generic_fleet.moving != true %>
        <% end %>
-
        <% if result_form.object.generic_unit.type == 'CapitalShip' %>
          '<%= result_form.object.generic_fleet.fleet_name  %>'
        <% end %>
-</span>
+       </span>
+   </td>
        <%= result_form.input :quantity, :as => :hidden %>
        <%= result_form.association :generic_unit, :as => :hidden %>
        <%= result_form.association :generic_fleet, :as => :hidden %>
        <%= result_form.association :planet, :as => :hidden %>
        <%= result_form.association :round, :as => :hidden %>
-       <%= result_form.association :squad, :as => :hidden %><br>
-       <% if result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving != true %>
-         Sabotada? <%= result_form.check_box :sabotaged %>
+       <%= result_form.association :squad, :as => :hidden %>
+       <td align = "center">
+       <%= result_form.input :blasted, :input_html => { :size => 2 }, :label => false %>
+       </td>
+       <td align = "center">
+       <%= result_form.input :fled, :input_html => { :size => 2 }, :label => false unless result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving != true %>
+       </td>
+       <td align = "center">
+       <%= result_form.input :captured, :input_html => { :size => 2 }, :label => false unless (result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving?) or result_form.object.generic_unit.type == 'Warrior' or result_form.object.generic_unit.type == 'Trooper' %>
+       </td>
+       <td align = "center">
+       <%= result_form.association :captor, :collection => @squads, :label => false unless (result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving?) or result_form.object.generic_unit.type == 'Warrior' or result_form.object.generic_unit.type == 'Trooper' %>
+       </td>
+       <td align = "center">
+       <% if result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving != true %><%= result_form.check_box :sabotaged %>
        <% end %>
-       <%= result_form.input :blasted, :input_html => { :size => 3 }, :label => 'Destruidos: ' %>
-       <%= result_form.input :fled, :input_html => { :size => 3 }, :label => 'Fugiram: ' unless result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving != true %>
-       <%= result_form.input :captured, :input_html => { :size => 3 }, :label => 'Capturados: ' unless (result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving?) or result_form.object.generic_unit.type == 'Warrior' or result_form.object.generic_unit.type == 'Trooper' %>
-       <%= result_form.association :captor, :collection => @squads, :label => 'Capturador: ' unless (result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving?) or result_form.object.generic_unit.type == 'Warrior' or result_form.object.generic_unit.type == 'Trooper' %>
-       <br>
+       </td>
+       </tr>
+
     <% end %>
   <% end %>
+  </table>
   <%= submit_tag 'Salvar resultados' %>
 <% end %>
+</span>
 </div>
 <br>

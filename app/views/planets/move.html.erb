@@ -9,17 +9,35 @@
 <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? %></span>
   <% unless fleet.type? Warrior %>
     <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
-      <%= f.input :quantity, :collection => 1..fleet.quantity, :label => 'Quantidade: ' %>
-      <%= f.input :destination, :collection => @routes, :label => 'Destino: ' %>
       <%= f.hidden_field :id %>
-      <%= f.submit 'Mover' %>
+      <table>
+        <tr>
+        <td>
+          <%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %>
+        </td>
+        <td>
+          <%= f.input :destination, :collection => @routes, :label => false %>
+        </td>  
+        <td> 
+          <%= f.submit 'Mover' %>
+        </td>
+        </tr>
+      </table>
     <% end %>
   <% else %>
     <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
-      <%= f.hidden_field :quantity %>
-      <%= f.input :destination, :collection => @routes, :label => 'Destino: ' %>
       <%= f.hidden_field :id %>
-      <%= f.submit 'Mover' %>
+      <%= f.hidden_field :quantity %>
+      <table>
+        <tr>
+        <td>
+          <%= f.input :destination, :collection => @routes, :label => false %>
+        </td>
+        <td>
+          <%= f.submit 'Mover' %>
+        </td>
+        </tr>
+      </table>
     <% end %>
   <% end %>
   <br>
@@ -30,8 +48,16 @@
   <%= simple_form_for facility, :url => url_for(:controller => 'generic_fleets', :action => 'move_facility') do |f| %>
     <%= f.hidden_field :id %>
     <%= f.hidden_field :quantity %>
-    <%= f.input :destination, :collection => @routes, :label => 'Destino: ' %>
-    <%= f.submit 'Mover' %>
+    <table>
+      <tr>
+      <td>
+        <%= f.input :destination, :collection => @routes, :label => false %>
+      </td>
+      <td>
+        <%= f.submit 'Mover' %>
+      </td>
+      </tr>
+    </table>
   <% end %>
 <% end %>
 
