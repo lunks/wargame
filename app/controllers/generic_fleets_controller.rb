@@ -15,7 +15,7 @@ class GenericFleetsController < ApplicationController
     end
     @provided = (current_squad.credits + @air_income + @ground_income - @flee_tax).to_i
     if @round.move?
-      @round_phase = 'Estrategia'
+      @round_phase = 'Estratégia'
     else
       @round_phase = 'Combates'
     end
@@ -34,6 +34,7 @@ class GenericFleetsController < ApplicationController
       @transports += fleet.quantity if fleet.type?(LightTransport)
       @warriors += 1 if fleet.type?(Warrior)
     end
+    @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count
 
   end
 

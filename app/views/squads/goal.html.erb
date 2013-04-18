@@ -1,11 +1,10 @@
 <div class="planet_content">
 <span style=color:#<%= @squad.color %>>** Seu objetivo ** ( <%= @squad.name %> )</span>
 <br>
-- <%= @squad.goal.description %>
+Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %>
 <br><br><br>
 Lista completa dos objetivos:
 <% @goals.each do |goal| %><p>
-  Objetivo: <%= goal.id %><br>
-  - <%= goal.description %>
+  Objetivo <%= goal.id %>: <%= goal.description %>
 <% end %>
 </div>
