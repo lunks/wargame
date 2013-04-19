@@ -19,13 +19,16 @@ class Round < ActiveRecord::Base
       Route.create(:vector_a => eastside, :vector_b => westside, :distance => 1)
     end
     Squad.all.each do |squad|
-      3.times {squad.planets << Planet.randomize}
+      home_planet = squad.home_planet
+      squad.planets << home_planet
+      squad.save!
+      2.times {squad.planets << Planet.randomize}
       FacilityFleet.is_free
       squad.populate_planets
       squad.update_attributes(:credits => 1200, :goal => Goal.get_goal)
     end
     GenericFleet.update_all(:level => 0)
-    2.times { Tradeport.start }
+    Tradeport.start
     set_map
   end
 

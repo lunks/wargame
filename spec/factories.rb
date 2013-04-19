@@ -6,16 +6,17 @@ Factory.define :generic_unit do |f|
   f.description 'comboio'
 end
 
+Factory.define :planet do |f|
+  f.name Forgery::Name.full_name
+  f.credits 1000
+end
+
 Factory.define :squad do |f|
   f.name Forgery::Name.full_name
   f.credits { Forgery::Basic.number(:at_least => 5000, :at_most => 10000) }
   f.color '00FF00'
   f.faction 'empire'
-end
-
-Factory.define :planet do |f|
-  f.name Forgery::Name.full_name
-  f.credits 1000
+  f.home_planet {|a| a.association(:planet)}
 end
 
 Factory.define :generic_fleet do |f|

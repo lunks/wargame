@@ -7,6 +7,7 @@ class Squad < ActiveRecord::Base
   has_many :facility_fleets
   has_many :fleets
   belongs_to :goal
+  belongs_to :home_planet, :class_name => "Planet"
 
   def faction=(faction)
     write_attribute(:faction, FACTIONS.rindex(faction))

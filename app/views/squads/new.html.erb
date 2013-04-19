@@ -1,19 +1,40 @@
 <h2>Novo Esquadrão</h2>
 
-<%= simple_form_for @squad do |f| %>
-<%= f.input :name, :label => 'Nome: ' %>
-<%= f.input :faction, :collection => FACTIONS, :label => 'Facção: ' %>
-<%= f.input :color, :collection => @colors, :label => 'Cor: ' %>
-<%= f.button :submit, :label => ' OK ' %>
+<table>
+<tr>
+<td>Nome: </td><td>Facção: </td><td>Cor:</td><td>Home Planet:</td>
+</tr>
+<tr>
+<%= simple_form_for [@squad] do |f| %>
+<td>
+<%= f.input :name, :label => false, :input_html => { :size => 10 } %>
+</td>
+<td>
+<%= f.input :faction, :collection => FACTIONS, :label => false %>
+</td>
+<td>
+<%= f.input :color, :collection => @colors, :label => false %>
+</td>
+<td>
+<%= f.input :home_planet_id, :collection => @planets.collect {|c| [c.name, c.id]}, :label => false %>
+</td>
+<td>
+<%= f.submit ' Criar squad ' %>
+</td>
+</tr>
+</table>
 <% end %>
-<b>Instruções</b><br><br>
-- Preencha Nome do Esquadrão <br>
-- Escolha a Facção (define as naves que você pode construir)<br>
-- Escolha a cor:<br><br>
+<br>
+<b>Instruções</b><br>
+- Preencha Nome do Esquadrão; <br>
+- Escolha a Facção (define as naves que você pode construir);<br>
+- Escolha a cor (tabela abaixo);<br>
+- Escolha o home planet.<br><br>
 <span style=color:#FF0000>FF0000 - Vermelho</span><br>
 <span style=color:#00FF00>00FF00 - Verde</span><br>
 <span style=color:#FFFF00>FFFF00 - Amarelo</span><br>
 <span style=color:#00FFFF>00FFFF - Cyan</span><br>
 <span style=color:#FFFFFF>FFFFFF - Branco</span><br>
 <span style=color:#EE82EE>EE82EE - Rosa</span><br>
+
 
