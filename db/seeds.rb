@@ -1,41 +1,41 @@
 #alderaan_asteroids = Planet.create(:name => 'Alderaan Asteroids', :credits => 300 )
-bespin = Planet.create(:name => 'Bespin', :credits => 300 )
+bespin = Planet.create(:name => 'Bespin', :credits => 300, :description => 'BF2 Bespin' )
 brr_station = Planet.create(:name => 'BrR Station', :credits => 0, :tradeport => true )
 cimf_station = Planet.create(:name => 'CIMF Station', :credits => 0, :tradeport => true )
-concord_dawn = Planet.create(:name => 'Concord Dawn', :credits => 300 )
-corellia = Planet.create(:name => 'Corellia', :credits => 300 )
-coruscant = Planet.create(:name => 'Coruscant', :credits => 300 )
-dagobah = Planet.create(:name => 'Dagobah', :credits => 300 )
+concord_dawn = Planet.create(:name => 'Concord Dawn', :credits => 300, :description => 'BF2 Bespin' )
+corellia = Planet.create(:name => 'Corellia', :credits => 300, :description => 'BF2 Bespin' )
+coruscant = Planet.create(:name => 'Coruscant', :credits => 300, :description => 'BF2 Bespin' )
+dagobah = Planet.create(:name => 'Dagobah', :credits => 300, :description => 'BF2 Bespin' )
 #dantooine = Planet.create(:name => 'Dantooine', :credits => 300 )
 #deadalis_minefields = Planet.create(:name => 'Deadalis Minefields', :credits => 300 )
-deathstar = Planet.create(:name => 'Death Star', :credits => 300 )
-endor = Planet.create(:name => 'Endor', :credits => 300 )
-felucia = Planet.create(:name => 'Felucia', :credits => 300 )
-geonosis = Planet.create(:name => 'Geonosis', :credits => 300 )
-haruun_kal = Planet.create(:name => 'Haruun Kal', :credits => 300 )
-hoth = Planet.create(:name => 'Hoth', :credits => 300 )
+deathstar = Planet.create(:name => 'Death Star', :credits => 300, :description => 'BF2 Bespin' )
+endor = Planet.create(:name => 'Endor', :credits => 300, :description => 'BF2 Bespin' )
+felucia = Planet.create(:name => 'Felucia', :credits => 300, :description => 'BF2 Bespin' )
+geonosis = Planet.create(:name => 'Geonosis', :credits => 300, :description => 'BF2 Bespin' )
+haruun_kal = Planet.create(:name => 'Haruun Kal', :credits => 300, :description => 'BF2 Bespin' )
+hoth = Planet.create(:name => 'Hoth', :credits => 300, :description => 'BF2 Bespin' )
 #hutt_space = Planet.create(:name => 'Hutts Minefields', :credits => 300 )
 #ilum = Planet.create(:name => 'Ilum', :credits => 300 )
-kamino = Planet.create(:name => 'Kamino', :credits => 300 )
-kashyyyk = Planet.create(:name => 'Kashyyyk', :credits => 300 )
-kessel_asteroids = Planet.create(:name => 'Kessel Asteroids', :credits => 300 )
-kuat = Planet.create(:name => 'Kuat', :credits => 300 )
-mandalore = Planet.create(:name => 'Mandalore', :credits => 300 )
-mon_calamari = Planet.create(:name => 'Mon Calamari', :credits => 300 )
-mustafar = Planet.create(:name => 'Mustafar', :credits => 300 )
-mygeeto = Planet.create(:name => 'Mygeeto', :credits => 300 )
-naboo = Planet.create(:name => 'Naboo', :credits => 300 )
-nal_hutta = Planet.create(:name => 'Nal Hutta', :credits => 300 )
-ord_ibanna = Planet.create(:name => 'Ord Ibanna', :credits => 300 )
-polis_massa = Planet.create(:name => 'Polis Massa', :credits => 300 )
-rattatak = Planet.create(:name => 'Rattatak', :credits => 300 )
+kamino = Planet.create(:name => 'Kamino', :credits => 300, :description => 'BF2 Bespin' )
+kashyyyk = Planet.create(:name => 'Kashyyyk', :credits => 300, :description => 'BF2 Bespin' )
+kessel_asteroids = Planet.create(:name => 'Kessel Asteroids', :credits => 300, :description => 'BF2 Bespin' )
+kuat = Planet.create(:name => 'Kuat', :credits => 300, :description => 'BF2 Bespin' )
+mandalore = Planet.create(:name => 'Mandalore', :credits => 300, :description => 'BF2 Bespin' )
+mon_calamari = Planet.create(:name => 'Mon Calamari', :credits => 300, :description => 'BF2 Bespin' )
+mustafar = Planet.create(:name => 'Mustafar', :credits => 300, :description => 'BF2 Bespin' )
+mygeeto = Planet.create(:name => 'Mygeeto', :credits => 300, :description => 'BF2 Bespin' )
+naboo = Planet.create(:name => 'Naboo', :credits => 300, :description => 'BF2 Bespin' )
+nal_hutta = Planet.create(:name => 'Nal Hutta', :credits => 300, :description => 'BF2 Bespin' )
+ord_ibanna = Planet.create(:name => 'Ord Ibanna', :credits => 300, :description => 'BF2 Bespin' )
+polis_massa = Planet.create(:name => 'Polis Massa', :credits => 300, :description => 'BF2 Bespin' )
+rattatak = Planet.create(:name => 'Rattatak', :credits => 300, :description => 'BF2 Bespin' )
 res_station = Planet.create(:name => 'RES Station', :credits => 0, :tradeport => true )
-rhen_var = Planet.create(:name => 'Rhen Var', :credits => 300 )
+rhen_var = Planet.create(:name => 'Rhen Var', :credits => 300, :description => 'BF2 Bespin' )
 #silken_asteroids = Planet.create(:name => 'Silken Asteroids', :credits => 300 )
-tatooine = Planet.create(:name => 'Tatooine', :credits => 300 )
-utapau = Planet.create(:name => 'Utapau', :credits => 300 )
+tatooine = Planet.create(:name => 'Tatooine', :credits => 300, :description => 'BF2 Bespin' )
+utapau = Planet.create(:name => 'Utapau', :credits => 300, :description => 'BF2 Bespin' )
 #vergesso_asteroids = Planet.create(:name => 'Vergesso Asteroids', :credits => 300 )
-yavin = Planet.create(:name => 'Yavin', :credits => 300 )
+yavin = Planet.create(:name => 'Yavin', :credits => 300, :description => 'BF2 Bespin' )
 #wormholeI = Planet.create(:name => 'Wormhole I', :credits => 0 )
 #wormholeII = Planet.create(:name => 'Wormhole II', :credits => 0 )
 
@@ -248,19 +248,19 @@ Trooper.create(:name => 'Trooper (energy boost)', :price => 1.4 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
 Facility.create(:name => 'Ind. Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
-Facility.create(:name => 'Cargo Facility I', :price => 1500 ).factions = all
-Facility.create(:name => 'Cargo Facility II', :price => 2400 ).factions = all
-Facility.create(:name => 'Derilyn Platform', :price => 1800 ).factions = mand_merc
-Facility.create(:name => 'Family Base', :price => 2100 ).factions = merc
-Facility.create(:name => 'Factory', :price => 2400 ).factions = all
-Facility.create(:name => 'Platforms', :price => 2400 ).factions = all
-Facility.create(:name => 'Rebel Platform', :price => 3450 ).factions = reb
-Facility.create(:name => 'Asteroid Hangar', :price => 3000 ).factions = mand_merc
-Facility.create(:name => 'Golan I', :price => 3000 ).factions = all
-Facility.create(:name => 'Golan II', :price => 3900 ).factions = all
-Facility.create(:name => 'Golan III', :price => 6000 ).factions = all
+Facility.create(:name => 'Cargo Facility I', :price => 1500, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)').factions = all
+Facility.create(:name => 'Cargo Facility II', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
+Facility.create(:name => 'Derilyn Platform', :price => 1800, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = mand_merc
+Facility.create(:name => 'Family Base', :price => 2100, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = merc
+Facility.create(:name => 'Factory', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
+Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
+Facility.create(:name => 'Rebel Platform', :price => 3450, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = reb
+Facility.create(:name => 'Asteroid Hangar', :price => 3000, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = mand_merc
+Facility.create(:name => 'Golan I', :price => 3000, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
+Facility.create(:name => 'Golan II', :price => 3900, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
+Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
 Facility.create(:name => 'Imp Res Center', :price => 4200 ).factions = imp
-Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(10 Bulk Freighter, 2 Mod.Transport)' ).factions = all
+Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
 
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40 ).factions = mand
