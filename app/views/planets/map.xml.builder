@@ -5,17 +5,17 @@ xml.planetas do
     xml.planeta do
       xml.nome planet.name.gsub(" ","")
       if planet.squad
-        xml.espaco planet.squad.name
+        xml.espaco planet.description
         xml.corespaco planet.squad.color
       else
-        xml.espaco 'Neutral'
+        xml.espaco planet.description
         xml.corespaco ' '
       end
       if planet.ground_squad
-        xml.terra planet.ground_squad.name
+        xml.terra planet.description
         xml.corterra planet.ground_squad.color
       else
-        xml.terra 'Neutral'
+        xml.terra planet.description
         xml.corterra ' '
       end
       has_fleet = planet.generic_fleets.select { |ships| ships.squad == @current_squad }
