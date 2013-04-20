@@ -190,12 +190,15 @@ LightTransport.create(:name => 'Assault Transport', :price => 200 ).factions = a
 LightTransport.create(:name => 'Escort Transport', :price => 200 ).factions = all
 LightTransport.create(:name => 'Stormtrooper Transp.', :price => 55 ).factions = all
 LightTransport.create(:name => 'Assault Shuttle', :price => 175 ).factions = imp
-LightTransport.create(:name => 'System Patrol Craft', :price => 280 ).factions = imp
+LightTransport.create(:name => 'System Patrol Craft', :price => 250 ).factions = imp
 
-LightTransport.create(:name => 'Bulk Freighter', :price => 75 ).factions = all
-LightTransport.create(:name => 'Mod Action Transport', :price => 100 ).factions = all
-LightTransport.create(:name => 'Modular Conveyor', :price => 100 ).factions = all
-LightTransport.create(:name => 'Suprosa', :price => 450 ).factions = all
+LightTransport.create(:name => 'Bulk Freighter', :price => 50 ).factions = all
+LightTransport.create(:name => 'Rebel Med Transport', :price => 60 ).factions = reb
+LightTransport.create(:name => 'Mod Action Transport', :price => 80 ).factions = all
+LightTransport.create(:name => 'Modular Conveyor', :price => 90 ).factions = all
+LightTransport.create(:name => 'Xyitiar Transport', :price => 90 ).factions = merc
+LightTransport.create(:name => 'Star Galleon', :price => 150 ).factions = imp
+LightTransport.create(:name => 'Suprosa', :price => 350 ).factions = all
 
 CapitalShip.create(:name => 'Corellian Gunship', :price => 320 ).factions = all
 CapitalShip.create(:name => 'Corellian Corvette', :price => 320 ).factions = all
@@ -229,17 +232,17 @@ CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400 ).factions = 
 CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750 ).factions = reb
 CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700 ).factions = imp
 
-Armament.create(:name => 'Concussion Missile', :price => 10 ).factions = all
-Armament.create(:name => 'Proton Torpedo', :price => 10 ).factions = all
-Armament.create(:name => 'Ion Pulse Torpedo', :price => 15 ).factions = reb
-Armament.create(:name => 'Adv Missile', :price => 20 ).factions = all
-Armament.create(:name => 'Adv Torpedo', :price => 25 ).factions = all
-Armament.create(:name => 'Mag Pulse Torpedo', :price => 30 ).factions = all
-Armament.create(:name => 'Heavy Rocket', :price => 50 ).factions = all
-Armament.create(:name => 'Space Bomb', :price => 70 ).factions = all
+Armament.create(:name => 'Concussion Missile', :price => 5 ).factions = all
+Armament.create(:name => 'Proton Torpedo', :price => 5 ).factions = all
+Armament.create(:name => 'Ion Pulse Torpedo', :price => 5 ).factions = reb
+Armament.create(:name => 'Adv Missile', :price => 10 ).factions = all
+Armament.create(:name => 'Adv Torpedo', :price => 10 ).factions = all
+Armament.create(:name => 'Mag Pulse Torpedo', :price => 10 ).factions = all
+Armament.create(:name => 'Heavy Rocket', :price => 15 ).factions = all
+Armament.create(:name => 'Space Bomb', :price => 20 ).factions = all
 
-Armament.create(:name => 'Chaff', :price => 2 ).factions = all
-Armament.create(:name => 'Flare', :price => 20 ).factions = all
+Armament.create(:name => 'Chaff', :price => 1 ).factions = all
+Armament.create(:name => 'Flare', :price => 10 ).factions = all
 
 Trooper.create(:name => 'Trooper (en. blaster)', :price => 1.2 ).factions = all
 Trooper.create(:name => 'Trooper (bacta tank)', :price => 1.3 ).factions = all
@@ -247,20 +250,20 @@ Trooper.create(:name => 'Trooper (combat shield)', :price => 1.4 ).factions = al
 Trooper.create(:name => 'Trooper (energy boost)', :price => 1.4 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
-Facility.create(:name => 'Ind. Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = all
+Facility.create(:name => 'Ind. Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Conveyor)' ).factions = all
 Facility.create(:name => 'Cargo Facility I', :price => 1500, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)').factions = all
 Facility.create(:name => 'Cargo Facility II', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = all
-Facility.create(:name => 'Derilyn Platform', :price => 1800, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = mand_merc
-Facility.create(:name => 'Family Base', :price => 2100, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = merc
+Facility.create(:name => 'Derilyn Platform', :price => 1800, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp' ).factions = mand_merc
+Facility.create(:name => 'Family Base', :price => 2100, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp)' ).factions = merc
 Facility.create(:name => 'Factory', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = all
 Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = all
-Facility.create(:name => 'Rebel Platform', :price => 3450, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = reb
-Facility.create(:name => 'Asteroid Hangar', :price => 3000, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = mand_merc
+Facility.create(:name => 'Rebel Platform', :price => 3450, :description => 'Comboio(6 Bulk Freighter, 2 Reb.Med.Transp)' ).factions = reb
+Facility.create(:name => 'Asteroid Hangar', :price => 3000, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp)' ).factions = mand_merc
 Facility.create(:name => 'Golan I', :price => 3000, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = all
 Facility.create(:name => 'Golan II', :price => 3900, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = all
-Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transp)' ).factions = all
+Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(6 Bulk Freighter, 1 Suprosa)' ).factions = all
 Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(6 Bulk Freighter, 1 Star Galleon)' ).factions = imp
-Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Transport)' ).factions = all
+Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(6 Bulk Freighter, 1 Suprosa)' ).factions = all
 
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40 ).factions = mand
