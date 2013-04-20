@@ -56,7 +56,6 @@ class Squad < ActiveRecord::Base
   end
 
   def warp_facility_on planet
-    # cria um facility grande e 1 pequeno
     facility_model_small = Facility.allowed_for(faction).first
     facility = facility_fleets.new(:facility => facility_model_small, :planet => planet, :fleet_name => self.name)
     facility.save!

@@ -194,9 +194,9 @@ LightTransport.create(:name => 'System Patrol Craft', :price => 250 ).factions =
 
 LightTransport.create(:name => 'Bulk Freighter', :price => 50 ).factions = all
 LightTransport.create(:name => 'Rebel Med Transport', :price => 60 ).factions = reb
-LightTransport.create(:name => 'Mod Action Transport', :price => 80 ).factions = all
-LightTransport.create(:name => 'Modular Conveyor', :price => 90 ).factions = all
-LightTransport.create(:name => 'Xyitiar Transport', :price => 90 ).factions = merc
+LightTransport.create(:name => 'Mod Action Transport', :price => 100 ).factions = all
+LightTransport.create(:name => 'Modular Conveyor', :price => 100 ).factions = all
+LightTransport.create(:name => 'Xyitiar Transport', :price => 100 ).factions = merc
 LightTransport.create(:name => 'Star Galleon', :price => 150 ).factions = imp
 LightTransport.create(:name => 'Suprosa', :price => 350 ).factions = all
 
