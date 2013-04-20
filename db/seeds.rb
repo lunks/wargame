@@ -192,7 +192,7 @@ LightTransport.create(:name => 'Stormtrooper Transp.', :price => 55 ).factions =
 LightTransport.create(:name => 'Assault Shuttle', :price => 175 ).factions = imp
 LightTransport.create(:name => 'System Patrol Craft', :price => 250 ).factions = imp
 
-LightTransport.create(:name => 'Bulk Freighter', :price => 50 ).factions = all
+LightTransport.create(:name => 'Bulk Freighter', :price => 60 ).factions = all
 LightTransport.create(:name => 'Rebel Med Transport', :price => 60 ).factions = reb
 LightTransport.create(:name => 'Mod Action Transport', :price => 100 ).factions = all
 LightTransport.create(:name => 'Modular Conveyor', :price => 100 ).factions = all
@@ -246,8 +246,8 @@ Armament.create(:name => 'Flare', :price => 10 ).factions = all
 
 Trooper.create(:name => 'Trooper (en. blaster)', :price => 1.2 ).factions = all
 Trooper.create(:name => 'Trooper (bacta tank)', :price => 1.3 ).factions = all
-Trooper.create(:name => 'Trooper (combat shield)', :price => 1.4 ).factions = all
-Trooper.create(:name => 'Trooper (energy boost)', :price => 1.4 ).factions = all
+Trooper.create(:name => 'Trooper (combat shield)', :price => 1.3 ).factions = all
+Trooper.create(:name => 'Trooper (energy boost)', :price => 1.3 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
 Facility.create(:name => 'Ind. Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Mod.Conveyor)' ).factions = all
