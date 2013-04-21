@@ -1,7 +1,7 @@
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
 <span style=font-weight:bold;font-size:18px> Turno: <%= @round.number %> - <%= @round_phase %></span><br>
-<table border="0" width="395">
+<table border="0" width="320">
   <tr>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:yellow> Disponível: </span> 
@@ -9,8 +9,8 @@
     <td style="background-color:#1C1C1C" align=right>
       <span style=font-weight:bold;font-size:13px;color:yellow> <%= @squad.credits %></span>
     </td>
-    <td>   
-    <%= link_to 'Transfer créditos', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "410"), :class => "thickbox" unless @squad.ready? %></span>
+    <td width="10">   
+   
     </td>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> Fábricas: </span>
@@ -27,7 +27,7 @@
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @air_income %> </span>
     </td>
     <td>
-      <a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do WG </a>
+
     </td>
     <td>
       <span style=font-weight:bold;font-size:13px;color:#00FF00>Cap.Ships: </span>
@@ -44,7 +44,7 @@
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @ground_income %> </span>
     </td>
     <td>
-    <%= link_to ' Objetivos ', goal_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "410"), :class => "thickbox" %></span>
+
     </td>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> Caças: </span>
@@ -61,7 +61,7 @@
       <span style=font-weight:bold;font-size:13px;color:#FF0000><%= @flee_tax %> </span>
     </td>
     <td>
-      <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a>
+     
     </td>
     <td>
       <span style=font-weight:bold;font-size:13px;color:#00FF00>Transportes: </span>
@@ -78,7 +78,7 @@
       <span style=font-weight:bold;font-size:13px;color:#00FFFF><%= @provided %></span>
     </td>
     <td>
-      <%= link_to 'Últimas batalhas', show_results_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "410"), :class => "thickbox" %>
+    
     </td>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> Troopers: </span>
@@ -89,10 +89,11 @@
   </tr>
   <tr>
     <td>
-      <%= link_to "Finalizar #{@round_phase}", ready_path unless @squad.ready? %>
+      <%= link_to "Finalizar #{@round_phase}", ready_path(:KeepThis => "true", :TB_iframe => "true", :height => "50", :width => "360"), :class => "thickbox" unless @squad.ready? %>
     </td>
-    <td colspan="2">
-      <%= "Clique só uma vez!" unless @squad.ready? %>
+    <td>
+    </td>
+    <td>
     </td>
     <td>
       <span style=font-weight:bold;font-size:13px;color:#00FF00> Guerreiros: </span>
@@ -102,6 +103,19 @@
     </td>
   </tr>
 </table>
+
+ <a href="http://wgbrnavies.wordpress.com" target=_blank>Blog do WG </a>
+
+ <%= link_to ' Objetivos ', goal_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "365"), :class => "thickbox" %>
+
+ <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a>
+<br>
+ <%= link_to 'Transfer créditos', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "360"), :class => "thickbox" unless @squad.ready? %>
+
+ <%= link_to 'Últimos conflitos', show_results_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "365"), :class => "thickbox" %>
+
+<br>
+
   <% @all_squads.each do |squad| %>
     <span style=text-decoration:blink;color:#<%= squad.color %>>
       <%= squad.name + " pronto  " if squad.ready? %>
@@ -109,8 +123,9 @@
   <% end %>
 </div>
 
-<div class="planet_content">
-  <%= "Atenção: Há #{@inactive} fábricas inativas." if @inactive > 0 %>
+<div class="fleet">
+  <%= "Alerta: Há #{@inactive} fábricas inativas." unless @inactive == 0 %>
+
   <% @planets.each do |planet| %>
     <h2> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h2>
     <p>
@@ -136,15 +151,15 @@
       <br>
     <% end %>
     <p>
-    <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "410"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
-    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "410"), :class => "thickbox" if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
-    <%= link_to ' tradeport ', tradeport_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "270", :width => "410"), :class => "thickbox" if @round.move && planet.tradeport? && !@squad.ready? %></span>
+    <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "365"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
+    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "360"), :class => "thickbox" if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
+    <%= link_to ' tradeport ', tradeport_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "270", :width => "360"), :class => "thickbox" if @round.move && planet.tradeport? && !@squad.ready? %></span>
     <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "600"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?  %>
     <% if @round.attack && planet.under_attack? && !planet.tradeport? %>
-      Defesa (último a jogar) -> <span style=color:#<%= planet.last_player.color %>;font-weight:bold;font-size:14px><%= planet.last_player.name %></span>
+      Defesa -> <span style=color:#<%= planet.last_player.color %>;font-weight:bold;font-size:14px><%= planet.last_player.name %></span>
     <% end %>
     <% if @round.attack && planet.under_attack? && planet.tradeport? %>
-      Zona Neutra (trocas permitidas)
+      Zona Neutra
     <% end %>
 
   <% end %>

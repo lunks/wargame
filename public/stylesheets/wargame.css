@@ -51,7 +51,7 @@ div.squad_info {
     box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
     margin: -5px 1px 12px;
     padding: 5px 5px 8px 8px;
-    width: 400px;
+    width: 355px;
     background-color: rgba(17,10,10,0.5);
     transition: all ease-in-out 0.3s;
 }
@@ -62,11 +62,29 @@ div.planet_content {
     box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
     margin: 10px 1px 12px;
     padding: 5px 5px 8px 8px;
-    width: 400px;
+    width: 355px;
     background-color: rgba(17,10,10,0.5);
     transition: all ease-in-out 0.36s;
+    z-index: -1;
 }
 div.planet_content:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(17,10,10,0.5);
+}
+
+div.fleet {
+    white-space: nowrap;
+    border: 0 outset gray;
+    border-radius: 6px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: 10px 1px 12px;
+    padding: 5px 5px 8px 8px;
+    width: 355px;
+    background-color: rgba(17,10,10,0.5);
+    transition: all ease-in-out 0.36s;
+    z-index: 10;
+}
+div.fleet:hover {
     box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
     background-color: rgba(17,10,10,0.5);
 }
@@ -116,6 +134,7 @@ div.map
   transition: all ease-in-out 0.3s;
   position:fixed;
   top: 0%;
-  left: 425px;
+  left: 380px;
+  z-index: -1;
   
 }

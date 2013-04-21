@@ -35,7 +35,6 @@ class GenericFleetsController < ApplicationController
       @warriors += 1 if fleet.type?(Warrior)
     end
     @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count
-
   end
 
   def move

@@ -15,7 +15,7 @@ class SquadsController < ApplicationController
   end
 
   def ready
-    redirect_to fleets_path if current_squad.ready!
+    render :text => 'Esquadrão pronto, feche e aguarde' if current_squad.ready!
   end
 
   def transfer
