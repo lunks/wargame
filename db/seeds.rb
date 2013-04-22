@@ -151,6 +151,22 @@ mand = ['mandalorian']
 mand_merc = ['mandalorian','mercenary']
 all = ['empire','rebel','mercenary','mandalorian']
 
+Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Modular Conv)' ).factions = all
+Facility.create(:name => 'Pirate S.Yard', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp)' ).factions = all
+Facility.create(:name => 'Cargo Fac.I', :price => 1500, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)').factions = all
+Facility.create(:name => 'Cargo Fac.II', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
+Facility.create(:name => 'Derilyn Plat', :price => 1800, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp' ).factions = mand_merc
+Facility.create(:name => 'Family Base', :price => 2100, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp)' ).factions = merc
+Facility.create(:name => 'Factory', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
+Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
+Facility.create(:name => 'Rebel Plat', :price => 3450, :description => 'Comboio(6 Bulk Freighter, 2 Reb Med Transp)' ).factions = reb
+Facility.create(:name => 'Ast. Hangar', :price => 3000, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp)' ).factions = mand_merc
+Facility.create(:name => 'Golan I', :price => 3000, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
+Facility.create(:name => 'Golan II', :price => 3900, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
+Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(6 Bulk Freighter, 1 Suprosa)' ).factions = all
+Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(6 Bulk Freighter, 1 Star Galleon)' ).factions = imp
+Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(6 Bulk Freighter, 1 Suprosa)' ).factions = all
+
 Fighter.create(:name => 'Z-95', :price => 40 ).factions = merc_reb
 Fighter.create(:name => 'T-Wing', :price => 40 ).factions = merc_reb
 Fighter.create(:name => 'Y-Wing', :price => 70 ).factions = reb
@@ -242,28 +258,8 @@ Armament.create(:name => 'Adv Torpedo', :price => 10 ).factions = all
 Armament.create(:name => 'Mag Pulse Torp', :price => 10 ).factions = all
 Armament.create(:name => 'Heavy Rocket', :price => 15 ).factions = all
 Armament.create(:name => 'Space Bomb', :price => 20 ).factions = all
-
 Armament.create(:name => 'Chaff', :price => 1 ).factions = all
 Armament.create(:name => 'Flare', :price => 10 ).factions = all
-
-Trooper.create(:name => 'Trooper (awards)', :price => 1.3 ).factions = all
-Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
-
-Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Modular Conv)' ).factions = all
-Facility.create(:name => 'Pirate S.Yard', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp)' ).factions = all
-Facility.create(:name => 'Cargo Fac.I', :price => 1500, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)').factions = all
-Facility.create(:name => 'Cargo Fac.II', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Derilyn Plat', :price => 1800, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp' ).factions = mand_merc
-Facility.create(:name => 'Family Base', :price => 2100, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp)' ).factions = merc
-Facility.create(:name => 'Factory', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Rebel Plat', :price => 3450, :description => 'Comboio(6 Bulk Freighter, 2 Reb Med Transp)' ).factions = reb
-Facility.create(:name => 'Ast. Hangar', :price => 3000, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp)' ).factions = mand_merc
-Facility.create(:name => 'Golan I', :price => 3000, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Golan II', :price => 3900, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(6 Bulk Freighter, 1 Suprosa)' ).factions = all
-Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(6 Bulk Freighter, 1 Star Galleon)' ).factions = imp
-Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(6 Bulk Freighter, 1 Suprosa)' ).factions = all
 
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40 ).factions = mand
@@ -273,6 +269,9 @@ Warrior.create(:name => 'Han Solo', :price => 50 ).factions = merc
 Warrior.create(:name => 'Chewbacca', :price => 40 ).factions = merc
 Warrior.create(:name => 'Darth Vader', :price => 40 ).factions = imp
 Warrior.create(:name => 'Emperor Palpatine', :price => 50 ).factions = imp
+
+Trooper.create(:name => 'Trooper (awards)', :price => 1.3 ).factions = all
+Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
 Goal.create(:description => 'Destruir o esquadrão vermelho. Se você for o vermelho ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
 Goal.create(:description => 'Destruir o esquadrão amarelo. Se você for o amarelo ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
