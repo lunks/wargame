@@ -34,7 +34,8 @@ class GenericFleetsController < ApplicationController
       @transports += fleet.quantity if fleet.type?(LightTransport)
       @warriors += 1 if fleet.type?(Warrior)
     end
-    @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count
+    @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @squad, :producing_unit2_id => nil).count
+    @no_name = true if Fleet.all.any?{|fleet| fleet.type?(CapitalShip) and fleet.fleet_name == @squad.name}
   end
 
   def move
