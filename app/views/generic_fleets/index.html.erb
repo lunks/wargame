@@ -78,6 +78,7 @@
       <span style=font-weight:bold;font-size:13px;color:#00FFFF><%= @provided %></span>
     </td>
     <td>
+      <%= link_to 'Últimas batalhas', show_results_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "420"), :class => "thickbox" %>
     </td>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> Troopers: </span>
@@ -182,5 +183,4 @@
   <!--<![endif]-->
 </object>
 </div>
-<%= link_to 'Mostrar FOG OF WAR', show_results_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "420"), :class => "thickbox" %>
 
