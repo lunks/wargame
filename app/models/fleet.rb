@@ -3,7 +3,6 @@ class Fleet < GenericFleet
   def move quantity, planet
     if planet == nil
       Fleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil)
-      group_fleets
       return
     end
     Fleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil) if self.destination.present? && ( self.type?(CapitalShip) || self.type?(LightTransport) )   
