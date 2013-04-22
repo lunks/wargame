@@ -51,7 +51,7 @@ class FacilityFleet < GenericFleet
   end
 
   def reassembly
-    update_attributes(:moving => nil)
+    update_attributes(:moving => nil, :destination_id => nil )
   end
 
   def produce!
