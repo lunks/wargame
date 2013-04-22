@@ -1,6 +1,6 @@
-alderaan_asteroids = Planet.create(:name => 'Alderaan Asteroids', :credits => 300 )
+#alderaan_asteroids = Planet.create(:name => 'Alderaan Asteroids', :credits => 300 )
 bespin = Planet.create(:name => 'Bespin', :credits => 300 )
-brr_clan_tradeport = Planet.create(:name => 'BrR Station', :credits => 0, :tradeport => true )
+brr_station = Planet.create(:name => 'BrR Station', :credits => 0, :tradeport => true )
 cimf_station = Planet.create(:name => 'CIMF Station', :credits => 0, :tradeport => true )
 concord_dawn = Planet.create(:name => 'Concord Dawn', :credits => 300 )
 corellia = Planet.create(:name => 'Corellia', :credits => 300 )
@@ -8,7 +8,7 @@ coruscant = Planet.create(:name => 'Coruscant', :credits => 300 )
 dagobah = Planet.create(:name => 'Dagobah', :credits => 300 )
 #dantooine = Planet.create(:name => 'Dantooine', :credits => 300 )
 #deadalis_minefields = Planet.create(:name => 'Deadalis Minefields', :credits => 300 )
-deathstar_III = Planet.create(:name => 'Death Star III', :credits => 300 )
+deathstar = Planet.create(:name => 'Death Star', :credits => 300 )
 endor = Planet.create(:name => 'Endor', :credits => 300 )
 felucia = Planet.create(:name => 'Felucia', :credits => 300 )
 geonosis = Planet.create(:name => 'Geonosis', :credits => 300 )
@@ -27,7 +27,7 @@ mygeeto = Planet.create(:name => 'Mygeeto', :credits => 300 )
 naboo = Planet.create(:name => 'Naboo', :credits => 300 )
 nal_hutta = Planet.create(:name => 'Nal Hutta', :credits => 300 )
 ord_ibanna = Planet.create(:name => 'Ord Ibanna', :credits => 300 )
-#polis_massa = Planet.create(:name => 'Polis Massa', :credits => 300 )
+polis_massa = Planet.create(:name => 'Polis Massa', :credits => 300 )
 rattatak = Planet.create(:name => 'Rattatak', :credits => 300 )
 res_station = Planet.create(:name => 'RES Station', :credits => 0, :tradeport => true )
 rhen_var = Planet.create(:name => 'Rhen Var', :credits => 300 )
@@ -50,9 +50,9 @@ Route.create(:vector_a => yavin, :vector_b => concord_dawn, :distance => 1)
 Route.create(:vector_a => rhen_var, :vector_b => felucia, :distance => 1)
 Route.create(:vector_a => rhen_var, :vector_b => concord_dawn, :distance => 1)
 
-Route.create(:vector_a => deathstar_III, :vector_b => coruscant, :distance => 1)
-Route.create(:vector_a => deathstar_III, :vector_b => bespin, :distance => 1)
-Route.create(:vector_a => deathstar_III, :vector_b => rattatak, :distance => 1)
+Route.create(:vector_a => deathstar, :vector_b => coruscant, :distance => 1)
+Route.create(:vector_a => deathstar, :vector_b => bespin, :distance => 1)
+Route.create(:vector_a => deathstar, :vector_b => rattatak, :distance => 1)
 
 Route.create(:vector_a => coruscant, :vector_b => mandalore, :distance => 1)
 Route.create(:vector_a => coruscant, :vector_b => alderaan_asteroids, :distance => 1)
@@ -259,7 +259,7 @@ Facility.create(:name => 'Asteroid Hangar', :price => 3000 ).factions = mand_mer
 Facility.create(:name => 'Golan I', :price => 3000 ).factions = all
 Facility.create(:name => 'Golan II', :price => 3900 ).factions = all
 Facility.create(:name => 'Golan III', :price => 6000 ).factions = all
-Facility.create(:name => 'Imp Research Center', :price => 4200 ).factions = imp
+Facility.create(:name => 'Imp Res Center', :price => 4200 ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(10 Bulk Freighter, 2 Mod.Transport)' ).factions = all
 
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
