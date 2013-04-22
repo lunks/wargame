@@ -103,7 +103,7 @@ div.squad_info {
 }
 div.map
 {
-  position:fixed;
+  position:absolute;
   top: 0%;
   left: 430px;
    border: 0 outset gray;

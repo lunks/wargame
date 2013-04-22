@@ -271,10 +271,17 @@ Warrior.create(:name => 'Chewbacca', :price => 40 ).factions = merc
 Warrior.create(:name => 'Darth Vader', :price => 40 ).factions = imp
 Warrior.create(:name => 'Emperor Palpatine', :price => 50 ).factions = imp
 
-Goal.create(:description => 'Dominar 5 planetas')
-Goal.create(:description => 'Dominar Setor Norte')
-Goal.create(:description => 'Construir 3 SSD')
-Goal.create(:description => 'Dominar Setor Sul')
+Goal.create(:description => 'Destruir o esquadrão vermelho. Se você for o vermelho ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrão amarelo. Se você for o amarelo ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrão verde. Se você for o amarelo ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
+Goal.create(:description => 'Dominar Coruscant, Mustafar, Geonosis e Kamino')
+Goal.create(:description => 'Dominar Hoth, DeathStar, Kashyyyk, Utapau')
+Goal.create(:description => 'Dominar na totalidade o setor Norte e Kamino')
+Goal.create(:description => 'Dominar na totalidade o setor Leste e Naboo')
+Goal.create(:description => 'Dominar na totalidade o setor Sul e Mustafar (inverter com Polis Massa)')
+Goal.create(:description => 'Dominar na totalidade o setor Oeste e Yavin')
+
+
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
