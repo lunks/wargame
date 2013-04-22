@@ -1,5 +1,5 @@
 class GenericFleet < ActiveRecord::Base
-  default_scope :order => "moving DESC, destination_id ASC, generic_unit_id DESC,  updated_at DESC"
+  default_scope :order => "squad_id ASC, moving DESC, destination_id ASC, generic_unit_id ASC, updated_at DESC"
   scope :owned_by, lambda {|squad| where(:squad => squad)}
   scope :moving, where(:moving => true)
   belongs_to :squad

@@ -5,7 +5,7 @@ class Fleet < GenericFleet
       Fleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil)
       return
     end
-    Fleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil) if self.destination.present? && ( self.type?(CapitalShip) || self.type?(LightTransport) )   
+    Fleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil) if self.destination.present? && ( self.type?(CapitalShip) || self.type?(LightTransport) || self.type?(Fighter) )   
     valid_move = true
     if self.generic_unit.class == Trooper  || self.generic_unit.class == Armament
       moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)

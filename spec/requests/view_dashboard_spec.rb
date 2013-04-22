@@ -5,7 +5,7 @@ describe "Viewing dashboard" do
     start_game
     @planet_name =  @squad.fleets.first.planet.name
     @ship_name = @squad.fleets.first.generic_unit.name
-    @moving_fleet = @squad.fleets.first
+    @moving_fleet = @squad.fleets.last
     destination_planet = Factory :planet
     @moving_fleet.move 1, destination_planet
   end

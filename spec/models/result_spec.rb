@@ -76,7 +76,7 @@ describe Result do
     end
 
     it 'should belongs to captor' do
-      GenericFleet.first.squad.should == @captor
+      GenericFleet.last.squad.should == @captor
     end
   end
 end
