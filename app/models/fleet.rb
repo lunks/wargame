@@ -18,7 +18,11 @@ class Fleet < GenericFleet
       moving_fleet = Fleet.new self.attributes
       moving_fleet.destination = planet
       moving_fleet.quantity = quantity
-      moving_fleet.moving = true
+      if planet == nil
+        moving_fleet.moving = nil
+      else
+        moving_fleet.moving = true
+      end
       moving_fleet.save
       self.quantity -= quantity
       save
