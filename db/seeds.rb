@@ -199,25 +199,6 @@ Fighter.create(:name => 'Tie Phantom', :price => 145 ).factions = imp
 Fighter.create(:name => 'Missile Boat', :price => 225 ).factions = imp
 Fighter.create(:name => 'Tie Defender', :price => 320 ).factions = imp
 
-LightTransport.create(:name => 'YT-1300', :price => 110 ).factions = merc
-LightTransport.create(:name => 'YT-2000', :price => 320 ).factions = merc
-LightTransport.create(:name => 'YT-2400', :price => 145 ).factions = mand
-LightTransport.create(:name => 'Millenium Falcon', :price => 270 ).factions = merc_reb
-
-LightTransport.create(:name => 'Assault Transport', :price => 200 ).factions = all
-LightTransport.create(:name => 'Escort Transport', :price => 200 ).factions = all
-LightTransport.create(:name => 'Stormtrooper Trans.', :price => 55 ).factions = all
-LightTransport.create(:name => 'Assault Shuttle', :price => 175 ).factions = imp
-LightTransport.create(:name => 'System Pat Craft', :price => 250 ).factions = imp
-
-LightTransport.create(:name => 'Bulk Freighter', :price => 50 ).factions = all
-LightTransport.create(:name => 'Rebel Med Transp', :price => 50 ).factions = reb
-LightTransport.create(:name => 'Mod Action Transp', :price => 60 ).factions = all
-LightTransport.create(:name => 'Modular Conveyor', :price => 60 ).factions = all
-LightTransport.create(:name => 'Xyitiar Transp', :price => 60 ).factions = merc
-LightTransport.create(:name => 'Star Galleon', :price => 100 ).factions = imp
-LightTransport.create(:name => 'Suprosa', :price => 200 ).factions = all
-
 CapitalShip.create(:name => 'Corellian Gunship', :price => 320 ).factions = all
 CapitalShip.create(:name => 'Corellian Corvette', :price => 320 ).factions = all
 CapitalShip.create(:name => 'Mod Corvette', :price => 350 ).factions = all
@@ -250,6 +231,25 @@ CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400 ).factions = 
 CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750 ).factions = reb
 CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700 ).factions = imp
 
+LightTransport.create(:name => 'YT-1300', :price => 110 ).factions = merc
+LightTransport.create(:name => 'YT-2000', :price => 320 ).factions = merc
+LightTransport.create(:name => 'YT-2400', :price => 145 ).factions = mand
+LightTransport.create(:name => 'Millenium Falcon', :price => 270 ).factions = merc_reb
+
+LightTransport.create(:name => 'Assault Transport', :price => 200 ).factions = all
+LightTransport.create(:name => 'Escort Transport', :price => 200 ).factions = all
+LightTransport.create(:name => 'Stormtrooper Trans.', :price => 55 ).factions = all
+LightTransport.create(:name => 'Assault Shuttle', :price => 175 ).factions = imp
+LightTransport.create(:name => 'System Pat Craft', :price => 250 ).factions = imp
+
+LightTransport.create(:name => 'Bulk Freighter', :price => 50 ).factions = all
+LightTransport.create(:name => 'Rebel Med Transp', :price => 50 ).factions = reb
+LightTransport.create(:name => 'Mod Action Transp', :price => 60 ).factions = all
+LightTransport.create(:name => 'Modular Conveyor', :price => 60 ).factions = all
+LightTransport.create(:name => 'Xyitiar Transp', :price => 60 ).factions = merc
+LightTransport.create(:name => 'Star Galleon', :price => 100 ).factions = imp
+LightTransport.create(:name => 'Suprosa', :price => 200 ).factions = all
+
 Armament.create(:name => 'Missile', :price => 5 ).factions = all
 Armament.create(:name => 'Proton Torpedo', :price => 5 ).factions = all
 Armament.create(:name => 'Ion Pulse Torp', :price => 5 ).factions = reb
@@ -261,6 +261,10 @@ Armament.create(:name => 'Space Bomb', :price => 20 ).factions = all
 Armament.create(:name => 'Chaff', :price => 1 ).factions = all
 Armament.create(:name => 'Flare', :price => 10 ).factions = all
 
+Trooper.create(:name => 'Trooper (awards)', :price => 1.3 ).factions = all
+Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
+
+
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40 ).factions = mand
 Warrior.create(:name => 'Kyle Katarn', :price => 40 ).factions = reb
@@ -269,9 +273,6 @@ Warrior.create(:name => 'Han Solo', :price => 50 ).factions = merc
 Warrior.create(:name => 'Chewbacca', :price => 40 ).factions = merc
 Warrior.create(:name => 'Darth Vader', :price => 40 ).factions = imp
 Warrior.create(:name => 'Emperor Palpatine', :price => 50 ).factions = imp
-
-Trooper.create(:name => 'Trooper (awards)', :price => 1.3 ).factions = all
-Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
 Goal.create(:description => 'Destruir o esquadrão vermelho. Se você for o vermelho ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
 Goal.create(:description => 'Destruir o esquadrão amarelo. Se você for o amarelo ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')

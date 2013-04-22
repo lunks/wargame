@@ -2,7 +2,7 @@
   <% @planets.each do |planet| %>
     <h2> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h2>
     <p>
-    <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |fleet| %>
+    <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
       <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @squad and !planet.generic_fleets.any?{|unit| unit.squad == @squad} %>
         <% unless fleet.final_quantity <= 0 %>
           <span style=color:#<%= fleet.squad.color %>>

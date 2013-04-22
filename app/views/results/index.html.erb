@@ -7,7 +7,7 @@
   <td></td><td>Destruidos</td><td>Fugiram</td><td>Capturados</td><td>Capturado Por</td><td>Sabotada?</td>
   </tr>
   <tr>
-  <% @results.sort_by{|a| [a.squad.id, a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |result| %>
+  <% @results.each do |result| %>
   <td>
     <%= simple_fields_for "results[]", result do |result_form| %>
        <span style=color:#<%= result_form.object.squad.color %>;font-weight:bold>
