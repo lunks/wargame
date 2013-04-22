@@ -1,39 +1,7 @@
-body {
-    background-image: url(/images/planet_background.jpg);
-    background-attachment: fixed;
-    background-color: black;
-    color: white;
-    font-size: 12px;
-    line-height: 18px;
-    font-family: 'Open Sans',sans-serif;
-    font-weight: bold;
-}
-
-h2 {
-    background: -moz-linear-gradient(left center , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    background: -ms-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    background: -o-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    background: -webkit-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    background: linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    border-bottom-left-radius: 4px;
-    border-left: 8px solid #5E707D;
-    border-top-left-radius: 4px;
-    color: white;
-    font-family: 'Open Sans',sans-serif;
-    font-size: 14px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    text-shadow: 0 0 3px black, 0 0 3px black;
-}
-
 a:link {
-    background: -moz-linear-gradient(center top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
-    background: -ms-linear-gradient(top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
-    background: -o-linear-gradient(top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
-    background: -webkit-linear-gradient(top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
-    background: linear-gradient(top , rgba(187, 187, 187, 0.898), rgba(44, 44, 44, 0.8)) repeat scroll 0 0 transparent;
-    border: 1px solid #333333;
-    border-radius: 10px 10px 10px 10px;
+    background: none repeat scroll 0 0 rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(100, 120, 160, 0.60);
+    border-radius: 4px 4px 4px 4px;
     color: white;
     font-family: 'Open Sans';
     font-size: 11px;
@@ -43,94 +11,74 @@ a:link {
     margin-left: 2px;
     padding: 2px;
     text-decoration: none;
+    transition: all 0.4s ease-in-out 0s;
 }
-a:visited {
-    border: 1px solid #333333;
+
+body {
+    background-attachment: fixed;
+    background-color: black;
+    background-image: url("/images/planet_background.jpg");
     color: white;
-    font-size: 11px;
-    text-decoration: none;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 24px;
 }
+
 a:hover {
-    background: -moz-linear-gradient(center top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
-    background: -ms-linear-gradient(top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
-    background: -o-linear-gradient(top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
-    background: -webkit-linear-gradient(top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
-    background: linear-gradient(top , rgba(44, 44, 44, 0.8), rgba(187, 187, 187, 0.6)) repeat scroll 0 0 transparent;
+    background: none repeat scroll 0 0 rgba(10, 10, 10, 0.8);
     color: white;
     font-size: 11px;
     text-decoration: none;
-}
-div.planet_content {
-    border: 0 outset gray;
-    border-radius: 14px 14px 14px 14px;
-    box-shadow: 0 0 6px white;
-    margin: 2px;
+    border-color: rgba(180, 20, 20, 0.8);
     padding: 2px;
-    width: 395px;
-    padding-left: 8px;
-    padding-right:5px;
-    padding-top:5px;
-    padding-bottom: 8px;
-    margin-top:10px;
-    margin-bottom: 12px;
 }
-div.planet_content_old {
-
-    border: 0 outset black;
-    box-shadow: 0 0 6px #5D90AF;
-    margin: 2px 2px 2px 2px;
-    padding: 2px;
-    width: 395px;
-    padding-left: 8px;
-    padding-right: 5px;
-    border-radius: 10px;
-    margin-top: 8px;
+a:active {
+    box-shadow: 0 0px 6px 1px rgba(180, 20, 20, 0.8) inset;
+    position: relative;
+    top: 2px;
 }
 
+
+div.squad_info:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60) ;
+    background-color: rgba(17,10,10,0.86);
+}
 div.squad_info {
     border: 0 outset gray;
     border-radius: 14px 14px 14px 14px;
-    box-shadow: 0 0 6px white;
-    margin: 2px;
-    padding: 2px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: -20px 2px 12px;
+    padding: 22px 5px 8px 8px;
     width: 395px;
-    padding-left: 8px;
-    padding-right:5px;
-    padding-top:22px;
-    padding-bottom: 8px;
-    margin-top:-20px;
-    margin-bottom: 12px;
-}
-div.map
-{
-  position:absolute;
-  top: 0%;
-  left: 430px;
-   border: 0 outset gray;
-   border-radius: 14px 14px 14px 14px;
-   box-shadow: 0 0 6px white;
-   margin: 2px;
-   padding: 2px;
-   width: 1110px;
-   padding-left: 8px;
-   padding-right:2px;
-   padding-top:10px;
-   padding-bottom: 8px;
-   margin-top: 10px;
-   margin-bottom: 10px;
-}
-div.map_old
-{
-  position:absolute;
-  top: 0%;
-  left: 430px;
-  margin-left: 5px;
-  margin-top: 7px;
-  padding:4px;
-  width:1080px;
-  height:768px;
-  border:0px outset gray;
-  z-index:10;
+    background-color: rgba(10,15,24,0.9);
+    transition: all ease-in-out 0.3s;
 }
 
+div.planet_content {
+    border: 0 outset gray;
+    border-radius: 6px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: 10px -14px 10px;
+    padding: 5px 5px 8px 24px;
+    width: 395px;
+    background-color: rgba(10,15,24,0.9);
+    transition: all ease-in-out 0.36s;
+}
+div.planet_content:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(13,14,22,0.9);
+}
 
+h2 {
+    background: rgba(2,2,2, 0.31);
+    border-radius: 23px/40px;
+    color: white;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-shadow: 0 0 3px black, 0 0 3px black;
+    box-shadow: 0px -1px 4px -2px rgba(120,130,180,0.60) inset, 0px 15px 8px rgba(2,2,2, 0.81) inset;
+    padding-left: 10px;
+}
