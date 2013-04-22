@@ -40,11 +40,11 @@ yavin = Planet.create(:name => 'Yavin', :credits => 300 )
 #wormholeII = Planet.create(:name => 'Wormhole II', :credits => 0 )
 
 Route.create(:vector_a => mygeeto, :vector_b => yavin, :distance => 1)
-Route.create(:vector_a => mygeeto, :vector_b => alderaan_asteroids, :distance => 1)
+Route.create(:vector_a => mygeeto, :vector_b => polis_massa, :distance => 1)
 Route.create(:vector_a => mygeeto, :vector_b => coruscant, :distance => 1)
 
 Route.create(:vector_a => yavin, :vector_b => rhen_var, :distance => 1)
-Route.create(:vector_a => yavin, :vector_b => alderaan_asteroids, :distance => 1)
+Route.create(:vector_a => yavin, :vector_b => polis_massa, :distance => 1)
 Route.create(:vector_a => yavin, :vector_b => concord_dawn, :distance => 1)
 
 Route.create(:vector_a => rhen_var, :vector_b => felucia, :distance => 1)
@@ -55,18 +55,18 @@ Route.create(:vector_a => deathstar, :vector_b => bespin, :distance => 1)
 Route.create(:vector_a => deathstar, :vector_b => rattatak, :distance => 1)
 
 Route.create(:vector_a => coruscant, :vector_b => mandalore, :distance => 1)
-Route.create(:vector_a => coruscant, :vector_b => alderaan_asteroids, :distance => 1)
+Route.create(:vector_a => coruscant, :vector_b => polis_massa, :distance => 1)
 Route.create(:vector_a => coruscant, :vector_b => bespin, :distance => 1)
 
 Route.create(:vector_a => corellia, :vector_b => concord_dawn, :distance => 1)
 Route.create(:vector_a => corellia, :vector_b => kuat, :distance => 1)
 
 Route.create(:vector_a => mandalore, :vector_b => corellia, :distance => 1)
-Route.create(:vector_a => mandalore, :vector_b => alderaan_asteroids, :distance => 1)
+Route.create(:vector_a => mandalore, :vector_b => polis_massa, :distance => 1)
 
 Route.create(:vector_a => concord_dawn, :vector_b => felucia, :distance => 1)
 Route.create(:vector_a => concord_dawn, :vector_b => kessel_asteroids, :distance => 1)
-Route.create(:vector_a => concord_dawn, :vector_b => alderaan_asteroids, :distance => 1)
+Route.create(:vector_a => concord_dawn, :vector_b => polis_massa, :distance => 1)
 
 Route.create(:vector_a => felucia, :vector_b => mon_calamari, :distance => 1)
 Route.create(:vector_a => felucia, :vector_b => kashyyyk, :distance => 1)
@@ -85,7 +85,7 @@ Route.create(:vector_a => bespin, :vector_b => rattatak, :distance => 1)
 Route.create(:vector_a => bespin, :vector_b => mandalore, :distance => 1)
 Route.create(:vector_a => bespin, :vector_b => hoth, :distance => 1)
 
-Route.create(:vector_a => corellia, :vector_b => alderaan_asteroids, :distance => 1)
+Route.create(:vector_a => corellia, :vector_b => polis_massa, :distance => 1)
 Route.create(:vector_a => corellia, :vector_b => haruun_kal, :distance => 1)
 
 Route.create(:vector_a => kuat, :vector_b => kessel_asteroids, :distance => 1)
@@ -131,14 +131,14 @@ Route.create(:vector_a => naboo, :vector_b => utapau, :distance => 1)
 Route.create(:vector_a => naboo, :vector_b => dagobah, :distance => 1)
 
 Route.create(:vector_a => geonosis, :vector_b => tatooine, :distance => 1)
-Route.create(:vector_a => geonosis, :vector_b => brr_clan_tradeport, :distance => 1)
+Route.create(:vector_a => geonosis, :vector_b => brr_station, :distance => 1)
 Route.create(:vector_a => geonosis, :vector_b => utapau, :distance => 1)
 
 Route.create(:vector_a => dagobah, :vector_b => utapau, :distance => 1)
 
-Route.create(:vector_a => utapau, :vector_b => brr_clan_tradeport, :distance => 1)
+Route.create(:vector_a => utapau, :vector_b => brr_station, :distance => 1)
 
-Route.create(:vector_a => brr_clan_tradeport, :vector_b => tatooine, :distance => 1)
+Route.create(:vector_a => brr_station, :vector_b => tatooine, :distance => 1)
 
 imp = ['empire']
 reb = ['rebel']
