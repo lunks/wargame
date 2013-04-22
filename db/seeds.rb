@@ -273,7 +273,7 @@ Warrior.create(:name => 'Emperor Palpatine', :price => 50 ).factions = imp
 
 Goal.create(:description => 'Destruir o esquadrão vermelho. Se você for o vermelho ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
 Goal.create(:description => 'Destruir o esquadrão amarelo. Se você for o amarelo ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
-Goal.create(:description => 'Destruir o esquadrão verde. Se você for o amarelo ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrão verde. Se você for o verde ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
 Goal.create(:description => 'Dominar Coruscant, Mustafar, Geonosis e Kamino')
 Goal.create(:description => 'Dominar Hoth, DeathStar, Kashyyyk, Utapau')
 Goal.create(:description => 'Dominar na totalidade o setor Norte e Kamino')
