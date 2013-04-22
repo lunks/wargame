@@ -183,10 +183,10 @@ Fighter.create(:name => 'Tie Phantom', :price => 145 ).factions = imp
 Fighter.create(:name => 'Missile Boat', :price => 225 ).factions = imp
 Fighter.create(:name => 'Tie Defender', :price => 320 ).factions = imp
 
-Fighter.create(:name => 'YT-1300', :price => 110 ).factions = merc
-Fighter.create(:name => 'YT-2000', :price => 320 ).factions = merc
-Fighter.create(:name => 'YT-2400', :price => 145 ).factions = mand
-Fighter.create(:name => 'Millenium Falcon', :price => 270 ).factions = merc_reb
+LightTransport.create(:name => 'YT-1300', :price => 110 ).factions = merc
+LightTransport.create(:name => 'YT-2000', :price => 320 ).factions = merc
+LightTransport.create(:name => 'YT-2400', :price => 145 ).factions = mand
+LightTransport.create(:name => 'Millenium Falcon', :price => 270 ).factions = merc_reb
 
 LightTransport.create(:name => 'Assault Transport', :price => 200 ).factions = all
 LightTransport.create(:name => 'Escort Transport', :price => 200 ).factions = all
@@ -194,13 +194,13 @@ LightTransport.create(:name => 'Stormtrooper Trans.', :price => 55 ).factions = 
 LightTransport.create(:name => 'Assault Shuttle', :price => 175 ).factions = imp
 LightTransport.create(:name => 'System Pat Craft', :price => 250 ).factions = imp
 
-LightTransport.create(:name => 'Bulk Freighter', :price => 60 ).factions = all
-LightTransport.create(:name => 'Rebel Med Transp', :price => 60 ).factions = reb
-LightTransport.create(:name => 'Mod Action Transp', :price => 100 ).factions = all
-LightTransport.create(:name => 'Modular Conveyor', :price => 100 ).factions = all
-LightTransport.create(:name => 'Xyitiar Transp', :price => 100 ).factions = merc
-LightTransport.create(:name => 'Star Galleon', :price => 150 ).factions = imp
-LightTransport.create(:name => 'Suprosa', :price => 350 ).factions = all
+LightTransport.create(:name => 'Bulk Freighter', :price => 50 ).factions = all
+LightTransport.create(:name => 'Rebel Med Transp', :price => 50 ).factions = reb
+LightTransport.create(:name => 'Mod Action Transp', :price => 60 ).factions = all
+LightTransport.create(:name => 'Modular Conveyor', :price => 60 ).factions = all
+LightTransport.create(:name => 'Xyitiar Transp', :price => 60 ).factions = merc
+LightTransport.create(:name => 'Star Galleon', :price => 100 ).factions = imp
+LightTransport.create(:name => 'Suprosa', :price => 200 ).factions = all
 
 CapitalShip.create(:name => 'Corellian Gunship', :price => 320 ).factions = all
 CapitalShip.create(:name => 'Corellian Corvette', :price => 320 ).factions = all
@@ -250,6 +250,7 @@ Trooper.create(:name => 'Trooper (awards)', :price => 1.3 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
 Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Modular Conv)' ).factions = all
+Facility.create(:name => 'Pirate S.Yard', :price => 1200, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp)' ).factions = all
 Facility.create(:name => 'Cargo Fac.I', :price => 1500, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)').factions = all
 Facility.create(:name => 'Cargo Fac.II', :price => 2400, :description => 'Comboio(6 Bulk Freighter, 2 Mod Action)' ).factions = all
 Facility.create(:name => 'Derilyn Plat', :price => 1800, :description => 'Comboio(6 Bulk Freighter, 2 Xyitiar Transp' ).factions = mand_merc
