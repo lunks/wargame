@@ -23,7 +23,7 @@ xml.planetas do
         planet.generic_fleets.where(:squad_id => @current_squad).each_with_index do |fleet, index|
           xml.corfleet fleet.squad.color
           if !fleet.moving
-            if fleet.type?(Facility) or fleet.type?(Warrior)
+            if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander)
               xml.fleet fleet.generic_unit.name
             else
               xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name
