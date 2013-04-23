@@ -38,6 +38,19 @@ class GenericFleetsController < ApplicationController
     end
     @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @squad, :producing_unit2_id => nil).count
     @no_name = true if Fleet.all.any?{|fleet| fleet.type?(CapitalShip) and fleet.fleet_name == @squad.name}
+
+   @small_fleet = nil
+   total = 0
+   @planets.each do |planet|
+     planet.generic_fleets.where(:moving => true).each do |fleet|
+       total = 0
+       GenericFleet.where(:squad => current_squad, :planet => planet, :destination => fleet.destination).each do |qtd|
+         total += qtd.quantity * qtd.generic_unit.price
+       end
+       @small_fleet = true if total < 200
+     end   
+    end
+
   end
 
   def move

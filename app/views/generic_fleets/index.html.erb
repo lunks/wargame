@@ -127,8 +127,9 @@
 </div>
 
 <div class="fleet">
-  <%= "Alerta: Há #{@inactive} slots de fábrica inativos." unless @inactive == 0 %><br>
-  <%= "Alerta: Há capital ships sem nome." unless @no_name == nil %>
+  <%= "ALERTA: Há #{@inactive} slots de fábrica inativos." unless @inactive == 0 %><br>
+  <%= "ALERTA: Há capital ships sem nome." unless @no_name == nil %><br>
+  <%= "ALERTA: Há frota de ataque inferior a 200 créditos" if @small_fleet == true %>
   <% @planets.each do |planet| %>
     <h2> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h2>
     <p>
