@@ -6,7 +6,7 @@
 <% else %>
   <info class="tooltip">
     <%= fleet.name %>
-    <tip>Pode ser movida em um <%= fleet.generic_unit.description %></tip>
+    <tip>Capacidade: <%= fleet.default_capacity %> créditos p/ turno.<br> Pode ser movida.<br>Transforma-se em um <%= fleet.generic_unit.description %>.<br>O movimento reseta todos os aprimoramentos e produções.</tip>
   </info>
   <%= ' *50%*' if fleet.sabotaged? %>
   (<% if @round.move && fleet.squad == @squad && !fleet.squad.ready?%>

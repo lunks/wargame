@@ -1,6 +1,11 @@
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
-<span style=font-weight:bold;font-size:18px> Turno: <%= @round.number %> - <%= @round_phase %></span><br>
+<info class="tooltip">
+  <span style=font-weight:bold;font-size:18px>
+  Turno: <%= @round.number %> - <%= @round_phase %></span>
+  <tip><%= @tip %></tip>
+</info>
+<br>
 <table border="0" width="320">
   <tr>
     <td style="background-color:#1C1C1C">
@@ -113,10 +118,15 @@
 
  <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a>
 <br>
- <%= link_to 'Transfer créditos', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "360"), :class => "thickbox" unless @squad.ready? %>
+ <%= link_to 'Transferir créditos', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "360"), :class => "thickbox" unless @squad.ready? %>
 
+ <info class="tooltip">
+   <tip style=width:160px>Mostra as últimas frotas enfrentadas (FOG OF WAR)</tip>
  <%= link_to 'Últimos conflitos', show_results_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "365"), :class => "thickbox" %> 
+ </info>
 
+ <info class="tooltip">
+   <tip style=width:240px>Clique para deixar o esquadrão pronto. Atenção! Não é possíve alterar depois.</tip>
  <%= link_to "Finalizar #{@round_phase}", ready_path(:KeepThis => "true", :TB_iframe => "true", :height => "50", :width => "360"), :class => "thickbox" unless @squad.ready? %>
 
 <br>
@@ -135,11 +145,15 @@
     <tip>Sua frota de ataque é muito pequena.<br>Para evitar partidas sem graça, envie mais unidades.<br>O penalty por descumprir esta regra é de 200 créditos ao adversário.</tip>
     <%= "ALERTA: Há frota de ataque inferior a 200 créditos" if @small_fleet == true %>
   </info>
-  <% @planets.each do |planet| %>
+  <info class="tooltip">
+    <tip>Verifique sempre se a contagem de naves abatidas, fugidas ou capturadas corresponde aos resultados.</tip>
+    <%= "ALERTA: Revise os resultados de todos os combates." if @round.attack? %>
+  </info>
 
+  <% @planets.each do |planet| %>
     <h2>
       <info class="tooltip">
-        <tip>Mapa no BF2: <%= planet.description %></tip>
+        <tip>Regras de combate:<br>== XWA ==<br>Host: Defensor<br>AI: Ace<br>Distância: 5km<br>Atacante: slot de cima e monta frota primeiro<br>Defensor: slot de baixo e monta frota por último<br>Fugas: de 2 a 10 minutos. Em qualquer minuto da partida avisar o<br> oponente ou automático após perder todos os caças. A fuga é cancelada<br> se o fugitivo vencer a batalha durante a fuga.<br>Ataques somente CS/Transp + tropas: foge quem perder a batalha de BF2<br>Overfleet: Se não tiver CS ou Fábrica para guardar, a fuga é obrigatória.<br>== BF2 ==<br>Atenção: Pode-se jogar independente do XWA, considerando um desembarque<br> prévio. Desembarque não obrigatório. Se não houver desembarque informe em<br> quais naves as tropas estão.<br>Mapa: <%= planet.description %><br>Host: Defensor<br>Atacante: escolhe award primeiro<br>Defensor: escolhe award por ultimo<br>AI: Elite<br>Bots: 24<br>Friendly Fire: ON<br>Herói: Ativado se houver a presença de guerreiro<br>Máx: 300 troopers, Min: 100 troopers (utilize fatores de ajuste)<br>== JA ==<br>Atenção: jogar sempre antes de BF2 e XWA, pois o resultado influencia<br>Força: ativada<br>Mode Duel: Não<br>Picks: Não permitidos<br>Defesa padrão: 1/3 da vida arredondado para cima<br>Fuga: somente após perder metade das vidas</tip>
         <%= planet.name %>
       </info> 
       <info class="tooltip">
@@ -182,7 +196,10 @@
     <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "540", :width => "365"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
     <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "360"), :class => "thickbox" if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
     <%= link_to ' tradeport ', tradeport_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "270", :width => "360"), :class => "thickbox" if @round.move && planet.tradeport? && !@squad.ready? %></span>
-    <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "600"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?  %><p>
+      
+    <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "600"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?  %>
+
+<p>
     <% if @round.attack && planet.under_attack? && !planet.tradeport? %>
       <info class="tooltip">
         <tip>No XWA, o atacante monta a frota primeiro e usa os slots de cima.<br>No BF2, o atacante escolhe o award primeiro.</tip>

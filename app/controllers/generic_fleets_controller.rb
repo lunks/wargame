@@ -16,8 +16,10 @@ class GenericFleetsController < ApplicationController
     @provided = (current_squad.credits + @air_income + @ground_income - @flee_tax).to_i
     if @round.move?
       @round_phase = 'Estratégia'
+      @tip = "Realize Movimentos, Configuração de Fábricas, Compra/Venda de naves e Nomeação de capital ships."
     else
       @round_phase = 'Combates'
+      @tip = "Informe os resultados dos combates."
     end
      
     @capital_ships = 0
@@ -39,8 +41,9 @@ class GenericFleetsController < ApplicationController
     @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @squad, :producing_unit2_id => nil).count
     @no_name = true if Fleet.all.any?{|fleet| fleet.type?(CapitalShip) and fleet.fleet_name == @squad.name}
 
+   @posted = nil
    @small_fleet = nil
-   total = 0
+   total = 0 
    @planets.each do |planet|
      planet.generic_fleets.where(:moving => true).each do |fleet|
        total = 0
@@ -48,8 +51,9 @@ class GenericFleetsController < ApplicationController
          total += qtd.quantity * qtd.generic_unit.price
        end
        @small_fleet = true if total < 200
-     end   
-    end
+     end
+
+   end
 
   end
 
