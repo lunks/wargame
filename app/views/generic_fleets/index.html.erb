@@ -131,7 +131,19 @@
   <%= "ALERTA: Há capital ships sem nome." unless @no_name == nil %><br>
   <%= "ALERTA: Há frota de ataque inferior a 200 créditos" if @small_fleet == true %>
   <% @planets.each do |planet| %>
-    <h2> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h2>
+
+    <h2>
+      <info class="tooltip">
+        <tip>Mapa no BF2: <%= planet.description %></tip>
+        <%= planet.name %>
+      </info> 
+      <info class="tooltip">
+        <tip>Conexão direta com o planeta <%= planet.routes.last %> </tip>
+        <%= ' (wormhole) ' if planet.wormhole? %>
+      </info>
+      <%= ' (tradeport)' if planet.tradeport? %>
+    </h2>
+
     <p>
     <%= "Ganhos previstos (Espaço: $#{planet.air_credits} / Terra: $#{planet.ground_credits})  " if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && !planet.under_attack? && !planet.tradeport? %>
     <p>

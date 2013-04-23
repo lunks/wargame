@@ -175,15 +175,15 @@ info.tooltip{
   }
 
   info.tooltip:hover tip{ 
+  clear:both;
   display:block;
   position:absolute;
-  width:250px;
-  height:15px; 
-  top:15px;
+  top:18px;
   left:30px;
   font-size: 10px;
-  padding:5px;
+  padding:2px;
   border:0px solid #999;
   background-color: white; 
   color:black;
+  text-shadow: none;
   }
