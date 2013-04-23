@@ -232,9 +232,13 @@ CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750 ).factions = reb
 CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700 ).factions = imp
 
 Commander.create(:name => 'Admiral Ackbar', :price => 105 ).factions = reb
-Commander.create(:name => 'General Luke', :price => 100 ).factions = reb
-Commander.create(:name => 'Admiral Thrawn', :price => 105 ).factions = imp
+Commander.create(:name => 'Captain Dodonna', :price => 100 ).factions = reb
+Commander.create(:name => 'Admiral Piett', :price => 105 ).factions = imp
 Commander.create(:name => 'Captain Needa', :price => 100 ).factions = imp
+Commander.create(:name => 'Admiral Trench', :price => 105 ).factions = merc
+Commander.create(:name => 'Captain Canteval', :price => 100 ).factions = merc
+Commander.create(:name => 'Admiral Wieler', :price => 105 ).factions = mand
+Commander.create(:name => 'Captain Autem', :price => 100 ).factions = mand
 
 LightTransport.create(:name => 'YT-1300', :price => 110 ).factions = merc
 LightTransport.create(:name => 'YT-2000', :price => 320 ).factions = merc
