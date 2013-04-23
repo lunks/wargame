@@ -1,7 +1,13 @@
 <% if fleet.moving? %>
-  <%= fleet.name %>
+  <info class="tooltip">
+    <%= fleet.name %>
+    <tip>Fábrica sendo transportada.<br><%= fleet.name %>.<br>Destruída se todo o comboio for destruído.<br>Só pode ser remontada em planetas sem naves inimigas.</tip>
+  </info>
 <% else %>
-  <%= fleet.name %>
+  <info class="tooltip">
+    <%= fleet.name %>
+    <tip>Pode ser movida em um <%= fleet.generic_unit.description %></tip>
+  </info>
   <%= ' *50%*' if fleet.sabotaged? %>
   (<% if @round.move && fleet.squad == @squad && !fleet.squad.ready?%>
       <% if fleet.producing_unit.present? %>
