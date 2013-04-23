@@ -255,11 +255,11 @@ Armament.create(:name => 'Proton Torpedo', :price => 5 ).factions = all
 Armament.create(:name => 'Ion Pulse Torp', :price => 5 ).factions = reb
 Armament.create(:name => 'Adv Missile', :price => 10 ).factions = all
 Armament.create(:name => 'Adv Torpedo', :price => 10 ).factions = all
-Armament.create(:name => 'Mag Pulse Torp', :price => 10 ).factions = all
+Armament.create(:name => 'Mag Pulse Torp', :price => 15 ).factions = all
 Armament.create(:name => 'Heavy Rocket', :price => 15 ).factions = all
 Armament.create(:name => 'Space Bomb', :price => 20 ).factions = all
 Armament.create(:name => 'Chaff', :price => 1 ).factions = all
-Armament.create(:name => 'Flare', :price => 10 ).factions = all
+Armament.create(:name => 'Flare', :price => 15 ).factions = all
 
 Trooper.create(:name => 'Trooper (awards)', :price => 1.3 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
