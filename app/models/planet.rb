@@ -6,6 +6,7 @@ class Planet < ActiveRecord::Base
   has_many :generic_fleets
   has_many :results
   belongs_to :ground_squad, :class_name => "Squad"
+  belongs_to :first_player, :class_name => "Squad"
   belongs_to :last_player, :class_name => "Squad"
   @@disable_routes = false
 

@@ -41,7 +41,13 @@ class Round < ActiveRecord::Base
       Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad, :final_quantity => fleet.quantity) if fleet.planet.under_attack?
     end
     Planet.all.each do |planet|
-      planet.last_player = planet.squads[rand(planet.squads.count)]
+      last_player = planet.squads[rand(planet.squads.count)]
+      #planet.last_player = planet.squads[rand(planet.squads.count)]
+      available_squads = planet.squads.reject {|x| x == last_player}
+      first_player = available_squads[rand(planet.squads.count - 1)]
+      #planet.first_player
+      planet.last_player = last_player
+      planet.first_player = first_player
       planet.save 
     end
     set_map

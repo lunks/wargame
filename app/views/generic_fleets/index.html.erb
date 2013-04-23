@@ -163,9 +163,14 @@
     <%= link_to ' mover frotas ', move_planet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "540", :width => "365"), :class => "thickbox" if @round.move && !@squad.ready? %></span>
     <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "360"), :class => "thickbox" if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
     <%= link_to ' tradeport ', tradeport_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "270", :width => "360"), :class => "thickbox" if @round.move && planet.tradeport? && !@squad.ready? %></span>
-    <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "600"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?  %>
+    <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "600"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?  %><p>
     <% if @round.attack && planet.under_attack? && !planet.tradeport? %>
-      Defesa -> <span style=color:#<%= planet.last_player.color %>;font-weight:bold;font-size:14px><%= planet.last_player.name %></span>
+      Atacante -> <span style=color:#<%= planet.first_player.color %>><%= planet.first_player.name %></span><br>
+      <% if planet.squads.count > 2 %>
+        <% mid_defense = @all_squads.reject {|x| x == planet.first_player or x == planet.last_player}.first %>
+        Defensor inicial -> <span style=color:#<%= mid_defense.color %>><%=  mid_defense.name %></span><br>
+      <% end %>
+      Defensor-> <span style=color:#<%= planet.last_player.color %>><%= planet.last_player.name %></span>
     <% end %>
     <% if @round.attack && planet.under_attack? && planet.tradeport? %>
       Zona Neutra

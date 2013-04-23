@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419144302) do
+ActiveRecord::Schema.define(:version => 20130423054941) do
 
   create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130419144302) do
     t.boolean  "tradeport"
     t.integer  "last_player_id"
     t.string   "description"
+    t.integer  "first_player_id"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
