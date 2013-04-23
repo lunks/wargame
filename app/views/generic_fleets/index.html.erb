@@ -89,9 +89,10 @@
   </tr>
   <tr>
     <td>
-      <%= link_to "Finalizar #{@round_phase}", ready_path(:KeepThis => "true", :TB_iframe => "true", :height => "50", :width => "360"), :class => "thickbox" unless @squad.ready? %>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00>Comandantes: </span>
     </td>
-    <td>
+    <td align=right>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @commanders %> </span>
     </td>
     <td>
     </td>
@@ -112,7 +113,9 @@
 <br>
  <%= link_to 'Transfer créditos', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "360"), :class => "thickbox" unless @squad.ready? %>
 
- <%= link_to 'Últimos conflitos', show_results_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "365"), :class => "thickbox" %>
+ <%= link_to 'Últimos conflitos', show_results_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "365"), :class => "thickbox" %> 
+
+ <%= link_to "Finalizar #{@round_phase}", ready_path(:KeepThis => "true", :TB_iframe => "true", :height => "50", :width => "360"), :class => "thickbox" unless @squad.ready? %>
 
 <br>
 
@@ -140,6 +143,8 @@
         <%= render :partial => 'capital_ships', :locals => { :fleet => fleet } %>
       <% when 'Warrior' %>
         <%= render :partial => 'warriors', :locals => { :fleet => fleet } %>
+      <% when 'Commander' %>
+        <%= render :partial => 'commanders', :locals => { :fleet => fleet } %>
       <% when 'Trooper' %>
         <%= render :partial => 'troopers', :locals => { :fleet => fleet } %>
       <% else %>

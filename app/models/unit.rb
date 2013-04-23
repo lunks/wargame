@@ -6,4 +6,5 @@ require 'capital_ship'
 require 'armament'
 require 'trooper'
 require 'warrior'
+require 'commander'
 

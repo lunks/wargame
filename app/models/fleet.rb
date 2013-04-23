@@ -7,7 +7,7 @@ class Fleet < GenericFleet
     end
     Fleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil) if self.destination.present? && ( self.type?(CapitalShip) || self.type?(LightTransport) || self.type?(Fighter) )   
     valid_move = true
-    if self.generic_unit.class == Trooper  || self.generic_unit.class == Armament
+    if self.generic_unit.class == Trooper  || self.generic_unit.class == Armament || self.generic_unit.class == Commander
       moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)
       unit_count = 0
       moving_fleets.each do |fleet|
@@ -74,6 +74,12 @@ class Fleet < GenericFleet
        fleet.destroy
     else
        fleet.quantity = 10 if fleet.quantity > 10 && unit.is_a?(Warrior)
+       fleet.save
+    end
+    if Fleet.where(:generic_unit_id => fleet.generic_unit.id).count > 1 && fleet.type?(Commander)
+       fleet.destroy
+    else
+       fleet.quantity = 1 if fleet.quantity > 1 && unit.is_a?(Commander)
        fleet.save
     end
   end

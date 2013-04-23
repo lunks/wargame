@@ -58,6 +58,10 @@ Factory.define :warrior, :class => Warrior, :parent => :unit do |f|
   f.price 50
 end
 
+Factory.define :commander, :class => Commander, :parent => :unit do |f|
+  f.price 100
+end
+
 
 Factory.define :facility_fleet, :class => FacilityFleet, :parent => :generic_fleet do |f|
   f.facility {|a| a.association(:facility) }

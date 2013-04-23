@@ -231,6 +231,11 @@ CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400 ).factions = 
 CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750 ).factions = reb
 CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700 ).factions = imp
 
+Commander.create(:name => 'Admiral Ackbar', :price => 105 ).factions = reb
+Commander.create(:name => 'General Luke', :price => 100 ).factions = reb
+Commander.create(:name => 'Admiral Thrawn', :price => 105 ).factions = imp
+Commander.create(:name => 'Captain Needa', :price => 100 ).factions = imp
+
 LightTransport.create(:name => 'YT-1300', :price => 110 ).factions = merc
 LightTransport.create(:name => 'YT-2000', :price => 320 ).factions = merc
 LightTransport.create(:name => 'YT-2400', :price => 145 ).factions = mand
@@ -263,7 +268,6 @@ Armament.create(:name => 'Flare', :price => 10 ).factions = all
 
 Trooper.create(:name => 'Trooper (awards)', :price => 1.3 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
-
 
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40 ).factions = mand

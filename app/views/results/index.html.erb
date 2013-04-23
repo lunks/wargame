@@ -17,6 +17,9 @@
        <% elsif result_form.object.generic_unit.type == 'Warrior' %>
          <%= result_form.object.generic_unit.name %>
          (<%= result_form.object.quantity %> vidas)
+       <% elsif result_form.object.generic_unit.type == 'Commander' %>
+         <%= result_form.object.generic_unit.name %>
+         (<%= result_form.object.quantity %>)
        <% else %>
          <%= result_form.object.quantity %>
          <%= result_form.object.generic_unit.name %>
@@ -42,10 +45,10 @@
        <%= result_form.input :fled, :input_html => { :size => 2 }, :label => false unless result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving != true %>
        </td>
        <td align = "center">
-       <%= result_form.input :captured, :input_html => { :size => 2 }, :label => false unless (result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving?) or result_form.object.generic_unit.type == 'Warrior' or result_form.object.generic_unit.type == 'Trooper' %>
+       <%= result_form.input :captured, :input_html => { :size => 2 }, :label => false unless (result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving?) or result_form.object.generic_unit.type == 'Warrior' or result_form.object.generic_unit.type == 'Trooper' or result_form.object.generic_unit.type == 'Commander' %>
        </td>
        <td align = "center">
-       <%= result_form.association :captor, :collection => @squads, :label => false unless (result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving?) or result_form.object.generic_unit.type == 'Warrior' or result_form.object.generic_unit.type == 'Trooper' %>
+       <%= result_form.association :captor, :collection => @squads, :label => false unless (result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving?) or result_form.object.generic_unit.type == 'Warrior' or result_form.object.generic_unit.type == 'Trooper' or result_form.object.generic_unit.type == 'Commander' %>
        </td>
        <td align = "center">
        <% if result_form.object.generic_unit.type == 'Facility' and result_form.object.generic_fleet.moving != true %><%= result_form.check_box :sabotaged %>
