@@ -80,7 +80,7 @@ class Squad < ActiveRecord::Base
     planets.each do |planet|
       warp_facility_on planet
       warp_units 1200, CapitalShip, 500..600, planet
-      warp_units 200, LightTransport, 100, planet
+      warp_units 200, LightTransport, 50..100, planet
       warp_units 2000, Fighter, 1..120, planet
       warp_units 2000, Fighter, 1..120, planet
       warp_units 1000, Trooper, 1..2, planet

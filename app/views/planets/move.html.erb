@@ -40,9 +40,9 @@
       </table>
     <% end %>
   <% end %>
-  <br>
+<br>
 <% end %>
-<% @facilities.each do |facility| %>  
+<% @facilities.sort_by{|a| [a.generic_unit.type, a.quantity, a.generic_unit.name]}.each do |facility| %>  
   <span style=font-weight:bold;color:#<%= facility.squad.color %>><%= facility.generic_unit.name %> <%= "(#{facility.producing_unit.name} " if facility.producing_unit.present? %><%= " / #{facility.producing_unit2.name})" if facility.producing_unit2.present? %></span>
 <span style=color:#40E0D0><%= "--> #{facility.destination.name} " if facility.moving? %></span>
   <%= simple_form_for facility, :url => url_for(:controller => 'generic_fleets', :action => 'move_facility') do |f| %>
