@@ -64,6 +64,10 @@ class Planet < ActiveRecord::Base
     generic_fleets.any?{|fleet| fleet.type? type and fleet.moving != true}
   end
 
+  def has_an_enemy?(type, current_squad)
+    generic_fleets.any?{|fleet| fleet.type? type and fleet.squad != current_squad}
+  end
+
   def routes
     return Planet.all if @@disable_routes
     route = Route.where({:vector_a => self} | {:vector_b => self})

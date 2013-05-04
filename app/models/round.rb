@@ -61,7 +61,8 @@ class Round < ActiveRecord::Base
       squad.save!
     end
     FacilityFleet.where(:moving => true).each do |facility|
-      facility.reassembly unless facility.planet.under_attack?
+      #facility.reassembly unless facility.planet.under_attack?
+      facility.reassembly unless facility.planet.has_an_enemy?(Facility, facility.squad) or facility.planet.has_an_enemy?(CapitalShip, facility.squad) or facility.planet.has_an_enemy?(Fighter, facility.squad) or facility.planet.has_an_enemy?(LightTransport, facility.squad)
     end
     Tradeport.start
     set_map
