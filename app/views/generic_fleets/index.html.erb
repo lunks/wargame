@@ -142,8 +142,10 @@
   <%= "ALERTA: Há #{@inactive} slots de fábrica inativos." unless @inactive == 0 %><br>
   <%= "ALERTA: Há capital ships sem nome." unless @no_name == nil %><br>
   <info class="tooltip">
-    <tip>Sua frota de ataque é muito pequena.<br>Para evitar partidas sem graça, envie mais unidades.<br>O penalty por descumprir esta regra é de 200 créditos ao adversário.</tip>
-    <%= "ALERTA: Há frota de ataque inferior a 200 créditos" if @small_fleet == true %>
+    <tip>Para evitar partidas sem graça, o mínimo é uma frota composta por 200 créditos.<br>O penalty por descumprir esta regra é de 200 créditos ao adversário.</tip>
+    <% if @small_fleet == true %>
+      ALERTA: Há alguma frota inferior a 200 créditos<br>
+    <% end %>
   </info>
   <info class="tooltip">
     <tip>Verifique sempre se a contagem de naves abatidas, fugidas ou capturadas corresponde aos resultados.</tip>

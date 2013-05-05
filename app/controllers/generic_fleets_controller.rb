@@ -45,14 +45,13 @@ class GenericFleetsController < ApplicationController
    @small_fleet = nil
    total = 0 
    @planets.each do |planet|
-     planet.generic_fleets.where(:moving => true).each do |fleet|
-       total = 0
-       GenericFleet.where(:squad => current_squad, :planet => planet, :destination => fleet.destination).each do |qtd|
+     @all_squads.each do |squad|
+       planet.generic_fleets.where(:squad => squad).each do |qtd|
          total += qtd.quantity * qtd.generic_unit.price
        end
-       @small_fleet = true if total < 200
+       @small_fleet = true if total < 200 and total != 0
+       total = 0
      end
-
    end
 
   end
