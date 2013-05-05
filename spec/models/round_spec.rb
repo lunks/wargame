@@ -18,8 +18,8 @@ describe Round do
       Factory :light_transport, :price => 100
       Factory :warrior, :price => 50
       Factory :warrior, :price => 40
-      Factory :commander, :price => 100
-      Factory :commander, :price => 105
+      Factory :commander, :price => 400
+      Factory :commander, :price => 450
       Factory :capital_ship, :price => 500
       Factory :trooper, :price => 2
       15.times {Factory.create :planet, :credits => 100}
@@ -72,8 +72,8 @@ describe Round do
       Factory :light_transport, :price => 100
       Factory :warrior, :price => 50
       Factory :warrior, :price => 40
-      Factory :commander, :price => 100
-      Factory :commander, :price => 105
+      Factory :commander, :price => 400
+      Factory :commander, :price => 450
       Factory :capital_ship, :price => 500
       Factory :trooper, :price => 2
       15.times {Factory.create :planet, :credits => 100}

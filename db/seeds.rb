@@ -264,14 +264,14 @@ Armament.create(:name => 'Flare', :price => 10 ).factions = all
 Trooper.create(:name => 'Trooper (awards)', :price => 1.3 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
-Commander.create(:name => 'Almirante Ackbar', :price => 105, :description => 'Almirante. Bonus: AI Super Ace'  ).factions = reb
-Commander.create(:name => 'Capitão Dodonna', :price => 100, :description => 'Capitao. Bonus: AI Top Ace'  ).factions = reb
-Commander.create(:name => 'Almirante Piett', :price => 105, :description => 'Almirante. Bonus: AI Super Ace' ).factions = imp
-Commander.create(:name => 'Capitão Needa', :price => 100, :description => 'Capitao. Bonus: AI Top Ace' ).factions = imp
-Commander.create(:name => 'Almirante Trench', :price => 105, :description => 'Almirante. Bonus: AI Super Ace' ).factions = merc
-Commander.create(:name => 'Capitão Canteval', :price => 100, :description => 'Capitao. Bonus: AI Top Ace' ).factions = merc
-Commander.create(:name => 'Almirante Wieler', :price => 105, :description => 'Almirante. Bonus: AI Super Ace' ).factions = mand
-Commander.create(:name => 'Capitão Autem', :price => 100, :description => 'Capitao. Bonus: AI Top Ace' ).factions = mand
+Commander.create(:name => 'Almirante Ackbar', :price => 450, :description => 'Almirante. Bonus: AI SuperAce + CS misseis'  ).factions = reb
+Commander.create(:name => 'Capitão Dodonna', :price => 400, :description => 'Capitao. Bonus: AI TopAce'  ).factions = reb
+Commander.create(:name => 'Almirante Piett', :price => 450, :description => 'Almirante. Bonus: AI SuperAce + CS misseis' ).factions = imp
+Commander.create(:name => 'Capitão Needa', :price => 400, :description => 'Capitao. Bonus: AI TopAce' ).factions = imp
+Commander.create(:name => 'Almirante Trench', :price => 450, :description => 'Almirante. Bonus: AI SuperAce + CS misseis' ).factions = merc
+Commander.create(:name => 'Capitão Canteval', :price => 400, :description => 'Capitao. Bonus: AI TopAce' ).factions = merc
+Commander.create(:name => 'Almirante Wieler', :price => 450, :description => 'Almirante. Bonus: AI SuperAce + CS misseis' ).factions = mand
+Commander.create(:name => 'Capitão Autem', :price => 400, :description => 'Capitao. Bonus: AI TopAce' ).factions = mand
 
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40 ).factions = mand

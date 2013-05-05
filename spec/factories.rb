@@ -59,7 +59,7 @@ Factory.define :warrior, :class => Warrior, :parent => :unit do |f|
 end
 
 Factory.define :commander, :class => Commander, :parent => :unit do |f|
-  f.price 100
+  f.price 400
 end
 
 

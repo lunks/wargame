@@ -10,7 +10,7 @@ module GameHelper
     Factory :warrior, :factions => 'empire'
     Factory :warrior, :factions => 'empire', :price => 40
     Factory :commander, :factions => 'empire'
-    Factory :commander, :factions => 'empire', :price => 105
+    Factory :commander, :factions => 'empire', :price => 450
     Factory :fighter, :factions => 'empire'
     Factory :capital_ship, :factions => 'empire'
     Factory :facility, :factions => 'empire'
