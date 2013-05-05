@@ -167,7 +167,7 @@ Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(6
 Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(6 Bulk Freighter, 1 Star Galleon)' ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(6 Bulk Freighter, 1 Suprosa)' ).factions = all
 
-Fighter.create(:name => 'Z-95', :price => 40, :description => 'Laser:2 Shield: 30 Hull: 10' ).factions = merc_reb
+Fighter.create(:name => 'Z-95', :price => 40, :description => 'L/Ion: 2/0, S/Hull: 30/10' ).factions = merc_reb
 Fighter.create(:name => 'T-Wing', :price => 40, :description => 'Laser:2 Shield: 30 Hull: 20' ).factions = merc_reb
 Fighter.create(:name => 'Y-Wing', :price => 70, :description => 'Laser:2 Ion:2 Shield:80 Hull: 40'  ).factions = reb
 Fighter.create(:name => 'X-Wing', :price => 80, :description => 'Laser:4 Shield:50 Hull:20' ).factions = reb
@@ -264,14 +264,14 @@ Armament.create(:name => 'Flare', :price => 10 ).factions = all
 Trooper.create(:name => 'Trooper (awards)', :price => 1.3 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
-Commander.create(:name => 'Admiral Ackbar', :price => 105, :description => 'Bonus: Super Ace'  ).factions = reb
-Commander.create(:name => 'Captain Dodonna', :price => 100, :description => 'Bonus: Top Ace'  ).factions = reb
-Commander.create(:name => 'Admiral Piett', :price => 105 ).factions = imp
-Commander.create(:name => 'Captain Needa', :price => 100 ).factions = imp
-Commander.create(:name => 'Admiral Trench', :price => 105 ).factions = merc
-Commander.create(:name => 'Captain Canteval', :price => 100 ).factions = merc
-Commander.create(:name => 'Admiral Wieler', :price => 105 ).factions = mand
-Commander.create(:name => 'Captain Autem', :price => 100 ).factions = mand
+Commander.create(:name => 'Almirante Ackbar', :price => 105, :description => 'Almirante. Bonus: AI Super Ace'  ).factions = reb
+Commander.create(:name => 'Capitão Dodonna', :price => 100, :description => 'Capitao. Bonus: AI Top Ace'  ).factions = reb
+Commander.create(:name => 'Almirante Piett', :price => 105, :description => 'Almirante. Bonus: AI Super Ace' ).factions = imp
+Commander.create(:name => 'Capitão Needa', :price => 100, :description => 'Capitao. Bonus: AI Top Ace' ).factions = imp
+Commander.create(:name => 'Almirante Trench', :price => 105, :description => 'Almirante. Bonus: AI Super Ace' ).factions = merc
+Commander.create(:name => 'Capitão Canteval', :price => 100, :description => 'Capitao. Bonus: AI Top Ace' ).factions = merc
+Commander.create(:name => 'Almirante Wieler', :price => 105, :description => 'Almirante. Bonus: AI Super Ace' ).factions = mand
+Commander.create(:name => 'Capitão Autem', :price => 100, :description => 'Capitao. Bonus: AI Top Ace' ).factions = mand
 
 Warrior.create(:name => 'Jango Fett', :price => 50 ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40 ).factions = mand
