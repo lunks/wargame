@@ -1,5 +1,5 @@
 <div class="planet_content">
-
+Log de todas as batalhas do esquadrão:
   <% @rounds.sort_by{|a| a.number}.reverse.each do |round| %>
     <h2> Round: <%= round.number %> </h2>
     <% round.results.group_by(&:planet).each do |planet, fleet| %>

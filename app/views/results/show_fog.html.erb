@@ -1,7 +1,9 @@
 <div class="planet_content">
+<h2> Fog of War </h2>
+Últimas frotas inimigas vistas em:<br>
   <% @planets.each do |planet| %>
     <% unless planet.squad == @squad || planet.ground_squad == @squad %>
-      <h2> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h2>
+      <h3> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h3>
     <% end %>
     <p>
     <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
