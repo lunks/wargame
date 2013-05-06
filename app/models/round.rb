@@ -1,5 +1,8 @@
 class Round < ActiveRecord::Base
+
+  scope :results_seen_by, lambda {|squad| joins(:results).where(:results => {:squad => squad}).group("number")}
   has_many :results
+
   def self.getInstance
     if Round.count == 0
       Round.create(:number => 1, :move => true)

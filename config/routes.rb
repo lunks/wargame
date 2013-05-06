@@ -33,6 +33,7 @@ Rpg::Application.routes.draw do
      resources :results do
        member do
          get :show_results
+         get :show_fog
        end
      end
  

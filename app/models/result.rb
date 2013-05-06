@@ -53,5 +53,16 @@ class Result < ActiveRecord::Base
     end
   end
 
+  def show_results
+    results = ''
+    if self.present?
+      results << self.blasted.to_s+'d ' if self.blasted != nil
+      results << self.fled.to_s+'f ' if self.fled != nil
+      results << self.captured.to_s+'c ' if self.captured != nil
+      results << 'sabot' if self.sabotaged == true
+    end
+    results
+  end
+
 
 end

@@ -19,7 +19,7 @@ class Fleet < GenericFleet
       moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)
       valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip }
     end
-    if self.generic_unit.is_a? (Sensor)
+    if self.generic_unit.is_a?(Sensor)
       moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)
       valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport }
     end

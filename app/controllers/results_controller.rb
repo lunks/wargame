@@ -18,9 +18,16 @@ class ResultsController < ApplicationController
     redirect_to planet_results_path(params[:planet_id])
   end
 
+  def show_fog
+    @squad = current_squad
+    @planets = Planet.fog_seen_by(current_squad) 
+  end
+
   def show_results
     @squad = current_squad
-    @planets = Planet.fog_of_war_seen_by(current_squad) 
+    @rounds = Round.results_seen_by(current_squad)
   end
+
+
 end
 

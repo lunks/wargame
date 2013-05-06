@@ -118,15 +118,16 @@
 
  <a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a>
 
- <a href = "<%= @squad.url %>" target=_blank>Fórum Secreto</a>
-
-<br>
  <%= link_to 'Transferir créditos', transfer_squad_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "360"), :class => "thickbox" unless @squad.ready? %>
 
- <info class="tooltip">
-   <tip style=width:160px>Mostra as últimas frotas enfrentadas (FOG OF WAR)</tip>
- <%= link_to 'Últimos conflitos', show_results_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "365"), :class => "thickbox" %> 
- </info>
+<br>
+
+ <a href = "<%= @squad.url %>" target=_blank>Fórum Secreto</a>
+
+
+ <%= link_to 'Fog of War', show_fog_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "365"), :class => "thickbox" %> 
+
+ <%= link_to 'Log de batalhas', show_results_result_path(@squad, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "365"), :class => "thickbox" %> 
 
  <info class="tooltip">
    <tip style=width:240px>Clique para deixar o esquadrão pronto. Atenção! Não é possível alterar depois.</tip>
