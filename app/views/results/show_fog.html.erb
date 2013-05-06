@@ -2,7 +2,7 @@
 <h2> Fog of War </h2>
 Últimas frotas inimigas vistas em:<br>
   <% @planets.each do |planet| %>
-    <% unless planet.squad == @squad || planet.ground_squad == @squad %>
+    <% unless planet.generic_fleets.any? { |fleet| fleet.squad == @squad } %>
       <h3> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h3>
     <% end %>
     <p>

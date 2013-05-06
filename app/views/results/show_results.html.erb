@@ -2,7 +2,9 @@
 Log de todas as batalhas do esquadrão:
   <% @rounds.sort_by{|a| a.number}.reverse.each do |round| %>
     <h2> Round: <%= round.number %> </h2>
+
     <% round.results.group_by(&:planet).each do |planet, fleet| %>
+      <% if fleet.any? { |unit| unit.squad == @squad } %>
       <h3><%= planet.name %></h3>
       <% fleet.each do |unit| %>
         <span style=color:#<%= unit.squad.color %>>
@@ -11,7 +13,10 @@ Log de todas as batalhas do esquadrão:
         <span style=color:#40E0D0> <%= unit.show_results %> </span>
         <br>
       <% end %>
+      <% end %>
     <% end %>
+
+
   <% end %>
  
 </div>
