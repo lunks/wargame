@@ -83,10 +83,10 @@ class Planet < ActiveRecord::Base
   end
 
   def best_route_for(squad)
-    #TODO ideal seria ir para onde é dono espacial, depois onde é dono terra, depois onde nao tem nenhuma unidade inimiga e depois qualquer um
     routes = self.routes.select { |planet| planet.squad == squad }
     routes = self.routes.select { |planet| planet.ground_squad == squad} if routes.empty?
-    routes = self.routes.select { |planet| planet.squad == nil} if routes.empty? #nenhuma unidade inimiga
+    routes = self.routes.select { |planet| planet.squad == nil && planet.ground_squad == nil} if routes.empty?
+    routes = self.routes.select { |planet| planet.generic_fleets.any? { |unit| unit.squad == squad } } if routes.empty?
     routes = self.routes if routes.empty?
     routes.first
   end

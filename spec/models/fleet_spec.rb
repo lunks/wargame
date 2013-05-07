@@ -32,7 +32,7 @@ describe Fleet do
       end
     end
     
-    context 'cancelling movementes' do
+    context 'cancelling movements' do
       before(:each) do
         Fleet.destroy_all
         @squad = squad

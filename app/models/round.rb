@@ -45,10 +45,8 @@ class Round < ActiveRecord::Base
     end
     Planet.all.each do |planet|
       last_player = planet.squads[rand(planet.squads.count)]
-      #planet.last_player = planet.squads[rand(planet.squads.count)]
       available_squads = planet.squads.reject {|x| x == last_player}
       first_player = available_squads[rand(planet.squads.count - 1)]
-      #planet.first_player
       planet.last_player = last_player
       planet.first_player = first_player
       planet.save 
@@ -70,7 +68,6 @@ class Round < ActiveRecord::Base
       squad.save!
     end
     FacilityFleet.where(:moving => true).each do |facility|
-      #facility.reassembly unless facility.planet.under_attack?
       facility.reassembly unless facility.planet.has_an_enemy?(Facility, facility.squad) or facility.planet.has_an_enemy?(CapitalShip, facility.squad) or facility.planet.has_an_enemy?(Fighter, facility.squad) or facility.planet.has_an_enemy?(LightTransport, facility.squad)
     end
     Tradeport.start
