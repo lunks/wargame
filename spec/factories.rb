@@ -62,6 +62,10 @@ Factory.define :commander, :class => Commander, :parent => :unit do |f|
   f.price 800
 end
 
+Factory.define :sensor, :class => Sensor, :parent => :unit do |f|
+  f.price 1000
+end
+
 
 Factory.define :facility_fleet, :class => FacilityFleet, :parent => :generic_fleet do |f|
   f.facility {|a| a.association(:facility) }
