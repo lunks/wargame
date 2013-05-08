@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe Round do
     
+  it {should have_many :results}
+
   rebel = Factory :squad
   empire = Factory :squad
-
   4.times { Factory :goal }
 
   context 'beginning a new round' do
