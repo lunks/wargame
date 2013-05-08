@@ -37,7 +37,7 @@ describe Round do
       rebel.facility_fleets(true).should_not be_empty
     end
     it 'should place random units on the planets' do
-      rebel.generic_fleets.count.should == 25
+      rebel.generic_fleets.count.should == 28
     end
 
     it 'should set squad ready' do
