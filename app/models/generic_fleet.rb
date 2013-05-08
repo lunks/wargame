@@ -19,7 +19,7 @@ class GenericFleet < ActiveRecord::Base
   def capture! quantity, squad
     FacilityFleet.is_free
     captured_fleet = self.clone
-    captured_fleet.update_attributes(:squad => squad, :quantity => quantity, :type => self.type, :balance => self.balance, :level => self.level, :fleet_name => self.fleet_name)
+    captured_fleet.update_attributes(:squad => squad, :quantity => quantity, :type => self.type, :balance => self.balance, :level => self.level, :fleet_name => ' ')
     captured_fleet.balance = 0 - self.capacity if captured_fleet.is_a? FacilityFleet
     captured_fleet.save
     self.quantity = self.quantity - quantity

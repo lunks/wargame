@@ -22,7 +22,7 @@ class Squad < ActiveRecord::Base
       return false
     end
     debit unit.price
-    new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :fleet_name => self.name)
+    new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :fleet_name => ' ')
     generic_fleets << new_fleet
     save
   end
@@ -57,10 +57,10 @@ class Squad < ActiveRecord::Base
 
   def warp_facility_on planet
     facility_model_small = Facility.allowed_for(faction).first
-    facility = facility_fleets.new(:facility => facility_model_small, :planet => planet, :fleet_name => self.name)
+    facility = facility_fleets.new(:facility => facility_model_small, :planet => planet, :fleet_name => ' ')
     facility.save!
     facility_model_big = Facility.allowed_for(faction).last
-    facility = facility_fleets.new(:facility => facility_model_big, :planet => planet, :fleet_name => self.name)
+    facility = facility_fleets.new(:facility => facility_model_big, :planet => planet, :fleet_name => ' ')
     facility.save!
   end
 
@@ -72,7 +72,7 @@ class Squad < ActiveRecord::Base
         unit_count += 1
         total_value -= random_unit.price
       end
-      fleet = fleets.new(:generic_unit_id => random_unit.id, :planet => planet, :quantity => unit_count, :fleet_name => self.name)
+      fleet = fleets.new(:generic_unit_id => random_unit.id, :planet => planet, :quantity => unit_count, :fleet_name => ' ')
     fleet.save!
   end
 
