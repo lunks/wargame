@@ -55,6 +55,8 @@
   </tr>
   <tr>
     <td>
+      <info class="tooltip">
+        <tip>O penalty de fuga é 20% do valor da frota fugitiva.</tip>
       <span style=font-weight:bold;font-size:13px;color:#FF0000> - fugas: </span>
     </td>
     <td style="background-color:#1C1C1C" align="right">
@@ -129,7 +131,10 @@
 <div class="fleet">
   <%= "ALERTA: Há #{@inactive} slots de fábrica inativos." unless @inactive == 0 %><br>
   <%= "ALERTA: Há capital ships sem nome." unless @no_name == nil %><br>
-  <%= "ALERTA: Há frota de ataque inferior a 200 créditos" if @small_fleet == true %>
+  <info class="tooltip">
+    <tip>Sua frota de ataque é muito pequena.<br>Para evitar partidas sem graça, envie mais unidades.<br>O penalty por descumprir esta regra é de 200 créditos ao adversário.</tip>
+    <%= "ALERTA: Há frota de ataque inferior a 200 créditos" if @small_fleet == true %>
+  </info>
   <% @planets.each do |planet| %>
 
     <h2>
@@ -179,12 +184,21 @@
     <%= link_to ' tradeport ', tradeport_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "270", :width => "360"), :class => "thickbox" if @round.move && planet.tradeport? && !@squad.ready? %></span>
     <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "600"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?  %><p>
     <% if @round.attack && planet.under_attack? && !planet.tradeport? %>
-      Atacante -> <span style=color:#<%= planet.first_player.color %>><%= planet.first_player.name %></span><br>
+      <info class="tooltip">
+        <tip>No XWA, o atacante monta a frota primeiro e usa os slots de cima.<br>No BF2, o atacante escolhe o award primeiro.</tip>
+         Atacante -> <span style=color:#<%= planet.first_player.color %>><%= planet.first_player.name %></span><br>
+      </info>
       <% if planet.squads.count > 2 %>
         <% mid_defense = @all_squads.reject {|x| x == planet.first_player or x == planet.last_player}.first %>
-        Defensor inicial -> <span style=color:#<%= mid_defense.color %>><%=  mid_defense.name %></span><br>
+        <info class="tooltip">
+          <tip>No XWA, o defensor inicial é o host do jogo, usa os slots de baixo e monta a frota por último.<br>No BF2, o defensor inicial é o host do jogo e escolhe o award por último.<br>O defensor inicial joga contra o atacante (em combates 1x1x1).</tip>
+          Defensor inicial -> <span style=color:#<%= mid_defense.color %>><%=  mid_defense.name %></span><br>
+        </info>
       <% end %>
-      Defensor-> <span style=color:#<%= planet.last_player.color %>><%= planet.last_player.name %></span>
+      <info class="tooltip">
+        <tip>No XWA, o defensor é o host do jogo, usa os slots de baixo e monta a frota por último.<br>No BF2, o defensor é o host do jogo e escolhe o award por último.<br>O defensor é o último a jogar (em combates 1x1x1).</tip>
+        Defensor-> <span style=color:#<%= planet.last_player.color %>><%= planet.last_player.name %></span>
+      </info>
     <% end %>
     <% if @round.attack && planet.under_attack? && planet.tradeport? %>
       Zona Neutra
