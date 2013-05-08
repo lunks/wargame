@@ -196,9 +196,9 @@ info.tooltip{
   clear:both;
   display:block;
   position:absolute;
-  top:18px;
+  top:20px;
   left:90px;
-  font-size: 10px;
+  font-size: 9px;
   padding:2px;
   border:0px solid #999;
   background-color: white; 

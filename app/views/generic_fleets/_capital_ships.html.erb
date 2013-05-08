@@ -1,8 +1,9 @@
 <info class="tooltip">
-<tip>CAPITAL SHIP<br>- transporte de tropas, armas, naves<br>- abordagem e captura de fábricas<br>- <%= fleet.generic_unit.description %></tip>
+<tip>CAPITAL SHIP<br>- Transporte de qualquer unidade<br>- Abordagem e captura de fábricas<br>- <%= fleet.generic_unit.description %></tip>
 <%= fleet.quantity %>
 <% if @round.move && fleet.squad == @squad && fleet.fleet_name == ' ' && !@squad.ready? %>
-  <%= fleet.generic_unit.name %> "<%= link_to fleet.fleet_name, edit_generic_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "240", :width => "360"), :class => "thickbox" %>"
+  <%= fleet.generic_unit.name %> "<%= fleet.fleet_name %>"
+  <%= link_to "+", edit_generic_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "240", :width => "360"), :class => "thickbox" %>
 <% else %>
   <%= fleet.generic_unit.name %> "<%= fleet.fleet_name %>"
 <% end %>
