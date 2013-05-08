@@ -53,6 +53,7 @@ Rpg::Application.routes.draw do
    match 'transfer' => 'squads#transfer'
    match 'close_popup' => 'home#close_popup'
    match 'back_to_main' => 'generic_fleets#back_to_main'
+   match 'map' => 'home#map'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

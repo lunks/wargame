@@ -7,5 +7,9 @@ class HomeController < ApplicationController
     #redirect_to "/users/sign_in"
   end
 
+  def map
+  
+  end
+
 
 end
