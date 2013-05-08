@@ -170,12 +170,12 @@ Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(6 
 Sensor.create(:name => 'Comm Relay', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
 Sensor.create(:name => 'Sensor Array', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
 
-Fighter.create(:name => 'Z-95', :price => 40, :description => 'L/Ion: 2/0, S/Hull: 30/10' ).factions = merc_reb
-Fighter.create(:name => 'T-Wing', :price => 40, :description => 'Laser:2 Shield: 30 Hull: 20' ).factions = merc_reb
-Fighter.create(:name => 'Y-Wing', :price => 70, :description => 'Laser:2 Ion:2 Shield:80 Hull: 40'  ).factions = reb
-Fighter.create(:name => 'X-Wing', :price => 80, :description => 'Laser:4 Shield:50 Hull:20' ).factions = reb
-Fighter.create(:name => 'A-Wing', :price => 110, :description => 'Laser:2 Shield:40 Hull:20' ).factions = reb
-Fighter.create(:name => 'B-Wing', :price => 145, :description => 'Laser:3 Ion:2 Shield:100 Hull:40' ).factions = reb
+Fighter.create(:name => 'Z-95', :price => 40 ).factions = merc_reb
+Fighter.create(:name => 'T-Wing', :price => 40 ).factions = merc_reb
+Fighter.create(:name => 'Y-Wing', :price => 70 ).factions = reb
+Fighter.create(:name => 'X-Wing', :price => 80 ).factions = reb
+Fighter.create(:name => 'A-Wing', :price => 110 ).factions = reb
+Fighter.create(:name => 'B-Wing', :price => 145 ).factions = reb
 Fighter.create(:name => 'Droid Fighter*', :hyperdrive => false, :price => 25 ).factions = merc
 #Fighter.create(:name => 'Droid Tri-fighter*', :hyperdrive => false, :price => 35 ).factions = merc
 Fighter.create(:name => 'Pinook Fighter', :price => 35 ).factions = merc
@@ -253,8 +253,8 @@ LightTransport.create(:name => 'Xyitiar Transp', :price => 60 ).factions = merc
 LightTransport.create(:name => 'Star Galleon', :price => 100 ).factions = imp
 LightTransport.create(:name => 'Suprosa', :price => 200 ).factions = all
 
-Armament.create(:name => 'Missile', :price => 5, :description => 'Warhead padrao. Velocidade 220, manobrabilidade media, poder de destruicao 1x ' ).factions = all
-Armament.create(:name => 'Proton Torpedo', :price => 5, :description => 'Ogiva padrao. Velocidade 110, manobrabilidade baixa, poder de destruicao 1,5x ' ).factions = all
+Armament.create(:name => 'Missile', :price => 5, :description => 'Speed:220 Manobr:media Dano:1x' ).factions = all
+Armament.create(:name => 'Proton Torpedo', :price => 5, :description => 'Speed:110 Manobr:baixa Dano:1,5x' ).factions = all
 Armament.create(:name => 'Ion Pulse Torp', :price => 5 ).factions = reb
 Armament.create(:name => 'Adv Missile', :price => 10 ).factions = all
 Armament.create(:name => 'Adv Torpedo', :price => 10 ).factions = all
@@ -264,8 +264,7 @@ Armament.create(:name => 'Space Bomb', :price => 20 ).factions = all
 Armament.create(:name => 'Chaff', :price => 1 ).factions = all
 Armament.create(:name => 'Flare', :price => 15 ).factions = all
 
-Trooper.create(:name => 'Trooper (awards)', :price => 1.3, :description => 'Permite a ativacao de 1 award no BF2' ).factions = all
-Trooper.create(:name => 'Trooper', :price => 1, :description => 'Tropa padrao, nao permite ativar awards' ).factions = all
+Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
 Commander.create(:name => 'Almirante Ackbar', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA'  ).factions = reb
 Commander.create(:name => 'Capitão Dodonna', :price => 800, :description => 'Permite AI Top Ace no XWA'  ).factions = reb
@@ -276,14 +275,14 @@ Commander.create(:name => 'Capitão Canteval', :price => 800, :description => 'P
 Commander.create(:name => 'Almirante Wieler', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = mand
 Commander.create(:name => 'Capitão Autem', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = mand
 
-Warrior.create(:name => 'Jango Fett', :price => 50, :description => 'Dark Jedi. Permite o uso de heroi no BF2' ).factions = mand
-Warrior.create(:name => 'Boba Fett', :price => 40, :description => 'Dark Jedi. Permite o uso de heroi no BF2' ).factions = mand
-Warrior.create(:name => 'Kyle Katarn', :price => 40, :description => 'Jedi Warrior. Permite o uso de heroi no BF2' ).factions = reb
-Warrior.create(:name => 'Luke Skywalker', :price => 50, :description => 'Jedi Warrior. Permite o uso de heroi no BF2' ).factions = reb
-Warrior.create(:name => 'Han Solo', :price => 50, :description => 'Dark Jedi. Permite o uso de heroi no BF2' ).factions = merc
-Warrior.create(:name => 'Chewbacca', :price => 40, :description => 'Dark Jedi. Permite o uso de heroi no BF2' ).factions = merc
-Warrior.create(:name => 'Darth Vader', :price => 40, :description => 'Sith Warrior. Permite o uso de heroi no BF2' ).factions = imp
-Warrior.create(:name => 'Emperor Palpatine', :price => 50, :description => 'Sith Warrior. Permite o uso de heroi no BF2' ).factions = imp
+Warrior.create(:name => 'Jango Fett', :price => 50, :description => 'Dark Jedi.' ).factions = mand
+Warrior.create(:name => 'Boba Fett', :price => 40, :description => 'Dark Jedi.' ).factions = mand
+Warrior.create(:name => 'Kyle Katarn', :price => 40, :description => 'Jedi Warrior.' ).factions = reb
+Warrior.create(:name => 'Luke Skywalker', :price => 50, :description => 'Jedi Warrior.' ).factions = reb
+Warrior.create(:name => 'Han Solo', :price => 50, :description => 'Dark Jedi.' ).factions = merc
+Warrior.create(:name => 'Chewbacca', :price => 40, :description => 'Dark Jedi.' ).factions = merc
+Warrior.create(:name => 'Darth Vader', :price => 40, :description => 'Sith Warrior.' ).factions = imp
+Warrior.create(:name => 'Emperor Palpatine', :price => 50, :description => 'Sith Warrior.' ).factions = imp
 
 Goal.create(:description => 'Destruir o esquadrão vermelho. Se você for o vermelho ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
 Goal.create(:description => 'Destruir o esquadrão amarelo. Se você for o amarelo ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
