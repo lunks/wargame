@@ -167,6 +167,9 @@ Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(6
 Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(6 Bulk Freighter, 1 Star Galleon)' ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(6 Bulk Freighter, 1 Suprosa)' ).factions = all
 
+Sensor.create(:name => 'Comm Relay', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
+Sensor.create(:name => 'Sensor Array', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
+
 Fighter.create(:name => 'Z-95', :price => 40, :description => 'L/Ion: 2/0, S/Hull: 30/10' ).factions = merc_reb
 Fighter.create(:name => 'T-Wing', :price => 40, :description => 'Laser:2 Shield: 30 Hull: 20' ).factions = merc_reb
 Fighter.create(:name => 'Y-Wing', :price => 70, :description => 'Laser:2 Ion:2 Shield:80 Hull: 40'  ).factions = reb

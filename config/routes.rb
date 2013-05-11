@@ -42,6 +42,7 @@ Rpg::Application.routes.draw do
      member do
        put :move
        put :move_facility
+       get :sensor
      end
    end
 

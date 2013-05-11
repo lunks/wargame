@@ -191,6 +191,8 @@
         <%= render :partial => 'light_transports', :locals => { :fleet => fleet } %>
       <% when 'Fighter' %>
         <%= render :partial => 'fighters', :locals => { :fleet => fleet } %>
+      <% when 'Sensor' %>
+        <%= render :partial => 'sensors', :locals => { :fleet => fleet } %>
       <% else %>
         <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>
       <% end %>

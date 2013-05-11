@@ -94,4 +94,12 @@ class GenericFleetsController < ApplicationController
     @fleet.change_fleet_name(params[:fleet][:fleet_name])
     redirect_to :back
   end
+
+  def sensor
+    @fleet = GenericFleet.find(params[:id])
+    @planet = @fleet.planet
+    @routes = @planet.routes
+    @current_squad = current_squad 
+  end
+
 end

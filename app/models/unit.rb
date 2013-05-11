@@ -7,4 +7,5 @@ require 'armament'
 require 'trooper'
 require 'warrior'
 require 'commander'
+require 'sensor'
 
