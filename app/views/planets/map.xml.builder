@@ -25,13 +25,13 @@ xml.planetas do
           if !fleet.moving
             if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander)
               xml.fleet fleet.generic_unit.name
+            elsif fleet.type?(Facility)
+              xml.fleet fleet.generic_unit.description
             else
               xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name
             end
-          elsif fleet.type?(Facility)
-            xml.fleet fleet.generic_unit.description
           else
-            xml.fleet '.'
+            xml.fleet fleet.generic_unit.name + '-->' + fleet.destination.name
           end
           counter +=1
         end

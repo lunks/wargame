@@ -185,6 +185,12 @@
         <%= render :partial => 'commanders', :locals => { :fleet => fleet } %>
       <% when 'Trooper' %>
         <%= render :partial => 'troopers', :locals => { :fleet => fleet } %>
+      <% when 'Armament' %>
+        <%= render :partial => 'armaments', :locals => { :fleet => fleet } %>
+      <% when 'LightTransport' %>
+        <%= render :partial => 'light_transports', :locals => { :fleet => fleet } %>
+      <% when 'Fighter' %>
+        <%= render :partial => 'fighters', :locals => { :fleet => fleet } %>
       <% else %>
         <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>
       <% end %>
