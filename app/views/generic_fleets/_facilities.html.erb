@@ -1,7 +1,7 @@
 <% if fleet.moving? %>
   <info class="tooltip">
     <%= fleet.name %>
-    <tip>FÁBRICA / CENTRO DE TREINAMENTO<br><%= fleet.name %> em missão de transporte.<br>Destruída se todo o comboio for destruído.<br>Só pode ser remontada em planetas sem naves inimigas.</tip>
+    <tip>FÁBRICA / CENTRO DE TREINAMENTO<br><%= fleet.generic_unit.name %> em missão de transporte.<br>Destruída se todo o comboio for destruído.<br>Só pode ser remontada em planetas sem naves inimigas.</tip>
   </info>
 <% else %>
   <info class="tooltip">

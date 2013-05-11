@@ -63,39 +63,50 @@ class Fleet < GenericFleet
   end
 
   def self.create_from_facility unit, quantity, planet, squad
-    fleet = find_or_create_by_generic_unit_id_and_planet_id_and_squad_id(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id, :fleet_name => squad.name)
-    if fleet.quantity
-      fleet.quantity += quantity
+    if unit.type == 'CapitalShip'
+      quantity.times do
+        Fleet.create(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id, :fleet_name => squad.name, :quantity => 1)
+      end
     else
-      fleet.quantity = quantity
-    end
-    fleet.save
-    if Fleet.where(:generic_unit_id => fleet.generic_unit.id).count > 1 && fleet.type?(Warrior)
-       fleet.destroy
-    else
-       fleet.quantity = 10 if fleet.quantity > 10 && unit.is_a?(Warrior)
-       fleet.save
-    end
-    if Fleet.where(:generic_unit_id => fleet.generic_unit.id).count > 1 && fleet.type?(Commander)
-       fleet.destroy
-    else
-       fleet.quantity = 1 if fleet.quantity > 1 && unit.is_a?(Commander)
-       fleet.save
-    end
+      fleet = find_or_create_by_generic_unit_id_and_planet_id_and_squad_id(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id, :fleet_name => squad.name)
+      if fleet.quantity
+        fleet.quantity += quantity
+      else
+        fleet.quantity = quantity
+      end
+      fleet.save
+      if Fleet.where(:generic_unit_id => fleet.generic_unit.id).count > 1 && fleet.type?(Warrior)
+         fleet.destroy
+      else
+         fleet.quantity = 10 if fleet.quantity > 10 && unit.is_a?(Warrior)
+         fleet.save
+      end
+      if Fleet.where(:generic_unit_id => fleet.generic_unit.id).count > 1 && fleet.type?(Commander)
+         fleet.destroy
+      else
+         fleet.quantity = 1 if fleet.quantity > 1 && unit.is_a?(Commander)
+         fleet.save
+      end
+   end
+
+
   end
 
   def group_fleets
-    fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil, :type => 'Fleet', :fleet_name => self.squad.name)
-    total_quantity = 0
-    fleets.each do |fleet|
-      unless fleet == self
-        total_quantity += fleet.quantity
-        fleet.quantity = 0
-        fleet.save
+    unless self.generic_unit.is_a?(CapitalShip) || self.generic_unit.is_a?(Facility)
+      fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil)
+      total_quantity = 0
+      fleets.each do |fleet|
+        unless fleet == self
+          total_quantity += fleet.quantity
+          fleet.quantity = 0
+          fleet.save
+        end
       end
+      self.quantity += total_quantity
+      save
     end
-    self.quantity += total_quantity
-    save
+
   end
 
 end
