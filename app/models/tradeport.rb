@@ -32,13 +32,7 @@ class Tradeport < ActiveRecord::Base
   def sell_unit planet, squad, quantity
     selling_price = self.generic_unit.price * negotiation_rate / 100
     if squad.credits >= selling_price * quantity
-      a = Fleet.where(:generic_unit_id => self.generic_unit.id, :squad => squad, :planet => planet, :moving => nil).first
-      if a.present?
-        a.quantity += quantity
-        a.save
-      else
-        Fleet.create(:generic_unit_id => self.generic_unit.id, :planet_id => planet.id, :squad_id => squad.id, :fleet_name => squad.name, :quantity => quantity, :type => generic_unit.type) 
-      end
+      Fleet.create_from_facility self.generic_unit, quantity, planet, squad
       squad.debit selling_price * quantity
       self.quantity -= quantity
       self.save
