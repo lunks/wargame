@@ -151,21 +151,21 @@ mand = ['mandalorian']
 mand_merc = ['mandalorian','mercenary']
 all = ['empire','rebel','mercenary','mandalorian']
 
-Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio(3 Bulk Freighter, 2 Modular Conv)' ).factions = all
+Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio(3 Bulk Freighter, 2 Cargo Ferry)' ).factions = all
 Facility.create(:name => 'Pirate S.Yard', :price => 1200, :description => 'Comboio(3 Bulk Freighter, 2 Xyitiar Transp)' ).factions = all
-Facility.create(:name => 'Cargo Fac.I', :price => 1500, :description => 'Comboio(3 Bulk Freighter, 2 Mod Action)').factions = all
-Facility.create(:name => 'Cargo Fac.II', :price => 2400, :description => 'Comboio(3 Bulk Freighter, 2 Mod Action)' ).factions = all
+Facility.create(:name => 'Cargo Fac.I', :price => 1500, :description => 'Comboio(3 Bulk Freighter, 2 Cargo Ferry)').factions = all
+Facility.create(:name => 'Cargo Fac.II', :price => 2400, :description => 'Comboio(3 Bulk Freighter, Mod.Conveyor)' ).factions = all
 Facility.create(:name => 'Derilyn Plat', :price => 1800, :description => 'Comboio(3 Bulk Freighter, 2 Xyitiar Transp' ).factions = mand_merc
 Facility.create(:name => 'Family Base', :price => 2100, :description => 'Comboio(3 Bulk Freighter, 2 Xyitiar Transp)' ).factions = merc
-Facility.create(:name => 'Factory', :price => 2400, :description => 'Comboio(3 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(3 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Rebel Plat', :price => 3450, :description => 'Comboio(3 Bulk Freighter, 2 Reb Med Transp)' ).factions = reb
-Facility.create(:name => 'Ast. Hangar', :price => 3000, :description => 'Comboio(3 Bulk Freighter, 2 Xyitiar Transp)' ).factions = mand_merc
-Facility.create(:name => 'Golan I', :price => 3000, :description => 'Comboio(3 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Golan II', :price => 3900, :description => 'Comboio(3 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(3 Bulk Freighter, 1 Suprosa)' ).factions = all
-Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(3 Bulk Freighter, 1 Star Galleon)' ).factions = imp
-Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(3 Bulk Freighter, 1 Suprosa)' ).factions = all
+Facility.create(:name => 'Factory', :price => 2400, :description => 'Comboio(4 Bulk Freighter, 2 Mod.Action)' ).factions = all
+Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(4 Bulk Freighter, 2 Mod. Action)' ).factions = all
+Facility.create(:name => 'Rebel Plat', :price => 3450, :description => 'Comboio(4 Bulk Freighter, 2 Reb Med Transp)' ).factions = reb
+Facility.create(:name => 'Ast. Hangar', :price => 3000, :description => 'Comboio(4 Bulk Freighter, 2 Xyitiar Transp)' ).factions = mand_merc
+Facility.create(:name => 'Golan I', :price => 3000, :description => 'Comboio(4 Bulk Freighter, 2 Mod Action)' ).factions = all
+Facility.create(:name => 'Golan II', :price => 3900, :description => 'Comboio(4 Bulk Freighter, 2 Container Transp)' ).factions = all
+Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
+Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(4 Bulk Freighter, 1 Star Galleon)' ).factions = imp
+Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
 
 Sensor.create(:name => 'Comm Relay', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
 Sensor.create(:name => 'Sensor Array', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
