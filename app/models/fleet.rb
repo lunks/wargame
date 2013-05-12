@@ -68,7 +68,7 @@ class Fleet < GenericFleet
   end
 
   def self.create_from_facility unit, quantity, planet, squad
-    if unit.type == 'CapitalShip'
+    if unit.type == 'CapitalShip' || unit.type == 'Sensor'
       quantity.times do
         Fleet.create(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id, :fleet_name => squad.name, :quantity => 1)
       end
