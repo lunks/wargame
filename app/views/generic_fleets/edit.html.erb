@@ -2,11 +2,11 @@
   <h2><%= @planet %></h2>
   <h3><%= @fleet %> "<%= @fleet.fleet_name %>"</h3>
   <%= simple_form_for @fleet, :url => url_for(:controller => 'generic_fleets', :action => 'update') do |f| %>
-    <%= f.input :fleet_name, :label => 'Nome da nave: ', :input_html => { :size => 12 }, :hint => 'Max. 15 char.' %>
+    <%= f.input :fleet_name, :label => 'Nome da nave: ', :input_html => { :size => 12 } %>
     <%= f.submit 'Salvar' %>
   <% end %><br>
-Atenção: NÃO USE ACENTOS ou caracteres especiais<br>
-O nome é definitivo.
+Atenção: NÃO USE ACENTOS ou caracteres especiais.<br>
+Máximo 15 letras. O nome é definitivo.
   <p>
 </div>
 

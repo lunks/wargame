@@ -1,7 +1,7 @@
 <div class="planet_content">
 <h2> <%= @planet.name %> </h2>
 <%= simple_form_for [@planet, @facility_fleet]  do |f| %>
-  <%= f.association :facility, :collection => @facilities, :label => 'Escolha uma Fábrica: ' %>
+  <%= f.association :facility, :collection => @facilities, :label => 'Selecione a fábrica: ' %>
   <%= f.submit 'Construir' %>
 <% end %>
 <p>

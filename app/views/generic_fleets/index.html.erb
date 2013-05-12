@@ -115,23 +115,23 @@
 
 <a href="http://wgbrnavies.wordpress.com" target=_blank>Blog do WG </a>
 
-<a href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivo <%= @squad.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=600')">Objetivos</a>
+<a href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivo <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=600')">Objetivos</a>
 
-<a href = "" onclick="window.open('https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6', 'Tabela', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=1350, height=760')">Tabela de naves</a>
+<a href = "" onclick="window.open('https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6', 'Tabela', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1350, height=760')">Tabela de naves</a>
 
 <%  unless @squad.ready? %>
-  <a href = "" onclick="window.open('/squads/<%= @squad.id %>/transfer', 'Transf <%= @squad.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=200')">Transf créditos</a>
+  <a href = "" onclick="window.open('/squads/<%= @squad.id %>/transfer', 'Transf <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=200')">Transf créditos</a>
 <% end %>
 
-<a href = "" onclick="window.open('map.html', 'window', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=800, height=600')">Mapa</a>
+<a href = "" onclick="window.open('map.html', 'window', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=800, height=600')">Mapa</a>
 
 <br>
 
  <a href = "<%= @squad.url %>" target=_blank toolbars=no>Fórum Secreto</a>
 
-<a href = "" onclick="window.open('/results/<%= @squad.id %>/show_fog', 'Fog <%= @squad.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=500')">Fog of War</a>
+<a href = "" onclick="window.open('/results/<%= @squad.id %>/show_fog', 'Fog <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=500')">Fog of War</a>
 
-<a href = "" onclick="window.open('/results/<%= @squad.id %>/show_results', 'Log <%= @squad.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=500')">Log de batalhas</a>
+<a href = "" onclick="window.open('/results/<%= @squad.id %>/show_results', 'Log <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=500')">Log de batalhas</a>
 
  <info class="tooltip">
    <tip style=width:240px>Clique para deixar o esquadrão pronto. Atenção! Não é possível alterar depois.</tip>
@@ -212,20 +212,20 @@
     <% end %>
     <p>
    <% if @round.move && !@squad.ready? %>
-<a href = "" onclick="window.open('/planets/<%= planet.id %>/move.html', '<%= planet.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=540')">mover frotas</a>
+<a href = "" onclick="window.open('/planets/<%= planet.id %>/move.html', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=600')">mover frotas</a>
    <% end %>
 </span>
 
    <% if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
-     <a href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Facility <%= planet.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=215')">construir fábrica</a> 
+     <a href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Facility <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=385, height=185')">construir fábrica</a> 
    <% end %>
    
    <% if @round.move && planet.tradeport? && !@squad.ready? %>
-<a href = "" onclick="window.open('/tradeports/<%= planet.id %>', 'Tradeport <%= @squad.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=280')">tradeport</a> 
+<a href = "" onclick="window.open('/tradeports/<%= planet.id %>', 'Tradeport <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=385, height=280')">tradeport</a> 
    <% end %>
       
    <% if @round.attack && planet.under_attack? && !@squad.ready?  %>
-     <a href = "" onclick="window.open('/planets/<%= planet.id %>/results', 'Resultados <%= planet.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=620, height=500')">postar resultados</a>
+     <a href = "" onclick="window.open('/planets/<%= planet.id %>/results', 'Resultados <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=630, height=540')">postar resultados</a>
    <% end %>
 <p>
     <% if @round.attack && planet.under_attack? && !planet.tradeport? %>
