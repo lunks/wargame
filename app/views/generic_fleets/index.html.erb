@@ -1,7 +1,7 @@
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
 <info class="tooltip">
-  <tip style=width:450px>Regras de combate:<br>== XWA ==<br>Host: Defensor<br>AI: Ace<br>Distância: 5km<br>Atacante: slot de cima e monta frota primeiro<br>Defensor: slot de baixo e monta frota por último<br>Fugas: de 2 a 10 minutos. Em qualquer minuto da partida avisar o oponente, ou automático após perder todos os caças. A fuga é cancelada se o fugitivo vencer a batalha durante a fuga.<br>Ataques somente CS/Transp + tropas: foge quem perder a batalha de BF2<br>Overfleet: Se não tiver CS ou Fábrica para guardar, a fuga é obrigatória.<br><br>== BF2 ==<br>Atenção: Pode-se jogar independente do XWA, considerando um desembarque<br> prévio. Desembarque não obrigatório. Se não houver desembarque informe em quais naves as tropas estão.<br>Host: Defensor<br>AI: Elite<br>Bots: 24<br>Friendly Fire: ON<br>Herói: Ativado se houver a presença de guerreiro (mesma quantidade de vidas)<br>Máx: 300 troopers, Min: 100 troopers (utilize fatores de ajuste)<br><br>== JA ==<br>Atenção: jogar sempre antes de BF2 e XWA, pois o resultado influencia<br>Força: basica<br>Mode Duel: Não<br>Picks: Não permitidos<br>Defesa padrão: 1/3 da vida arredondado para baixo nas missoes de sabotagem e assassinato de oficiais.<br>Fuga: somente após perder metade das vidas</tip>
+  <tip style=width:450px>Regras de combate:<br>== XWA ==<br>Host: Defensor<br>AI: Ace<br>Distância: 5km<br>Atacante: slot de cima e monta frota primeiro<br>Defensor: slot de baixo e monta frota por último<br>Fugas: de 2 a 10 minutos. Em qualquer minuto da partida avisar o oponente, ou automático após perder todos os caças. A fuga é cancelada se o fugitivo vencer a batalha durante a fuga.<br>Ataques somente CS/Transp + tropas: foge quem perder a batalha de BF2<br>Overfleet: Se não tiver CS ou Fábrica para guardar, a fuga é obrigatória.<br><br>== BF2 ==<br>Atenção: Pode-se jogar independente do XWA, considerando um desembarque<br> prévio. Desembarque não obrigatório. Se não houver desembarque informe em quais naves as tropas estão.<br>Host: Defensor<br>AI: Elite<br>Bots: 24<br>Friendly Fire: ON<br>Herói: Ativado, opções default. (usar vidas do herói/general do planeta)<br>Máx: 300 troopers, Min: 100 troopers (utilize fatores de ajuste)<br><br>== JA ==<br>Atenção: jogar sempre antes de BF2 e XWA, pois o resultado influencia<br>Duelo obrigatório nas missoes de sabotagem, assassinato e bloqueio de lucros e construções (onde houver troopers).<br>Force Powers: básicos (full power se os jogadores concordarem)<br>Mode Duel: Não<br>Picks: Não permitidos<br>Defesa padrão: 1/3 da vida do atacante, arredondado para baixo<br>Fuga: permitida somente após perder metade das vidas</tip>
   <span style=font-weight:bold;font-size:18px>
   Turno: <%= @round.number %> - <%= @round_phase %></span>
 </info>
@@ -158,7 +158,7 @@
   <% @planets.each do |planet| %>
     <h2>
     <info class="tooltip">
-    <tip>Mapa BF2: <%= planet.description %><br>Regras de combate, passe o mouse no cabeçalho.</tip>
+    <tip>Mapa BF2: <%= planet.description %><br>Regras de combate, passe o mouse no cabeçalho do sistema.</tip>
         <%= planet.name %>
       </info> 
       <info class="tooltip">
