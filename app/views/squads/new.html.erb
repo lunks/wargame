@@ -2,7 +2,7 @@
 
 <table>
 <tr>
-<td>Nome: </td><td>Facção: </td><td>Cor:</td><td>Home Planet:</td>
+<td>Nome: </td><td>Facção: </td><td>Cor:</td><td>Home Planet:</td><td>URL Fórum Secreto (http://...):</td>
 </tr>
 <tr>
 <%= simple_form_for [@squad] do |f| %>
@@ -19,6 +19,9 @@
 <%= f.input :home_planet_id, :collection => @planets.collect {|c| [c.name, c.id]}, :label => false %>
 </td>
 <td>
+<%= f.input :url, :label => false, :input_html => { :size => 40 }, :placeholder => 'http://' %>
+</td>
+<td>
 <%= f.submit ' Criar squad ' %>
 </td>
 </tr>
@@ -29,7 +32,8 @@
 - Preencha Nome do Esquadrão; <br>
 - Escolha a Facção (define as naves que você pode construir);<br>
 - Escolha a cor (tabela abaixo);<br>
-- Escolha o home planet.<br><br>
+- Escolha o home planet;<br>
+- Informe o link para o fórum do esquadrão.<br><br>
 <span style=color:#FF0000>FF0000 - Vermelho</span><br>
 <span style=color:#00FF00>00FF00 - Verde</span><br>
 <span style=color:#FFFF00>FFFF00 - Amarelo</span><br>
