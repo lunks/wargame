@@ -245,8 +245,8 @@ LightTransport.create(:name => 'Stormtrooper Trans.', :price => 55 ).factions = 
 LightTransport.create(:name => 'Assault Shuttle', :price => 175 ).factions = imp
 LightTransport.create(:name => 'System Pat Craft', :price => 250 ).factions = imp
 
-LightTransport.create(:name => 'Bulk Freighter', :price => 50 ).factions = all
-LightTransport.create(:name => 'Rebel Med Transp', :price => 50 ).factions = reb
+LightTransport.create(:name => 'Cargo Ferry', :price => 60 ).factions = all
+LightTransport.create(:name => 'Container Transp', :price => 60 ).factions = all
 LightTransport.create(:name => 'Mod Action Transp', :price => 60 ).factions = all
 LightTransport.create(:name => 'Modular Conveyor', :price => 60 ).factions = all
 LightTransport.create(:name => 'Xyitiar Transp', :price => 60 ).factions = merc
