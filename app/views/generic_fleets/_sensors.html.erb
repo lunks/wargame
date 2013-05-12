@@ -3,7 +3,7 @@
 <span style=font-weight:strong>
   <%= fleet.generic_unit.name %>
   <% if fleet.squad == @squad && !fleet.squad.ready?%>
-   (<a href = "" onclick="window.open('/generic_fleets/<%= fleet.id %>/sensor', 'Sensor <%= fleet %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=400')">detectar</a>)
+   (<a href = "" onclick="window.open('/generic_fleets/<%= fleet.id %>/sensor', 'Sensor <%= fleet.planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=400')">detectar</a>)
 
   <% end %>
 </span>

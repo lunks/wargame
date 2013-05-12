@@ -3,7 +3,7 @@
 <%= fleet.quantity %>
 <% if @round.move && fleet.squad == @squad && fleet.fleet_name == ' ' && !@squad.ready? %>
   <%= fleet.generic_unit.name %> "<%= fleet.fleet_name %>"
-  <a href = "" onclick="window.open('/generic_fleets/<%= fleet.id %>/edit', 'Capital Ship <%= fleet %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=230')">+</a>
+  <a href = "" onclick="window.open('/generic_fleets/<%= fleet.id %>/edit', 'Capital Ship <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=230')">+</a>
 <% else %>
   <%= fleet.generic_unit.name %> "<%= fleet.fleet_name %>"
 <% end %>

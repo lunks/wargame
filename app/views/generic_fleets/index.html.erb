@@ -123,7 +123,7 @@
   <a href = "" onclick="window.open('/squads/<%= @squad.id %>/transfer', 'Transf <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=200')">Transf créditos</a>
 <% end %>
 
-<a href = "" onclick="window.open('map.html', 'window', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=800, height=600')">Mapa</a>
+<a href = "" onclick="window.open('map.html', 'mapa', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=800, height=600')">Mapa</a>
 
 <br>
 
@@ -221,7 +221,7 @@
    <% end %>
    
    <% if @round.move && planet.tradeport? && !@squad.ready? %>
-<a href = "" onclick="window.open('/tradeports/<%= planet.id %>', 'Tradeport <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=385, height=280')">tradeport</a> 
+<a href = "" onclick="window.open('/tradeports/<%= planet.id %>', 'Tradeport <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=385, height=280')">tradeport</a> 
    <% end %>
       
    <% if @round.attack && planet.under_attack? && !@squad.ready?  %>
