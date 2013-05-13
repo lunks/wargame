@@ -83,10 +83,8 @@ class Planet < ActiveRecord::Base
   end
 
   def best_route_for(squad)
-    routes = self.routes.select { |planet| planet.squad == squad }
-    routes = self.routes.select { |planet| planet.ground_squad == squad} if routes.empty?
-    routes = self.routes.select { |planet| planet.squad == nil && planet.ground_squad == nil} if routes.empty?
-    routes = self.routes.select { |planet| planet.generic_fleets.any? { |unit| unit.squad == squad } } if routes.empty?
+    routes = self.routes.select { |planet| planet.generic_fleets.any? { |unit| unit.squad == squad } && planet.squads.count == 1 }
+    routes = self.routes.select { |planet| planet.squad == nil && planet.ground_squad == nil } if routes.empty?
     routes = self.routes if routes.empty?
     routes.first
   end

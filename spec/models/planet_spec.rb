@@ -157,7 +157,7 @@ describe Planet do
     planet.able_to_construct?(squad).should be_true
   end
 
- it 'should verify if planet has a specific enemy type' do
+  it 'should verify if planet has a specific enemy type' do
     squad = Factory :squad
     trooper = Factory :generic_fleet, :generic_unit => Factory(:trooper)
     capital_ship = Factory :generic_fleet, :generic_unit => Factory(:capital_ship)
@@ -166,6 +166,52 @@ describe Planet do
     planet.has_an_enemy?(Fighter, squad).should be_false
     planet.has_an_enemy?(CapitalShip, squad).should be_true
     planet.has_an_enemy?(Trooper, squad).should be_true
+  end
+
+  context 'selecting the best route for a fleeing fleet' do
+    before(:each) do
+      @squad = Factory :squad
+      @enemy_squad = Factory :squad
+      @unit = Factory :fleet, :squad => @squad
+      @allied_unit = Factory :fleet, :squad => @squad
+      @enemy_unit = Factory :fleet, :squad => @enemy_squad
+      @destination1 = Factory(:planet)
+      @destination2 = Factory(:planet)
+      @destination3 = Factory(:planet)
+      @destination1.generic_fleets.destroy_all
+      @destination2.generic_fleets.destroy_all
+      @destination3.generic_fleets.destroy_all
+      planet.generic_fleets.destroy_all
+      Route.destroy_all
+      planet.generic_fleets << @unit
+      route1 = Factory :route, :vector_a => planet, :vector_b => @destination1
+      route2 = Factory :route, :vector_a => planet, :vector_b => @destination2
+      route3 = Factory :route, :vector_a => planet, :vector_b => @destination3
+    end
+
+    it 'should go first to an allied only planet' do
+      @destination2.generic_fleets << @enemy_unit
+      @destination3.generic_fleets << @allied_unit
+      fleeing_fleet = @unit.flee! 1
+      fleeing_fleet.planet.should == @destination3
+    end
+
+    it 'should go second to a neutral planet' do
+      @destination1.squad == @enemy_squad
+      @destination1.save
+      @destination2.ground_squad == @enemy_squad
+      @destination2.save
+      fleeing_fleet = @unit.flee! 1
+      fleeing_fleet.planet.should == @destination3
+    end
+
+    it 'should go last to an enemy planet' do
+      @destination1.generic_fleets << @enemy_unit
+      @destination2.generic_fleets << @enemy_unit
+      @destination3.generic_fleets << @enemy_unit        
+      fleeing_fleet = @unit.flee! 1
+      fleeing_fleet.planet.should == @destination1 || fleeing_fleet.planet.should == @destination2 || fleeing_fleet.planet.should == @destination3  
+    end
   end
 
 end
