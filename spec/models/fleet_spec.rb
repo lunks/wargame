@@ -28,6 +28,13 @@ describe Fleet do
       it 'should have a destination planet when moving' do
         @moving_fleet.destination.should == planet
       end
+      it 'should change display name when moving a sensor' do
+        sensor = Factory(:sensor)
+        sensor_fleet = Factory(:fleet, :generic_unit => sensor)
+        @moving_sensor_fleet = sensor_fleet.move 1, planet
+        @moving_sensor_fleet.name.should_not == sensor_fleet.generic_unit.name
+        @moving_sensor_fleet.name.should == sensor_fleet.generic_unit.description
+      end
     end
     
     context 'cancelling movements' do
@@ -72,10 +79,6 @@ describe Fleet do
         moving_armament = @armament_fleet.move 1, planet
         moving_armament.should_not be_moving
       end
-      it 'should not let sensors move without a capital ship or transport' do
-        moving_sensor = @sensor_fleet.move 1, planet
-        moving_sensor.should_not be_moving
-      end
       it 'should not let commanders move without a capital ship, transport or fighter' do
         moving_commander = @commander_fleet.move 1, planet
         moving_commander.should_not be_moving
@@ -98,10 +101,6 @@ describe Fleet do
           moving_commander = @commander_fleet.move 1, planet
           moving_commander.should be_moving
         end
-        it 'should let sensors move' do
-          moving_sensor = @sensor_fleet.move 1, planet
-          moving_sensor.should be_moving
-        end
       end
 
       context 'moving with light transports' do
@@ -120,10 +119,6 @@ describe Fleet do
         it 'should let commanders move' do
           moving_commander = @commander_fleet.move 1, planet
           moving_commander.should be_moving
-        end
-        it 'should let sensors move' do
-          moving_sensor = @sensor_fleet.move 1, planet
-          moving_sensor.should be_moving
         end
       end
 

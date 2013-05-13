@@ -1,10 +1,17 @@
-<info class="tooltip">
-<tip>DETECTOR<br>- Detecta unidades inimigas de grande porte nas proximidades<br>- <%= fleet.generic_unit.description %></tip>
-<span style=font-weight:strong>
-  <%= fleet.generic_unit.name %>
-  <% if fleet.squad == @squad && !fleet.squad.ready?%>
-   (<a href = "" onclick="window.open('/generic_fleets/<%= fleet.id %>/sensor', 'Sensor <%= fleet.planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=400')">detectar</a>)
+<% if fleet.moving? %>
+  <info class="tooltip">
+    <%= fleet.name %>
+    <tip>DETECTOR <br><%= fleet.generic_unit.name %> em missão de transporte.<br>Destruída se todo o comboio for destruído<br>Só pode ser remontada em planetas sem unidades inimigas</tip>
+  </info>
+<% else %>
+  <info class="tooltip">
+  <tip>DETECTOR<br>- Detecta unidades inimigas de grande porte nas proximidades<br>- <%= fleet.generic_unit.description %></tip>
+  <span style=font-weight:strong>
+    <%= fleet.name %>
+    <% if fleet.squad == @squad && !fleet.squad.ready? && !fleet.moving? %>
+     (<a href = "" onclick="window.open('/generic_fleets/<%= fleet.id %>/sensor', 'Sensor <%= fleet.planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=400')">detectar</a>)
 
-  <% end %>
-</span>
-</info>
+    <% end %>
+  </span>
+  </info>
+<% end %>

@@ -65,7 +65,6 @@ describe FacilityFleet do
         @moving_fleet.name.should_not == facility_fleet.facility.name
         @moving_fleet.name.should == facility_fleet.facility.description
       end
-
     end
 
     context 'finishing movement' do
