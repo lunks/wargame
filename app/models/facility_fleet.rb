@@ -47,10 +47,11 @@ class FacilityFleet < GenericFleet
   end
 
   def reassembly
-    update_attributes(:moving => nil, :destination_id => nil )
+    update_attributes(:balance => 0, :level => 0, :moving => nil, :destination_id => nil )
   end
 
   def produce!
+    return if self.moving? || self.planet.tradeport
     self.balance += default_capacity
     secondary_balance = secondary_capacity.to_f
     if producing_unit2.present?
@@ -156,8 +157,6 @@ private
 
   def default_values
     self.quantity = 1
-    self.balance = 0
-    self.level = 0
   end
 
 end

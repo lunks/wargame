@@ -35,23 +35,21 @@ describe Fleet do
     context 'cancelling movements' do
       before(:each) do
         Fleet.destroy_all
-        @squad = squad
-        @planet = planet
-        unit.planet = @planet
-        unit.squad = @squad
+        unit.planet = planet
+        unit.squad = squad
         unit.save
-        @moving_fleet = unit.move 1, @planet
-        @capital_ship_fleet = Factory :fleet, :generic_unit => capital_ship, :planet => @planet, :squad => @squad
+        @moving_fleet = unit.move 1, planet
+        @capital_ship_fleet = Factory :fleet, :generic_unit => capital_ship, :planet => planet, :squad => squad
       end
       it 'should cancel movements when move to nil planet' do
-        moving_capital_ship = @capital_ship_fleet.move 1, @planet
+        moving_capital_ship = @capital_ship_fleet.move 1, planet
         moving_capital_ship.should be_moving
         Fleet.where(:moving => true).should_not be_empty 
         Fleet.last.move 1, nil
         Fleet.where(:moving => true).should be_empty 
       end
       it 'should cancel movements to a planet when change one' do
-        moving_capital_ship = @capital_ship_fleet.move 1, @planet
+        moving_capital_ship = @capital_ship_fleet.move 1, planet
         moving_capital_ship.should be_moving
         Fleet.where(:moving => true).count.should == 2
         Fleet.last.move 1, planet

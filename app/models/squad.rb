@@ -57,10 +57,10 @@ class Squad < ActiveRecord::Base
 
   def warp_facility_on planet
     facility_model_small = Facility.allowed_for(faction).first
-    facility = facility_fleets.new(:facility => facility_model_small, :planet => planet, :fleet_name => ' ')
+    facility = facility_fleets.new(:facility => facility_model_small, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ')
     facility.save!
     facility_model_big = Facility.allowed_for(faction).last
-    facility = facility_fleets.new(:facility => facility_model_big, :planet => planet, :fleet_name => ' ')
+    facility = facility_fleets.new(:facility => facility_model_big, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ')
     facility.save!
   end
 

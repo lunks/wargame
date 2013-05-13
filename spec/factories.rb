@@ -69,6 +69,8 @@ end
 
 Factory.define :facility_fleet, :class => FacilityFleet, :parent => :generic_fleet do |f|
   f.facility {|a| a.association(:facility) }
+  f.balance 0
+  f.level 0
 end
 
 Factory.define :rebels, :parent => :squad do |f|

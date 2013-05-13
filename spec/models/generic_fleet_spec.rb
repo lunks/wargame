@@ -104,6 +104,14 @@ describe GenericFleet do
         capacity = captured_facility.generic_unit.price / 3
         captured_facility.balance.should == (capacity - capacity * 2).to_i
       end
+      it 'should reset secondary producing unit when captured' do
+        facility_unit.balance = 1000
+        facility_unit.producing_unit2 = trooper
+        facility_unit.save
+        facility_unit.capture! 1,squad
+        captured_facility = squad.generic_fleets.first
+        captured_facility.producing_unit2.should be_nil
+      end
     end
 
   end
