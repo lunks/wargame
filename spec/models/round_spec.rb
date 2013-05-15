@@ -69,7 +69,15 @@ describe Round do
       FacilityFleet.where(:sabotaged => true).count.should == 0
     end
     it 'should unflag sabotaged sensor when passing moving phase' do
-      #TODO
+      test_sensor = Fleet.last
+      test_sensor.generic_unit = Factory(:sensor)
+      test_sensor.save
+      test_sensor.sabotage!
+      test_sensor.sabotaged.should be_true
+      rebel.ready!
+      empire.ready!
+      @round.end_moving!
+      Fleet.where(:sabotaged => true).count.should == 0
     end
 
     it 'should not reassembly facility in enemy planet' do
@@ -86,7 +94,19 @@ describe Round do
       facility_fleet.moving.should_not be_true
     end
     it 'should not reassembly sensor in enemy planet' do
-      #TODO
+#TODO verificar este e o outro teste
+      sensor_fleet = Fleet.where(:squad => Squad.last).first
+      sensor_fleet.generic_unit = Factory(:sensor)
+      sensor_fleet.moving = true
+      sensor_fleet.planet = Planet.where(:squad => Squad.first).first
+      sensor_fleet.save
+      @round.end_round!
+      sensor_fleet.moving.should be_true
+      sensor_fleet = Fleet.where(:squad => Squad.last).first
+      sensor_fleet.planet = Planet.where(:squad => Squad.last).first
+      sensor_fleet.save
+      @round.end_round!
+      sensor_fleet.moving.should_not be_true
     end
 
   end

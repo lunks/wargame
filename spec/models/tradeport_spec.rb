@@ -26,7 +26,7 @@ describe Tradeport do
       Tradeport.first.show_negotiation_rate
     end
 
-    it 'should change negotiation rate of units in stock between 40 and 70' do
+    it 'should change negotiation rate of units in stock between 51 and 90' do
       squad = Factory(:squad, :credits => 1000)
       unit = Factory(:generic_unit, :price => 500)
       fleet = Factory(:generic_fleet, :squad => squad, :generic_unit => unit, :quantity => 1)    
@@ -35,7 +35,7 @@ describe Tradeport do
       stock_item.negotiation_rate.should == 50
       Tradeport.start
       stock_item = Tradeport.where(:generic_unit => unit).first
-      stock_item.negotiation_rate.should_not == 50
+      stock_item.negotiation_rate.should_not < 50
     end
 
   end
