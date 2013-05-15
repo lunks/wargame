@@ -47,8 +47,12 @@ class Fleet < GenericFleet
   end
 
   def move!
-    update_attributes(:planet => destination, :destination => nil, :moving => nil)
+    update_attributes(:planet => destination, :destination => nil, :moving => nil) unless self.type?(Sensor)
     group_fleets
+  end
+
+  def reassembly
+    update_attributes(:moving => nil, :destination_id => nil )
   end
 
   def flee! quantity
@@ -91,7 +95,7 @@ class Fleet < GenericFleet
   end
 
   def group_fleets
-    unless self.generic_unit.is_a?(CapitalShip) || self.generic_unit.is_a?(Facility)
+    unless self.generic_unit.is_a?(CapitalShip) || self.generic_unit.is_a?(Facility)|| self.generic_unit.is_a?(Sensor)
       fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil)
       total_quantity = 0
       fleets.each do |fleet|

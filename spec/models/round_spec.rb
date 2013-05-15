@@ -68,6 +68,9 @@ describe Round do
       @round.end_moving!
       FacilityFleet.where(:sabotaged => true).count.should == 0
     end
+    it 'should unflag sabotaged sensor when passing moving phase' do
+      #TODO
+    end
 
     it 'should not reassembly facility in enemy planet' do
       facility_fleet = FacilityFleet.where(:squad => Squad.last).first
@@ -82,7 +85,9 @@ describe Round do
       @round.end_round!
       facility_fleet.moving.should_not be_true
     end
-
+    it 'should not reassembly sensor in enemy planet' do
+      #TODO
+    end
 
   end
 end

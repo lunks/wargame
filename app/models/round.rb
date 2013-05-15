@@ -39,7 +39,7 @@ class Round < ActiveRecord::Base
 
   def end_moving!
     Squad.update_all(:ready => nil)
-    FacilityFleet.update_all(:sabotaged => nil)
+    GenericFleet.update_all(:sabotaged => nil)
     self.move_fleets
     self.update_attributes(:move => nil, :attack => true)
     GenericFleet.all.each do |fleet|
@@ -71,6 +71,9 @@ class Round < ActiveRecord::Base
     end
     FacilityFleet.where(:moving => true).each do |facility|
       facility.reassembly unless facility.planet.has_an_enemy?(Facility, facility.squad) || facility.planet.has_an_enemy?(CapitalShip, facility.squad) || facility.planet.has_an_enemy?(Fighter, facility.squad) || facility.planet.has_an_enemy?(LightTransport, facility.squad)
+    end
+    Fleet.where(:moving => true).each do |fleet|
+      fleet.reassembly unless (fleet.planet.has_an_enemy?(Facility, fleet.squad) || fleet.planet.has_an_enemy?(CapitalShip, fleet.squad) || fleet.planet.has_an_enemy?(Fighter, fleet.squad) || fleet.planet.has_an_enemy?(LightTransport, fleet.squad)) && !fleet.type?(Sensor)
     end
     Tradeport.start
     set_map

@@ -156,12 +156,14 @@ describe Fleet do
         @moving_quantity = @moving_fleet.quantity
         @moving_fleet.move!
       end
-
       it 'should effect moving orders' do
         @moving_fleet.should_not be_moving
         @moving_fleet.planet.should == planet
       end
-
+      it 'should be unflagged as a moving unit' do
+        @moving_fleet.reassembly
+        @moving_fleet.should_not be_moving
+      end
       it 'should group fleets on the destination planet after moving has finished' do
         planet.generic_fleets.where(:generic_unit => unit.generic_unit).should have(1).fleet
         @moving_fleet.quantity.should == (@merging_fleet.quantity + @moving_quantity)
