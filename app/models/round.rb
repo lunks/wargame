@@ -73,7 +73,7 @@ class Round < ActiveRecord::Base
       facility.reassembly unless facility.planet.has_an_enemy?(Facility, facility.squad) || facility.planet.has_an_enemy?(CapitalShip, facility.squad) || facility.planet.has_an_enemy?(Fighter, facility.squad) || facility.planet.has_an_enemy?(LightTransport, facility.squad)
     end
     Fleet.where(:moving => true).each do |fleet|
-      fleet.reassembly unless (fleet.planet.has_an_enemy?(Facility, fleet.squad) || fleet.planet.has_an_enemy?(CapitalShip, fleet.squad) || fleet.planet.has_an_enemy?(Fighter, fleet.squad) || fleet.planet.has_an_enemy?(LightTransport, fleet.squad)) && !fleet.type?(Sensor)
+      fleet.reassembly unless fleet.planet.has_an_enemy?(Facility, fleet.squad) || fleet.planet.has_an_enemy?(CapitalShip, fleet.squad) || fleet.planet.has_an_enemy?(Fighter, fleet.squad) || fleet.planet.has_an_enemy?(LightTransport, fleet.squad)
     end
     Tradeport.start
     set_map

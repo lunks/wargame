@@ -8,7 +8,7 @@
     <%= fleet.name %>
     <tip>FÁBRICA / CENTRO DE TREINAMENTO<br>Nível: <%= fleet.level %><br>Produtividade: <%= fleet.default_capacity %> / <%= fleet.secondary_capacity %>  <%= ' (sabotada em 50%) ' if fleet.sabotaged? %><br>- Construção de unidades e treinamento de guerreiros e oficiais<br>- Se movimentada transforma-se em <%= fleet.generic_unit.description %><br>- O movimento reseta toda a produção e aprimoramentos</tip>
   </info>
-  <%= ' *50%*' if fleet.sabotaged? %>
+  <%= ' *bloqueio' if fleet.sabotaged? %>
    ( 
      <% if fleet.producing_unit.present? %>
          <%= fleet.producing_unit_display %>

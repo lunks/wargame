@@ -8,9 +8,9 @@
   <tip>DETECTOR<br>- Detecta unidades inimigas de grande porte nas proximidades<br>- <%= fleet.generic_unit.description %></tip>
   <span style=font-weight:strong>
     <%= fleet.name %>
-    <% unless fleet.squad != @squad || fleet.squad.ready? || fleet.moving? || fleet.sabotaged? %>
+    <%= " (sabotada) " if fleet.sabotaged? %>
+    <% unless fleet.squad != @squad || fleet.squad.ready? || fleet.moving? || fleet.sabotaged? || @round.attack %>
      (<a href = "" onclick="window.open('/generic_fleets/<%= fleet.id %>/sensor', 'Sensor <%= fleet.planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=400')">detectar</a>)
-
     <% end %>
   </span>
   </info>

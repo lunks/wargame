@@ -47,7 +47,11 @@ class Fleet < GenericFleet
   end
 
   def move!
-    update_attributes(:planet => destination, :destination => nil, :moving => nil) unless self.type?(Sensor)
+    unless self.type?(Sensor)
+      update_attributes(:planet => destination, :destination => nil, :moving => nil)
+    else
+      update_attributes(:planet => destination) 
+    end
     group_fleets
   end
 

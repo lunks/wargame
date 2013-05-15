@@ -26,8 +26,8 @@ xml.planetas do
               
               xml.corfleet fleet.squad.color
               
-              if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander)
-                xml.fleet fleet.generic_unit.name
+              if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander) or fleet.type?(Sensor)
+                xml.fleet fleet.name
               else
                 xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name
               end
@@ -36,10 +36,10 @@ xml.planetas do
               
               xml.corfleet '00FFFF'
              
-              if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander)
-                xml.fleet fleet.generic_unit.name + '->' + fleet.destination.name
+              if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander) or fleet.type?(Sensor)
+                xml.fleet fleet.name + '->' + fleet.destination.name
               else
-                xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name + '->' + fleet.destination.name
+                xml.fleet fleet.quantity.to_s + ' ' + fleet.name + '->' + fleet.destination.name
               end
 
             end
