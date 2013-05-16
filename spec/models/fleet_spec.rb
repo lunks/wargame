@@ -16,11 +16,11 @@ describe Fleet do
 
   context 'moving' do
     before(:each) do
-      unit.squad = squad
-      unit.save
-      @moving_fleet = unit.move 1, planet
-      @planet = planet
       @squad = squad
+      @planet = planet
+      unit.squad = @squad
+      unit.save
+      @moving_fleet = unit.move 1, @planet
     end
 
     context 'setting to move' do
@@ -34,18 +34,28 @@ describe Fleet do
     
     context 'cancelling movementes' do
       before(:each) do
+        Fleet.destroy_all
+        @squad = squad
+        @planet = planet
+        unit.planet = @planet
+        unit.squad = @squad
+        unit.save
+        @moving_fleet = unit.move 1, @planet
         @capital_ship_fleet = Factory :fleet, :generic_unit => capital_ship, :planet => @planet, :squad => @squad
-        @fighter_fleet = Factory :fleet, :generic_unit => fighter, :planet => @planet, :squad => @squad
-
       end
-      it 'should cancel movements when move to none planet' do
-        moving_capital_ship = @capital_ship_fleet.move 1, planet
+      it 'should cancel movements when move to nil planet' do
+        moving_capital_ship = @capital_ship_fleet.move 1, @planet
         moving_capital_ship.should be_moving
-        moving_fighter = @fighter_fleet.move 1, planet
-        moving_fighter.should be_moving
         Fleet.where(:moving => true).should_not be_empty 
-        #moving_capital_ship = Fleet.last.move 1, nil
-        #Fleet.where(:moving => true).should be_empty 
+        Fleet.last.move 1, nil
+        Fleet.where(:moving => true).should be_empty 
+      end
+      it 'should cancel movements to a planet when change one' do
+        moving_capital_ship = @capital_ship_fleet.move 1, @planet
+        moving_capital_ship.should be_moving
+        Fleet.where(:moving => true).count.should == 2
+        Fleet.last.move 1, planet
+        Fleet.where(:moving => true).count.should == 1
       end
     end
 

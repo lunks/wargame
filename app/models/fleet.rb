@@ -56,12 +56,8 @@ class Fleet < GenericFleet
   end
 
   def flee! quantity
-    routes = planet.routes.select { |planet| planet.squad == self.squad }
-    routes = planet.routes.select { |planet| planet.ground_squad == self.squad} if routes.empty?
-    routes = planet.routes.select { |planet| planet.squad == nil} if routes.empty?
-    routes = planet.routes if routes.empty?
     fleeing_fleet = self.clone
-    fleeing_fleet.update_attributes(:quantity => quantity, :moving => true, :destination => routes.first)
+    fleeing_fleet.update_attributes(:quantity => quantity, :moving => true, :destination => planet.best_route_for(squad) )
     self.quantity -= quantity
     save
     fleeing_fleet.move!

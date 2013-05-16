@@ -32,12 +32,8 @@ class FacilityFleet < GenericFleet
   end
 
   def flee! quantity
-    routes = planet.routes.select { |planet| planet.squad == self.squad }
-    routes = planet.routes.select { |planet| planet.ground_squad == self.squad} if routes.empty?
-    routes = planet.routes.select { |planet| planet.squad == nil} if routes.empty?
-    routes = planet.routes if routes.empty?
     fleeing_facility = FacilityFleet.new self.attributes
-    fleeing_facility.destination = routes.first
+    fleeing_facility.destination = planet.best_route_for(squad)
     fleeing_facility.moving = true
     fleeing_facility.save!
     self.quantity = 0
