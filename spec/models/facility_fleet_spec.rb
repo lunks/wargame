@@ -74,7 +74,50 @@ describe FacilityFleet do
         @moving_fleet.should_not be_moving
       end
     end
+  end
 
+  context 'related to fleeing fleet' do
+    let(:unit) {Factory :facility_fleet, :squad => squad}
+    before(:each) do
+      @origin = Factory(:planet)
+      @destination = Factory(:planet)
+      unit.planet = @origin
+      @route1 = Factory :route, :vector_a => @origin, :vector_b => @destination
+    end
+
+    it 'should go to an adjacent planet' do
+      fleeing_fleet = unit.flee! 1
+      fleeing_fleet.planet.should_not == @origin
+      fleeing_fleet.planet.should == @destination
+    end
+
+    it 'should go first to an allied adjacent planet' do
+      @allied_destination = Factory(:planet)
+      @allied_destination.squad = squad
+      @allied_destination.save
+      @route2 = Factory :route, :vector_a => @origin, :vector_b => @allied_destination
+      fleeing_fleet = unit.flee! 1
+      fleeing_fleet.planet.should == @allied_destination
+    end
+
+    it 'should go second to an neutral adjacent planet' do
+      @enemy_destination = Factory(:planet)
+      @enemy_destination.squad = Factory(:squad)
+      @enemy_destination.save
+      @route2 = Factory :route, :vector_a => @origin, :vector_b => @enemy_destination
+      fleeing_fleet = unit.flee! 1
+      fleeing_fleet.planet.should_not == @enemy_destination
+    end
+
+    it 'should go last to an enemy planet' do
+      @enemy_destination = Factory(:planet)
+      @enemy_destination.squad = Factory(:squad)
+      @enemy_destination.save
+      @route2 = Factory :route, :vector_a => @origin, :vector_b => @enemy_destination
+      fleeing_fleet = unit.flee! 1
+      fleeing_fleet.planet.should == @destination
+      fleeing_fleet.planet.should_not == @enemy_destination    
+    end
   end
     
 

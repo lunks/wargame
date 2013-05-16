@@ -88,15 +88,6 @@ class Planet < ActiveRecord::Base
     routes = self.routes.select { |planet| planet.squad == nil} if routes.empty?
     routes = self.routes if routes.empty?
     routes.first
-
-
-
-  #  best_routes = routes.reject {|planet| planet.squad != squad}
-   # unless best_routes.empty?
-    #  best_routes
-   # else
-    #  routes
-   # end
   end
 
   def squads
