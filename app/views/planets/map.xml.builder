@@ -31,7 +31,7 @@ xml.planetas do
               xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name
             end
           else
-            xml.fleet fleet.generic_unit.name + '-->' + fleet.destination.name
+            xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name + '->' + fleet.destination.name
           end
           counter +=1
         end
