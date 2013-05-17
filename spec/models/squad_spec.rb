@@ -3,8 +3,11 @@ require 'spec_helper'
 describe Squad do
   let(:squad) {Factory :squad}
   it {should belong_to :goal}
+  it {should belong_to :home_planet}
   it {should have_many :planets}
   it {should have_many :generic_fleets}
+  it {should have_many :facility_fleets}
+  it {should have_many :fleets}
   context 'buying and selling facilities' do
     let(:facility) {Factory :facility, :price => 1000}
     let(:planet) {Factory :planet}

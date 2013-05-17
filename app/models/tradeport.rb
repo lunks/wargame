@@ -9,8 +9,8 @@ class Tradeport < ActiveRecord::Base
 
   def self.start
     2.times do
-      random_unit = Unit.where("price > ?", 105)[rand(Unit.where("price > ?", 105).count - 1)]
       Squad.all.each do |squad|
+        random_unit = Unit.where("price > ?", 105).reject! { |unit| unit.is_a? Commander }[rand(Unit.where("price > ?", 105).reject! { |unit| unit.is_a? Commander }.count)]
         if random_unit.price >= 1000
           Tradeport.create(:generic_unit_id => random_unit.id, :squad_id => squad.id, :quantity => 1, :negotiation_rate => 50)
         else

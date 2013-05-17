@@ -20,7 +20,7 @@ class SquadsController < ApplicationController
 
   def transfer
     @squad = current_squad
-    @squads = Squad.all
+    @squads = Squad.all.reject! { |squad| squad == @squad }
   end
 
   def transfer_credits

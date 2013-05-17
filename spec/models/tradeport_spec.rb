@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Tradeport do
   it {should belong_to :generic_unit}
+  it {should belong_to :squad}
 
   let(:tradeport) {Factory :tradeport}
 
@@ -9,10 +10,11 @@ describe Tradeport do
     before do
       3.times {Factory.create :capital_ship}
       3.times {Factory.create :armament}
+      3.times {Factory.create :commander}
       Tradeport.start
     end
 
-    it 'should has a negotiation rate' do
+    it 'should have a negotiation rate' do
       Tradeport.first.negotiation_rate.should_not be_nil
     end
 

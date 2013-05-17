@@ -46,14 +46,14 @@ describe Round do
     end
 
     it 'should change phases when all squads ready' do
-      rebel.ready!
-      empire.ready!
-      @round.end_moving!
-      #rebel.ready.should be_nil
-      #TODO problemas neste teste. Na prática funciona.
-      rebel.ready!
-      empire.ready!
-      @round.end_round!
+      #simula o @round.end_moving!
+      Squad.where(:id => rebel.id).first.ready!
+      Squad.where(:id => empire.id).first.ready!
+      Round.getInstance.attack.should be_true
+      Squad.where(:id => rebel.id).first.ready.should be_nil
+      #simula o @round.end_round!
+      Squad.where(:id => rebel.id).first.ready!
+      Squad.where(:id => empire.id).first.ready!
       Round.getInstance.number.should == 2
       Round.getInstance.move.should be_true
     end
@@ -63,7 +63,7 @@ describe Round do
     end
     
     it 'should unflag sabotaged facilities when passing moving phase' do
-      #TODO outro teste podre tive que fazer tudo de novo
+      #TODO outro teste podre tive que fazer tudo de novo só pra um teste simples...
       @round = Round.getInstance
       rebel.planets.clear
       rebel.facility_fleets.clear

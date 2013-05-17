@@ -5,7 +5,10 @@ describe Planet do
 
   it {should belong_to :squad}
   it {should have_many :generic_fleets}
+  it {should have_many :results}
   it {should belong_to :ground_squad}
+  it {should belong_to :first_player}
+  it {should belong_to :last_player}
 
   context '.seen_by squad' do
     before do
@@ -152,6 +155,17 @@ describe Planet do
     planet.able_to_construct?(squad).should_not be_true
     planet.generic_fleets << trooper
     planet.able_to_construct?(squad).should be_true
+  end
+
+ it 'should verify if planet has a specific enemy type' do
+    squad = Factory :squad
+    trooper = Factory :generic_fleet, :generic_unit => Factory(:trooper)
+    capital_ship = Factory :generic_fleet, :generic_unit => Factory(:capital_ship)
+    planet.generic_fleets << capital_ship
+    planet.generic_fleets << trooper
+    planet.has_an_enemy?(Fighter, squad).should be_false
+    planet.has_an_enemy?(CapitalShip, squad).should be_true
+    planet.has_an_enemy?(Trooper, squad).should be_true
   end
 
 end
