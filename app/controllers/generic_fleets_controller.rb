@@ -29,6 +29,7 @@ class GenericFleetsController < ApplicationController
     @transports = 0
     @warriors = 0
     @commanders = 0
+    @sensors = 0
     GenericFleet.where(:squad => @squad).each do |fleet|
       @capital_ships += fleet.quantity if fleet.type?(CapitalShip)
       @facilities += fleet.quantity if fleet.type?(Facility)
@@ -37,6 +38,7 @@ class GenericFleetsController < ApplicationController
       @transports += fleet.quantity if fleet.type?(LightTransport)
       @warriors += 1 if fleet.type?(Warrior)
       @commanders += 1 if fleet.type?(Commander)
+      @sensors += 1 if fleet.type?(Sensor)
     end
     @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @squad, :producing_unit2_id => nil).count
 

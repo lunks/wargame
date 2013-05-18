@@ -7,7 +7,7 @@
 </info>
  <a href = "/fleets">Refresh</a>
 <br>
-<table border="0" width="320">
+<table border="0" width="420">
   <tr>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:yellow> Disponível: </span> 
@@ -15,7 +15,7 @@
     <td style="background-color:#1C1C1C" align=right>
       <span style=font-weight:bold;font-size:13px;color:yellow> <%= @squad.credits %></span>
     </td>
-    <td width="10">   
+    <td width="5">   
    
     </td>
     <td style="background-color:#1C1C1C">
@@ -23,6 +23,15 @@
     </td>
     <td style="background-color:#1C1C1C" align=right>
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @facilities %> </span>
+    </td>
+    <td width="5">   
+   
+    </td>
+    <td style="background-color:#1C1C1C">
+      <span style=font-weight:bold;font-size:13px;color:#00FF00>Oficiais: </span>
+    </td>
+    <td style="background-color:#1C1C1C" align=right>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @commanders %> </span>
     </td>
   </tr>
   <tr>
@@ -41,12 +50,21 @@
     <td align="right">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @capital_ships %> </span>
     </td>
+    <td>
+
+    </td>
+    <td>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> Guerreiros: </span>
+    </td>
+    <td align=right>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @warriors %> </span>
+    </td>
   </tr>
   <tr>
     <td style="background-color:#1C1C1C">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> + dom.terrestre:</span>
     </td>
-    <td align="right">
+    <td style="background-color:#1C1C1C" align="right">
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @ground_income %> </span>
     </td>
     <td>
@@ -58,6 +76,15 @@
     <td style="background-color:#1C1C1C" align=right>
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @fighters %> </span>
     </td>
+    <td>
+
+    </td>
+    <td style="background-color:#1C1C1C">
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> Troopers: </span>
+    </td>
+    <td style="background-color:#1C1C1C" align=right>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @troopers %> </span>
+    </td>
   </tr>
   <tr>
     <td>
@@ -65,7 +92,7 @@
         <tip>O penalty de fuga é 20% do valor da frota fugitiva.</tip>
       <span style=font-weight:bold;font-size:13px;color:#FF0000> - fugas: </span>
     </td>
-    <td style="background-color:#1C1C1C" align="right">
+    <td align="right">
       <span style=font-weight:bold;font-size:13px;color:#FF0000><%= @flee_tax %> </span>
     </td>
     <td>
@@ -76,6 +103,9 @@
     </td>
     <td align=right>
       <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @transports %> </span>
+    </td>
+    <td>
+     
     </td>
   </tr>
   <tr>
@@ -89,26 +119,29 @@
     
     </td>
     <td style="background-color:#1C1C1C">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> Troopers: </span>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> Detectores: </span>
     </td>
     <td style="background-color:#1C1C1C" align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @troopers %> </span>
+      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @sensors %> </span>
+    </td>
+    <td>
+
     </td>
   </tr>
   <tr>
     <td>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00>Comandantes: </span>
+
     </td>
     <td align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @commanders %> </span>
+
     </td>
     <td>
     </td>
     <td>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> Guerreiros: </span>
+
     </td>
     <td align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @warriors %> </span>
+
     </td>
   </tr>
 </table>
@@ -155,10 +188,7 @@
       ALERTA: Há alguma frota inferior a 200 créditos<br>
     <% end %>
   </info>
-  <info class="tooltip">
-    <tip>Verifique sempre se a contagem de naves abatidas, fugidas ou capturadas corresponde aos resultados.</tip>
     <%= "ALERTA: Revise os resultados de todos os combates." if @round.attack? %>
-  </info>
 
   <% @planets.each do |planet| %>
     <h2>
