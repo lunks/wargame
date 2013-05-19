@@ -140,20 +140,16 @@ h2 {
 }
 
 h3 {
-    background: -moz-linear-gradient(left center , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    background: -ms-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    background: -o-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    background: -webkit-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    background: linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
-    border-bottom-left-radius: 4px;
-    border-left: 8px solid #5E707D;
-    border-top-left-radius: 4px;
-    color: white;
-    font-family: 'Open Sans',sans-serif;
-    font-size: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    text-shadow: 0 0 3px black, 0 0 3px black;
+   background: -moz-linear-gradient(left center , #5E707D 10%, rgba(10, 10, 10, 0.1)) repeat scroll 0 0 transparent;
+   border-bottom-left-radius: 4px;
+   border-left: 8px solid #5E707D;
+   border-top-left-radius: 4px;
+   color: white;
+   font-family: 'Open Sans',sans-serif;
+   font-size: 12px;
+   padding-bottom: 2px;
+   padding-top: 2px;
+   text-shadow: 0 0 3px black, 0 0 3px black;
 }
 
 div.map
