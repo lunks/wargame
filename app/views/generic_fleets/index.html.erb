@@ -146,7 +146,6 @@
 
 <div class="fleet">
   <%= "ALERTA: Há #{@inactive} slots de fábrica inativos." unless @inactive == 0 %><br>
-  <%= "ALERTA: Há capital ships sem nome." unless @no_name == nil %><br>
   <info class="tooltip">
     <tip>Para evitar partidas sem graça, o mínimo é uma frota composta por 200 créditos.<br>O penalty por descumprir esta regra é de 200 créditos ao adversário.</tip>
     <% if @small_fleet == true %>
