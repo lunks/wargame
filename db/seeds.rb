@@ -1,4 +1,3 @@
-#alderaan_asteroids = Planet.create(:name => 'Alderaan Asteroids', :credits => 400 )
 bespin = Planet.create(:name => 'Bespin', :credits => 400, :description => 'Bespin:Platform' )
 brr_station = Planet.create(:name => 'BrR Station', :credits => 0, :tradeport => true, :description => 'Zona Neutra' )
 cimf_station = Planet.create(:name => 'CIMF Station', :credits => 0, :tradeport => true, :description => 'Zona Neutra' )
@@ -6,16 +5,12 @@ concord_dawn = Planet.create(:name => 'Concord Dawn', :credits => 400, :descript
 corellia = Planet.create(:name => 'Corellia', :credits => 400, :description => 'Naboo Plains' )
 coruscant = Planet.create(:name => 'Coruscant', :credits => 400, :description => 'Coruscant' )
 dagobah = Planet.create(:name => 'Dagobah', :credits => 400, :description => 'Dagobah' )
-#dantooine = Planet.create(:name => 'Dantooine', :credits => 400 )
-#deadalis_minefields = Planet.create(:name => 'Deadalis Minefields', :credits => 400 )
 deathstar = Planet.create(:name => 'Death Star', :credits => 400, :description => 'Deathstar' )
 endor = Planet.create(:name => 'Endor', :credits => 400, :description => 'Endor / Kashyyyk' )
 felucia = Planet.create(:name => 'Felucia', :credits => 400, :description => 'Felucia' )
 geonosis = Planet.create(:name => 'Geonosis', :credits => 400, :description => 'Geonosis / Concord Dawn' )
 haruun_kal = Planet.create(:name => 'Haruun Kal', :credits => 400, :description => 'Haruun Kal' )
 hoth = Planet.create(:name => 'Hoth', :credits => 400, :description => 'Hoth / RhenVar Harbor' )
-#hutt_space = Planet.create(:name => 'Hutts Minefields', :credits => 400 )
-#ilum = Planet.create(:name => 'Ilum', :credits => 400 )
 kamino = Planet.create(:name => 'Kamino', :credits => 400, :description => 'Kamino' )
 kashyyyk = Planet.create(:name => 'Kashyyyk', :credits => 400, :description => 'Kashyyyk' )
 kessel_asteroids = Planet.create(:name => 'Kessel Asteroids', :credits => 400, :description => 'Polis Massa' )
@@ -31,115 +26,81 @@ polis_massa = Planet.create(:name => 'Polis Massa', :credits => 400, :descriptio
 rattatak = Planet.create(:name => 'Rattatak', :credits => 400, :description => 'Rattatak' )
 res_station = Planet.create(:name => 'RES Station', :credits => 0, :tradeport => true, :description => 'Zona Neutra' )
 rhen_var = Planet.create(:name => 'Rhen Var', :credits => 400, :description => 'Rhen Var Citadel' )
-#silken_asteroids = Planet.create(:name => 'Silken Asteroids', :credits => 400 )
 tatooine = Planet.create(:name => 'Tatooine', :credits => 400, :description => 'Mos Eisley' )
 utapau = Planet.create(:name => 'Utapau', :credits => 400, :description => 'Utapau' )
-#vergesso_asteroids = Planet.create(:name => 'Vergesso Asteroids', :credits => 400 )
 yavin = Planet.create(:name => 'Yavin', :credits => 400, :description => 'Yavin 4' )
-#wormholeI = Planet.create(:name => 'Wormhole I', :credits => 0 )
-#wormholeII = Planet.create(:name => 'Wormhole II', :credits => 0 )
 
 Route.create(:vector_a => mygeeto, :vector_b => yavin, :distance => 1)
 Route.create(:vector_a => mygeeto, :vector_b => deathstar, :distance => 1)
 Route.create(:vector_a => mygeeto, :vector_b => coruscant, :distance => 1)
-
 Route.create(:vector_a => yavin, :vector_b => rhen_var, :distance => 1)
 Route.create(:vector_a => yavin, :vector_b => deathstar, :distance => 1)
 Route.create(:vector_a => yavin, :vector_b => concord_dawn, :distance => 1)
-
 Route.create(:vector_a => rhen_var, :vector_b => felucia, :distance => 1)
 Route.create(:vector_a => rhen_var, :vector_b => concord_dawn, :distance => 1)
-
 Route.create(:vector_a => deathstar, :vector_b => coruscant, :distance => 1)
-
 Route.create(:vector_a => coruscant, :vector_b => mandalore, :distance => 1)
-
 Route.create(:vector_a => coruscant, :vector_b => bespin, :distance => 1)
-
 Route.create(:vector_a => corellia, :vector_b => concord_dawn, :distance => 1)
 Route.create(:vector_a => corellia, :vector_b => kuat, :distance => 1)
-
 Route.create(:vector_a => mandalore, :vector_b => corellia, :distance => 1)
 Route.create(:vector_a => mandalore, :vector_b => deathstar, :distance => 1)
-
 Route.create(:vector_a => concord_dawn, :vector_b => felucia, :distance => 1)
 Route.create(:vector_a => concord_dawn, :vector_b => kessel_asteroids, :distance => 1)
 Route.create(:vector_a => concord_dawn, :vector_b => deathstar, :distance => 1)
-
 Route.create(:vector_a => felucia, :vector_b => mon_calamari, :distance => 1)
 Route.create(:vector_a => felucia, :vector_b => kashyyyk, :distance => 1)
 Route.create(:vector_a => felucia, :vector_b => kessel_asteroids, :distance => 1)
-
 Route.create(:vector_a => mon_calamari, :vector_b => res_station, :distance => 1)
 Route.create(:vector_a => mon_calamari, :vector_b => kashyyyk, :distance => 1)
-
 Route.create(:vector_a => endor, :vector_b => bespin, :distance => 1)
 Route.create(:vector_a => endor, :vector_b => hoth, :distance => 1)
-
 Route.create(:vector_a => endor, :vector_b => rattatak, :distance => 1)
 Route.create(:vector_a => endor, :vector_b => ord_ibanna, :distance => 1)
 Route.create(:vector_a => endor, :vector_b => polis_massa, :distance => 1)
-
+Route.create(:vector_a => rattatak, :vector_b => polis_massa, :distance => 1)
 Route.create(:vector_a => bespin, :vector_b => rattatak, :distance => 1)
 Route.create(:vector_a => bespin, :vector_b => mandalore, :distance => 1)
 Route.create(:vector_a => bespin, :vector_b => hoth, :distance => 1)
-
 Route.create(:vector_a => corellia, :vector_b => deathstar, :distance => 1)
 Route.create(:vector_a => corellia, :vector_b => haruun_kal, :distance => 1)
-
 Route.create(:vector_a => kuat, :vector_b => kessel_asteroids, :distance => 1)
-
 Route.create(:vector_a => kessel_asteroids, :vector_b => kashyyyk, :distance => 1)
 Route.create(:vector_a => kessel_asteroids, :vector_b => nal_hutta, :distance => 1)
 Route.create(:vector_a => kessel_asteroids, :vector_b => corellia, :distance => 1)
-
 Route.create(:vector_a => kashyyyk, :vector_b => res_station, :distance => 1)
 Route.create(:vector_a => kashyyyk, :vector_b => kamino, :distance => 1)
 Route.create(:vector_a => kashyyyk, :vector_b => nal_hutta, :distance => 1)
-
 Route.create(:vector_a => cimf_station, :vector_b => rattatak, :distance => 1)
 Route.create(:vector_a => cimf_station, :vector_b => coruscant, :distance => 1)
 Route.create(:vector_a => cimf_station, :vector_b => bespin, :distance => 1)
-
 Route.create(:vector_a => hoth, :vector_b => haruun_kal, :distance => 1)
 Route.create(:vector_a => hoth, :vector_b => ord_ibanna, :distance => 1)
 Route.create(:vector_a => hoth, :vector_b => mandalore, :distance => 1)
 Route.create(:vector_a => hoth, :vector_b => naboo, :distance => 1)
-
 Route.create(:vector_a => haruun_kal, :vector_b => naboo, :distance => 1)
 Route.create(:vector_a => haruun_kal, :vector_b => mandalore, :distance => 1)
 Route.create(:vector_a => haruun_kal, :vector_b => geonosis, :distance => 1)
 Route.create(:vector_a => haruun_kal, :vector_b => kuat, :distance => 1)
-
 Route.create(:vector_a => kuat, :vector_b => nal_hutta, :distance => 1)
 Route.create(:vector_a => kuat, :vector_b => tatooine, :distance => 1)
 Route.create(:vector_a => kuat, :vector_b => geonosis, :distance => 1)
-
 Route.create(:vector_a => nal_hutta, :vector_b => kamino, :distance => 1)
 Route.create(:vector_a => nal_hutta, :vector_b => tatooine, :distance => 1)
-
 Route.create(:vector_a => res_station, :vector_b => kamino, :distance => 1)
-
 Route.create(:vector_a => mustafar, :vector_b => endor, :distance => 1)
-Route.create(:vector_a => mustafar, :vector_b => rattatak, :distance => 1)
 Route.create(:vector_a => mustafar, :vector_b => polis_massa, :distance => 1)
-
+Route.create(:vector_a => mustafar, :vector_b => ord_ibanna, :distance => 1)
 Route.create(:vector_a => ord_ibanna, :vector_b => naboo, :distance => 1)
 Route.create(:vector_a => ord_ibanna, :vector_b => dagobah, :distance => 1)
-Route.create(:vector_a => ord_ibanna, :vector_b => polis_massa, :distance => 1)
-
 Route.create(:vector_a => naboo, :vector_b => geonosis, :distance => 1)
 Route.create(:vector_a => naboo, :vector_b => utapau, :distance => 1)
 Route.create(:vector_a => naboo, :vector_b => dagobah, :distance => 1)
-
 Route.create(:vector_a => geonosis, :vector_b => tatooine, :distance => 1)
 Route.create(:vector_a => geonosis, :vector_b => brr_station, :distance => 1)
 Route.create(:vector_a => geonosis, :vector_b => utapau, :distance => 1)
-
 Route.create(:vector_a => dagobah, :vector_b => utapau, :distance => 1)
-
 Route.create(:vector_a => utapau, :vector_b => brr_station, :distance => 1)
-
 Route.create(:vector_a => brr_station, :vector_b => tatooine, :distance => 1)
 
 imp = ['empire']
@@ -167,8 +128,7 @@ Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(4
 Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(4 Bulk Freighter, 1 Star Galleon)' ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
 
-Sensor.create(:name => 'Comm Relay', :price => 1000, :description => 'Comboio(2 Cargo Ferry' ).factions = all
-Sensor.create(:name => 'Sensor Array', :price => 1000, :description => 'Comboio(2 Container Transp' ).factions = all
+Sensor.create(:name => 'Sensor Array', :price => 1000, :description => 'Comboio(1 Bulk Freighter, 2 Container Transp)' ).factions = all
 
 Fighter.create(:name => 'Z-95', :price => 40 ).factions = merc_reb
 Fighter.create(:name => 'T-Wing', :price => 40 ).factions = merc_reb
@@ -176,8 +136,7 @@ Fighter.create(:name => 'Y-Wing', :price => 70 ).factions = reb
 Fighter.create(:name => 'X-Wing', :price => 80 ).factions = reb
 Fighter.create(:name => 'A-Wing', :price => 110 ).factions = reb
 Fighter.create(:name => 'B-Wing', :price => 145 ).factions = reb
-Fighter.create(:name => 'Droid Fighter*', :hyperdrive => false, :price => 25 ).factions = merc
-#Fighter.create(:name => 'Droid Tri-fighter*', :hyperdrive => false, :price => 35 ).factions = merc
+Fighter.create(:name => 'Droid Fighter*', :hyperdrive => false, :price => 25, :description => 'sem hiperdrive' ).factions = merc
 Fighter.create(:name => 'Pinook Fighter', :price => 35 ).factions = merc
 Fighter.create(:name => 'Preybird Fighter', :price => 50 ).factions = merc
 Fighter.create(:name => 'Clockshape Fighter', :price => 55 ).factions = merc
@@ -185,16 +144,16 @@ Fighter.create(:name => 'Planetary Fighter', :price => 55 ).factions = merc
 Fighter.create(:name => 'R-41 Starchaser', :price => 65 ).factions = merc
 Fighter.create(:name => 'Razor Fighter', :price => 70 ).factions = merc
 Fighter.create(:name => 'Skipray Blastboat', :price => 105 ).factions = merc
-Fighter.create(:name => 'V-Wing*', :hyperdrive => false, :price => 30 ).factions = mand
+Fighter.create(:name => 'V-Wing*', :hyperdrive => false, :price => 30, :description => 'sem hiperdrive' ).factions = mand
 Fighter.create(:name => 'ARC-170', :price => 80 ).factions = mand
 Fighter.create(:name => 'Pursuer', :price => 80 ).factions = mand
 Fighter.create(:name => 'Firespray', :price => 95 ).factions = mand
 Fighter.create(:name => 'Supa Fighter', :price => 70 ).factions = mand
 Fighter.create(:name => 'Star Viper', :price => 95 ).factions = mand
-Fighter.create(:name => 'Tie Fighter*', :hyperdrive => false, :price => 20 ).factions = imp
-Fighter.create(:name => 'Tie Bomber*', :hyperdrive => false, :price => 25 ).factions = imp
-Fighter.create(:name => 'Tie Interceptor*', :hyperdrive => false, :price => 30 ).factions = imp
-Fighter.create(:name => 'Authority IRD*', :hyperdrive => false, :price => 45 ).factions = imp
+Fighter.create(:name => 'Tie Fighter*', :hyperdrive => false, :price => 20, :description => 'sem hiperdrive' ).factions = imp
+Fighter.create(:name => 'Tie Bomber*', :hyperdrive => false, :price => 25, :description => 'sem hiperdrive' ).factions = imp
+Fighter.create(:name => 'Tie Interceptor*', :hyperdrive => false, :price => 30, :description => 'sem hiperdrive' ).factions = imp
+Fighter.create(:name => 'Authority IRD*', :hyperdrive => false, :price => 45, :description => 'sem hiperdrive' ).factions = imp
 Fighter.create(:name => 'Toscan Fighter', :price => 90 ).factions = imp
 Fighter.create(:name => 'Tie Avenger', :price => 110 ).factions = imp
 Fighter.create(:name => 'Assault Gunboat', :price => 120 ).factions = imp
@@ -202,37 +161,37 @@ Fighter.create(:name => 'Tie Phantom', :price => 145 ).factions = imp
 Fighter.create(:name => 'Missile Boat', :price => 225 ).factions = imp
 Fighter.create(:name => 'Tie Defender', :price => 320 ).factions = imp
 
-CapitalShip.create(:name => 'Corellian Gunship', :price => 320, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Corellian Corvette', :price => 320, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Mod Corvette', :price => 350, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Nebulon B Frigate', :price => 400, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Mod Nebulon Frigate', :price => 560, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Carrack Cruiser', :price => 400, :description => 'Permite +1 nave simultanea no XWA' ).factions = imp
-CapitalShip.create(:name => 'Lancer Frigate', :price => 450, :description => 'Permite +1 nave simultanea no XWA' ).factions = imp
-CapitalShip.create(:name => 'Marauder Corvette', :price => 650, :description => 'Permite +1 nave simultanea no XWA' ).factions = mand_merc
-CapitalShip.create(:name => 'Dreadnaught', :price => 1000, :description => 'Permite +2 naves simultaneas no XWA' ).factions = all
-CapitalShip.create(:name => 'Escort Carrier', :price => 720, :description => 'Permite +2 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 750, :description => 'Permite +2 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Bulk Cruiser', :price => 800, :description => 'Permite +2 naves simultaneas no XWA' ).factions = merc
-CapitalShip.create(:name => 'Strike Cruiser', :price => 1150, :description => 'Permite +2 naves simultaneas no XWA' ).factions = imp_reb
-CapitalShip.create(:name => 'Assault Frigate', :price => 1350, :description => 'Permite +2 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Munificent Frigate', :price => 1450, :description => 'Permite +3 naves simultaneas no XWA' ).factions = merc
-CapitalShip.create(:name => 'Acclamator Ass Ship', :price => 1450, :description => 'Permite +3 naves simultaneas no XWA' ).factions = mand
-CapitalShip.create(:name => 'Victory SD', :price => 1500, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Venator SD', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = mand
-CapitalShip.create(:name => 'Providence Destroyer', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = merc
-CapitalShip.create(:name => 'ReefHome Cal.Cruiser', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Liberty Cal.Cruiser', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Victory SD II', :price => 1700, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Liberator Cruiser', :price => 1750, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Interdictor', :price => 2500, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Dauntless Cruiser', :price => 1950, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Imperial SD', :price => 2000, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Dom Interdictor', :price => 2800, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Imperial SD II', :price => 2250, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400, :description => 'Permite +4 naves simultaneas no XWA' ).factions = mand_merc
-CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750, :description => 'Permite +4 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700, :description => 'Permite +4 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Corellian Gunship', :price => 320, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Corellian Corvette', :price => 320, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Mod Corvette', :price => 350, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Nebulon B Frigate', :price => 400, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Mod Nebulon Frigate', :price => 560, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Carrack Cruiser', :price => 400, :description => 'Bonus +1 nave simultanea no XWA' ).factions = imp
+CapitalShip.create(:name => 'Lancer Frigate', :price => 450, :description => 'Bonus +1 nave simultanea no XWA' ).factions = imp
+CapitalShip.create(:name => 'Marauder Corvette', :price => 650, :description => 'Bonus +1 nave simultanea no XWA' ).factions = mand_merc
+CapitalShip.create(:name => 'Dreadnaught', :price => 1000, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = all
+CapitalShip.create(:name => 'Escort Carrier', :price => 720, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 750, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Bulk Cruiser', :price => 800, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = merc
+CapitalShip.create(:name => 'Strike Cruiser', :price => 1150, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = imp_reb
+CapitalShip.create(:name => 'Assault Frigate', :price => 1350, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Munificent Frigate', :price => 1450, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = merc
+CapitalShip.create(:name => 'Acclamator Ass Ship', :price => 1450, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = mand
+CapitalShip.create(:name => 'Victory SD', :price => 1500, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Venator SD', :price => 1600, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = mand
+CapitalShip.create(:name => 'Providence Destroyer', :price => 1600, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = merc
+CapitalShip.create(:name => 'ReefHome Cal.Cruiser', :price => 1600, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Liberty Cal.Cruiser', :price => 1600, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Victory SD II', :price => 1700, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Liberator Cruiser', :price => 1750, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Interdictor', :price => 2500, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Dauntless Cruiser', :price => 1950, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Imperial SD', :price => 2000, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Dom Interdictor', :price => 2800, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Imperial SD II', :price => 2250, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400, :description => 'Bonus +4 naves simultaneas no XWA' ).factions = mand_merc
+CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750, :description => 'Bonus +4 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700, :description => 'Bonus +4 naves simultaneas no XWA' ).factions = imp
 
 LightTransport.create(:name => 'YT-1300', :price => 110 ).factions = merc
 LightTransport.create(:name => 'YT-2000', :price => 320 ).factions = merc
@@ -266,14 +225,14 @@ Armament.create(:name => 'Flare', :price => 15 ).factions = all
 
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
-Commander.create(:name => 'Almirante Ackbar', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA'  ).factions = reb
-Commander.create(:name => 'Capitao Dodonna', :price => 800, :description => 'Permite AI Top Ace no XWA'  ).factions = reb
-Commander.create(:name => 'Almirante Piett', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = imp
-Commander.create(:name => 'Capitao Needa', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = imp
-Commander.create(:name => 'Almirante Trench', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = merc
-Commander.create(:name => 'Capitao Canteval', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = merc
-Commander.create(:name => 'Almirante Wieler', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = mand
-Commander.create(:name => 'Capitao Autem', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = mand
+Commander.create(:name => 'Almirante Ackbar', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA'  ).factions = reb
+Commander.create(:name => 'Capitao Dodonna', :price => 800, :description => 'Bonus AI Top Ace no XWA'  ).factions = reb
+Commander.create(:name => 'Almirante Piett', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA' ).factions = imp
+Commander.create(:name => 'Capitao Needa', :price => 800, :description => 'Bonus AI Top Ace no XWA' ).factions = imp
+Commander.create(:name => 'Almirante Trench', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA' ).factions = merc
+Commander.create(:name => 'Capitao Canteval', :price => 800, :description => 'Bonus AI Top Ace no XWA' ).factions = merc
+Commander.create(:name => 'Almirante Wieler', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA' ).factions = mand
+Commander.create(:name => 'Capitao Autem', :price => 800, :description => 'Bonus AI Top Ace no XWA' ).factions = mand
 
 Warrior.create(:name => 'Jango Fett', :price => 50, :description => 'Dark Jedi' ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40, :description => 'Dark Jedi' ).factions = mand
