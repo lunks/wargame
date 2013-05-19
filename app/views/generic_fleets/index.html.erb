@@ -212,10 +212,13 @@
 <a href = "" onclick="window.open('/planets/<%= planet.id %>/move.html', '<%= planet.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=540')">mover frotas</a>
    <% end %>
 </span>
-    <%= link_to ' construir fábrica ', new_planet_facility_fleet_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "200", :width => "360"), :class => "thickbox" if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
+
+   <% if @round.move && planet.able_to_construct?(@squad) && !@squad.ready? %>
+     <a href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Facility <%= planet.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=215')">construir fábrica</a> 
+   <% end %>
    
    <% if @round.move && planet.tradeport? && !@squad.ready? %>
-<a href = "" onclick="window.open('http://localhost:3000/tradeports/<%= planet.id %>', 'Tradeport <%= @squad.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=280')">tradeport</a> </span>
+<a href = "" onclick="window.open('/tradeports/<%= planet.id %>', 'Tradeport <%= @squad.name %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=280')">tradeport</a> 
    <% end %>
       
     <%= link_to ' postar resultados ', planet_results_path(planet, :KeepThis => "true", :TB_iframe => "true", :height => "500", :width => "600"), :class => "thickbox" if @round.attack && planet.under_attack? && !@squad.ready?  %>
