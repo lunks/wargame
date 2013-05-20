@@ -1,3 +1,4 @@
+<div class="planet_content">
 <h2> <%= @fleet.generic_unit.name %> de <%= @planet.name %> <%= ' (wormhole) ' if @planet.wormhole? %><%= ' (tradeport)' if @planet.tradeport? %></h2>
 Alerta Amarelo! Foram detectadas frotas inimigas em:<br>
 <% @routes.sort_by{|a| [a.name]}.each do |planet| %>
@@ -12,3 +13,4 @@ Alerta Amarelo! Foram detectadas frotas inimigas em:<br>
    <% end %>
 
 <% end %>
+</div>

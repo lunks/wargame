@@ -3,7 +3,8 @@
 <span style=font-weight:strong>
   <%= fleet.generic_unit.name %>
   <% if fleet.squad == @squad && !fleet.squad.ready?%>
-    (<%= link_to 'detectar', sensor_generic_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "400", :width => "360"), :class => "thickbox" %>)
+   (<a href = "" onclick="window.open('/generic_fleets/<%= fleet.id %>/sensor', 'Sensor <%= fleet %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=400')">detectar</a>)
+
   <% end %>
 </span>
 </info>

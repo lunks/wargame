@@ -23,7 +23,10 @@
         <%= 'inativa' %>
       <% end %>
   )
-  <%= link_to "+", edit_facility_fleet_path(fleet, :KeepThis => "true", :TB_iframe => "true", :height => "530", :width => "360"), :class => "thickbox" if @round.move && fleet.squad == @squad && !fleet.squad.ready? %>
+  <% if @round.move && fleet.squad == @squad && !fleet.squad.ready? %>
+   <a href = "" onclick="window.open('/facility_fleets/<%= fleet.id %>/edit', 'Facility <%= fleet %>', 'toolbar=no, location=no, scroolbars=yes, resizable=yes, width=385, height=525')">+</a>
+  <% end %>
+
 
 <% end %>
 
