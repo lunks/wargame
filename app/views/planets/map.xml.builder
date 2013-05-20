@@ -18,46 +18,51 @@ xml.planetas do
         xml.terra planet.description
         xml.corterra ' '
       end
-      has_fleet = planet.generic_fleets
-      if !has_fleet.empty?
+      has_fleet = planet.generic_fleets.select { |fleet| fleet.squad == @current_squad }
+      unless has_fleet.empty?
         planet.generic_fleets.each_with_index do |fleet, index|       
-          if fleet.squad == @current_squad
-            unless fleet.moving
+            
+            unless fleet.moving && fleet.squad == @current_squad
+              
               xml.corfleet fleet.squad.color
+              
               if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander)
                 xml.fleet fleet.generic_unit.name
               else
                 xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name
               end
+
             else
+              
               xml.corfleet '00FFFF'
+             
               if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander)
                 xml.fleet fleet.generic_unit.name + '->' + fleet.destination.name
               else
                 xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name + '->' + fleet.destination.name
               end
+
             end
+
             counter +=1
-          else
-            xml.corfleet fleet.squad.color
-            if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander)
-              xml.fleet fleet.generic_unit.name
-            else
-              xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name
-            end
-          end
         end
+
         if counter < 18
+
           (18 - counter).times do
             xml.corfleet '.'
             xml.fleet '.'
           end
+
         end  
+
       else
+        
          18.times do
            xml.corfleet '.'
            xml.fleet '.'
          end
+
       end
 
     end

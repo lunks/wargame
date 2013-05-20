@@ -24,8 +24,8 @@ class PlanetsController < ApplicationController
 
   def map
     @current_squad = current_squad
-    @all_planets = Planet.includes(:squad).all
-    @planets = Planet.seen_by(current_squad)
+    @planets = Planet.includes(:squad).all
+    #@planets = Planet.seen_by(current_squad)
     respond_with @planets
   end
 
