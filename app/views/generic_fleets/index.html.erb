@@ -5,6 +5,7 @@
   <span style=font-weight:bold;font-size:18px>
   Turno: <%= @round.number %> - <%= @round_phase %></span>
 </info>
+ <a href = "/fleets">Refresh</a>
 <br>
 <table border="0" width="320">
   <tr>
@@ -136,8 +137,6 @@
    <tip style=width:240px>Clique para deixar o esquadrão pronto. Atenção! Não é possível alterar depois.</tip>
  <%= link_to "Finalizar #{@round_phase}", ready_path(:KeepThis => "true", :TB_iframe => "true", :height => "50", :width => "360"), :class => "thickbox" unless @squad.ready? %>
  </info>
-
- <a href = "/fleets">Refresh</a>
 
 <br>
 
