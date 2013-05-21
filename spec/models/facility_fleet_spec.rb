@@ -193,7 +193,36 @@ describe FacilityFleet do
       warrior_fleet = Fleet.where(:generic_unit => warrior)
       warrior_fleet.first.quantity.should == 10
     end
-
   end
+
+  context 'Training Commanders' do
+  let (:commander) {Factory :commander}
+    before(:each) do
+      facility.price = 3000
+      facility_fleet.producing_unit = commander
+      facility_fleet.planet = Factory :planet
+      facility_fleet.save!
+      facility_fleet.produce!
+    end
+    
+    it 'should training an unique commander' do
+      facility_fleet.planet = Factory :planet
+      facility_fleet.save!
+      facility_fleet.produce!
+      Fleet.where(:generic_unit => commander).count.should == 1
+    end
+
+    it 'should prevent commanders have more than 1 life' do
+      facility_fleet.produce!
+      warrior_fleet = Fleet.where(:generic_unit => commander)
+      warrior_fleet.first.quantity.should == 1
+    end
+  end
+
+
+
+
+
+
 
 end
