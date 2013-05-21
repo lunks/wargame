@@ -15,7 +15,7 @@ class SquadsController < ApplicationController
   end
 
   def ready
-    render :text => 'Esquadrão pronto, feche e aguarde' if current_squad.ready!
+    render :text => 'Esquadrao pronto, feche e aguarde' if current_squad.ready!
   end
 
   def transfer
