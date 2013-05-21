@@ -285,8 +285,8 @@ Warrior.create(:name => 'Darth Vader', :price => 40, :description => 'Sith' ).fa
 Warrior.create(:name => 'Emperor Palpatine', :price => 50, :description => 'Sith' ).factions = imp
 
 Goal.create(:description => 'Destruir o esquadrao vermelho. Se voce for o vermelho ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
-Goal.create(:description => 'Destruir o esquadrao amarelo. Se você for o amarelo ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
-Goal.create(:description => 'Destruir o esquadrao verde. Se você for o verde ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrao amarelo. Se voce for o amarelo ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrao verde. Se voce for o verde ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
 Goal.create(:description => 'Dominar Coruscant, Mustafar, Geonosis e Kamino')
 Goal.create(:description => 'Dominar Hoth, DeathStar, Kashyyyk, Utapau')
 Goal.create(:description => 'Dominar na totalidade o setor Norte e Kamino')
