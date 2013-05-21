@@ -216,21 +216,21 @@ CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 750, :description =
 CapitalShip.create(:name => 'Bulk Cruiser', :price => 800, :description => 'Permite +2 naves simultaneas no XWA' ).factions = merc
 CapitalShip.create(:name => 'Strike Cruiser', :price => 1150, :description => 'Permite +2 naves simultaneas no XWA' ).factions = imp_reb
 CapitalShip.create(:name => 'Assault Frigate', :price => 1350, :description => 'Permite +2 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Munificent Frigate', :price => 1450, :description => 'Permite +3 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = merc
-CapitalShip.create(:name => 'Acclamator Ass Ship', :price => 1450, :description => 'Permite +3 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = mand
+CapitalShip.create(:name => 'Munificent Frigate', :price => 1450, :description => 'Permite +3 naves simultaneas no XWA' ).factions = merc
+CapitalShip.create(:name => 'Acclamator Ass Ship', :price => 1450, :description => 'Permite +3 naves simultaneas no XWA' ).factions = mand
 CapitalShip.create(:name => 'Victory SD', :price => 1500, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Venator SD', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = mand
-CapitalShip.create(:name => 'Providence Destroyer', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = merc
-CapitalShip.create(:name => 'ReefHome Cal.Cruiser', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = reb
-CapitalShip.create(:name => 'Liberty Cal.Cruiser', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = reb
+CapitalShip.create(:name => 'Venator SD', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = mand
+CapitalShip.create(:name => 'Providence Destroyer', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = merc
+CapitalShip.create(:name => 'ReefHome Cal.Cruiser', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Liberty Cal.Cruiser', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
 CapitalShip.create(:name => 'Victory SD II', :price => 1700, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Liberator Cruiser', :price => 1750, :description => 'Permite +3 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = reb
+CapitalShip.create(:name => 'Liberator Cruiser', :price => 1750, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
 CapitalShip.create(:name => 'Interdictor', :price => 2500, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Dauntless Cruiser', :price => 1950, :description => 'Permite +3 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = reb
+CapitalShip.create(:name => 'Dauntless Cruiser', :price => 1950, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
 CapitalShip.create(:name => 'Imperial SD', :price => 2000, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Dom Interdictor', :price => 2800, :description => 'Permite +3 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = imp
+CapitalShip.create(:name => 'Dom Interdictor', :price => 2800, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
 CapitalShip.create(:name => 'Imperial SD II', :price => 2250, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400, :description => 'Permite +4 naves simultaneas no XWA. Evite o bug dos 99km: caças sempre a frente das CS e naves originais sempre atrás' ).factions = mand_merc
+CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400, :description => 'Permite +4 naves simultaneas no XWA' ).factions = mand_merc
 CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750, :description => 'Permite +4 naves simultaneas no XWA' ).factions = reb
 CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700, :description => 'Permite +4 naves simultaneas no XWA' ).factions = imp
 
@@ -267,13 +267,13 @@ Armament.create(:name => 'Flare', :price => 15 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
 Commander.create(:name => 'Almirante Ackbar', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA'  ).factions = reb
-Commander.create(:name => 'Capitão Dodonna', :price => 800, :description => 'Permite AI Top Ace no XWA'  ).factions = reb
+Commander.create(:name => 'Capitao Dodonna', :price => 800, :description => 'Permite AI Top Ace no XWA'  ).factions = reb
 Commander.create(:name => 'Almirante Piett', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = imp
-Commander.create(:name => 'Capitão Needa', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = imp
+Commander.create(:name => 'Capitao Needa', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = imp
 Commander.create(:name => 'Almirante Trench', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = merc
-Commander.create(:name => 'Capitão Canteval', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = merc
+Commander.create(:name => 'Capitao Canteval', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = merc
 Commander.create(:name => 'Almirante Wieler', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = mand
-Commander.create(:name => 'Capitão Autem', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = mand
+Commander.create(:name => 'Capitao Autem', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = mand
 
 Warrior.create(:name => 'Jango Fett', :price => 50, :description => 'Dark Jedi' ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40, :description => 'Dark Jedi' ).factions = mand
@@ -284,9 +284,9 @@ Warrior.create(:name => 'Chewbacca', :price => 40, :description => 'Dark Jedi' )
 Warrior.create(:name => 'Darth Vader', :price => 40, :description => 'Sith' ).factions = imp
 Warrior.create(:name => 'Emperor Palpatine', :price => 50, :description => 'Sith' ).factions = imp
 
-Goal.create(:description => 'Destruir o esquadrão vermelho. Se você for o vermelho ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
-Goal.create(:description => 'Destruir o esquadrão amarelo. Se você for o amarelo ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
-Goal.create(:description => 'Destruir o esquadrão verde. Se você for o verde ou outro jogador destrui-lo, a missão passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrao vermelho. Se voce for o vermelho ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrao amarelo. Se você for o amarelo ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrao verde. Se você for o verde ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
 Goal.create(:description => 'Dominar Coruscant, Mustafar, Geonosis e Kamino')
 Goal.create(:description => 'Dominar Hoth, DeathStar, Kashyyyk, Utapau')
 Goal.create(:description => 'Dominar na totalidade o setor Norte e Kamino')
