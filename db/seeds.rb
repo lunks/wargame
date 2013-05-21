@@ -165,7 +165,7 @@ Facility.create(:name => 'Golan I', :price => 3000, :description => 'Comboio(4 B
 Facility.create(:name => 'Golan II', :price => 3900, :description => 'Comboio(4 Bulk Freighter, 2 Container Transp)' ).factions = all
 Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
 Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(4 Bulk Freighter, 1 Star Galleon)' ).factions = imp
-Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
+Facility.create(:name => 'Shipyard²', :price => 4500, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
 
 Sensor.create(:name => 'Comm Relay', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
 Sensor.create(:name => 'Sensor Array', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
