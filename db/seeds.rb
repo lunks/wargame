@@ -1,5 +1,5 @@
 #alderaan_asteroids = Planet.create(:name => 'Alderaan Asteroids', :credits => 400 )
-bespin = Planet.create(:name => 'Bespin', :credits => 400, :description => 'Bespin Platform' )
+bespin = Planet.create(:name => 'Bespin', :credits => 400, :description => 'Bespin:Platform' )
 brr_station = Planet.create(:name => 'BrR Station', :credits => 0, :tradeport => true, :description => 'Zona Neutra' )
 cimf_station = Planet.create(:name => 'CIMF Station', :credits => 0, :tradeport => true, :description => 'Zona Neutra' )
 concord_dawn = Planet.create(:name => 'Concord Dawn', :credits => 400, :description => 'Concord Dawn' )
@@ -9,11 +9,11 @@ dagobah = Planet.create(:name => 'Dagobah', :credits => 400, :description => 'Da
 #dantooine = Planet.create(:name => 'Dantooine', :credits => 400 )
 #deadalis_minefields = Planet.create(:name => 'Deadalis Minefields', :credits => 400 )
 deathstar = Planet.create(:name => 'Death Star', :credits => 400, :description => 'Deathstar' )
-endor = Planet.create(:name => 'Endor', :credits => 400, :description => 'Endor ou Kashyyyk' )
+endor = Planet.create(:name => 'Endor', :credits => 400, :description => 'Endor / Kashyyyk' )
 felucia = Planet.create(:name => 'Felucia', :credits => 400, :description => 'Felucia' )
-geonosis = Planet.create(:name => 'Geonosis', :credits => 400, :description => 'Geonosis ou Concord Dawn' )
+geonosis = Planet.create(:name => 'Geonosis', :credits => 400, :description => 'Geonosis / Concord Dawn' )
 haruun_kal = Planet.create(:name => 'Haruun Kal', :credits => 400, :description => 'Haruun Kal' )
-hoth = Planet.create(:name => 'Hoth', :credits => 400, :description => 'Hoth ou RhenVar Harbor' )
+hoth = Planet.create(:name => 'Hoth', :credits => 400, :description => 'Hoth / RhenVar Harbor' )
 #hutt_space = Planet.create(:name => 'Hutts Minefields', :credits => 400 )
 #ilum = Planet.create(:name => 'Ilum', :credits => 400 )
 kamino = Planet.create(:name => 'Kamino', :credits => 400, :description => 'Kamino' )
@@ -151,21 +151,21 @@ mand = ['mandalorian']
 mand_merc = ['mandalorian','mercenary']
 all = ['empire','rebel','mercenary','mandalorian']
 
-Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio 3 Bulk Freighter 2 Cargo Ferry' ).factions = all
-Facility.create(:name => 'Pirate S.Yard', :price => 1200, :description => 'Comboio 3 Bulk Freighter 2 Xyitiar Transp' ).factions = all
-Facility.create(:name => 'Cargo Fac.I', :price => 1500, :description => 'Comboio 3 Bulk Freighter 2 Cargo Ferry').factions = all
-Facility.create(:name => 'Cargo Fac.II', :price => 2400, :description => 'Comboio 3 Bulk Freighter Mod.Conveyor' ).factions = all
-Facility.create(:name => 'Derilyn Plat', :price => 1800, :description => 'Comboio 3 Bulk Freighter 2 Xyitiar Transp' ).factions = mand_merc
-Facility.create(:name => 'Family Base', :price => 2100, :description => 'Comboio 3 Bulk Freighter 2 Xyitiar Transp' ).factions = merc
-Facility.create(:name => 'Factory', :price => 2400, :description => 'Comboio 4 Bulk Freighter 2 Mod.Action' ).factions = all
-Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio 4 Bulk Freighter 2 Mod. Action' ).factions = all
-Facility.create(:name => 'Rebel Plat', :price => 3450, :description => 'Comboio 4 Bulk Freighter 2 Reb Med Transp' ).factions = reb
-Facility.create(:name => 'Ast. Hangar', :price => 3000, :description => 'Comboio 4 Bulk Freighter 2 Xyitiar Transp' ).factions = mand_merc
-Facility.create(:name => 'Golan I', :price => 3000, :description => 'Comboio 4 Bulk Freighter 2 Mod Action' ).factions = all
-Facility.create(:name => 'Golan II', :price => 3900, :description => 'Comboio 4 Bulk Freighter 2 Container Transp' ).factions = all
-Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio 4 Bulk Freighter 1 Suprosa' ).factions = all
-Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio 4 Bulk Freighter 1 Star Galleon' ).factions = imp
-Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio 4 Bulk Freighter 1 Suprosa' ).factions = all
+Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio(3 Bulk Freighter, 2 Cargo Ferry)' ).factions = all
+Facility.create(:name => 'Pirate S.Yard', :price => 1200, :description => 'Comboio(3 Bulk Freighter, 2 Xyitiar Transp)' ).factions = all
+Facility.create(:name => 'Cargo Fac.I', :price => 1500, :description => 'Comboio(3 Bulk Freighter, 2 Cargo Ferry)').factions = all
+Facility.create(:name => 'Cargo Fac.II', :price => 2400, :description => 'Comboio(3 Bulk Freighter, Mod.Conveyor)' ).factions = all
+Facility.create(:name => 'Derilyn Plat', :price => 1800, :description => 'Comboio(3 Bulk Freighter, 2 Xyitiar Transp' ).factions = mand_merc
+Facility.create(:name => 'Family Base', :price => 2100, :description => 'Comboio(3 Bulk Freighter, 2 Xyitiar Transp)' ).factions = merc
+Facility.create(:name => 'Factory', :price => 2400, :description => 'Comboio(4 Bulk Freighter, 2 Mod.Action)' ).factions = all
+Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(4 Bulk Freighter, 2 Mod. Action)' ).factions = all
+Facility.create(:name => 'Rebel Plat', :price => 3450, :description => 'Comboio(4 Bulk Freighter, 2 Reb Med Transp)' ).factions = reb
+Facility.create(:name => 'Ast. Hangar', :price => 3000, :description => 'Comboio(4 Bulk Freighter, 2 Xyitiar Transp)' ).factions = mand_merc
+Facility.create(:name => 'Golan I', :price => 3000, :description => 'Comboio(4 Bulk Freighter, 2 Mod Action)' ).factions = all
+Facility.create(:name => 'Golan II', :price => 3900, :description => 'Comboio(4 Bulk Freighter, 2 Container Transp)' ).factions = all
+Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
+Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(4 Bulk Freighter, 1 Star Galleon)' ).factions = imp
+Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
 
 Sensor.create(:name => 'Comm Relay', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
 Sensor.create(:name => 'Sensor Array', :price => 1000, :description => 'So pode ser movida com Capital Ship ou Transporte' ).factions = all
@@ -202,37 +202,37 @@ Fighter.create(:name => 'Tie Phantom', :price => 145 ).factions = imp
 Fighter.create(:name => 'Missile Boat', :price => 225 ).factions = imp
 Fighter.create(:name => 'Tie Defender', :price => 320 ).factions = imp
 
-CapitalShip.create(:name => 'Corellian Gunship', :price => 320, :description => 'Permite 1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Corellian Corvette', :price => 320, :description => 'Permite 1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Mod Corvette', :price => 350, :description => 'Permite 1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Nebulon B Frigate', :price => 400, :description => 'Permite 1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Mod Nebulon Frigate', :price => 560, :description => 'Permite 1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Carrack Cruiser', :price => 400, :description => 'Permite 1 nave simultanea no XWA' ).factions = imp
-CapitalShip.create(:name => 'Lancer Frigate', :price => 450, :description => 'Permite 1 nave simultanea no XWA' ).factions = imp
-CapitalShip.create(:name => 'Marauder Corvette', :price => 650, :description => 'Permite 1 nave simultanea no XWA' ).factions = mand_merc
-CapitalShip.create(:name => 'Dreadnaught', :price => 1000, :description => 'Permite 2 naves simultaneas no XWA' ).factions = all
-CapitalShip.create(:name => 'Escort Carrier', :price => 720, :description => 'Permite 2 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 750, :description => 'Permite 2 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Bulk Cruiser', :price => 800, :description => 'Permite 2 naves simultaneas no XWA' ).factions = merc
-CapitalShip.create(:name => 'Strike Cruiser', :price => 1150, :description => 'Permite 2 naves simultaneas no XWA' ).factions = imp_reb
-CapitalShip.create(:name => 'Assault Frigate', :price => 1350, :description => 'Permite 2 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Munificent Frigate', :price => 1450, :description => 'Permite 3 naves simultaneas no XWA' ).factions = merc
-CapitalShip.create(:name => 'Acclamator Ass Ship', :price => 1450, :description => 'Permite 3 naves simultaneas no XWA' ).factions = mand
-CapitalShip.create(:name => 'Victory SD', :price => 1500, :description => 'Permite 3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Venator SD', :price => 1600, :description => 'Permite 3 naves simultaneas no XWA' ).factions = mand
-CapitalShip.create(:name => 'Providence Destroyer', :price => 1600, :description => 'Permite 3 naves simultaneas no XWA' ).factions = merc
-CapitalShip.create(:name => 'ReefHome Cal.Cruiser', :price => 1600, :description => 'Permite 3 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Liberty Cal.Cruiser', :price => 1600, :description => 'Permite 3 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Victory SD II', :price => 1700, :description => 'Permite 3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Liberator Cruiser', :price => 1750, :description => 'Permite 3 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Interdictor', :price => 2500, :description => 'Permite 3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Dauntless Cruiser', :price => 1950, :description => 'Permite 3 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Imperial SD', :price => 2000, :description => 'Permite 3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Dom Interdictor', :price => 2800, :description => 'Permite 3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Imperial SD II', :price => 2250, :description => 'Permite 3 naves simultaneas no XWA' ).factions = imp
-CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400, :description => 'Permite 4 naves simultaneas no XWA' ).factions = mand_merc
-CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750, :description => 'Permite 4 naves simultaneas no XWA' ).factions = reb
-CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700, :description => 'Permite 4 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Corellian Gunship', :price => 320, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Corellian Corvette', :price => 320, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Mod Corvette', :price => 350, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Nebulon B Frigate', :price => 400, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Mod Nebulon Frigate', :price => 560, :description => 'Permite +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Carrack Cruiser', :price => 400, :description => 'Permite +1 nave simultanea no XWA' ).factions = imp
+CapitalShip.create(:name => 'Lancer Frigate', :price => 450, :description => 'Permite +1 nave simultanea no XWA' ).factions = imp
+CapitalShip.create(:name => 'Marauder Corvette', :price => 650, :description => 'Permite +1 nave simultanea no XWA' ).factions = mand_merc
+CapitalShip.create(:name => 'Dreadnaught', :price => 1000, :description => 'Permite +2 naves simultaneas no XWA' ).factions = all
+CapitalShip.create(:name => 'Escort Carrier', :price => 720, :description => 'Permite +2 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 750, :description => 'Permite +2 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Bulk Cruiser', :price => 800, :description => 'Permite +2 naves simultaneas no XWA' ).factions = merc
+CapitalShip.create(:name => 'Strike Cruiser', :price => 1150, :description => 'Permite +2 naves simultaneas no XWA' ).factions = imp_reb
+CapitalShip.create(:name => 'Assault Frigate', :price => 1350, :description => 'Permite +2 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Munificent Frigate', :price => 1450, :description => 'Permite +3 naves simultaneas no XWA' ).factions = merc
+CapitalShip.create(:name => 'Acclamator Ass Ship', :price => 1450, :description => 'Permite +3 naves simultaneas no XWA' ).factions = mand
+CapitalShip.create(:name => 'Victory SD', :price => 1500, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Venator SD', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = mand
+CapitalShip.create(:name => 'Providence Destroyer', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = merc
+CapitalShip.create(:name => 'ReefHome Cal.Cruiser', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Liberty Cal.Cruiser', :price => 1600, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Victory SD II', :price => 1700, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Liberator Cruiser', :price => 1750, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Interdictor', :price => 2500, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Dauntless Cruiser', :price => 1950, :description => 'Permite +3 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Imperial SD', :price => 2000, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Dom Interdictor', :price => 2800, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Imperial SD II', :price => 2250, :description => 'Permite +3 naves simultaneas no XWA' ).factions = imp
+CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400, :description => 'Permite +4 naves simultaneas no XWA' ).factions = mand_merc
+CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750, :description => 'Permite +4 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700, :description => 'Permite +4 naves simultaneas no XWA' ).factions = imp
 
 LightTransport.create(:name => 'YT-1300', :price => 110 ).factions = merc
 LightTransport.create(:name => 'YT-2000', :price => 320 ).factions = merc
@@ -266,13 +266,13 @@ Armament.create(:name => 'Flare', :price => 15 ).factions = all
 
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
-Commander.create(:name => 'Almirante Ackbar', :price => 1000, :description => 'Permite AI Super Ace e CS misseis no XWA'  ).factions = reb
+Commander.create(:name => 'Almirante Ackbar', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA'  ).factions = reb
 Commander.create(:name => 'Capitao Dodonna', :price => 800, :description => 'Permite AI Top Ace no XWA'  ).factions = reb
-Commander.create(:name => 'Almirante Piett', :price => 1000, :description => 'Permite AI Super Ace e CS misseis no XWA' ).factions = imp
+Commander.create(:name => 'Almirante Piett', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = imp
 Commander.create(:name => 'Capitao Needa', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = imp
-Commander.create(:name => 'Almirante Trench', :price => 1000, :description => 'Permite AI Super Ace e CS misseis no XWA' ).factions = merc
+Commander.create(:name => 'Almirante Trench', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = merc
 Commander.create(:name => 'Capitao Canteval', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = merc
-Commander.create(:name => 'Almirante Wieler', :price => 1000, :description => 'Permite AI Super Ace e CS misseis no XWA' ).factions = mand
+Commander.create(:name => 'Almirante Wieler', :price => 1000, :description => 'Permite AI Super Ace + CS misseis no XWA' ).factions = mand
 Commander.create(:name => 'Capitao Autem', :price => 800, :description => 'Permite AI Top Ace no XWA' ).factions = mand
 
 Warrior.create(:name => 'Jango Fett', :price => 50, :description => 'Dark Jedi' ).factions = mand
@@ -284,14 +284,14 @@ Warrior.create(:name => 'Chewbacca', :price => 40, :description => 'Dark Jedi' )
 Warrior.create(:name => 'Darth Vader', :price => 40, :description => 'Sith' ).factions = imp
 Warrior.create(:name => 'Emperor Palpatine', :price => 50, :description => 'Sith' ).factions = imp
 
-Goal.create(:description => 'Destruir o esquadrao vermelho Se voce for o vermelho ou outro jogador destrui-lo a missao passa a ser dominar 10 planetas')
-Goal.create(:description => 'Destruir o esquadrao amarelo Se voce for o amarelo ou outro jogador destrui-lo a missao passa a ser dominar 10 planetas')
-Goal.create(:description => 'Destruir o esquadrao verde Se voce for o verde ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
-Goal.create(:description => 'Dominar Coruscant Mustafar Geonosis e Kamino')
-Goal.create(:description => 'Dominar Hoth DeathStar Kashyyyk Utapau')
+Goal.create(:description => 'Destruir o esquadrao vermelho. Se voce for o vermelho ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrao amarelo. Se voce for o amarelo ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
+Goal.create(:description => 'Destruir o esquadrao verde. Se voce for o verde ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
+Goal.create(:description => 'Dominar Coruscant, Mustafar, Geonosis e Kamino')
+Goal.create(:description => 'Dominar Hoth, DeathStar, Kashyyyk, Utapau')
 Goal.create(:description => 'Dominar na totalidade o setor Norte e Kamino')
 Goal.create(:description => 'Dominar na totalidade o setor Leste e Naboo')
-Goal.create(:description => 'Dominar na totalidade o setor Sul e Mustafar')
+Goal.create(:description => 'Dominar na totalidade o setor Sul e Mustafar (inverter com Polis Massa)')
 Goal.create(:description => 'Dominar na totalidade o setor Oeste e Yavin')
 
 

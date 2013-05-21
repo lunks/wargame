@@ -15,8 +15,8 @@ class GenericFleetsController < ApplicationController
     end
     @provided = (current_squad.credits + @air_income + @ground_income - @flee_tax).to_i
     if @round.move?
-      @round_phase = 'Estratégia'
-      @tip = "Realize Movimentos, Configuração de Fábricas, Compra/Venda de naves e Nomeação de capital ships."
+      @round_phase = 'Estrategia'
+      @tip = "Realize movimentos, configuracao de fabricas, compra/venda de naves e nomeacao de capital ships."
     else
       @round_phase = 'Combates'
       @tip = "Informe os resultados dos combates."
