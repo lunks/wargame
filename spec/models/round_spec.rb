@@ -18,6 +18,7 @@ describe Round do
       Factory :facility
       Factory :light_transport, :price => 100
       Factory :warrior, :price => 50
+      Factory :warrior, :price => 45
       Factory :warrior, :price => 40
       Factory :commander, :price => 800
       Factory :commander, :price => 1000
@@ -38,7 +39,7 @@ describe Round do
       rebel.facility_fleets(true).should_not be_empty
     end
     it 'should place random units on the planets' do
-      rebel.generic_fleets.count.should == 28
+      rebel.generic_fleets.count.should == 29
     end
 
     it 'should set squad ready' do

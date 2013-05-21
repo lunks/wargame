@@ -277,12 +277,16 @@ Commander.create(:name => 'Capitao Autem', :price => 800, :description => 'Permi
 
 Warrior.create(:name => 'Jango Fett', :price => 50, :description => 'Dark Jedi' ).factions = mand
 Warrior.create(:name => 'Boba Fett', :price => 40, :description => 'Dark Jedi' ).factions = mand
+Warrior.create(:name => 'Mandalorian', :price => 40, :description => 'Dark Jedi' ).factions = mand
 Warrior.create(:name => 'Kyle Katarn', :price => 40, :description => 'Jedi' ).factions = reb
+Warrior.create(:name => 'Kyp Durron', :price => 45, :description => 'Jedi' ).factions = reb
 Warrior.create(:name => 'Luke Skywalker', :price => 50, :description => 'Jedi' ).factions = reb
 Warrior.create(:name => 'Han Solo', :price => 50, :description => 'Dark Jedi' ).factions = merc
+Warrior.create(:name => 'Greedo', :price => 40, :description => 'Dark Jedi' ).factions = merc
 Warrior.create(:name => 'Chewbacca', :price => 40, :description => 'Dark Jedi' ).factions = merc
-Warrior.create(:name => 'Darth Vader', :price => 40, :description => 'Sith' ).factions = imp
-Warrior.create(:name => 'Emperor Palpatine', :price => 50, :description => 'Sith' ).factions = imp
+Warrior.create(:name => 'Darth Vader', :price => 45, :description => 'Sith' ).factions = imp
+Warrior.create(:name => 'Darth Maul', :price => 40, :description => 'Sith' ).factions = imp
+Warrior.create(:name => 'Darth Sidious', :price => 50, :description => 'Sith' ).factions = imp
 
 Goal.create(:description => 'Destruir o esquadrao vermelho. Se voce for o vermelho ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')
 Goal.create(:description => 'Destruir o esquadrao amarelo. Se voce for o amarelo ou outro jogador destrui-lo, a missao passa a ser dominar 10 planetas')

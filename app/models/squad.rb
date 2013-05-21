@@ -87,6 +87,7 @@ class Squad < ActiveRecord::Base
       warp_units 1000, Trooper, 1..2, planet
     end
     warp_units 500, Warrior, 50, planets.first
+    warp_units 450, Warrior, 45, planets.reject! { |planet| planet == planets.first || planet == planets.last }.first
     warp_units 400, Warrior, 40, planets.last
     warp_units 1000, Commander, 1000, planets.first
     warp_units 800, Commander, 800, planets.last
