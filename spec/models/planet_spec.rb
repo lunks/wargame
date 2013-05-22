@@ -197,9 +197,9 @@ describe Planet do
     end
 
     it 'should go second to a neutral planet' do
-      @destination1.squad == @enemy_squad
+      @destination1.squad = @enemy_squad
       @destination1.save
-      @destination2.ground_squad == @enemy_squad
+      @destination2.ground_squad = @enemy_squad
       @destination2.save
       fleeing_fleet = @unit.flee! 1
       fleeing_fleet.planet.should == @destination3
