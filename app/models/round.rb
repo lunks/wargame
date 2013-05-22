@@ -12,6 +12,11 @@ class Round < ActiveRecord::Base
   end
 
   def new_game!
+    Squad.all.each do |squad|
+      home_planet = squad.home_planet
+      squad.planets << home_planet
+      squad.save
+    end
     3.times do
       empty_planets = Planet.where(:squad_id => nil, :wormhole => nil)
       eastside = empty_planets[rand(empty_planets.count - 1)]
@@ -22,9 +27,6 @@ class Round < ActiveRecord::Base
       Route.create(:vector_a => eastside, :vector_b => westside, :distance => 1)
     end
     Squad.all.each do |squad|
-      home_planet = squad.home_planet
-      squad.planets << home_planet
-      squad.save!
       2.times {squad.planets << Planet.randomize}
       FacilityFleet.is_free
       squad.populate_planets
