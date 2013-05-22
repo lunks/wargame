@@ -103,6 +103,7 @@ describe Round do
       @round.end_round!
       sensor_fleet.moving.should be_true
       sensor_fleet = Fleet.where(:squad => Squad.last).first
+      sensor_fleet.generic_unit = Factory(:sensor)
       sensor_fleet.planet = Planet.where(:squad => Squad.last).first
       sensor_fleet.save
       @round.end_round!
