@@ -16,11 +16,9 @@ describe Fleet do
 
   context 'moving' do
     before(:each) do
-      @squad = squad
-      @planet = planet
-      unit.squad = @squad
+      unit.squad = squad
       unit.save
-      @moving_fleet = unit.move 1, @planet
+      @moving_fleet = unit.move 1, planet
     end
 
     context 'setting to move' do
@@ -59,10 +57,10 @@ describe Fleet do
 
     context 'validating movement orders' do
       before(:each) do
-        @trooper_fleet = Factory :fleet, :generic_unit => trooper, :planet => @planet, :squad => @squad
-        @armament_fleet = Factory :fleet, :generic_unit => armament, :planet => @planet, :squad => @squad
-        @sensor_fleet = Factory :fleet, :generic_unit => sensor, :planet => @planet, :squad => @squad
-        @commander_fleet = Factory :fleet, :generic_unit => commander, :planet => @planet, :squad => @squad 
+        @trooper_fleet = Factory :fleet, :generic_unit => trooper, :planet => planet, :squad => squad
+        @armament_fleet = Factory :fleet, :generic_unit => armament, :planet => planet, :squad => squad
+        @sensor_fleet = Factory :fleet, :generic_unit => sensor, :planet => planet, :squad => squad
+        @commander_fleet = Factory :fleet, :generic_unit => commander, :planet => planet, :squad => squad 
       end
 
       it 'should not let troopers move without a capital ship or transport' do
@@ -84,7 +82,7 @@ describe Fleet do
       
       context 'moving with capital ships' do
         before(:each) do
-          capital_ship_fleet = Factory :fleet, :generic_unit => capital_ship, :planet => @planet, :squad => @squad
+          capital_ship_fleet = Factory :fleet, :generic_unit => capital_ship, :planet => planet, :squad => squad
           @moving_capital_ship = capital_ship_fleet.move 1, planet
         end
         it 'should let troopers move' do
@@ -107,7 +105,7 @@ describe Fleet do
 
       context 'moving with light transports' do
         before(:each) do
-          light_transport_fleet = Factory :fleet, :generic_unit => light_transport, :planet => @planet, :squad => @squad
+          light_transport_fleet = Factory :fleet, :generic_unit => light_transport, :planet => planet, :squad => squad
           @moving_light_transport = light_transport_fleet.move 1, planet
         end
         it 'should let troopers move' do
@@ -130,9 +128,9 @@ describe Fleet do
 
       it 'should let troopers, armaments and commanders move with enough amount of fighters' do
         Fleet.destroy_all
-        @commander_fleet = Factory :fleet, :generic_unit => commander, :planet => @planet, :squad => @squad
-        @armament_fleet = Factory :fleet, :generic_unit => armament, :planet => @planet, :squad => @squad
-        @fighter_fleet = Factory :fleet, :generic_unit => fighter, :planet => @planet, :squad => @squad
+        @commander_fleet = Factory :fleet, :generic_unit => commander, :planet => planet, :squad => squad
+        @armament_fleet = Factory :fleet, :generic_unit => armament, :planet => planet, :squad => squad
+        @fighter_fleet = Factory :fleet, :generic_unit => fighter, :planet => planet, :squad => squad
         moving_fighter = @fighter_fleet.move 5, planet
         moving_fighter.save
         moving_armament = @armament_fleet.move 5, planet      
@@ -145,10 +143,10 @@ describe Fleet do
         tie_fighter = fighter
         tie_fighter.hyperdrive = false
         tie_fighter.save
-        @fighter_fleet = Factory :fleet, :generic_unit => tie_fighter, :planet => @planet, :squad => @squad
+        @fighter_fleet = Factory :fleet, :generic_unit => tie_fighter, :planet => planet, :squad => squad
         moving_fighter = @fighter_fleet.move 1, planet
         moving_fighter.should_not be_moving
-        @capital_ship_fleet = Factory :fleet, :generic_unit => capital_ship, :planet => @planet, :squad => @squad
+        @capital_ship_fleet = Factory :fleet, :generic_unit => capital_ship, :planet => planet, :squad => squad
         moving_capital_ship = @capital_ship_fleet.move 1, planet
         moving_fighter = @fighter_fleet.move 1, planet
         moving_fighter.should be_moving
