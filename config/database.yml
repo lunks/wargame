@@ -17,7 +17,6 @@ test:
 
 production:
   adapter: mysql
-  encoding: utf8
   database: wargame_production
   host: 127.0.0.1
   user: root
