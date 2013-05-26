@@ -114,13 +114,5 @@ class Fleet < GenericFleet
     end
   end
 
-  def name
-    if moving?
-      generic_unit.description
-    else
-      generic_unit.name
-    end
-  end
-
 end
 

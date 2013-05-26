@@ -28,13 +28,6 @@ describe Fleet do
       it 'should have a destination planet when moving' do
         @moving_fleet.destination.should == planet
       end
-      it 'should change display name when moving a sensor' do
-        sensor = Factory(:sensor)
-        sensor_fleet = Factory(:fleet, :generic_unit => sensor)
-        @moving_sensor_fleet = sensor_fleet.move 1, planet
-        @moving_sensor_fleet.name.should_not == sensor_fleet.generic_unit.name
-        @moving_sensor_fleet.name.should == sensor_fleet.generic_unit.description
-      end
     end
     
     context 'cancelling movements' do

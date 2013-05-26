@@ -1,6 +1,6 @@
 <% if fleet.moving? %>
   <info class="tooltip">
-    <%= fleet.name %>
+    <%= fleet.description %>
     <tip>DETECTOR <br><%= fleet.generic_unit.name %> em missão de transporte.<br>Destruída se todo o comboio for destruído<br>Só pode ser remontada em planetas sem unidades inimigas</tip>
   </info>
 <% else %>
