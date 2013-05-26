@@ -37,9 +37,9 @@ xml.planetas do
               xml.corfleet '00FFFF'
              
               if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander) or fleet.type?(Sensor)
-                xml.fleet fleet.name + '->' + fleet.destination.name
+                xml.fleet fleet.name.first(12) + '->' + fleet.destination.name
               else
-                xml.fleet fleet.quantity.to_s + ' ' + fleet.name + '->' + fleet.destination.name
+                xml.fleet fleet.quantity.to_s + ' ' + fleet.name.first(12) + '->' + fleet.destination.name
               end
 
             end
