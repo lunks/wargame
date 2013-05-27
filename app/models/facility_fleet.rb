@@ -53,7 +53,7 @@ class FacilityFleet < GenericFleet
   def produce!
     return if self.moving? || self.planet.tradeport || self.sabotaged?
     self.balance += default_capacity
-    secondary_balance = secondary_capacity.to_f
+    secondary_balance = secondary_capacity.to_i
     if producing_unit2.present?
       unit_price = producing_unit2.price
       units = 0
@@ -124,7 +124,7 @@ class FacilityFleet < GenericFleet
 
 
   def building_done
-    (balance / producing_unit.price.to_f * 100).to_i
+    (balance / producing_unit.price * 100).to_i
   end
 
   def producing_unit_display
