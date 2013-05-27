@@ -17,15 +17,7 @@ class Round < ActiveRecord::Base
       squad.planets << home_planet
       squad.save
     end
-    3.times do
-      empty_planets = Planet.where(:squad_id => nil, :wormhole => nil)
-      eastside = empty_planets[rand(empty_planets.count - 1)]
-      eastside.update_attributes(:wormhole => true)
-      empty_planets = Planet.where(:squad_id => nil, :wormhole => nil)
-      westside = empty_planets.except(eastside.routes.first)[rand(empty_planets.except(eastside.routes.first).count - 1)]
-      westside.update_attributes(:wormhole => true)
-      Route.create(:vector_a => eastside, :vector_b => westside, :distance => 1)
-    end
+    Planet.create_wormholes
     Squad.all.each do |squad|
       2.times {squad.planets << Planet.randomize}
       FacilityFleet.is_free

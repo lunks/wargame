@@ -24,7 +24,10 @@ describe Round do
       Factory :commander, :price => 1000
       Factory :capital_ship, :price => 500
       Factory :trooper, :price => 2
-      15.times {Factory.create :planet, :credits => 100}
+      4.times {Factory.create :planet, :credits => 100, :sector => 1 }
+      4.times {Factory.create :planet, :credits => 100, :sector => 2 }
+      4.times {Factory.create :planet, :credits => 100, :sector => 3 }
+      4.times {Factory.create :planet, :credits => 100, :sector => 4 }
       @round.new_game!
     end
 

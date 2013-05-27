@@ -51,7 +51,30 @@ class Planet < ActiveRecord::Base
 
   def self.randomize
       empty_planets = self.where(:squad_id => nil, :wormhole => nil, :tradeport => nil)
-      empty_planets[rand(empty_planets.count - 1)]
+      empty_planets[rand(empty_planets.count)]
+  end
+
+  def self.randomize_by_sector(number)
+      empty_planets = self.where(:squad_id => nil, :wormhole => nil, :sector => number)
+      empty_planets[rand(empty_planets.count)]
+  end
+
+  def self.create_wormholes
+    side_a = Planet.randomize_by_sector(1)
+    side_a.update_attributes(:wormhole => true)
+    side_b = Planet.randomize_by_sector(3)
+    side_b.update_attributes(:wormhole => true)
+    Route.create(:vector_a => side_a, :vector_b => side_b, :distance => 1)
+    side_a = Planet.randomize_by_sector(2)
+    side_a.update_attributes(:wormhole => true)
+    side_b = Planet.randomize_by_sector(4)
+    side_b.update_attributes(:wormhole => true)
+    Route.create(:vector_a => side_a, :vector_b => side_b, :distance => 1)
+    side_a = Planet.randomize_by_sector(rand(3) + 1)
+    side_a.update_attributes(:wormhole => true)
+    side_b = Planet.randomize_by_sector(rand(3) + 1)
+    side_b.update_attributes(:wormhole => true)
+    Route.create(:vector_a => side_a, :vector_b => side_b, :distance => 1)
   end
 
   def self.disable_routes
