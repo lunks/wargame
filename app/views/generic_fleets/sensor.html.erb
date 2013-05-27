@@ -1,6 +1,6 @@
 <div class="planet_content">
 <h2> <%= @fleet.generic_unit.name %> de <%= @planet.name %> <%= ' (wormhole) ' if @planet.wormhole? %><%= ' (tradeport)' if @planet.tradeport? %></h2>
-Alerta Amarelo! Foram detectadas frotas inimigas em:<br>
+Foram detectadas possíveis ameaças em:<br>
 <% @routes.sort_by{|a| [a.name]}.each do |planet| %>
    <% unless planet.generic_fleets.select { |units| units.squad != @current_squad && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor') }.empty? %>
      <h3> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h3>
