@@ -128,8 +128,8 @@ Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(4
 Facility.create(:name => 'Imp Res Center', :price => 4200, :description => 'Comboio(4 Bulk Freighter, 1 Star Galleon)' ).factions = imp
 Facility.create(:name => 'Shipyard', :price => 4500, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
 
-Sensor.create(:name => 'Comm Relay', :price => 500, :description => 'Comboio(1 Bulk Freighter, 2 Container Transp)' ).factions = all
-Sensor.create(:name => 'Sensor Array', :price => 500, :description => 'Comboio(1 Bulk Freighter, 2 Container Transp)' ).factions = all
+Sensor.create(:name => 'Comm Relay', :price => 400, :description => 'Comboio(1 Bulk Freighter, 2 Container Transp)' ).factions = all
+Sensor.create(:name => 'Sensor Array', :price => 400, :description => 'Comboio(1 Bulk Freighter, 2 Container Transp)' ).factions = all
 
 Fighter.create(:name => 'Z-95', :price => 40 ).factions = merc_reb
 Fighter.create(:name => 'T-Wing', :price => 40 ).factions = merc_reb
@@ -145,28 +145,28 @@ Fighter.create(:name => 'Planetary Fighter', :price => 55 ).factions = merc
 Fighter.create(:name => 'R-41 Starchaser', :price => 65 ).factions = merc
 Fighter.create(:name => 'Razor Fighter', :price => 70 ).factions = merc
 Fighter.create(:name => 'Skipray Blastboat', :price => 105 ).factions = merc
-Fighter.create(:name => 'V-Wing*', :hyperdrive => false, :price => 30, :description => 'sem hiperdrive' ).factions = mand
+Fighter.create(:name => 'V-Wing*', :hyperdrive => false, :price => 30, :description => 'sem hiperdrive/warheads' ).factions = mand
 Fighter.create(:name => 'ARC-170', :price => 80 ).factions = mand
 Fighter.create(:name => 'Pursuer', :price => 80 ).factions = mand
 Fighter.create(:name => 'Firespray', :price => 95 ).factions = mand
 Fighter.create(:name => 'Supa Fighter', :price => 70 ).factions = mand
 Fighter.create(:name => 'Star Viper', :price => 95 ).factions = mand
-Fighter.create(:name => 'Tie Fighter*', :hyperdrive => false, :price => 20, :description => 'sem hiperdrive' ).factions = imp
+Fighter.create(:name => 'Tie Fighter*', :hyperdrive => false, :price => 20, :description => 'sem hiperdrive/warheads' ).factions = imp
 Fighter.create(:name => 'Tie Bomber*', :hyperdrive => false, :price => 25, :description => 'sem hiperdrive' ).factions = imp
-Fighter.create(:name => 'Tie Interceptor*', :hyperdrive => false, :price => 30, :description => 'sem hiperdrive' ).factions = imp
+Fighter.create(:name => 'Tie Interceptor*', :hyperdrive => false, :price => 30, :description => 'sem hiperdrive/warheads' ).factions = imp
 Fighter.create(:name => 'Authority IRD*', :hyperdrive => false, :price => 45, :description => 'sem hiperdrive' ).factions = imp
 Fighter.create(:name => 'Toscan Fighter', :price => 90 ).factions = imp
 Fighter.create(:name => 'Tie Avenger', :price => 110 ).factions = imp
 Fighter.create(:name => 'Assault Gunboat', :price => 120 ).factions = imp
-Fighter.create(:name => 'Tie Phantom', :price => 145 ).factions = imp
-Fighter.create(:name => 'Missile Boat', :price => 225 ).factions = imp
-Fighter.create(:name => 'Tie Defender', :price => 320 ).factions = imp
+Fighter.create(:name => 'Tie Phantom', :price => 145, :description => 'sem warheads' ).factions = imp
+Fighter.create(:name => 'Missile Boat', :price => 200 ).factions = imp
+Fighter.create(:name => 'Tie Defender', :price => 300 ).factions = imp
 
 CapitalShip.create(:name => 'Corellian Gunship', :price => 320, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
 CapitalShip.create(:name => 'Corellian Corvette', :price => 320, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
 CapitalShip.create(:name => 'Mod Corvette', :price => 350, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
 CapitalShip.create(:name => 'Nebulon B Frigate', :price => 400, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
-CapitalShip.create(:name => 'Mod Nebulon Frigate', :price => 560, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
+CapitalShip.create(:name => 'Mod Nebulon Frigate', :price => 550, :description => 'Bonus +1 nave simultanea no XWA' ).factions = all
 CapitalShip.create(:name => 'Carrack Cruiser', :price => 400, :description => 'Bonus +1 nave simultanea no XWA' ).factions = imp
 CapitalShip.create(:name => 'Lancer Frigate', :price => 450, :description => 'Bonus +1 nave simultanea no XWA' ).factions = imp
 CapitalShip.create(:name => 'Marauder Corvette', :price => 650, :description => 'Bonus +1 nave simultanea no XWA' ).factions = mand_merc
@@ -175,7 +175,7 @@ CapitalShip.create(:name => 'Escort Carrier', :price => 720, :description => 'Bo
 CapitalShip.create(:name => 'Lt Calamari Cruiser', :price => 750, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = reb
 CapitalShip.create(:name => 'Bulk Cruiser', :price => 800, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = merc
 CapitalShip.create(:name => 'Strike Cruiser', :price => 1150, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = imp_reb
-CapitalShip.create(:name => 'Assault Frigate', :price => 1350, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = reb
+CapitalShip.create(:name => 'Assault Frigate', :price => 1300, :description => 'Bonus +2 naves simultaneas no XWA' ).factions = reb
 CapitalShip.create(:name => 'Munificent Frigate', :price => 1450, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = merc
 CapitalShip.create(:name => 'Acclamator Ass Ship', :price => 1450, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = mand
 CapitalShip.create(:name => 'Victory SD', :price => 1500, :description => 'Bonus +3 naves simultaneas no XWA' ).factions = imp
@@ -194,16 +194,16 @@ CapitalShip.create(:name => 'Lucrehulk Battleship', :price => 4400, :description
 CapitalShip.create(:name => 'Bulkwark Cruiser', :price => 5750, :description => 'Bonus +4 naves simultaneas no XWA' ).factions = reb
 CapitalShip.create(:name => 'Super Star Destroyer', :price => 6700, :description => 'Bonus +4 naves simultaneas no XWA' ).factions = imp
 
-LightTransport.create(:name => 'YT-1300', :price => 110 ).factions = merc
-LightTransport.create(:name => 'YT-2000', :price => 320 ).factions = merc
-LightTransport.create(:name => 'YT-2400', :price => 145 ).factions = mand
-LightTransport.create(:name => 'Millenium Falcon', :price => 270 ).factions = merc_reb
+LightTransport.create(:name => 'YT-1300', :price => 100 ).factions = merc
+LightTransport.create(:name => 'YT-2000', :price => 300 ).factions = merc
+LightTransport.create(:name => 'YT-2400', :price => 130 ).factions = mand
+LightTransport.create(:name => 'Millenium Falcon', :price => 250 ).factions = merc_reb
 
-LightTransport.create(:name => 'Assault Transport', :price => 200 ).factions = all
-LightTransport.create(:name => 'Escort Transport', :price => 200 ).factions = all
-LightTransport.create(:name => 'Stormtrooper Trans.', :price => 55 ).factions = all
-LightTransport.create(:name => 'Assault Shuttle', :price => 175 ).factions = imp
-LightTransport.create(:name => 'System Pat Craft', :price => 250 ).factions = imp
+LightTransport.create(:name => 'Assault Transport', :price => 180 ).factions = all
+LightTransport.create(:name => 'Escort Transport', :price => 180 ).factions = all
+LightTransport.create(:name => 'Stormtrooper Trans.', :price => 50 ).factions = all
+LightTransport.create(:name => 'Assault Shuttle', :price => 150 ).factions = imp
+LightTransport.create(:name => 'System Pat Craft', :price => 220 ).factions = imp
 
 LightTransport.create(:name => 'Cargo Ferry', :price => 60 ).factions = all
 LightTransport.create(:name => 'Container Transp', :price => 60 ).factions = all
