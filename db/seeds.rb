@@ -236,14 +236,14 @@ Commander.create(:name => 'Almirante Wieler', :price => 1000, :description => 'B
 Commander.create(:name => 'Capitao Autem', :price => 800, :description => 'Bonus AI Top Ace no XWA' ).factions = mand
 
 Warrior.create(:name => 'Jango Fett', :price => 50, :description => 'Dark Jedi' ).factions = mand
-Warrior.create(:name => 'Boba Fett', :price => 40, :description => 'Dark Jedi' ).factions = mand
+Warrior.create(:name => 'Boba Fett', :price => 45, :description => 'Dark Jedi' ).factions = mand
 Warrior.create(:name => 'Mandalorian', :price => 40, :description => 'Dark Jedi' ).factions = mand
 Warrior.create(:name => 'Kyle Katarn', :price => 40, :description => 'Jedi' ).factions = reb
 Warrior.create(:name => 'Kyp Durron', :price => 45, :description => 'Jedi' ).factions = reb
 Warrior.create(:name => 'Luke Skywalker', :price => 50, :description => 'Jedi' ).factions = reb
 Warrior.create(:name => 'Han Solo', :price => 50, :description => 'Dark Jedi' ).factions = merc
 Warrior.create(:name => 'Greedo', :price => 40, :description => 'Dark Jedi' ).factions = merc
-Warrior.create(:name => 'Chewbacca', :price => 40, :description => 'Dark Jedi' ).factions = merc
+Warrior.create(:name => 'Chewbacca', :price => 45, :description => 'Dark Jedi' ).factions = merc
 Warrior.create(:name => 'Darth Vader', :price => 45, :description => 'Sith' ).factions = imp
 Warrior.create(:name => 'Darth Maul', :price => 40, :description => 'Sith' ).factions = imp
 Warrior.create(:name => 'Darth Sidious', :price => 50, :description => 'Sith' ).factions = imp
