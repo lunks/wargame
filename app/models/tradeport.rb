@@ -44,7 +44,6 @@ class Tradeport < ActiveRecord::Base
     a = Tradeport.where(:generic_unit_id => unit.generic_unit.id).first
     if a.present?
       a.quantity += quantity
-      a.negotiation_rate = 50
       a.save
     else
       Tradeport.create(:generic_unit_id => unit.generic_unit.id, :quantity => quantity, :negotiation_rate => 50)
