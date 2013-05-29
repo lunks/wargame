@@ -46,7 +46,7 @@ class Tradeport < ActiveRecord::Base
       a.quantity += quantity
       a.save
     else
-      Tradeport.create(:generic_unit_id => unit.generic_unit.id, :quantity => quantity, :negotiation_rate => 50)
+      Tradeport.create(:generic_unit_id => unit.generic_unit.id, :quantity => quantity, :squad_id => unit.squad.id, :negotiation_rate => 50)
     end
     unit.squad.deposit buying_price * quantity
     unit.quantity -= quantity
