@@ -90,8 +90,7 @@ class Squad < ActiveRecord::Base
     warp_units 450, Warrior, 45, planets.last
     warp_units 1000, Commander, 1000, planets.first
     warp_units 800, Commander, 800, planets.last
-    mid_planet = planets
-    mid_planet.reject! { |planet| planet == planets.first || planet == planets.last }
+    mid_planet = planets.select { |planet| !planet.generic_fleets.any? { |unit| unit.type?(Warrior) } }
     warp_units 400, Warrior, 40, mid_planet.first
     save!
   end
