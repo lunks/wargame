@@ -227,9 +227,13 @@ Armament.create(:name => 'Flare', :price => 15 ).factions = all
 Trooper.create(:name => 'Trooper', :price => 1 ).factions = all
 
 Commander.create(:name => 'Almirante Ackbar', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA'  ).factions = reb
-Commander.create(:name => 'Capitao Dodonna', :price => 800, :description => 'Bonus AI Top Ace no XWA'  ).factions = reb
+Commander.create(:name => 'Alm. Garm Bel Iblis', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA'  ).factions = reb
+Commander.create(:name => 'Cap. Jan Dodonna', :price => 800, :description => 'Bonus AI Top Ace no XWA'  ).factions = reb
+Commander.create(:name => 'Cap. Han Solo', :price => 800, :description => 'Bonus AI Top Ace no XWA'  ).factions = reb
 Commander.create(:name => 'Almirante Piett', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA' ).factions = imp
+Commander.create(:name => 'Almirante Thrawn', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA' ).factions = imp
 Commander.create(:name => 'Capitao Needa', :price => 800, :description => 'Bonus AI Top Ace no XWA' ).factions = imp
+Commander.create(:name => 'Cap. Natasi Daala', :price => 800, :description => 'Bonus AI Top Ace no XWA' ).factions = imp
 Commander.create(:name => 'Almirante Trench', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA' ).factions = merc
 Commander.create(:name => 'Capitao Canteval', :price => 800, :description => 'Bonus AI Top Ace no XWA' ).factions = merc
 Commander.create(:name => 'Almirante Wieler', :price => 1000, :description => 'Bonus AI Super Ace + CS misseis no XWA' ).factions = mand
