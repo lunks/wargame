@@ -3,8 +3,8 @@
 <h2><%= @results.first.planet.name %></h2>
 <%= form_tag "results" do %>
   <table>
-  <tr>
-  <td></td><td>Destruidos</td><td>Fugiram</td><td>Capturados</td><td>Capturado Por</td><td>Bloqueada?</td>
+  <tr valign=bottom>
+  <td></td><td>Destruidos</td><td>Fugiram</td><td>Capturados</td><td>Capturado Por</td><td>Bloqueada<br>Sabotada?</td>
   </tr>
   <tr>
   <% @results.each do |result| %>
@@ -46,6 +46,7 @@
        </td>
        <td align = "center">
        <%= result_form.input :captured, :input_html => { :size => 2 }, :label => false unless ((result_form.object.generic_unit.type == 'Facility' || result_form.object.generic_unit.type == 'Sensor') && result_form.object.generic_fleet.moving?) || result_form.object.generic_unit.type == 'Warrior' || result_form.object.generic_unit.type == 'Trooper' || result_form.object.generic_unit.type == 'Commander' %>
+       <%= "<--vidas !!" if result_form.object.generic_unit.type == 'Warrior' %>
        </td>
        <td align = "center">
        <%= result_form.association :captor, :collection => @squads.select { |squad| squad != result_form.object.squad }, :label => false unless ((result_form.object.generic_unit.type == 'Facility' || result_form.object.generic_unit.type == 'Sensor') && result_form.object.generic_fleet.moving?) || result_form.object.generic_unit.type == 'Warrior' || result_form.object.generic_unit.type == 'Trooper' || result_form.object.generic_unit.type == 'Commander' %>
