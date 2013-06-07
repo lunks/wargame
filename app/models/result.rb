@@ -8,6 +8,8 @@ class Result < ActiveRecord::Base
   belongs_to :squad
   belongs_to :captor, :class_name => "Squad", :foreign_key => 'captor_id'
   belongs_to :round
+  belongs_to :producing_unit, :class_name => "Unit"
+  belongs_to :producing_unit2, :class_name => "Unit"
 
   validates_presence_of :round, :generic_fleet, :generic_unit, :squad, :planet, :quantity 
   validates_numericality_of :blasted, :fled, :captured, :allow_nil => true

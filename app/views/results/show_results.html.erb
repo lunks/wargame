@@ -10,6 +10,13 @@ Log de todas as batalhas do esquadrão:
         <span style=color:#<%= unit.squad.color %>>
         <%= unit.quantity %>
         <%= unit.generic_unit.name %>
+        <% if unit.generic_unit.is_a? Facility %>
+          (
+          <%= unit.producing_unit.name if unit.producing_unit %>
+          /
+          <%= unit.producing_unit2.name if unit.producing_unit2 %>
+          )
+        <% end %>
         <span style=color:#40E0D0> <%= unit.show_results %> </span>
         <br>
       <% end %>

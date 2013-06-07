@@ -35,7 +35,7 @@ class Round < ActiveRecord::Base
     self.move_fleets
     self.update_attributes(:move => nil, :attack => true)
     GenericFleet.all.each do |fleet|
-      Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad, :final_quantity => fleet.quantity) if fleet.planet.under_attack?
+      Result.create(:generic_fleet_id => fleet.id, :planet => fleet.planet, :quantity => fleet.quantity, :generic_unit_id => fleet.generic_unit.id, :round => self, :squad => fleet.squad, :final_quantity => fleet.quantity, :producing_unit_id => fleet.producing_unit_id, :producing_unit2_id => fleet.producing_unit2_id ) if fleet.planet.under_attack?
     end
     Planet.all.each do |planet|
       last_player = planet.squads[rand(planet.squads.count)]

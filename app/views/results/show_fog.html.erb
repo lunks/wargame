@@ -9,9 +9,21 @@
     <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
       <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @squad and !planet.generic_fleets.any?{|unit| unit.squad == @squad} %>
         <% unless fleet.final_quantity <= 0 %>
-          <span style=color:#<%= fleet.squad.color %>>
+          <% case fleet.generic_unit.type %>
+          <% when 'Warrior' %>
+            <span style=font-weight:strong;outline:dotted;background-color:#331100;color:#<%= fleet.squad.color %>>
+          <% else %>
+            <span style=color:#<%= fleet.squad.color %>>
+          <% end %>
           <%= fleet.final_quantity %>
-          <%= fleet.generic_unit.name %>    
+          <%= fleet.generic_unit.name %>   
+          <% if fleet.generic_unit.is_a? Facility %>
+          (
+          <%= fleet.producing_unit.name if fleet.producing_unit %>
+          /
+          <%= fleet.producing_unit2.name if fleet.producing_unit2 %>
+          )
+        <% end %> 
           <br>
         <% end %>
       <% end %>
