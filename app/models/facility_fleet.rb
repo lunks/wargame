@@ -51,7 +51,7 @@ class FacilityFleet < GenericFleet
   end
 
   def produce!
-    return if self.moving? || self.planet.tradeport || self.sabotaged?
+    return if self.moving? || self.planet.tradeport
     self.balance += default_capacity
     secondary_balance = secondary_capacity.to_i
     if producing_unit2.present?

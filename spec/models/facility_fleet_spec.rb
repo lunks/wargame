@@ -151,11 +151,14 @@ describe FacilityFleet do
       facility_fleet.upgrade!
       squad.credits.should == 10000 - upgrade_costs
     end
-    it 'should not produce if sabotaged' do
+
+    it 'should produce 50% less when sabotaged or blocked' do
+      facility_fleet.producing_unit = nil
+      facility_fleet.save
       facility_fleet.sabotage!
       facility_fleet.produce!
-      Fleet.count.should be 0
-  end
+      facility_fleet.balance.should == (facility.price / 3) * 0.50
+    end
     it 'should not produce if moving' do
       facility_fleet.moving = true
       facility_fleet.save
