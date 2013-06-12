@@ -1,4 +1,5 @@
 xml.instruct!
+if @current_squad
 xml.planetas do
   @planets.each do |planet|
     counter = 0
@@ -68,4 +69,37 @@ xml.planetas do
 
     end
   end
+end
+
+else 
+
+xml.planetas do
+  @planets.each do |planet|
+    xml.planeta do
+      xml.nome planet.name.gsub(" ","")
+      xml.planet_id ' '
+      if planet.squad
+        xml.espaco planet.squad.name
+        xml.corespaco planet.squad.color
+      else
+        xml.espaco 'Neutral'
+        xml.corespaco ' '
+      end
+      xml.available ' '
+      if planet.ground_squad
+        xml.terra planet.ground_squad.name
+        xml.corterra planet.ground_squad.color
+      else
+        xml.terra 'Neutral'
+        xml.corterra ' '
+      end
+      18.times do
+        xml.corfleet '.'
+        xml.fleet '.'
+      end
+    end
+  end
+end
+
+
 end
