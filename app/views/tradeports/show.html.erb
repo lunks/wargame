@@ -1,3 +1,6 @@
+<script>
+document.title = "Tradeport <%= @planet.name %>"
+</script>
 <div class="planet_content">
 <h2> <%= @planet.name %> <%= ' (wormhole) ' if @planet.wormhole? %><%= ' (tradeport)' if @planet.tradeport? %></h2>
 <%= simple_form_for :fleet, :url => url_for(:controller => 'tradeports', :action => 'buy') do |f| %>

@@ -2,7 +2,7 @@
 document.title = "<%= @planet.name %>"
 </script>
 <% if @planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
-<div class="planet_content">
+<div class="fleet">
 <h2>
     <info class="tooltip">
     <tip>Mapa BF2: <%= @planet.description %></tip>
@@ -54,7 +54,6 @@ document.title = "<%= @planet.name %>"
    <% if @round.move && !@squad.ready? %>
 <a href = "" onclick="window.open('/planets/<%= @planet.id %>/move.html', '<%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=600')">mover frotas</a>
    <% end %>
-</span>
 
    <% if @round.move && @planet.able_to_construct?(@squad) && !@squad.ready? %>
      <a href = "" onclick="window.open('/planets/<%= @planet.id %>/facility_fleets/new', 'Facility <%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=385, height=185')">construir fábrica</a> 
@@ -88,5 +87,5 @@ document.title = "<%= @planet.name %>"
     <% if @round.attack && @planet.under_attack? && @planet.tradeport? %>
       Zona Neutra
     <% end %>
-</div>
 <% end %>
+</div>

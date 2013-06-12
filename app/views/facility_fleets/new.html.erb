@@ -1,3 +1,6 @@
+<script>
+document.title = "Construir em <%= @planet.name %>"
+</script>
 <div class="planet_content">
 <h2> <%= @planet.name %> </h2>
 <%= simple_form_for [@planet, @facility_fleet]  do |f| %>

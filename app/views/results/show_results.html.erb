@@ -1,3 +1,6 @@
+<script>
+document.title = "Log de batalhas"
+</script>
 <div class="planet_content">
 Log de todas as batalhas do esquadrão:
   <% @rounds.sort_by{|a| a.number}.reverse.each do |round| %>
