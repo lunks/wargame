@@ -28,11 +28,11 @@ class FacilityFleetsController < ApplicationController
 
   def update
     @facility = FacilityFleet.find(params[:id])
-    unless params[:facility_fleet][:producing_unit].empty?
+    unless params[:facility_fleet][:producing_unit].empty? || current_squad.ready?
       @producing_unit = Unit.find(params[:facility_fleet][:producing_unit])
       current_squad.change_producing_unit @facility, @producing_unit
     end
-    unless params[:facility_fleet][:producing_unit2].empty?
+    unless params[:facility_fleet][:producing_unit2].empty? || current_squad.ready?
       @producing_unit2 = Unit.find(params[:facility_fleet][:producing_unit2])
       current_squad.change_producing_unit2 @facility, @producing_unit2
     end
@@ -41,7 +41,7 @@ class FacilityFleetsController < ApplicationController
 
   def upgrade
     @facility = FacilityFleet.find(params[:facility][:id])
-    @facility.upgrade! if current_squad.credits >= @facility.upgrade_cost
+    @facility.upgrade! unless current_squad.credits < @facility.upgrade_cost || current_squad.ready?
     redirect_to :back
   end
 
