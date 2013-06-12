@@ -1,3 +1,6 @@
+<script>
+document.title = "<%= @planet.name %>"
+</script>
 <% if @planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
 <div class="planet_content">
 <h2>
