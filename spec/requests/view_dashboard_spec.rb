@@ -12,6 +12,8 @@ describe "Viewing dashboard" do
   after do
     Planet.enable_routes
   end
+
+=begin
   context "viewing planets" do
     before do
       visit '/fleets'
@@ -27,6 +29,7 @@ describe "Viewing dashboard" do
     it 'should show moving fleets from a planet' do
       page.should have_content '-->'
     end
+=end
 
 
 
