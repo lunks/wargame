@@ -61,10 +61,10 @@ class GenericFleetsController < ApplicationController
     @fleet = Fleet.find(params[:fleet][:id])
     unless params[:fleet][:destination].empty?
       @planet = Planet.find(params[:fleet][:destination])
-      @fleet.move params[:fleet][:quantity].to_i, @planet
+      @fleet.move params[:fleet][:quantity].to_i, @planet unless current_squad.ready?
     else
       @planet = nil
-      @fleet.move params[:fleet][:quantity].to_i, @planet
+      @fleet.move params[:fleet][:quantity].to_i, @planet unless current_squad.ready?
     end
     redirect_to :back
   end
@@ -73,10 +73,10 @@ class GenericFleetsController < ApplicationController
     @facility = FacilityFleet.find(params[:facility_fleet][:id])
     unless params[:facility_fleet][:destination].empty?
       @planet = Planet.find(params[:facility_fleet][:destination])
-      @facility.move @planet
+      @facility.move @planet unless current_squad.ready?
     else
       @planet = nil
-      @facility.move @planet
+      @facility.move @planet unless current_squad.ready?
     end
     redirect_to :back
   end
