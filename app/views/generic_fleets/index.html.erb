@@ -1,3 +1,7 @@
+<script>
+document.title = "Painel de Controle"
+</script>
+
 <div class="squad_info">
 <span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
 <info class="tooltip">
@@ -149,7 +153,8 @@
 <div class="menu">
 
 <a href="http://wgbrnavies.wordpress.com" target=_blank>Blog do WG </a>
-<a href="/images/teste4.swf" target=_blank>Teste</a>
+
+<a href = "" onclick="window.open('/images/teste4.swf', 'Mapa Novo', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1024, height=720')">Mapa teste</a>
 
 <a href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivo <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=600')">Objetivos</a>
 

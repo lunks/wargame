@@ -1,3 +1,7 @@
+<script>
+document.title = "Sensor de <%= @planet.name %>"
+</script>
+
 <div class="planet_content">
 <h2> <%= @fleet.generic_unit.name %> de <%= @planet.name %> <%= ' (wormhole) ' if @planet.wormhole? %><%= ' (tradeport)' if @planet.tradeport? %></h2>
 Foram detectadas estruturas ou capital ships em:<br>
