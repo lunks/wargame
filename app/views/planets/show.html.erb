@@ -89,5 +89,9 @@ document.title = "<%= @planet.name %>"
     <% if @round.attack && @planet.under_attack? && @planet.tradeport? %>
       Zona Neutra
     <% end %>
-<% end %>
 </div>
+<% else %>
+<div class="fleet">
+Não há unidades do seu esquadrão neste planeta.
+</div>
+<% end %>
