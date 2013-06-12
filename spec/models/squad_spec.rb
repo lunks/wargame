@@ -45,6 +45,12 @@ describe Squad do
         squad.buy facility, 1, planet
         squad.generic_fleets.first.planet.should == planet
       end
+
+      it 'should buy a facility that has balance and level' do
+         squad.buy facility, 1, planet
+         squad.generic_fleets.first.balance.should_not be nil
+         squad.generic_fleets.first.level.should_not be nil
+      end
     end
     context 'aggregating profits' do
       let(:planet) {Factory :planet}

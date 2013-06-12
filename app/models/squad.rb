@@ -22,7 +22,7 @@ class Squad < ActiveRecord::Base
       return false
     end
     debit unit.price
-    new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :fleet_name => ' ')
+    new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ')
     generic_fleets << new_fleet
     save
   end

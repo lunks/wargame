@@ -1,6 +1,8 @@
+<meta http-equiv="refresh" content ="15">
 <script>
 document.title = "<%= @planet.name %>"
 </script>
+
 <% if @planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
 <div class="fleet">
 <h2>
