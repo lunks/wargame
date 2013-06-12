@@ -1,0 +1,35 @@
+<% if fleet.moving? %>
+  <info class="tooltip">
+    <%= fleet.name %>
+    <tip>FÁBRICA / CENTRO DE TREINAMENTO<br><%= fleet.generic_unit.name %> em missão de transporte.<br>Destruída se todo o comboio for destruído<br>Só pode ser remontada em planetas sem unidades inimigas</tip>
+  </info>
+<% else %>
+<info class="tooltip">
+    <%= fleet.name %>
+    <tip>FÁBRICA / CENTRO DE TREINAMENTO<br>Nível: <%= fleet.level %><br>Produtividade: <%= fleet.default_capacity %> / <%= fleet.secondary_capacity %>  <%= ' (sabotada/bloqueada em 50%) ' if fleet.sabotaged? %><br>- Construção de unidades e treinamento de guerreiros e oficiais<br>- Se movimentada transforma-se em <%= fleet.generic_unit.description %><br>- ATENÇÃO: O movimento zera a produção e o level!</tip>
+  </info>
+  <%= ' *50%*' if fleet.sabotaged? %>
+   ( 
+     <% if fleet.producing_unit.present? %>
+         <%= fleet.producing_unit_display %>
+      <% else %>
+        <%= 'inativa' %>
+      <% end %>
+      <% if fleet.producing_unit2.present? %>
+          / 
+         <%= fleet.producing_unit2.name %>
+      <% else %>
+         /
+        <%= 'inativa' %>
+      <% end %>
+  )
+  <% if @round.move && fleet.squad == @squad && !fleet.squad.ready? %>
+   <a href = "" onclick="window.open('/facility_fleets/<%= fleet.id %>/edit', 'Facility <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=390, height=520')">+</a>
+  <% end %>
+
+
+<% end %>
+
+
+
+

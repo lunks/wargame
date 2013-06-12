@@ -191,7 +191,7 @@
     <%= "ALERTA: Revise os resultados de todos os combates." if @round.attack? %>
 
   <% @planets.each do |planet| %>
-    <h2>
+    <h2><a href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=600')">+</a>
     <info class="tooltip">
     <tip>Mapa BF2: <%= planet.description %></tip>
         <%= planet.name %>

@@ -4,7 +4,13 @@ class PlanetsController < ApplicationController
   respond_to :html, :xml
 
   def index
-    @fleets = current_squad.generic_fleets.all
+
+  end
+
+  def show
+    @planet = Planet.find(params[:id])
+    @round = Round.getInstance
+    @squad = current_squad
   end
 
   def move
