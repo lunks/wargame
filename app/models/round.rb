@@ -67,6 +67,10 @@ class Round < ActiveRecord::Base
     Fleet.where(:moving => true).each do |fleet|
       fleet.reassembly unless fleet.planet.has_an_enemy?(Facility, fleet.squad) || fleet.planet.has_an_enemy?(CapitalShip, fleet.squad) || fleet.planet.has_an_enemy?(Fighter, fleet.squad) || fleet.planet.has_an_enemy?(LightTransport, fleet.squad)
     end
+    Fleet.select { |fleet| fleet.type?(Warrior) }.each do |fleet|
+      fleet.quantity += 1 unless fleet.quantity == 10 || fleet.planet.has_an_enemy?(Trooper, fleet.squad)
+      fleet.save
+    end
     Tradeport.start
     set_map
   end

@@ -222,10 +222,4 @@ describe FacilityFleet do
     end
   end
 
-
-
-
-
-
-
 end

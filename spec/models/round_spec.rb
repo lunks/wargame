@@ -113,6 +113,29 @@ describe Round do
       @round.end_round!
       sensor_fleet.moving.should_not be_true
     end
+    it 'should regen 1 life for warriors, maximum 10 lives' do
+      warrior = Factory(:warrior)
+      planet = Factory(:planet)
+      warrior_fleet = Factory(:fleet, :generic_unit => warrior, :planet => planet, :quantity => 1)
+      @round.end_round!
+      warrior_fleet = Fleet.last
+      warrior_fleet.quantity.should == 2
+      warrior_fleet.quantity = 10
+      warrior_fleet.save
+      @round.end_round!
+      warrior_fleet = Fleet.last
+      warrior_fleet.quantity.should_not == 11
+      warrior_fleet.quantity.should == 10
+    end
+    it 'should regen 1 life for warriors only in planets without enemy troopers' do
+      warrior = Factory(:warrior)
+      planet = Factory(:planet)
+      warrior_fleet = Factory(:fleet, :generic_unit => warrior, :planet => planet, :quantity => 1)
+      enemy_fleet = Factory(:generic_fleet, :generic_unit => Factory(:trooper), :planet => planet)
+      @round.end_round!
+      warrior_fleet = Fleet.last
+      warrior_fleet.quantity.should_not == 2
+    end
 
   end
 end
