@@ -24,6 +24,9 @@ document.title = "<%= @planet.name %>"
 <p>
     <% @planet.generic_fleets.each do |fleet| %>
       <span style=color:#<%= fleet.squad.color %>>
+     <% if @round.move && fleet.squad != @squad %>
+       <%= fleet.squad.name %>
+     <% else %>
       <% case fleet.generic_unit.type %>
       <% when 'Facility' %>
         <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
@@ -47,6 +50,7 @@ document.title = "<%= @planet.name %>"
         <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>
       <% end %>
       </span>
+     <% end %>
       <span style=color:#40E0D0><%= fleet.show_results %></span>
       <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? && fleet.squad == @squad && @round.move %></span>
 

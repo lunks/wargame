@@ -26,7 +26,10 @@ xml.planetas do
         planet.generic_fleets.each_with_index do |fleet, index|       
             
             unless fleet.moving && fleet.squad == @current_squad
-              
+             if @round.move && fleet.squad != @current_squad
+               xml.corfleet fleet.squad.color
+               xml.fleet fleet.squad.name
+             else
               xml.corfleet fleet.squad.color
               
               if fleet.type?(Facility) or fleet.type?(Warrior) or fleet.type?(Commander) or fleet.type?(Sensor)
@@ -34,6 +37,7 @@ xml.planetas do
               else
                 xml.fleet fleet.quantity.to_s + ' ' + fleet.generic_unit.name
               end
+             end
 
             else
               xml.corfleet '00FFFF'
@@ -69,6 +73,27 @@ xml.planetas do
 
     end
   end
+
+  xml.planeta do
+    xml.nome 'controlpanel'
+    xml.squad_name
+    xml.round
+    xml.phase
+    xml.squad_credits
+    xml.air_income
+    xml.ground_income
+    xml.flee_tax
+    xml.provided
+    xml.facilities
+    xml.capital_ships
+    xml.fighters
+    xml.transports
+    xml.sensors
+    xml.commanders
+    xml.warriors
+    xml.troopers
+  end
+
 end
 
 else 

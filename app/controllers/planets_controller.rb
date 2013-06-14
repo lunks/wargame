@@ -29,6 +29,7 @@ class PlanetsController < ApplicationController
   end
 
   def map
+    @round = Round.getInstance
     @current_squad = current_squad
     @planets = Planet.includes(:squad).all
     #@planets = Planet.seen_by(current_squad)
