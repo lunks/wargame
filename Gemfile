@@ -6,7 +6,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'unicorn'
 gem 'meta_where'
-gem 'rake', '0.9.2.2'
+gem 'rake', '10.0.4'
 
 group :development, :test do
   gem 'rspec-rails'
