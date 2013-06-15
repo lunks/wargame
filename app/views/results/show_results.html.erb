@@ -11,15 +11,26 @@ Log de todas as batalhas do esquadrão:
       <h3><%= planet.name %></h3>
       <% fleet.each do |unit| %>
         <span style=color:#<%= unit.squad.color %>>
-        <%= unit.quantity %>
-        <%= unit.generic_unit.name %>
-        <% if unit.generic_unit.is_a? Facility %>
-          (
-          <%= unit.producing_unit.name if unit.producing_unit %>
-          /
-          <%= unit.producing_unit2.name if unit.producing_unit2 %>
-          )
-        <% end %>
+        <% case unit.generic_unit.type %>
+          <% when 'Warrior' %>
+            <span style=font-weight:strong;outline:dotted;background-color:#331100;color:#<%= unit.squad.color %>>
+            <%= unit.generic_unit.name %> (<%= unit.final_quantity %> vidas)
+          <% when 'Commander' %>
+            <span style=font-weight:strong;outline:solid;color:#<%= unit.squad.color %>>
+            <%= unit.generic_unit.name %>
+          <% when 'Facility' %>
+            <%= unit.generic_unit.name %>
+            ( <%= unit.producing_unit.name if unit.producing_unit %> / <%= unit.producing_unit2.name if unit.producing_unit2 %> )
+          <% when 'CapitalShip' %>
+            <span style=color:#<%= unit.squad.color %>>
+            <%= unit.generic_unit.name %>
+            "<%= unit.fleet_name if unit.fleet_name %>"
+          <% else %>
+            <span style=color:#<%= unit.squad.color %>>
+            <%= unit.final_quantity %>
+            <%= unit.generic_unit.name %>  
+        <% end %></span>
+
         <span style=color:#40E0D0> <%= unit.show_results %> </span>
         <br>
       <% end %>

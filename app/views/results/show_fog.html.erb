@@ -17,20 +17,25 @@ document.title = "Fog of War"
           <% case fleet.generic_unit.type %>
           <% when 'Warrior' %>
             <span style=font-weight:strong;outline:dotted;background-color:#331100;color:#<%= fleet.squad.color %>>
+            <%= fleet.generic_unit.name %> (<%= fleet.final_quantity %> vidas)
+          <% when 'Commander' %>
+            <span style=font-weight:strong;outline:solid;color:#<%= fleet.squad.color %>>
+            <%= fleet.generic_unit.name %>
+          <% when 'Facility' %>
+            <%= fleet.generic_unit.name %>
+            ( <%= fleet.producing_unit.name if fleet.producing_unit %> / <%= fleet.producing_unit2.name if fleet.producing_unit2 %> )
+          <% when 'CapitalShip' %>
+            <span style=color:#<%= fleet.squad.color %>>
+            <%= fleet.generic_unit.name %>
+            "<%= fleet.fleet_name if fleet.fleet_name %>"
           <% else %>
             <span style=color:#<%= fleet.squad.color %>>
+            <%= fleet.final_quantity %>
+            <%= fleet.generic_unit.name %>  
           <% end %>
-          <%= fleet.final_quantity %>
-          <%= fleet.generic_unit.name %>   
-          <% if fleet.generic_unit.is_a? Facility %>
-          (
-          <%= fleet.producing_unit.name if fleet.producing_unit %>
-          /
-          <%= fleet.producing_unit2.name if fleet.producing_unit2 %>
-          )
-        <% end %> 
+
+        <% end %></span> 
           <br>
-        <% end %>
       <% end %>
     <% end %>
   <% end %>
