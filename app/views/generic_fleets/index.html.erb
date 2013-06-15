@@ -1,155 +1,7 @@
-<meta http-equiv="refresh" content ="15">
 <script>
-document.title = "Painel Controle"
+document.title = "Menu principal"
 </script>
 
-<div class="squad_info">
-<span style=color:#<%= @squad.color %>;font-weight:bold;font-size:24px><%= @squad.name %></span><br>
-<info class="tooltip">
-  <tip style=width:450px>Regras de combate:<br>== XWA ==<br>Host: Defensor<br>AI: Ace<br>Distância: 5km<br>Atacante: slot de cima e monta frota primeiro<br>Defensor: slot de baixo e monta frota por último<br>Fugas: de 2 a 10 minutos. Em qualquer minuto da partida avisar o oponente, ou automático após perder todos os caças. A fuga é cancelada se o fugitivo vencer a batalha durante a fuga.<br>Ataques somente CS/Transp + tropas: foge quem perder a batalha de BF2<br>Overfleet: Se não tiver CS ou Fábrica para guardar, a fuga é obrigatória.<br><br>== BF2 ==<br>Atenção: Pode-se jogar independente do XWA, considerando um desembarque<br> prévio. Desembarque não obrigatório. Se não houver desembarque informe em quais naves as tropas estão.<br>Host: Defensor<br>AI: Elite<br>Bots: 24<br>Friendly Fire: ON<br>Herói: Ativado, opções default. (usar vidas do herói/general do planeta)<br>Máx: 300 troopers, Min: 100 troopers (utilize fatores de ajuste)<br><br>== JA ==<br>Atenção: jogar sempre antes de BF2 e XWA, pois o resultado influencia<br>Duelo obrigatório nas missoes de sabotagem, assassinato e bloqueio de lucros e construções (onde houver troopers).<br>Force Powers: básicos (full power se os jogadores concordarem)<br>Mode Duel: Não<br>Picks: Não permitidos<br>Defesa padrão: 1/3 da vida do atacante, arredondado para baixo<br>Fuga: permitida somente após perder metade das vidas</tip>
-  <span style=font-weight:bold;font-size:18px>
-  Turno: <%= @round.number %> - <%= @round_phase %></span>
-</info>
-<br>
-<table border="0" width="420">
-  <tr>
-    <td style="background-color:#1C1C1C">
-      <span style=font-weight:bold;font-size:13px;color:yellow> Disponível: </span> 
-    </td>
-    <td style="background-color:#1C1C1C" align=right>
-      <span style=font-weight:bold;font-size:13px;color:yellow> <%= @squad.credits %></span>
-    </td>
-    <td width="5">   
-   
-    </td>
-    <td style="background-color:#1C1C1C">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> Fábricas: </span>
-    </td>
-    <td style="background-color:#1C1C1C" align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @facilities %> </span>
-    </td>
-    <td width="5">   
-   
-    </td>
-    <td style="background-color:#1C1C1C">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00>Oficiais: </span>
-    </td>
-    <td style="background-color:#1C1C1C" align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @commanders %> </span>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> + dom.espacial:</span>
-    </td>
-    <td align="right">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @air_income %> </span>
-    </td>
-    <td>
-
-    </td>
-    <td>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00>Cap.Ships: </span>
-    </td>
-    <td align="right">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @capital_ships %> </span>
-    </td>
-    <td>
-
-    </td>
-    <td>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> Guerreiros: </span>
-    </td>
-    <td align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @warriors %> </span>
-    </td>
-  </tr>
-  <tr>
-    <td style="background-color:#1C1C1C">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> + dom.terrestre:</span>
-    </td>
-    <td style="background-color:#1C1C1C" align="right">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @ground_income %> </span>
-    </td>
-    <td>
-
-    </td>
-    <td style="background-color:#1C1C1C">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> Caças: </span>
-    </td>
-    <td style="background-color:#1C1C1C" align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @fighters %> </span>
-    </td>
-    <td>
-
-    </td>
-    <td style="background-color:#1C1C1C">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> Troopers: </span>
-    </td>
-    <td style="background-color:#1C1C1C" align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @troopers %> </span>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <info class="tooltip">
-        <tip>O penalty de fuga é 20% do valor da frota fugitiva.</tip>
-      <span style=font-weight:bold;font-size:13px;color:#FF0000> - fugas: </span>
-    </td>
-    <td align="right">
-      <span style=font-weight:bold;font-size:13px;color:#FF0000><%= @flee_tax %> </span>
-    </td>
-    <td>
-     
-    </td>
-    <td>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00>Transportes: </span>
-    </td>
-    <td align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @transports %> </span>
-    </td>
-    <td>
-     
-    </td>
-  </tr>
-  <tr>
-    <td style="background-color:#1C1C1C">
-      <span style=font-weight:bold;font-size:13px;color:#00FFFF>Prox. turno:</span> 
-    </td>
-    <td style="background-color:#1C1C1C" align="right">
-      <span style=font-weight:bold;font-size:13px;color:#00FFFF><%= @provided %></span>
-    </td>
-    <td>
-    
-    </td>
-    <td style="background-color:#1C1C1C">
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> Detectores: </span>
-    </td>
-    <td style="background-color:#1C1C1C" align=right>
-      <span style=font-weight:bold;font-size:13px;color:#00FF00> <%= @sensors %> </span>
-    </td>
-    <td>
-
-    </td>
-  </tr>
-  <tr>
-    <td>
-
-    </td>
-    <td align=right>
-
-    </td>
-    <td>
-    </td>
-    <td>
-
-    </td>
-    <td align=right>
-
-    </td>
-  </tr>
-</table>
-</div>
 
 <div class="menu">
 
@@ -178,24 +30,22 @@ document.title = "Painel Controle"
 </div>
 
 <div class="alerts">
-
+<br>
+  <span style=text-decoration:blink>
+  <%= "ALERTA: Há #{@inactive} slots de fábrica inativos." unless @inactive == 0 %><br>
+  <% if @small_fleet == true %>
+    ALERTA: Há alguma frota inferior a 200 créditos<br>
+  <% end %>
+  <%= "ALERTA: Revise os resultados de todos os combates." if @round.attack? %><br>
+  </span>
   <% @all_squads.each do |squad| %>
     <span style=text-decoration:blink;color:#<%= squad.color %>>
       <%= squad.name + " pronto  " if squad.ready? %>
     </span>
   <% end %>
-<br>
-  <%= "ALERTA: Há #{@inactive} slots de fábrica inativos." unless @inactive == 0 %><br>
-  <info class="tooltip">
-    <tip>Para evitar partidas sem graça, o mínimo é uma frota composta por 200 créditos.<br>O penalty por descumprir esta regra é de 200 créditos ao adversário.</tip>
-    <% if @small_fleet == true %>
-      ALERTA: Há alguma frota inferior a 200 créditos<br>
-    <% end %>
-  </info>
-    <%= "ALERTA: Revise os resultados de todos os combates." if @round.attack? %>
 
 <p>
-<div align=right><a href="/users/sign_out"> Logout </a> <a href = "/fleets">Refresh</a></div>
+<div align=right><a href="/users/sign_out"> Logout </a></div>
 </div>
 
 </div>

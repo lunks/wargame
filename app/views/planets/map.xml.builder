@@ -75,23 +75,27 @@ xml.planetas do
   end
 
   xml.planeta do
-    xml.nome 'controlpanel'
-    xml.squad_name
-    xml.round
-    xml.phase
-    xml.squad_credits
-    xml.air_income
-    xml.ground_income
-    xml.flee_tax
-    xml.provided
-    xml.facilities
-    xml.capital_ships
-    xml.fighters
-    xml.transports
-    xml.sensors
-    xml.commanders
-    xml.warriors
-    xml.troopers
+    xml.nome 'Painel'
+    42.times { xml.available '.' }
+    xml.squad_name @current_squad.name
+    xml.squad_name @current_squad.color
+    xml.round @round.number
+    xml.phase @round_phase
+    xml.squad_credits @current_squad.credits
+    xml.air_income @air_income
+    xml.ground_income @ground_income
+    xml.flee_tax @flee_tax
+    xml.provided @provided
+    xml.facilities @facilities
+    xml.capital_ships @capital_ships
+    xml.fighters @fighters
+    xml.transports @transports
+    xml.sensors @sensors
+    xml.commanders @commanders
+    xml.warriors @warriors
+    xml.troopers @troopers
+    xml.comment1 @comment1
+    xml.comment2 @comment2
   end
 
 end
