@@ -24,7 +24,7 @@ Log de todas as batalhas do esquadrão:
           <% when 'CapitalShip' %>
             <span style=color:#<%= unit.squad.color %>>
             <%= unit.generic_unit.name %>
-            "<%= unit.fleet_name if unit.fleet_name %>"
+            '<%= unit.fleet_name if unit.fleet_name %>'
           <% else %>
             <span style=color:#<%= unit.squad.color %>>
             <%= unit.final_quantity %>

@@ -1,5 +1,5 @@
 <script>
-document.title = "Fog of War"
+document.title = "Inteligência"
 </script>
 <div class="planet_content">
 <h2> Fog of War </h2>
@@ -27,7 +27,7 @@ document.title = "Fog of War"
           <% when 'CapitalShip' %>
             <span style=color:#<%= fleet.squad.color %>>
             <%= fleet.generic_unit.name %>
-            "<%= fleet.fleet_name if fleet.fleet_name %>"
+            '<%= fleet.fleet_name if fleet.fleet_name %>'
           <% else %>
             <span style=color:#<%= fleet.squad.color %>>
             <%= fleet.final_quantity %>
