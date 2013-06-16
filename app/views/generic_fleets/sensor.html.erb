@@ -13,7 +13,7 @@ Foram detectadas frotas inimigas em:<br>
        <% case fleet.generic_unit.type %>
        <% when 'CapitalShip' %>
          <%= fleet.generic_unit.name %>
-         '<%= fleet.fleet_name if fleet.fleet_name %>'
+         ''
        <% when 'Facility' %>
          <%= fleet.generic_unit.name %>
          ( <%= fleet.producing_unit.name if fleet.producing_unit %> / <%= fleet.producing_unit2.name if fleet.producing_unit2 %> )
