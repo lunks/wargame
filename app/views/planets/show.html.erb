@@ -30,7 +30,7 @@ document.title = "<%= @planet.name %>"
         <% @planet.generic_fleets.each do |fleet| %>
           <tr> 
           <%= simple_fields_for "fleets[]", fleet do |fleet_form| %>
-            <td><%= fleet_form.input :quantity, :collection => 1..fleet_form.object.quantity, :label => false %></td>
+            <td align=right><%= fleet_form.input :quantity, :collection => 1..fleet_form.object.quantity, :label => false %></td>
             <td><%= fleet_form.association :destination, :collection => @planet.routes, :disabled => false, :label => false %></td>
           <% end %>
           <td> </td>           
