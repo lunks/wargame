@@ -70,4 +70,30 @@ class GenericFleet < ActiveRecord::Base
     "#{quantity} #{name} - #{selling_price} cada"
   end
 
+  def show
+    case generic_unit.type
+    when 'CapitalShip'
+      "#{name} '#{fleet_name}'"
+    when 'Warrior'
+      "#{name} (#{quantity} vidas}"
+    when 'Commander'
+      "#{name}"
+    when 'Sensor'
+      unless moving?
+        "#{name} #{'(sabotada)' if sabotaged?}"
+      else
+        "#{generic_unit.description}"
+      end
+    when 'Facility'
+      unless moving?
+        "#{name} (#{producing_unit.name unless producing_unit == nil} / #{producing_unit2.name unless producing_unit2 == nil})"
+      else
+        "#{generic_unit.description}"
+      end
+    else
+      "#{quantity} #{name}"
+    end
+
+  end
+
 end

@@ -8,7 +8,7 @@ document.title = "<%= @planet.name %> move"
   <h2><%= @facilities.first.planet.name %></h2>
 <% end %>
 <% @fleets.sort_by{|a| [a.generic_unit.id, a.quantity]}.each do |fleet| %>
-  <span style=font-weight:bold;color:#<%= fleet.squad.color %>><%= fleet.quantity unless fleet.type? Warrior or fleet.type? Commander %> <%= fleet.generic_unit.name %> <%= "'#{fleet.fleet_name}'" if fleet.type? CapitalShip %><%= "(#{fleet.quantity} vidas)" if fleet.type? Warrior %></span>
+  <span style=font-weight:bold;color:#<%= fleet.squad.color %>><%= fleet.show %></span>
 <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? %></span>
   <% unless fleet.type? Warrior || fleet.type?(Commander) %>
     <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
@@ -46,7 +46,7 @@ document.title = "<%= @planet.name %> move"
 <br>
 <% end %>
 <% @facilities.sort_by{|a| [a.generic_unit.id]}.each do |facility| %>  
-  <span style=font-weight:bold;color:#<%= facility.squad.color %>><%= facility.generic_unit.name %> <%= "(#{facility.producing_unit.name} " if facility.producing_unit.present? %><%= " / #{facility.producing_unit2.name})" if facility.producing_unit2.present? %></span>
+  <span style=font-weight:bold;color:#<%= facility.squad.color %>><%= facility.show %></span>
 <span style=color:#40E0D0><%= "--> #{facility.destination.name} " if facility.moving? %></span>
   <%= simple_form_for facility, :url => url_for(:controller => 'generic_fleets', :action => 'move_facility') do |f| %>
     <%= f.hidden_field :id %>
