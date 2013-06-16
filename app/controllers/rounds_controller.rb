@@ -20,9 +20,5 @@ class RoundsController < ApplicationController
     render :text => 'New Round ok'
   end
 
-  def delete_usuario
-     User.last.destroy
-  end
-
 end
 
