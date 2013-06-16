@@ -71,6 +71,7 @@ class GenericFleetsController < ApplicationController
   end
 
   def move_facility
+    @round = Round.getInstance
     @facility = FacilityFleet.find(params[:facility_fleet][:id])
     unless params[:facility_fleet][:destination].empty?
       @planet = Planet.find(params[:facility_fleet][:destination])

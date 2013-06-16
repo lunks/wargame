@@ -1,11 +1,11 @@
 <info class="tooltip">
 <% if fleet.moving? %>
   <tip>DETECTOR <br><%= fleet.generic_unit.name %> em missão de transporte.<br>Destruída se todo o comboio for destruído<br>Só pode ser remontada em planetas sem unidades inimigas</tip>
-% else %>
+<% else %>
   <tip>DETECTOR<br>- Detecta unidades inimigas de grande porte nas proximidades<br>- Transporta-se em <%= fleet.generic_unit.description %></tip>
 <% end %>
-</info>
 <%= fleet.show %>
+</info>
 <% unless fleet.squad != @squad || fleet.squad.ready? || fleet.moving? || fleet.sabotaged? %>
   (<a href = "" onclick="window.open('/generic_fleets/<%= fleet.id %>/sensor', 'Sensor <%= fleet.planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=400')">detectar</a>)
 <% end %>
