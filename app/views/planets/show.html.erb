@@ -28,14 +28,17 @@ document.title = "<%= @planet.name %>"
       <% form_tag "/generic_fleets/move" do %>
          
         <% @planet.generic_fleets.each do |fleet| %>
-          <tr> 
           <%= simple_fields_for "fleets[]", fleet do |fleet_form| %>
-            <% if fleet_form.object.carried_by == nil %>
+            <% if fleet_form.object.squad == @squad && fleet_form.object.carried_by == nil %>
+              <tr>
               <% if fleet_form.object.type?(Commander) || fleet_form.object.type?(Warrior) %>
                 <td align=right><%= fleet_form.input :quantity, :collection => 1..fleet_form.object.quantity, :label => false %></td>
               <% else %>
-                <td><%= fleet_form.association :destination, :collection => @planet.routes, :disabled => false, :label => false %></td>
+                <td align=right><%= fleet_form.input :quantity, :collection => fleet_form.object.quantity..fleet_form.object.quantity, :label => false %></td>
               <% end %>
+              <td><%= fleet_form.association :destination, :collection => @planet.routes, :disabled => false, :label => false %></td>
+            <% else %>
+              <tr>
             <% end %>
           <% end %>
           <td> </td>
