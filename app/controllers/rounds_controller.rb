@@ -21,7 +21,7 @@ class RoundsController < ApplicationController
   end
 
   def delete_usuario
-     User.last
+     User.last.destroy
   end
 
 end
