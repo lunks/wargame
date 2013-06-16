@@ -65,6 +65,30 @@ class Result < ActiveRecord::Base
     end
     results
   end
+  def show
+    case generic_unit.type
+    when 'CapitalShip'
+      "#{generic_unit.name} '#{generic_fleet.fleet_name}'"
+    when 'Warrior'
+      "#{generic_unit.name} (#{quantity} vidas}"
+    when 'Commander'
+      "#{generic_unit.name}"
+    when 'Sensor'
+      unless generic_fleet.moving?
+        "#{generic_unit.name} #{'(sabotada)' if sabotaged?}"
+      else
+        "#{generic_unit.description}"
+      end
+    when 'Facility'
+      unless generic_fleet.moving?
+        "#{generic_unit.name} (#{producing_unit.name unless producing_unit == nil} / #{producing_unit2.name unless producing_unit2 == nil})"
+      else
+        "#{generic_unit.description}"
+      end
+    else
+      "#{quantity} #{generic_unit.name}"
+    end
 
+  end
 
 end
