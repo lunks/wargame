@@ -2,8 +2,8 @@
 document.title = "Inteligência"
 </script>
 <div class="planet_content">
-<h2> Fog of War </h2>
-Últimas frotas inimigas vistas em:<br>
+<h2> Centro de Inteligência </h2>
+Últimas informações de guerra obtidas:<br>
   <% @planets.each do |planet| %>
     <% unless planet.generic_fleets.any? { |fleet| fleet.squad == @squad } %>
       <h3> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h3>
@@ -27,7 +27,7 @@ document.title = "Inteligência"
           <% when 'CapitalShip' %>
             <span style=color:#<%= fleet.squad.color %>>
             <%= fleet.generic_unit.name %>
-            ''
+            ' '
           <% else %>
             <span style=color:#<%= fleet.squad.color %>>
             <%= fleet.final_quantity %>
