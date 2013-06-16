@@ -1,6 +1,17 @@
 <info class="tooltip">
-<tip>TRANSPORTE<br>- Transporte de tropas, armamentos e detectores<br>- Abordagem e captura de fábricas<br><%= "- #{fleet.generic_unit.description}" if fleet.generic_unit.description %></tip>
-<%= fleet.show %>
+<tip>TRANSPORTE<br>- Transporte de tropas, armamentos e oficiais<br>- Abordagem e captura de fábricas<br><%= "- #{fleet.generic_unit.description}" if fleet.generic_unit.description %></tip>
+<% if fleet.squad == @squad && !@squad.ready? && !@round.attack? %>
+  <%= fleet.show %>
+  <a href = "" onclick="window.open('/light_transports/<%= fleet.id %>/edit', 'Transport <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=450')">+</a>
+<% else %>
+  <%= fleet.show %>
+<% end %>
+<% unless fleet.cargo.empty? %>
+  <% fleet.cargo.each do |cargo| %>
+    <br>
+    + <%= cargo.show %>
+  <% end %>
+<% end %>
 </info>
 
 
