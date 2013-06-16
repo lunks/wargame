@@ -33,7 +33,8 @@ document.title = "<%= @planet.name %>"
             <td align=right><%= fleet_form.input :quantity, :collection => 1..fleet_form.object.quantity, :label => false %></td>
             <td><%= fleet_form.association :destination, :collection => @planet.routes, :disabled => false, :label => false %></td>
           <% end %>
-          <td> </td>           
+          <td> </td>
+          <% if fleet.squad == @squad %>           
           <td><span style=color:#<%= fleet.squad.color %>>
           <% case fleet.generic_unit.type %>
             <% when 'Facility' %>
@@ -57,6 +58,10 @@ document.title = "<%= @planet.name %>"
             <% else %>
               <%= render :partial => 'fleets', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
           <% end %></span>
+          <% else %>
+            <td><span style=color:#<%= fleet.squad.color %>>
+            <%= fleet.squad.name %>
+          <% end %>
   
           <% if fleet.carried_by == nil %>
             <span style=color:#40E0D0><%= fleet.show_results %></span>
