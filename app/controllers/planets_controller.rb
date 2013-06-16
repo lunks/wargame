@@ -50,7 +50,6 @@ class PlanetsController < ApplicationController
       @round_phase = 'Combates'
       @tip = "Informe os resultados dos combates."
     end
-     
     @capital_ships = 0
     @facilities = 0
     @fighters = 0
@@ -71,18 +70,11 @@ class PlanetsController < ApplicationController
     end
     @inactive = FacilityFleet.where(:squad => @current_squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @current_squad, :producing_unit2_id => nil).count
     @comment1 = "."
-    @comment1 = "#{@inactive} slots inativos" unless @inactive == 0 
-   
+    @comment1 = " #{@inactive} slots inativos" unless @inactive == 0    
     @comment2 = "."
     @all_squads.each do |squad|
       @comment2 << squad.name + ":pronto  " if squad.ready?
     end
-
-
-
-
-
-
 
     respond_with @planets
   end
