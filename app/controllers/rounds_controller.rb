@@ -2,6 +2,7 @@ class RoundsController < ApplicationController
 
   def index
     @squads = Squad.all
+    @user = User.last
   end
 
   def new_game
@@ -17,6 +18,10 @@ class RoundsController < ApplicationController
   def end_round
     round = Round.getInstance.end_round!
     render :text => 'New Round ok'
+  end
+
+  def delete_usuario
+     User.last
   end
 
 end
