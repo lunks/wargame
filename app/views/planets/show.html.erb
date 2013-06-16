@@ -67,7 +67,7 @@ document.title = "<%= @planet.name %>"
               <%= render :partial => 'fleets', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
           <% end %></span>
           <% else %>
-            <td></td><td><span style=color:#<%= fleet.squad.color %>>
+            <td></td><td></td><td><span style=color:#<%= fleet.squad.color %>>
             <%= fleet.squad.name %>
           <% end %>
   
