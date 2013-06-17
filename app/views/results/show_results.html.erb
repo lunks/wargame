@@ -19,10 +19,16 @@ Log de todas as batalhas do esquadrão:
             <span style=font-weight:strong;outline:solid;color:#<%= unit.squad.color %>>
             <%= unit.show %>
           <% when 'Facility' %>
-            <%= unit.show %>
+            <span style=color:#<%= unit.squad.color %>>
+            <%= unit.generic_unit.name %>
+            ( <%= unit.producing_unit.name if unit.producing_unit %> / <%= unit.producing_unit2.name if unit.producing_unit2 %> )
           <% when 'CapitalShip' %>
             <span style=color:#<%= unit.squad.color %>>
-            <%= unit.show %>
+            <%= unit.generic_unit.name %>
+            ' '
+          <% when 'Sensor' %>
+            <span style=color:#<%= unit.squad.color %>>
+            <%= unit.generic_unit.name %>
           <% else %>
             <span style=color:#<%= unit.squad.color %>>
             <%= unit.show %> 

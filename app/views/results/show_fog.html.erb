@@ -29,6 +29,9 @@ document.title = "Inteligência"
             <span style=color:#<%= fleet.squad.color %>>
             <%= fleet.generic_unit.name %>
             ' '
+          <% when 'Sensor' %>
+            <span style=color:#<%= fleet.squad.color %>>
+            <%= fleet.generic_unit.name %>
           <% else %>
             <span style=color:#<%= fleet.squad.color %>>
             <%= fleet.final_quantity %>
