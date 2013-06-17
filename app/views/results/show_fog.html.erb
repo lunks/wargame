@@ -22,6 +22,7 @@ document.title = "Inteligência"
             <span style=font-weight:strong;outline:solid;color:#<%= fleet.squad.color %>>
             <%= fleet.generic_unit.name %>
           <% when 'Facility' %>
+            <span style=color:#<%= fleet.squad.color %>>
             <%= fleet.generic_unit.name %>
             ( <%= fleet.producing_unit.name if fleet.producing_unit %> / <%= fleet.producing_unit2.name if fleet.producing_unit2 %> )
           <% when 'CapitalShip' %>
