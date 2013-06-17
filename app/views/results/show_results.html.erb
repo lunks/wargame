@@ -14,21 +14,18 @@ Log de todas as batalhas do esquadrão:
         <% case unit.generic_unit.type %>
           <% when 'Warrior' %>
             <span style=font-weight:strong;outline:dotted;background-color:#331100;color:#<%= unit.squad.color %>>
-            <%= unit.generic_unit.name %> (<%= unit.final_quantity %> vidas)
+            <%= unit.show %>
           <% when 'Commander' %>
             <span style=font-weight:strong;outline:solid;color:#<%= unit.squad.color %>>
-            <%= unit.generic_unit.name %>
+            <%= unit.show %>
           <% when 'Facility' %>
-            <%= unit.generic_unit.name %>
-            ( <%= unit.producing_unit.name if unit.producing_unit %> / <%= unit.producing_unit2.name if unit.producing_unit2 %> )
+            <%= unit.show %>
           <% when 'CapitalShip' %>
             <span style=color:#<%= unit.squad.color %>>
-            <%= unit.generic_unit.name %>
-            ' '
+            <%= unit.show %>
           <% else %>
             <span style=color:#<%= unit.squad.color %>>
-            <%= unit.quantity %>
-            <%= unit.generic_unit.name %>  
+            <%= unit.show %> 
         <% end %></span>
 
         <span style=color:#40E0D0> <%= unit.show_results %> </span>
