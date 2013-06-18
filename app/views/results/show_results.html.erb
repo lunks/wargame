@@ -24,8 +24,7 @@ Log de todas as batalhas do esquadrão:
             ( <%= unit.producing_unit.name if unit.producing_unit %> / <%= unit.producing_unit2.name if unit.producing_unit2 %> )
           <% when 'CapitalShip' %>
             <span style=color:#<%= unit.squad.color %>>
-            <%= unit.generic_unit.name %>
-            ' '
+            <%= unit.show %>
           <% when 'Sensor' %>
             <span style=color:#<%= unit.squad.color %>>
             <%= unit.generic_unit.name %>

@@ -68,7 +68,7 @@ class Result < ActiveRecord::Base
   def show
     case generic_unit.type
     when 'CapitalShip'
-      "#{generic_unit.name} '#{generic_fleet.fleet_name}'"
+      "#{generic_unit.name} '#{fleet_name}'"
     when 'Warrior'
       "#{generic_unit.name} (#{quantity} vidas}"
     when 'Commander'

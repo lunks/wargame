@@ -6,6 +6,7 @@ class GenericFleet < ActiveRecord::Base
   belongs_to :planet
   belongs_to :generic_unit
   belongs_to :destination, :class_name => "Planet"
+  belongs_to :carried_by, :class_name => "GenericFleet"
 
   after_save :destroy_if_empty
 
@@ -93,7 +94,11 @@ class GenericFleet < ActiveRecord::Base
     else
       "#{quantity} #{name}"
     end
+  end
 
+  def load_into carrier_fleet, qdte
+    carried_by = carrier_fleet
+    save
   end
 
 end

@@ -3,7 +3,7 @@ document.title = "Inteligência"
 </script>
 <div class="planet_content">
 <h2> Centro de Inteligência </h2>
-Últimas informações de guerra obtidas:<br>
+Últimas informações de espionagem:<br>
   <% @planets.each do |planet| %>
     <% unless planet.generic_fleets.any? { |fleet| fleet.squad == @squad } %>
       <h3> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h3>
@@ -27,8 +27,7 @@ document.title = "Inteligência"
             ( <%= fleet.producing_unit.name if fleet.producing_unit %> / <%= fleet.producing_unit2.name if fleet.producing_unit2 %> )
           <% when 'CapitalShip' %>
             <span style=color:#<%= fleet.squad.color %>>
-            <%= fleet.generic_unit.name %>
-            ' '
+            <%= fleet.show %>
           <% when 'Sensor' %>
             <span style=color:#<%= fleet.squad.color %>>
             <%= fleet.generic_unit.name %>

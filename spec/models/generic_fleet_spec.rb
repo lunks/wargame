@@ -6,6 +6,7 @@ describe GenericFleet do
   it {should belong_to :planet}
   it {should belong_to :generic_unit}
   it {should belong_to :destination}
+  it {should belong_to :carried_by}
 
   let(:unit) {Factory :generic_fleet}
   let(:trooper) {Factory :trooper}
@@ -53,6 +54,16 @@ describe GenericFleet do
       unit.save
       GenericFleet.all.should be_empty
     end
+
+    it 'should load into a carrier ship' do
+      carrier_fleet = Factory(:generic_fleet, :generic_unit => capital_ship)
+      unit.load_into carrier_fleet, 1
+    end
+    it 'should unload from a carrier ship' do
+    end
+
+
+
    end
 
 
