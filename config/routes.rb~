@@ -49,7 +49,7 @@ Rpg::Application.routes.draw do
 
    resources :capital_ships do
      member do
-       put :load_in
+       get :load_in
      end
    end
 

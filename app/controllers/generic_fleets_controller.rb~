@@ -48,6 +48,29 @@ class GenericFleetsController < ApplicationController
     redirect_to :fleets
   end
 
+  def edit
+    @fleet = GenericFleet.find(params[:id])
+@@fleet = GenericFleet.find(params[:id])
+    @planet = @fleet.planet
+    @carriable_fleets = Fleet.where(:planet => @fleet.planet, :squad => @fleet.squad, :carried_by_id => nil, :moving => nil).reject! { |fleet| fleet == @fleet || fleet.type?(LightTransport) || fleet.type?(CapitalShip) || fleet.type?(Sensor) }
+    @carried_fleets = Fleet.where(:carried_by => @fleet)
+  end
+
+  def carregar
+    @carriable_fleets = params[:carriable_fleets]
+    carrier = @@fleet
+    @carriable_fleets.each do [id]
+      carriable_fleet = GenericFleet.find(id)
+      carriable_fleet.load_in carrier, quantity
+    end
+  end
+
+  def update
+    @fleet = GenericFleet.find(params[:id])
+    @fleet.change_fleet_name(params[:fleet][:fleet_name])
+    redirect_to :back
+  end
+
   def sensor
     @fleet = GenericFleet.find(params[:id])
     @planet = @fleet.planet
