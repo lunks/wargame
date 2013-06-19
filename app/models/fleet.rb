@@ -93,24 +93,6 @@ class Fleet < GenericFleet
          fleet.quantity = 1 if fleet.quantity > 1 && unit.is_a?(Commander)
          fleet.save
       end
-   end
-
-
-  end
-
-  def group_fleets
-    unless self.generic_unit.is_a?(CapitalShip) || self.generic_unit.is_a?(Facility)|| self.generic_unit.is_a?(Sensor)
-      fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => nil)
-      total_quantity = 0
-      fleets.each do |fleet|
-        unless fleet == self
-          total_quantity += fleet.quantity
-          fleet.quantity = 0
-          fleet.save
-        end
-      end
-      self.quantity += total_quantity
-      save
     end
   end
 

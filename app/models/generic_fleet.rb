@@ -96,9 +96,61 @@ class GenericFleet < ActiveRecord::Base
     end
   end
 
-  def load_into carrier_fleet, qdte
-    carried_by = carrier_fleet
-    save
+  def load_in carrier, qtt
+    if qtt == self.quantity
+      self.carried_by = carrier
+      self.save
+      self.group_fleets
+    else
+      not_loaded_fleet = GenericFleet.new self.attributes
+      not_loaded_fleet.quantity -= qtt
+      not_loaded_fleet.save
+      self.carried_by = carrier
+      self.quantity = qtt
+      self.save 
+      self.group_fleets     
+    end
+  end
+
+  def unload_from carrier, qtt
+    if qtt == self.quantity
+      self.carried_by = nil
+      self.save
+      self.group_fleets
+    else
+      unloaded_fleet = GenericFleet.new self.attributes
+      unloaded_fleet.quantity = qtt
+      unloaded_fleet.carried_by = nil
+      unloaded_fleet.save
+      self.quantity -= qtt
+      self.save
+      unloaded_fleet.group_fleets         
+    end
+  end
+
+  def carrier
+    carried_by
+  end
+
+  def group_fleets
+    unless self.generic_unit.is_a?(CapitalShip) || self.generic_unit.is_a?(Facility)|| self.generic_unit.is_a?(Sensor)
+      fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => self.moving, :destination_id => self.destination_id, :carried_by_id => self.carried_by_id)
+      total_quantity = 0
+      fleets.each do |fleet|
+        unless fleet == self
+          total_quantity += fleet.quantity
+          fleet.quantity = 0
+          fleet.save
+        end
+      end
+      self.quantity += total_quantity
+      save
+    end
+  end
+
+
+  def cargo
+    GenericFleet.where(:carried_by => self)
   end
 
 end

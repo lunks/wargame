@@ -16,6 +16,7 @@ describe GenericFleet do
 
   context 'managing fleets' do
     before(:each) do
+      GenericFleet.destroy_all
       unit.generic_unit = capital_ship
       unit.quantity = 1
       unit.save
@@ -55,16 +56,42 @@ describe GenericFleet do
       GenericFleet.all.should be_empty
     end
 
-    it 'should load into a carrier ship' do
-      carrier_fleet = Factory(:generic_fleet, :generic_unit => capital_ship)
-      unit.load_into carrier_fleet, 1
+    it 'should be loaded into a carrier ship' do
+      carrier = Factory(:generic_fleet, :generic_unit => capital_ship)
+      unit.load_in carrier, 1
+      unit.carrier.should be carrier
     end
-    it 'should unload from a carrier ship' do
+    it 'should be partially loaded into a carrier ship' do
+      carrier = Factory(:generic_fleet, :generic_unit => capital_ship)
+      unit.quantity = 10
+      unit.save
+      unit.load_in carrier, 6
+      carrier.cargo.first.should == unit
+      carrier.cargo.first.quantity.should == 6
+      not_loaded_fleet = GenericFleet.where(:quantity => 4).first
+      not_loaded_fleet.quantity.should == 4
+    end
+    it 'should be unloaded from a carrier ship' do
+      carrier = Factory(:generic_fleet, :generic_unit => capital_ship, :quantity => 1)
+      unit.load_in carrier, 1
+      unit.carrier.should be carrier
+      unit.unload_from carrier, 1
+      unit.carrier.should be_nil
+    end
+    it 'should be partially unloaded from a carrier ship' do
+      carrier = Factory(:generic_fleet, :generic_unit => capital_ship, :quantity => 1)
+      unit.quantity = 10
+      unit.save
+      unit.load_in carrier, 10
+      unit.carrier.should be carrier
+      unit.unload_from carrier, 6
+      carrier.cargo.first.should == unit
+      carrier.cargo.first.quantity.should == 4
+      unloaded_fleet = GenericFleet.where(:quantity => 6).first
+      unloaded_fleet.quantity.should == 6
     end
 
-
-
-   end
+  end
 
 
   context 'blast units' do
