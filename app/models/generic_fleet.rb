@@ -76,7 +76,7 @@ class GenericFleet < ActiveRecord::Base
     when 'CapitalShip'
       "#{name} '#{fleet_name}'"
     when 'Warrior'
-      "#{name} (#{quantity} vidas}"
+      "#{name} (#{quantity} vidas)"
     when 'Commander'
       "#{name}"
     when 'Sensor'
@@ -102,7 +102,7 @@ class GenericFleet < ActiveRecord::Base
       self.save
       self.group_fleets
     else
-      not_loaded_fleet = GenericFleet.new self.attributes
+      not_loaded_fleet = self.clone
       not_loaded_fleet.quantity -= qtt
       not_loaded_fleet.save
       self.carried_by = carrier
@@ -118,7 +118,7 @@ class GenericFleet < ActiveRecord::Base
       self.save
       self.group_fleets
     else
-      unloaded_fleet = GenericFleet.new self.attributes
+      unloaded_fleet = self.clone
       unloaded_fleet.quantity = qtt
       unloaded_fleet.carried_by = nil
       unloaded_fleet.save

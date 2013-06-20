@@ -3,7 +3,7 @@ document.title = " <%= @capital_ship.show %>"
 </script>
 <div class="planet_content">
   <h2><%= @planet %></h2>
-  <h3><%= @capital_ship.show %></h3><%= @capital_ship.id %>
+  <h3><%= @capital_ship.show %></h3>
   <%= simple_form_for @capital_ship, :url => url_for(:controller => 'capital_ships', :action => 'update') do |f| %>
     <table>
     <tr>
@@ -12,21 +12,37 @@ document.title = " <%= @capital_ship.show %>"
     </tr> 
     </table>
   <% end %>
-Atenção: NÃO USE ACENTOS ou caracteres especiais.<br>
+Atenção: NÃO USE ACENTOS ou caracteres especiais.
+</div>
+<div class="planet_content">
+Unidades carregadas:
 <p>
-Carga de unidades:<br><br>
 <table>
-<% @carriable_fleets.each do |fleet| %>
+<% @carried_fleets.each do |fleet| %>
   <tr>
-  <%= simple_form_for fleet, :url => url_for(:controller => 'capital_ships', :action => 'load_in') do |f| %>
-    <td><%= fleet.show %></td>
-    <td><%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %></td>
-        <%= f.hidden_field :oi, :value => fleet.id %>
-    <td><%= f.submit 'carregar' %></td>
+  <%= simple_form_for fleet, :url => url_for(:controller => 'capital_ships', :action => 'unload_from') do |f| %>
+    <td><span style=color:#<%= fleet.squad.color %>><%= fleet.show %></span></td>
+    <td align=right><%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %></td>
+        <%= f.hidden_field :id, :value => fleet.id %>
+    <td><%= f.submit '>' %></td>
   <% end %>
   </tr>
 <% end %>
 </table>
-
-
+</div>
+<div class="planet_content">
+Carga de unidades:
+<p>
+<table>
+<% @carriable_fleets.each do |fleet| %>
+  <tr>
+  <%= simple_form_for fleet, :url => url_for(:controller => 'capital_ships', :action => 'load_in') do |f| %>
+    <td><span style=color:#<%= fleet.squad.color %>><%= fleet.show %></span></td>
+    <td align=right><%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %></td>
+        <%= f.hidden_field :id, :value => fleet.id %>
+    <td><%= f.submit '<' %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
 </div>

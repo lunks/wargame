@@ -4,7 +4,7 @@ class CapitalShipsController < ApplicationController
     @capital_ship = GenericFleet.find(params[:id])
     @planet = @capital_ship.planet
     @carriable_fleets = Fleet.where(:planet => @capital_ship.planet, :squad => @capital_ship.squad, :carried_by_id => nil, :moving => nil).reject! { |fleet| fleet == @capital_ship || fleet.type?(LightTransport) || fleet.type?(CapitalShip) || fleet.type?(Sensor) }
-    @carried_fleets = Fleet.where(:carried_by => @capital_ship)
+    @carried_fleets = GenericFleet.where(:carried_by => @capital_ship)
   end
 
   def update
@@ -14,9 +14,16 @@ class CapitalShipsController < ApplicationController
   end
 
   def load_in
-    @fleet = GenericFleet.find(params[:fleet][:oi])
+    @fleet = GenericFleet.find(params[:fleet][:id])
     @capital_ship = GenericFleet.find(params[:id])
-    @fleet.load_in @capital_ship, params[:fleet][:quantity]
+    @fleet.load_in @capital_ship, params[:fleet][:quantity].to_i
+    redirect_to :back
+  end
+
+  def unload_from
+    @fleet = GenericFleet.find(params[:fleet][:id])
+    @capital_ship = GenericFleet.find(params[:id])
+    @fleet.unload_from @capital_ship, params[:fleet][:quantity].to_i
     redirect_to :back
   end
 

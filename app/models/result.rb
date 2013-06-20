@@ -70,7 +70,7 @@ class Result < ActiveRecord::Base
     when 'CapitalShip'
       "#{generic_unit.name} '#{fleet_name}'"
     when 'Warrior'
-      "#{generic_unit.name} (#{quantity} vidas}"
+      "#{generic_unit.name} (#{quantity} vidas)"
     when 'Commander'
       "#{generic_unit.name}"
     when 'Sensor'

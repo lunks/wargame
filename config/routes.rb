@@ -50,6 +50,7 @@ Rpg::Application.routes.draw do
    resources :capital_ships do
      member do
        put :load_in
+       put :unload_from
      end
    end
 
