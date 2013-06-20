@@ -93,23 +93,6 @@ describe GenericFleet do
       unloaded_fleet = GenericFleet.where(:quantity => 6).first
       unloaded_fleet.quantity.should == 6
     end
-    it 'should arm a fighter' do
-      fighter = Factory(:generic_fleet, :generic_unit => fighter, :quantity => 1)
-      unit.load_in fighter, 1
-      unit.carrier.should be fighter
-    end
-    it 'should arm a full group of fighters' do
-      fighter = Factory(:generic_fleet, :generic_unit => fighter, :quantity => 10)
-      unit.generic_unit = armament
-      unit.quantity = 10
-      unit.save
-      unit.load_in fighter, 10
-      unit.carrier.should be fighter
-      fighter.cargo.first.should == unit
-      unit = GenericFleet.where(:generic_unit => armament).first
-      unit.quantity.should == 1
-    end
-
   end
 
 

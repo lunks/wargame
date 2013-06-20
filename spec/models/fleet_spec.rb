@@ -18,6 +18,8 @@ describe Fleet do
     before(:each) do
       unit.squad = squad
       unit.save
+      @carried_unit1 = Factory(:fleet, :carried_by => unit)
+      @carried_unit2 = Factory(:fleet, :carried_by => unit)
       @moving_fleet = unit.move 1, planet
     end
 
@@ -27,6 +29,20 @@ describe Fleet do
       end
       it 'should have a destination planet when moving' do
         @moving_fleet.destination.should == planet
+      end
+      it 'should flag carried units when moving' do
+        @moving_fleet.should be_moving
+        carried_unit1 = Fleet.find(@carried_unit1.id)
+        carried_unit2 = Fleet.find(@carried_unit2.id)
+        carried_unit1.should be_moving
+        carried_unit2.should be_moving
+      end
+      it 'should flag destination on carried units when moving' do
+        @moving_fleet.destination.should == planet
+        carried_unit1 = Fleet.find(@carried_unit1.id)
+        carried_unit2 = Fleet.find(@carried_unit2.id)
+        carried_unit1.destination.should == planet
+        carried_unit2.destination.should == planet
       end
     end
     

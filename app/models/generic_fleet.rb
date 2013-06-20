@@ -97,44 +97,18 @@ class GenericFleet < ActiveRecord::Base
   end
 
   def load_in carrier, qtt
-    if carrier.type?(Fighter) || carrier.type?(LightTransport)
-       if qtt == carrier.quantity
-         self.carried_by = carrier
-         self.quantity = 1
-         self.save
-       elsif qtt > carrier.quantity
-         not_loaded_fleet = self.clone
-         not_loaded_fleet.quantity -= qtt
-         not_loaded_fleet.save
-         self.carried_by = carrier
-         self.quantity = 1
-         self.save
-         not_loaded_fleet.group_fleets
-       else
-         not_armed_fighter = carrier.clone
-         not_armed_fighter.quantity -= qtt
-         not_armed_fighter.save
-         self.carried_by = carrier
-         self.quantity = 1
-         self.save
-         carrier.quantity = qtt
-         carrier.save
-         not_armed_fighter.group_fleets                  
-       end
+    if qtt == self.quantity
+      self.carried_by = carrier
+      self.save
+      self.group_fleets
     else
-      if qtt == self.quantity
-        self.carried_by = carrier
-        self.save
-        self.group_fleets
-      else
-        not_loaded_fleet = self.clone
-        not_loaded_fleet.quantity -= qtt
-        not_loaded_fleet.save
-        self.carried_by = carrier
-        self.quantity = qtt
-        self.save 
-        self.group_fleets     
-      end
+      not_loaded_fleet = self.clone
+      not_loaded_fleet.quantity -= qtt
+      not_loaded_fleet.save
+      self.carried_by = carrier
+      self.quantity = qtt
+      self.save 
+      self.group_fleets     
     end
   end
 
@@ -158,6 +132,10 @@ class GenericFleet < ActiveRecord::Base
     carried_by
   end
 
+  def cargo
+    GenericFleet.where(:carried_by_id => self.id)
+  end
+
   def group_fleets
     unless self.generic_unit.is_a?(CapitalShip) || self.generic_unit.is_a?(Facility)|| self.generic_unit.is_a?(Sensor)
       fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => self.moving, :destination_id => self.destination_id, :carried_by_id => self.carried_by_id)
@@ -172,11 +150,6 @@ class GenericFleet < ActiveRecord::Base
       self.quantity += total_quantity
       save
     end
-  end
-
-
-  def cargo
-    GenericFleet.where(:carried_by => self)
   end
 
 end

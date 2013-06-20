@@ -32,6 +32,14 @@ class Fleet < GenericFleet
         moving_fleet.moving = true
       end
       moving_fleet.save
+      unless self.cargo.empty?
+        self.cargo.each do |cargo|
+          cargo.moving = moving_fleet.moving 
+          cargo.destination = moving_fleet.destination
+          cargo.carried_by = moving_fleet
+          cargo.save       
+        end
+      end
       self.quantity -= quantity
       save
       moving_fleet
