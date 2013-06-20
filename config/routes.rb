@@ -54,6 +54,8 @@ Rpg::Application.routes.draw do
      end
    end
 
+   resources :sensors
+
    match 'ready' => 'squads#ready'
    match 'index' => 'home#index'
    match 'fleets' => 'generic_fleets#index'

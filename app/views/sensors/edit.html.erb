@@ -1,0 +1,28 @@
+<script>
+document.title = "<%= @fleet.name %> de <%= @planet.name %>"
+</script>
+
+<div class="planet_content">
+<h2> <%= @fleet.generic_unit.name %> de <%= @planet.name %> <%= ' (wormhole) ' if @planet.wormhole? %><%= ' (tradeport)' if @planet.tradeport? %></h2>
+Foram detectadas frotas inimigas em:<br>
+<% @routes.sort_by{|a| [a.name]}.each do |planet| %>
+   <% unless planet.generic_fleets.select { |units| units.squad != @current_squad && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'LightTransport' || units.generic_unit.type == 'Fighter') }.empty? %>
+     <h3> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h3>
+       <% planet.generic_fleets.select { |units| units.squad != @current_squad && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'LightTransport' || units.generic_unit.type == 'Fighter') }.each do |fleet| %>
+       <span style=color:#<%= fleet.squad.color %>>
+       <% case fleet.generic_unit.type %>
+       <% when 'CapitalShip' %>
+         <%= fleet.generic_unit.name %>
+         ' '
+       <% when 'Facility' %>
+         <%= fleet.generic_unit.name %>
+         ( <%= fleet.producing_unit.name if fleet.producing_unit %> / <%= fleet.producing_unit2.name if fleet.producing_unit2 %> )
+       <% else %>
+         <%= fleet.generic_unit.name %>
+       <% end %></span>
+       <br>
+     <% end %>
+   <% end %>
+
+<% end %>
+</div>

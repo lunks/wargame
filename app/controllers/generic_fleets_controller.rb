@@ -48,11 +48,4 @@ class GenericFleetsController < ApplicationController
     redirect_to :fleets
   end
 
-  def sensor
-    @fleet = GenericFleet.find(params[:id])
-    @planet = @fleet.planet
-    @routes = @planet.routes
-    @current_squad = current_squad 
-  end
-
 end
