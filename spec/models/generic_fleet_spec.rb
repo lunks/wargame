@@ -11,6 +11,8 @@ describe GenericFleet do
   let(:unit) {Factory :generic_fleet}
   let(:trooper) {Factory :trooper}
   let(:capital_ship) {Factory :capital_ship}
+  let(:fighter) {Factory :fighter}
+  let(:armament) {Factory :armament}
   let(:facility_unit) {Factory :facility_fleet}
   let(:facility) {Factory :facility}
 
@@ -60,6 +62,7 @@ describe GenericFleet do
       carrier = Factory(:generic_fleet, :generic_unit => capital_ship)
       unit.load_in carrier, 1
       unit.carrier.should be carrier
+      carrier.cargo.first.should == unit
     end
     it 'should be partially loaded into a carrier ship' do
       carrier = Factory(:generic_fleet, :generic_unit => capital_ship)
@@ -89,6 +92,22 @@ describe GenericFleet do
       carrier.cargo.first.quantity.should == 4
       unloaded_fleet = GenericFleet.where(:quantity => 6).first
       unloaded_fleet.quantity.should == 6
+    end
+    it 'should arm a fighter' do
+      fighter = Factory(:generic_fleet, :generic_unit => fighter, :quantity => 1)
+      unit.load_in fighter, 1
+      unit.carrier.should be fighter
+    end
+    it 'should arm a full group of fighters' do
+      fighter = Factory(:generic_fleet, :generic_unit => fighter, :quantity => 10)
+      unit.generic_unit = armament
+      unit.quantity = 10
+      unit.save
+      unit.load_in fighter, 10
+      unit.carrier.should be fighter
+      fighter.cargo.first.should == unit
+      unit = GenericFleet.where(:generic_unit => armament).first
+      unit.quantity.should == 1
     end
 
   end

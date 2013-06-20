@@ -97,18 +97,44 @@ class GenericFleet < ActiveRecord::Base
   end
 
   def load_in carrier, qtt
-    if qtt == self.quantity
-      self.carried_by = carrier
-      self.save
-      self.group_fleets
+    if carrier.type?(Fighter) || carrier.type?(LightTransport)
+       if qtt == carrier.quantity
+         self.carried_by = carrier
+         self.quantity = 1
+         self.save
+       elsif qtt > carrier.quantity
+         not_loaded_fleet = self.clone
+         not_loaded_fleet.quantity -= qtt
+         not_loaded_fleet.save
+         self.carried_by = carrier
+         self.quantity = 1
+         self.save
+         not_loaded_fleet.group_fleets
+       else
+         not_armed_fighter = carrier.clone
+         not_armed_fighter.quantity -= qtt
+         not_armed_fighter.save
+         self.carried_by = carrier
+         self.quantity = 1
+         self.save
+         carrier.quantity = qtt
+         carrier.save
+         not_armed_fighter.group_fleets                  
+       end
     else
-      not_loaded_fleet = self.clone
-      not_loaded_fleet.quantity -= qtt
-      not_loaded_fleet.save
-      self.carried_by = carrier
-      self.quantity = qtt
-      self.save 
-      self.group_fleets     
+      if qtt == self.quantity
+        self.carried_by = carrier
+        self.save
+        self.group_fleets
+      else
+        not_loaded_fleet = self.clone
+        not_loaded_fleet.quantity -= qtt
+        not_loaded_fleet.save
+        self.carried_by = carrier
+        self.quantity = qtt
+        self.save 
+        self.group_fleets     
+      end
     end
   end
 
