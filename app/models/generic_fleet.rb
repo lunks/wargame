@@ -99,6 +99,7 @@ class GenericFleet < ActiveRecord::Base
   def load_in carrier, qtt
     if qtt == self.quantity
       self.carried_by = carrier
+      self.moving = carrier.moving
       self.save
       self.group_fleets
     else
@@ -107,6 +108,7 @@ class GenericFleet < ActiveRecord::Base
       not_loaded_fleet.save
       self.carried_by = carrier
       self.quantity = qtt
+      self.moving = carrier.moving
       self.save 
       self.group_fleets     
     end
@@ -115,14 +117,17 @@ class GenericFleet < ActiveRecord::Base
   def unload_from carrier, qtt
     if qtt == self.quantity
       self.carried_by = nil
+      self.moving = nil
       self.save
       self.group_fleets
     else
       unloaded_fleet = self.clone
       unloaded_fleet.quantity = qtt
       unloaded_fleet.carried_by = nil
+      unloaded_fleet.moving = nil
       unloaded_fleet.save
       self.quantity -= qtt
+      self.moving = carrier.moving
       self.save
       unloaded_fleet.group_fleets         
     end

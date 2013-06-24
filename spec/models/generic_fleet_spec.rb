@@ -74,6 +74,19 @@ describe GenericFleet do
       not_loaded_fleet = GenericFleet.where(:quantity => 4).first
       not_loaded_fleet.quantity.should == 4
     end
+    it 'should reset moving status when loaded into a carrier' do
+      carrier = Factory(:generic_fleet, :generic_unit => capital_ship)
+      unit.quantity = 10
+      unit.moving = true
+      unit.save
+      unit.load_in carrier, 6
+      carrier.cargo.first.should == unit
+      carrier.cargo.first.quantity.should == 6
+      carrier.cargo.first.should_not be_moving
+      not_loaded_fleet = GenericFleet.where(:quantity => 4).first
+      not_loaded_fleet.quantity.should == 4
+      not_loaded_fleet.should be_moving
+    end
     it 'should be unloaded from a carrier ship' do
       carrier = Factory(:generic_fleet, :generic_unit => capital_ship, :quantity => 1)
       unit.load_in carrier, 1
@@ -92,6 +105,23 @@ describe GenericFleet do
       carrier.cargo.first.quantity.should == 4
       unloaded_fleet = GenericFleet.where(:quantity => 6).first
       unloaded_fleet.quantity.should == 6
+    end
+    it 'should reset moving status when unloaded from a carrier' do
+      carrier = Factory(:generic_fleet, :generic_unit => capital_ship, :quantity => 1)
+      carrier.moving = true
+      carrier.save
+      unit.quantity = 10
+      unit.save 
+      unit.load_in carrier, 10
+      unit.carrier.should be carrier
+      unit.should be_moving
+      unit.unload_from carrier, 6
+      carrier.cargo.first.should == unit
+      carrier.cargo.first.quantity.should == 4
+      carrier.cargo.first.should be_moving
+      unloaded_fleet = GenericFleet.where(:quantity => 6).first
+      unloaded_fleet.quantity.should == 6
+      unloaded_fleet.should_not be_moving
     end
   end
 

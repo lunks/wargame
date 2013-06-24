@@ -33,17 +33,17 @@ document.title = "<%= @planet.name %>"
       <% when 'CapitalShip' %>
         <%= render :partial => 'capital_ships', :locals => { :fleet => fleet } %>
       <% when 'Warrior' %>
-        <%= render :partial => 'warriors', :locals => { :fleet => fleet } %>
+        <%= render :partial => 'warriors', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
       <% when 'Commander' %>
-        <%= render :partial => 'commanders', :locals => { :fleet => fleet } %>
+        <%= render :partial => 'commanders', :locals => { :fleet => fleet } if fleet.carried_by == nil  %>
       <% when 'Trooper' %>
-        <%= render :partial => 'troopers', :locals => { :fleet => fleet } %>
+        <%= render :partial => 'troopers', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
       <% when 'Armament' %>
-        <%= render :partial => 'armaments', :locals => { :fleet => fleet } %>
+        <%= render :partial => 'armaments', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
       <% when 'LightTransport' %>
         <%= render :partial => 'light_transports', :locals => { :fleet => fleet } %>
       <% when 'Fighter' %>
-        <%= render :partial => 'fighters', :locals => { :fleet => fleet } %>
+        <%= render :partial => 'fighters', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
       <% when 'Sensor' %>
         <%= render :partial => 'sensors', :locals => { :fleet => fleet } %>
       <% else %>
@@ -51,10 +51,11 @@ document.title = "<%= @planet.name %>"
       <% end %>
       </span>
      <% end %>
+     <% if fleet.carried_by == nil %>
       <span style=color:#40E0D0><%= fleet.show_results %></span>
       <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? && fleet.squad == @squad && @round.move %></span>
-
       <br>
+     <% end %>
     <% end %>
     <p>
    <% if @round.move && !@squad.ready? %>
