@@ -22,42 +22,60 @@ document.title = "<%= @planet.name %>"
 
     <%= "Ganhos previstos (Espaço: $#{@planet.air_credits} / Terra: $#{@planet.ground_credits})  " if @planet.credits_per_turn.present? && @planet.credits_per_turn > 0 && !@planet.under_attack? && !@planet.tradeport? %>
 <p>
+    <table>
+    <tr><td>Qtde:</td><td>Destino:</td><td></td><td>Unidade:</td></tr>
     <% @planet.generic_fleets.each do |fleet| %>
+      <tr>
+       <% if fleet.carried_by == nil %>
+       <%= simple_form_for fleet, :url => url_for(:controller => 'generic_fleets', :action => 'move') do |f| %>
+         <%= f.hidden_field :id %>
+         <td align=right>
+         <% if fleet.type?(Warrior) || fleet.type?(Commander) || fleet.type?(CapitalShip) || fleet.type?(Facility) %>
+           <% f.hidden_field :quantity %>
+         <% else %>
+           <%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %>
+         <% end %></td>
+         <td><%= f.input :destination, :collection => fleet.planet.routes, :label => false %></td>  
+         <td><%= f.submit '->' %></td>
+       <% end %>
+       <% end %>
       <span style=color:#<%= fleet.squad.color %>>
-     <% if @round.move && fleet.squad != @squad %>
-       <%= fleet.squad.name %>
-     <% else %>
-      <% case fleet.generic_unit.type %>
-      <% when 'Facility' %>
-        <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
-      <% when 'CapitalShip' %>
-        <%= render :partial => 'capital_ships', :locals => { :fleet => fleet } %>
-      <% when 'Warrior' %>
-        <%= render :partial => 'warriors', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
-      <% when 'Commander' %>
-        <%= render :partial => 'commanders', :locals => { :fleet => fleet } if fleet.carried_by == nil  %>
-      <% when 'Trooper' %>
-        <%= render :partial => 'troopers', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
-      <% when 'Armament' %>
-        <%= render :partial => 'armaments', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
-      <% when 'LightTransport' %>
-        <%= render :partial => 'light_transports', :locals => { :fleet => fleet } %>
-      <% when 'Fighter' %>
-        <%= render :partial => 'fighters', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
-      <% when 'Sensor' %>
-        <%= render :partial => 'sensors', :locals => { :fleet => fleet } %>
+      <% if @round.move && fleet.squad != @squad %>
+        <td><span style=color:#<%= fleet.squad.color %>><%= fleet.squad.name %></span></td>
       <% else %>
-        <%= render :partial => 'fleets', :locals => { :fleet => fleet } %>
-      <% end %>
-      </span>
+        <td><span style=color:#<%= fleet.squad.color %>>
+        <% case fleet.generic_unit.type %>
+        <% when 'Facility' %>
+          <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
+        <% when 'CapitalShip' %>
+          <%= render :partial => 'capital_ships', :locals => { :fleet => fleet } %>
+        <% when 'Warrior' %>
+          <%= render :partial => 'warriors', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+        <% when 'Commander' %>
+          <%= render :partial => 'commanders', :locals => { :fleet => fleet } if fleet.carried_by == nil  %>
+        <% when 'Trooper' %>
+          <%= render :partial => 'troopers', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+        <% when 'Armament' %>
+          <%= render :partial => 'armaments', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+        <% when 'LightTransport' %>
+          <%= render :partial => 'light_transports', :locals => { :fleet => fleet } %>
+        <% when 'Fighter' %>
+          <%= render :partial => 'fighters', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+        <% when 'Sensor' %>
+          <%= render :partial => 'sensors', :locals => { :fleet => fleet } %>
+        <% else %>
+          <%= render :partial => 'fleets', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+        <% end %></span>
      <% end %>
      <% if fleet.carried_by == nil %>
-      <span style=color:#40E0D0><%= fleet.show_results %></span>
-      <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? && fleet.squad == @squad && @round.move %></span>
-      <br>
+       <span style=color:#40E0D0><%= fleet.show_results %></span>
+       <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? && fleet.squad == @squad && @round.move %></span></td>
+     <% else %>
+       </td>
      <% end %>
-    <% end %>
-    <p>
+     <tr>
+   <% end %>
+   </table>
    <% if @round.move && !@squad.ready? %>
 <a href = "" onclick="window.open('/planets/<%= @planet.id %>/move.html', '<%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=600')">mover frotas</a>
    <% end %>

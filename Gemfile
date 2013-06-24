@@ -7,6 +7,7 @@ gem 'devise'
 gem 'unicorn'
 gem 'meta_where'
 gem 'rake', '10.0.4'
+gem 'squeel'
 
 group :development, :test do
   gem 'rspec-rails'
