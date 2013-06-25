@@ -2,7 +2,7 @@
 document.title = "<%= @fleet.name %> de <%= @planet.name %>"
 </script>
 
-<div class="planet_content">
+<div class="fleet">
 <h2> <%= @fleet.generic_unit.name %> de <%= @planet.name %> <%= ' (wormhole) ' if @planet.wormhole? %><%= ' (tradeport)' if @planet.tradeport? %></h2>
 Foram detectadas frotas inimigas em:<br>
 <% @routes.sort_by{|a| [a.name]}.each do |planet| %>

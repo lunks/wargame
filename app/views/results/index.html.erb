@@ -38,7 +38,7 @@ document.title = "Resultados em <%= @results.first.planet.name %>"
        <%= result_form.association :captor, :collection => @squads.select { |squad| squad != result_form.object.squad }, :label => false unless ((result_form.object.generic_unit.type == 'Facility' || result_form.object.generic_unit.type == 'Sensor') && result_form.object.generic_fleet.moving?) || result_form.object.generic_unit.type == 'Warrior' || result_form.object.generic_unit.type == 'Trooper' || result_form.object.generic_unit.type == 'Commander' %>
        </td>
        <td align = "center">
-       <% if (result_form.object.generic_unit.type == 'Facility' || result_form.object.generic_unit.type == 'Sensor' || result_form.object.generic_fleet.type?(CapitalShip))  && result_form.object.generic_fleet.moving != true %><%= result_form.check_box :sabotaged %>
+       <% if (result_form.object.generic_unit.type == 'Facility' || result_form.object.generic_unit.type == 'Sensor' || result_form.object.generic_fleet.type?(CapitalShip) || result_form.object.generic_fleet.type?(Commander)) && result_form.object.generic_fleet.moving != true %><%= result_form.check_box :sabotaged %>
        <% end %>
        </td>
        </tr>

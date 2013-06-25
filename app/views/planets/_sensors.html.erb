@@ -6,6 +6,6 @@
 <% end %>
 <%= fleet.show %>
 </info>
-<% unless fleet.squad != @squad || fleet.squad.ready? || fleet.moving? || fleet.sabotaged? %>
-  (<a href = "" onclick="window.open('/sensors/<%= fleet.id %>/edit', 'Sensor <%= fleet.planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=400')">detectar</a>)
+<% unless fleet.squad != @squad || fleet.squad.ready? || fleet.moving? || fleet.sabotaged? || @round.attack? %>
+  (<a href = "" onclick="window.open('/sensors/<%= fleet.id %>/edit', 'Sensor <%= fleet.planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=400')">detectar</a>)
 <% end %>
