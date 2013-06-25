@@ -22,7 +22,13 @@ Unidades carregadas:
   <tr>
   <%= simple_form_for fleet, :url => url_for(:controller => 'capital_ships', :action => 'unload_from') do |f| %>
     <td><span style=color:#<%= fleet.squad.color %>><%= fleet.show %></span></td>
-    <td align=right><%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %></td>
+    <td align=right>
+        <% if fleet.type?(Warrior) || fleet.type?(Commander) || fleet.type?(CapitalShip) || fleet.type?(Facility) %>
+          <%= f.input :quantity, :collection => fleet.quantity..fleet.quantity, :label => false %>
+        <% else %>
+          <%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %>
+        <% end %>
+    </td>
         <%= f.hidden_field :id, :value => fleet.id %>
     <td><%= f.submit '>' %></td>
   <% end %>
@@ -38,7 +44,13 @@ Carga de unidades:
   <tr>
   <%= simple_form_for fleet, :url => url_for(:controller => 'capital_ships', :action => 'load_in') do |f| %>
     <td><span style=color:#<%= fleet.squad.color %>><%= fleet.show %></span></td>
-    <td align=right><%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %></td>
+    <td align=right>
+        <% if fleet.type?(Warrior) || fleet.type?(Commander) || fleet.type?(CapitalShip) || fleet.type?(Facility) %>
+          <%= f.input :quantity, :collection => fleet.quantity..fleet.quantity, :label => false %>
+        <% else %>
+          <%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %>
+        <% end %>
+    </td>
         <%= f.hidden_field :id, :value => fleet.id %>
     <td><%= f.submit '<' %></td>
   <% end %>
