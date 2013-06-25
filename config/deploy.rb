@@ -6,7 +6,7 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "morali.pem")]
 default_environment['PATH'] = "/opt/bitnami/memcached/bin:/opt/bitnami/perl/bin:/opt/bitnami/git/bin:/opt/bitnami/nginx/sbin:/opt/bitnami/sphinx/bin:/opt/bitnami/sqlite/bin:/opt/bitnami/php/bin:/opt/bitnami/mysql/bin:/opt/bitnami/apache2/bin:/opt/bitnami/subversion/bin:/opt/bitnami/ruby/bin:/opt/bitnami/common/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 set :application, "wargame"
 set :user, "bitnami"
-set :branch, "wg8"
+set :branch, "wg9"
 set :scm, :git
 set :use_sudo, false
 

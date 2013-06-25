@@ -4,7 +4,7 @@ class GenericFleetsController < ApplicationController
     @round = Round.getInstance
     @squad = current_squad
     @all_squads = Squad.all
-
+    @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @squad, :producing_unit2_id => nil).count
     @small_fleet = nil
     total = 0 
     @planets.each do |planet|
