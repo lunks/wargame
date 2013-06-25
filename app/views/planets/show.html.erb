@@ -78,9 +78,12 @@ document.title = "<%= @planet.name %>"
      <tr>
    <% end %>
    </table>
-   <%= "Atencao! Algumas alteracoes de movimento podem cancelar outros." if @round.move %>
+   <% if @round.move %>
+     Atenção! Algumas alterações de movimento podem cancelar outros.
+   <% end %>
+<p>
    <% if @round.move && @planet.tradeport? && !@squad.ready? %>
-<a href = "" onclick="window.open('/tradeports/<%= @planet.id %>', 'Tradeport <%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=385, height=280')">tradeport</a> 
+<a href = "" onclick="window.open('/tradeports/<%= @planet.id %>', 'Tradeport <%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=465, height=260')">tradeport</a> 
    <% end %>
       
    <% if @round.attack && @planet.under_attack? && !@squad.ready?  %>

@@ -9,7 +9,7 @@ class CapitalShipsController < ApplicationController
 
   def update
     @capital_ship = GenericFleet.find(params[:id])
-    @capital_ship.change_fleet_name(params[:fleet][:fleet_name])
+    @capital_ship.change_fleet_name(params[:fleet][:fleet_name].squeeze(" ").strip)
     redirect_to :back
   end
 
