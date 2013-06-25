@@ -1,7 +1,7 @@
 <script>
 document.title = " <%= @capital_ship.show %>"
 </script>
-<div class="planet_content">
+<div class="fleet">
   <h2><%= @planet %></h2>
   <h3><%= @capital_ship.show %></h3>
   <%= simple_form_for @capital_ship, :url => url_for(:controller => 'capital_ships', :action => 'update') do |f| %>
@@ -14,7 +14,7 @@ document.title = " <%= @capital_ship.show %>"
   <% end %>
 Atenção: NÃO USE ACENTOS ou caracteres especiais.
 </div>
-<div class="planet_content">
+<div class="fleet">
 Unidades carregadas:
 <p>
 <table>
@@ -30,7 +30,7 @@ Unidades carregadas:
 <% end %>
 </table>
 </div>
-<div class="planet_content">
+<div class="fleet">
 Carga de unidades:
 <p>
 <table>

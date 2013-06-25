@@ -3,7 +3,7 @@ class CapitalShipsController < ApplicationController
   def edit
     @capital_ship = GenericFleet.find(params[:id])
     @planet = @capital_ship.planet
-    @carriable_fleets = Fleet.where(:planet => @capital_ship.planet, :squad => @capital_ship.squad, :carried_by_id => nil, :moving => nil).reject! { |fleet| fleet == @capital_ship || fleet.type?(LightTransport) || fleet.type?(CapitalShip) || fleet.type?(Sensor) }
+    @carriable_fleets = Fleet.where(:planet => @capital_ship.planet, :squad => @capital_ship.squad, :carried_by_id => nil).reject! { |fleet| fleet == @capital_ship || fleet.type?(LightTransport) || fleet.type?(CapitalShip) || fleet.type?(Sensor) }
     @carried_fleets = GenericFleet.where(:carried_by => @capital_ship)
   end
 

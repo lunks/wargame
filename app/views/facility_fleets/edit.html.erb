@@ -1,7 +1,7 @@
 <script>
 document.title = "<%= @facility %> de <%= @planet %>"
 </script>
-<div class="planet_content">
+<div class="fleet">
 <h2><%= @planet %></h2>
 <h3><%= @facility  %></h3>
 Produtividade padrão: <%= @facility.capacity %><br>
@@ -31,11 +31,13 @@ Aprimoramentos: +<%= @facility.current_upgrade_ratio %> (Nível <%= @facility.le
 <% end %>
 <p>
 <div align = center><a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a></div>
+</div>
+<div class="fleet">
 <p>
-Clique abaixo para aprimorar a fábrica.<br>
+<%= render :partial => 'aprimorar', :locals => { :facility => @facility } %>
+<p>
 O aprimoramento custa <%= @facility.upgrade_cost %> créditos<br>
 Cada nível aumenta em <%= @facility.upgrade_ratio %> sua capacidade.
-<%= render :partial => 'aprimorar', :locals => { :facility => @facility } %>
 <p>
 </div>
 

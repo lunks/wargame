@@ -2,7 +2,7 @@
 <tip>CAPITAL SHIP<br>- Transporte de qualquer unidade<br>- Abordagem e captura de fábricas<br>- <%= fleet.generic_unit.description %></tip>
 <% if fleet.squad == @squad && !@squad.ready? %>
   <%= fleet.show %>
-  <a href = "" onclick="window.open('/capital_ships/<%= fleet.id %>/edit', 'Capital Ship <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=385, height=450')">+</a>
+  <a href = "" onclick="window.open('/capital_ships/<%= fleet.id %>/edit', 'Capital Ship <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=450')">+</a>
 <% else %>
   <%= fleet.show %>
 <% end %>
