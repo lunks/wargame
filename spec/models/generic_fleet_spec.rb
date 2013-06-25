@@ -59,13 +59,13 @@ describe GenericFleet do
     end
 
     it 'should be loaded into a carrier ship' do
-      carrier = Factory(:generic_fleet, :generic_unit => capital_ship)
+      carrier = Factory(:generic_fleet, :generic_unit => capital_ship, :quantity => 1)
       unit.load_in carrier, 1
       unit.carrier.should be carrier
       carrier.cargo.first.should == unit
     end
     it 'should be partially loaded into a carrier ship' do
-      carrier = Factory(:generic_fleet, :generic_unit => capital_ship)
+      carrier = Factory(:generic_fleet, :generic_unit => capital_ship, :quantity => 1)
       unit.quantity = 10
       unit.save
       unit.load_in carrier, 6
@@ -75,17 +75,21 @@ describe GenericFleet do
       not_loaded_fleet.quantity.should == 4
     end
     it 'should reset moving status when loaded into a carrier' do
-      carrier = Factory(:generic_fleet, :generic_unit => capital_ship)
+      carrier = Factory(:generic_fleet, :generic_unit => capital_ship, :quantity => 1)
+      planet = Factory :planet
       unit.quantity = 10
       unit.moving = true
+      unit.destination = planet
       unit.save
       unit.load_in carrier, 6
       carrier.cargo.first.should == unit
       carrier.cargo.first.quantity.should == 6
       carrier.cargo.first.should_not be_moving
+      carrier.cargo.first.destination.should be_nil
       not_loaded_fleet = GenericFleet.where(:quantity => 4).first
       not_loaded_fleet.quantity.should == 4
       not_loaded_fleet.should be_moving
+      not_loaded_fleet.destination.should == planet       
     end
     it 'should be unloaded from a carrier ship' do
       carrier = Factory(:generic_fleet, :generic_unit => capital_ship, :quantity => 1)
@@ -108,20 +112,25 @@ describe GenericFleet do
     end
     it 'should reset moving status when unloaded from a carrier' do
       carrier = Factory(:generic_fleet, :generic_unit => capital_ship, :quantity => 1)
+      planet = Factory :planet
       carrier.moving = true
+      carrier.destination = planet
       carrier.save
       unit.quantity = 10
       unit.save 
       unit.load_in carrier, 10
       unit.carrier.should be carrier
       unit.should be_moving
+      unit.destination.should == planet
       unit.unload_from carrier, 6
       carrier.cargo.first.should == unit
       carrier.cargo.first.quantity.should == 4
       carrier.cargo.first.should be_moving
+      carrier.cargo.first.destination.should == planet
       unloaded_fleet = GenericFleet.where(:quantity => 6).first
       unloaded_fleet.quantity.should == 6
       unloaded_fleet.should_not be_moving
+      unloaded_fleet.destination.should be_nil
     end
   end
 

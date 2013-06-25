@@ -62,7 +62,16 @@ describe Round do
       Round.getInstance.number.should == 2
       Round.getInstance.move.should be_true
     end
- 
+    it 'should unload all carrier ships when passing moving phase' do
+      carrier = Fleet.first
+      carried_unit = Fleet.last
+      carried_unit.carried_by = carrier
+      carried_unit.save
+      rebel.ready!
+      empire.ready!
+      @round.end_moving!
+      Fleet.where(:carried_by => carrier).should be_empty
+    end
     it 'should unflag sabotaged facilities when passing moving phase' do
       test_facility = FacilityFleet.first
       test_facility.sabotage!

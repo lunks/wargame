@@ -31,7 +31,7 @@ class Round < ActiveRecord::Base
 
   def end_moving!
     Squad.update_all(:ready => nil)
-    GenericFleet.update_all(:sabotaged => nil)
+    GenericFleet.update_all(:sabotaged => nil, :carried_by_id => nil)
     self.move_fleets
     self.update_attributes(:move => nil, :attack => true)
     GenericFleet.all.each do |fleet|

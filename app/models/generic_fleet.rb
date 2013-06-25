@@ -100,6 +100,7 @@ class GenericFleet < ActiveRecord::Base
     if qtt == self.quantity
       self.carried_by = carrier
       self.moving = carrier.moving
+      self.destination = carrier.destination
       self.save
       self.group_fleets
     else
@@ -109,6 +110,7 @@ class GenericFleet < ActiveRecord::Base
       self.carried_by = carrier
       self.quantity = qtt
       self.moving = carrier.moving
+      self.destination = carrier.destination
       self.save 
       self.group_fleets     
     end
@@ -118,6 +120,7 @@ class GenericFleet < ActiveRecord::Base
     if qtt == self.quantity
       self.carried_by = nil
       self.moving = nil
+      self.destination = nil
       self.save
       self.group_fleets
     else
@@ -125,9 +128,11 @@ class GenericFleet < ActiveRecord::Base
       unloaded_fleet.quantity = qtt
       unloaded_fleet.carried_by = nil
       unloaded_fleet.moving = nil
+      unloaded_fleet.destination = nil
       unloaded_fleet.save
       self.quantity -= qtt
       self.moving = carrier.moving
+      self.destination = carrier.destination
       self.save
       unloaded_fleet.group_fleets         
     end

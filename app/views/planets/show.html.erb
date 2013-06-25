@@ -31,7 +31,7 @@ document.title = "<%= @planet.name %>"
          <%= f.hidden_field :id %>
          <td align=right>
          <% if fleet.type?(Warrior) || fleet.type?(Commander) || fleet.type?(CapitalShip) || fleet.type?(Facility) %>
-           <% f.hidden_field :quantity %>
+           <%= f.input :quantity, :collection => fleet.quantity..fleet.quantity, :label => false %>
          <% else %>
            <%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %>
          <% end %></td>
