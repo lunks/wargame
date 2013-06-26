@@ -254,3 +254,10 @@ info.tooltip{
   color:black;
   text-shadow: none;
   }
+
+input[type="radio"], label {
+  float:left;
+  }
+input{
+  clear:left;
+}

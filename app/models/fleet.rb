@@ -82,7 +82,7 @@ class Fleet < GenericFleet
         Fleet.create(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id, :fleet_name => '', :quantity => 1)
       end
     else
-      fleet = find_or_create_by_generic_unit_id_and_planet_id_and_squad_id(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id, :fleet_name => ' ')
+      fleet = find_or_create_by_generic_unit_id_and_planet_id_and_squad_id_and_weapon1_id_and_weapon2_id(:generic_unit_id => unit.id, :planet_id => planet.id, :squad_id => squad.id, :fleet_name => '', :weapon1_id => nil, :weapon2_id => nil)
       if fleet.quantity
         fleet.quantity += quantity
       else

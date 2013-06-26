@@ -9,6 +9,8 @@ describe Result do
   it {should belong_to :round}
   it {should belong_to :producing_unit}
   it {should belong_to :producing_unit2}
+  it {should belong_to :weapon1}
+  it {should belong_to :weapon2}
 
   it {should validate_numericality_of :blasted}
   it {should validate_numericality_of :fled}

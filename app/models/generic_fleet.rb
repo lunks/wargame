@@ -7,8 +7,8 @@ class GenericFleet < ActiveRecord::Base
   belongs_to :generic_unit
   belongs_to :destination, :class_name => "Planet"
   belongs_to :carried_by, :class_name => "GenericFleet"
-  belongs_to :weapon1, :class_name => "GenericUnit"
-  belongs_to :weapon2, :class_name => "GenericUnit"
+  belongs_to :weapon1, :class_name => "Armament"
+  belongs_to :weapon2, :class_name => "Armament"
 
   after_save :destroy_if_empty
 
@@ -170,7 +170,7 @@ class GenericFleet < ActiveRecord::Base
 
   def disarm
     discharged_armaments = self.clone
-    discharged_armaments.generic_unit = self.weapon1
+    discharged_armaments.generic_unit_id = self.weapon1.id
     discharged_armaments.moving = nil
     discharged_armaments.destination = nil
     discharged_armaments.weapon1 = nil

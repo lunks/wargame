@@ -54,6 +54,13 @@ Rpg::Application.routes.draw do
      end
    end
 
+   resources :fighters do
+     member do
+       put :arm
+       put :disarm
+     end
+   end
+
    resources :sensors
 
    match 'ready' => 'squads#ready'

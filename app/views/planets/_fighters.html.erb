@@ -1,6 +1,11 @@
 <info class="tooltip">
 <tip>CAÇAS<br>- Unidades pilotáveis<br><%= "- #{fleet.generic_unit.description}" if fleet.generic_unit.description %></tip>
-<%= fleet.show %>
+<% if fleet.squad == @squad && !@squad.ready? && !@round.attack? %>
+  <%= fleet.show %>
+  <a href = "" onclick="window.open('/fighters/<%= fleet.id %>/edit', 'Fighter <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=450')">+</a>
+<% else %>
+  <%= fleet.show %>
+<% end %>
 </info>
 
 

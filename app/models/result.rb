@@ -10,6 +10,8 @@ class Result < ActiveRecord::Base
   belongs_to :round
   belongs_to :producing_unit, :class_name => "Unit"
   belongs_to :producing_unit2, :class_name => "Unit"
+  belongs_to :weapon1, :class_name => "GenericUnit"
+  belongs_to :weapon2, :class_name => "GenericUnit"
 
   validates_presence_of :round, :generic_fleet, :generic_unit, :squad, :planet, :quantity 
   validates_numericality_of :blasted, :fled, :captured, :allow_nil => true
@@ -86,7 +88,11 @@ class Result < ActiveRecord::Base
         "#{generic_unit.description}"
       end
     else
-      "#{quantity} #{generic_unit.name}"
+       unless weapon1_id
+         "#{quantity} #{generic_unit.name}"
+       else
+         "#{quantity} #{generic_unit.name} + #{weapon1.name}"
+       end
     end
 
   end

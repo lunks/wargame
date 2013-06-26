@@ -22,7 +22,7 @@ class GenericFleetsController < ApplicationController
     @round = Round.getInstance
     if params[:fleet]
       @fleet = Fleet.find(params[:fleet][:id])
-      unless params[:fleet][:destination].empty?
+      unless params[:fleet][:destination].empty? || params[:fleet][:quantity].empty?
         @planet = Planet.find(params[:fleet][:destination])
         @fleet.move params[:fleet][:quantity].to_i, @planet unless current_squad.ready? || @round.attack?
       else
@@ -31,7 +31,7 @@ class GenericFleetsController < ApplicationController
       end
     else
       @facility = FacilityFleet.find(params[:facility_fleet][:id])
-      unless params[:facility_fleet][:destination].empty?
+      unless params[:facility_fleet][:destination].empty? || params[:facility_fleet][:quantity].empty?
         @planet = Planet.find(params[:facility_fleet][:destination])
         @facility.move @planet unless current_squad.ready? || @round.attack?
       else
