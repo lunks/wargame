@@ -7,6 +7,8 @@ class GenericFleet < ActiveRecord::Base
   belongs_to :generic_unit
   belongs_to :destination, :class_name => "Planet"
   belongs_to :carried_by, :class_name => "GenericFleet"
+  belongs_to :weapon1, :class_name => "GenericUnit"
+  belongs_to :weapon2, :class_name => "GenericUnit"
 
   after_save :destroy_if_empty
 
@@ -92,7 +94,11 @@ class GenericFleet < ActiveRecord::Base
         "#{generic_unit.description}"
       end
     else
-      "#{quantity} #{name}"
+       unless weapon1_id
+         "#{quantity} #{name}"
+       else
+         "#{quantity} #{name} + #{weapon1.name}"
+       end
     end
   end
 
@@ -146,9 +152,37 @@ class GenericFleet < ActiveRecord::Base
     GenericFleet.where(:carried_by_id => self.id)
   end
 
+  def arm_with armament
+    if armament.quantity == self.quantity
+      self.update_attributes(:weapon1 => armament.generic_unit)
+      armament.update_attributes(:quantity => armament.quantity - self.quantity)
+    elsif armament.quantity > self.quantity
+      self.update_attributes(:weapon1 => armament.generic_unit)
+      armament.update_attributes(:quantity => armament.quantity - self.quantity)
+    else
+      not_armed_fleet = self.clone
+      not_armed_fleet.quantity -= armament.quantity
+      not_armed_fleet.save!
+      self.update_attributes(:weapon1 => armament.generic_unit, :quantity => armament.quantity)
+      armament.update_attributes(:quantity => 0)     
+    end
+  end
+
+  def disarm
+    discharged_armaments = self.clone
+    discharged_armaments.generic_unit = self.weapon1
+    discharged_armaments.moving = nil
+    discharged_armaments.destination = nil
+    discharged_armaments.weapon1 = nil
+    discharged_armaments.weapon2 = nil
+    discharged_armaments.save!
+    self.update_attributes(:weapon1 => nil, :weapon2 => nil)
+    discharged_armaments.group_fleets
+  end
+
   def group_fleets
     unless self.generic_unit.is_a?(CapitalShip) || self.generic_unit.is_a?(Facility)|| self.generic_unit.is_a?(Sensor)
-      fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit.id, :planet => self.planet, :squad => self.squad, :moving => self.moving, :destination_id => self.destination_id, :carried_by_id => self.carried_by_id)
+      fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit_id, :planet => self.planet, :squad => self.squad, :moving => self.moving, :destination_id => self.destination_id, :carried_by_id => self.carried_by_id, :weapon1_id => self.weapon1_id, :weapon2_id => self.weapon2_id)
       total_quantity = 0
       fleets.each do |fleet|
         unless fleet == self

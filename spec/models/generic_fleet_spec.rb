@@ -7,6 +7,8 @@ describe GenericFleet do
   it {should belong_to :generic_unit}
   it {should belong_to :destination}
   it {should belong_to :carried_by}
+  it {should belong_to :weapon1}
+  it {should belong_to :weapon2}
 
   let(:unit) {Factory :generic_fleet}
   let(:trooper) {Factory :trooper}
@@ -131,6 +133,54 @@ describe GenericFleet do
       unloaded_fleet.quantity.should == 6
       unloaded_fleet.should_not be_moving
       unloaded_fleet.destination.should be_nil
+    end
+    it 'should arm a fleet' do
+      armament_fleet = Factory(:generic_fleet, :generic_unit => armament, :quantity => 10)
+      unit.generic_unit = Factory :fighter
+      unit.quantity = 10
+      unit.save
+      unit.arm_with armament_fleet
+      unit.weapon1.should == armament
+      unit.quantity.should == 10
+      GenericFleet.count.should == 1   
+    end
+    it 'should partially arm a fleet' do
+      armament_fleet = Factory(:generic_fleet, :generic_unit => armament, :quantity => 4)
+      unit.generic_unit = Factory :fighter
+      unit.quantity = 10
+      unit.save
+      unit.arm_with armament_fleet
+      unit.weapon1.should == armament
+      unit.quantity.should == 4
+      not_armed_unit = GenericFleet.where(:weapon1_id => nil).first
+      not_armed_unit.quantity.should == 6
+      GenericFleet.count.should == 2
+    end
+    it 'should arm a fleet and leave some armament' do
+      armament_fleet = Factory(:generic_fleet, :generic_unit => armament, :quantity => 10)
+      unit.generic_unit = Factory :fighter
+      unit.quantity = 4
+      unit.save
+      unit.arm_with armament_fleet
+      unit.weapon1.should == armament
+      unit.quantity.should == 4
+      armament_fleet.quantity.should == 6
+      GenericFleet.count.should == 2
+    end
+
+    it 'should disarm a fleet' do
+      unit.generic_unit = Factory :fighter
+      unit.planet = Factory :planet
+      unit.quantity = 10
+      unit.weapon1 = armament
+      unit.weapon1 = armament
+      unit.save
+      unit.weapon1.should == armament
+      unit.disarm
+      unit.weapon1.should be_nil
+      unit.weapon2.should be_nil
+      armament_fleet = GenericFleet.where(:generic_unit => armament).first
+      armament_fleet.quantity.should == 10      
     end
   end
 
