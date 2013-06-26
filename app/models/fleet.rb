@@ -3,34 +3,14 @@ class Fleet < GenericFleet
   def move quantity, planet
     if planet == nil
       cancel_moves
-      return
-    end
-    cancel_moves if self.destination.present? && ( self.type?(CapitalShip) || self.type?(LightTransport) || self.type?(Fighter) )  
- 
-    valid_move = true
-    if self.generic_unit.class == Trooper  || self.generic_unit.class == Armament || self.generic_unit.class == Commander
-      moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)
-      unit_count = 0
-      moving_fleets.each do |fleet|
-        unit_count += fleet.quantity if fleet.generic_unit.class == Fighter
-      end
-      valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip || fleet.generic_unit.class == LightTransport } || unit_count >= quantity
-    end
-    if self.generic_unit.hyperdrive == false
-      moving_fleets = Fleet.where(:planet => self.planet, :destination => planet, :squad => self.squad, :moving => true)
-      valid_move = false unless moving_fleets.any? { |fleet| fleet.generic_unit.class == CapitalShip }
-    end
-    
-    if valid_move == true
+      self
+    elsif self.generic_unit.hyperdrive == false || self.type?(Commander) || self.type?(Trooper) || self.type?(Armament)
+      self
+    else
       moving_fleet = Fleet.new self.attributes
       moving_fleet.destination = planet
       moving_fleet.quantity = quantity
-      if planet == nil
-        moving_fleet.moving = nil
-        moving_fleet.destination = nil
-      else
-        moving_fleet.moving = true
-      end
+      moving_fleet.moving = true
       moving_fleet.save
       unless self.cargo.empty?
         self.cargo.each do |cargo|
@@ -43,14 +23,11 @@ class Fleet < GenericFleet
       self.quantity -= quantity
       save
       moving_fleet
-    else
-      self
     end
-
   end
 
   def cancel_moves
-    Fleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil)
+    GenericFleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil)
     group_fleets
   end
 
