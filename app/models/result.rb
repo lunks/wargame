@@ -32,7 +32,7 @@ class Result < ActiveRecord::Base
 
   def capture!
     self.generic_fleet.capture! self.captured, self.captor
-    self.squad = self.captor
+    #self.squad = self.captor
     save
   end
 
