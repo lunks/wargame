@@ -18,17 +18,14 @@ class FacilityFleet < GenericFleet
   end
 
   def move planet
-      moving_facility = FacilityFleet.new self.attributes
-      moving_facility.destination = planet
+      self.destination = planet
       if planet == nil
-        moving_facility.moving = nil
+        self.moving = nil
       else
-        moving_facility.moving = true
+        self.moving = true
       end
-      moving_facility.save!
-      self.quantity = 0
-      save
-      moving_facility
+      self.save!
+      self
   end
 
   def flee! quantity

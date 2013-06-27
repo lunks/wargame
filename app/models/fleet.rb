@@ -27,8 +27,10 @@ class Fleet < GenericFleet
   end
 
   def cancel_moves
-    GenericFleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil)
-    group_fleets
+    #GenericFleet.where(:squad => self.squad, :moving => true, :planet => self.planet, :destination => self.destination).update_all(:moving => nil, :destination_id => nil)
+    GenericFleet.where(:carried_by => self).update_all(:moving => nil, :destination_id => nil)
+    self.update_attributes(:moving => nil, :destination_id => nil)
+    self.group_fleets
   end
 
   def move!

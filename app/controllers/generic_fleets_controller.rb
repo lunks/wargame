@@ -27,26 +27,18 @@ class GenericFleetsController < ApplicationController
 
   def move
     @round = Round.getInstance
-    if params[:fleet]
-      @fleet = Fleet.find(params[:fleet][:id])
-      unless params[:fleet][:destination].empty? || params[:fleet][:quantity].empty?
-        @planet = Planet.find(params[:fleet][:destination])
-        @fleet.move params[:fleet][:quantity].to_i, @planet unless current_squad.ready? || @round.attack?
+    @fleets = params[:fleets]
+    @fleets.each do |id, attributes|
+      @fleet = GenericFleet.find(id)
+      unless  attributes[:quantity].empty?
+        @fleet.move attributes[:quantity].to_i, Planet.find(attributes[:destination_id].to_i) unless current_squad.ready? || @round.attack? || attributes[:destination_id].empty? || @fleet.type?(Facility)
+        @fleet.move Planet.find(attributes[:destination_id].to_i) unless current_squad.ready? || @round.attack? || attributes[:destination_id].empty? || !@fleet.type?(Facility)
       else
-        @planet = nil
-        @fleet.move params[:fleet][:quantity].to_i, @planet unless current_squad.ready? || @round.attack?
-      end
-    else
-      @facility = FacilityFleet.find(params[:facility_fleet][:id])
-      unless params[:facility_fleet][:destination].empty? || params[:facility_fleet][:quantity].empty?
-        @planet = Planet.find(params[:facility_fleet][:destination])
-        @facility.move @planet unless current_squad.ready? || @round.attack?
-      else
-        @planet = nil
-        @facility.move @planet unless current_squad.ready? || @round.attack?
+        @fleet.move 1, nil unless current_squad.ready? || @round.attack? || @fleet.type?(Facility)
+        @fleet.move nil unless current_squad.ready? || @round.attack? || !@fleet.type?(Facility)
       end
     end
-    redirect_to :back
+  redirect_to :back
   end
 
   def move_facility

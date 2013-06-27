@@ -65,7 +65,7 @@ describe Fleet do
       end
       it 'should cancel carried units movements when move to nil planet' do
         moving_capital_ship = @capital_ship_fleet.move 1, @planet
-        carried_ship = Factory(:generic_fleet, :generic_unit => Factory(:generic_unit), :quantity => 1, :carried_by => moving_capital_ship, :moving => true, :destination => @planet)
+        carried_ship = Factory(:generic_fleet, :generic_unit => Factory(:fighter), :quantity => 1, :carried_by => moving_capital_ship, :moving => true, :destination => @planet)
         moving_capital_ship.should be_moving
         carried_ship.should be_moving
         Fleet.where(:moving => true).count.should == 2
