@@ -7,7 +7,9 @@ document.title = "Menu principal"
 
 <a href="http://wgbrnavies.wordpress.com" target=_blank>Blog do WG </a>
 
-<a href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivo <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=600')">Objetivos</a>
+
+<a href = "<%= @squad.url %>" target=_blank toolbars=no>Fórum Secreto</a>
+
 
 <a href = "" onclick="window.open('https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6', 'Tabela', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1350, height=760')">Tabela de naves</a>
 
@@ -15,17 +17,16 @@ document.title = "Menu principal"
   <a href = "" onclick="window.open('/squads/<%= @squad.id %>/transfer', 'Transf <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=200')">Transf créditos</a>
 <% end %>
 
-<a href = "" onclick="window.open('/images/mapa.swf', 'Mapa', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1024, height=720')">Mapa Novo</a>
+<a href = "" onclick="window.open('/images/mapa.swf', 'Mapa', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1024, height=720')">-= MAPA =-</a>
 
 <br>
+ <%= link_to "Finalizar #{@round_phase}", ready_path(:KeepThis => "true", :TB_iframe => "true", :height => "50", :width => "140"), :class => "thickbox" unless @squad.ready? %>
 
- <a href = "<%= @squad.url %>" target=_blank toolbars=no>Fórum Secreto</a>
+<a href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivo <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=600')">Objetivos</a>
 
 <a href = "" onclick="window.open('/results/<%= @squad.id %>/show_fog', 'Fog <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=500')">Inteligência</a>
 
 <a href = "" onclick="window.open('/results/<%= @squad.id %>/show_results', 'Log <%= @squad.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=500')">Log de batalhas</a>
-
- <%= link_to "Finalizar #{@round_phase}", ready_path(:KeepThis => "true", :TB_iframe => "true", :height => "50", :width => "140"), :class => "thickbox" unless @squad.ready? %>
 
 </div>
 
