@@ -5,6 +5,13 @@ class GenericFleetsController < ApplicationController
     @squad = current_squad
     @all_squads = Squad.all
     @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @squad, :producing_unit2_id => nil).count
+    if @round.move?
+      @round_phase = 'Estrategia'
+      @tip = "Realize movimentos, configuracao de fabricas, compra/venda de naves e nomeacao de capital ships."
+    else
+      @round_phase = 'Combates'
+      @tip = "Informe os resultados dos combates."
+    end
     @small_fleet = nil
     total = 0 
     @planets.each do |planet|
