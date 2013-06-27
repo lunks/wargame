@@ -11,6 +11,7 @@ class PlanetsController < ApplicationController
     @planet = Planet.find(params[:id])
     @round = Round.getInstance
     @squad = current_squad
+    redirect_to :controller => 'results', :action => 'index', :planet_id => @planet.id if @round.attack? && @planet.under_attack?
   end
 
   def move
