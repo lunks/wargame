@@ -1,5 +1,5 @@
 <script>
-document.title = "Resultados em <%= @results.first.planet.name %>"
+document.title = "Resultados <%= @results.first.planet.name %>"
 </script>
 <div class="result_content">
 <span style=font-size:11px>
@@ -54,5 +54,26 @@ document.title = "Resultados em <%= @results.first.planet.name %>"
 <br>
 ATENÇÃO: Nas fugas parciais, não esqueça de informar as unidades destruídas ou capturadas.
 </span>
+<p>
+ <% if @round.attack && @planet.under_attack? && !@planet.tradeport? %>
+      <info class="tooltip">
+        <tip>No XWA, o atacante monta a frota primeiro e usa os slots de cima.<br>No BF2, o atacante escolhe o award primeiro.</tip>
+         Atacante -> <span style=color:#<%= @planet.first_player.color %>><%= @planet.first_player.name %></span><br>
+      </info>
+      <% if @planet.squads.count > 2 %>
+        <% mid_defense = @all_squads.reject {|x| x == @planet.first_player or x == @planet.last_player}.first %>
+        <info class="tooltip">
+          <tip>No XWA, o defensor inicial é o host do jogo, usa os slots de baixo e monta a frota por último.<br>No BF2, o defensor inicial é o host do jogo e escolhe o award por último.<br>O defensor inicial joga contra o atacante (em combates 1x1x1).</tip>
+          Defensor inicial -> <span style=color:#<%= mid_defense.color %>><%=  mid_defense.name %></span><br>
+        </info>
+      <% end %>
+      <info class="tooltip">
+        <tip>No XWA, o defensor é o host do jogo, usa os slots de baixo e monta a frota por último.<br>No BF2, o defensor é o host do jogo e escolhe o award por último.<br>O defensor é o último a jogar (em combates 1x1x1).</tip>
+        Defensor-> <span style=color:#<%= @planet.last_player.color %>><%= @planet.last_player.name %></span>
+      </info>
+    <% end %>
+    <% if @round.attack && @planet.under_attack? && @planet.tradeport? %>
+      Zona Neutra
+    <% end %>
 </div>
 <br>

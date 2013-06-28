@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
   def index
+    @round = Round.getInstance
     @planet = Planet.find(params[:planet_id])
     @squads = @planet.squads
     @fleets = GenericFleet.where(:planet => @planet)
