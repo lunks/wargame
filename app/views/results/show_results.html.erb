@@ -8,37 +8,40 @@ Log de todas as batalhas do esquadrão:
 
     <% round.results.group_by(&:planet).each do |planet, fleet| %>
       <% if fleet.any? { |unit| unit.squad == @squad } %>
-      <h3><%= planet.name %></h3>
-      <% fleet.each do |unit| %>
-        <span style=color:#<%= unit.squad.color %>>
-        <% case unit.generic_unit.type %>
-          <% when 'Warrior' %>
-            <span style=font-weight:strong;outline:dotted;background-color:#331100;color:#<%= unit.squad.color %>>
-            <%= unit.show %>
-          <% when 'Commander' %>
-            <span style=font-weight:strong;outline:solid;color:#<%= unit.squad.color %>>
-            <%= unit.show %>
-          <% when 'Facility' %>
-            <span style=color:#<%= unit.squad.color %>>
-            <%= unit.generic_unit.name %>
-            ( <%= unit.producing_unit.name if unit.producing_unit %> / <%= unit.producing_unit2.name if unit.producing_unit2 %> )
-          <% when 'CapitalShip' %>
-            <span style=color:#<%= unit.squad.color %>>
-            <%= unit.show %>
-          <% when 'Sensor' %>
-            <span style=color:#<%= unit.squad.color %>>
-            <%= unit.generic_unit.name %>
-          <% else %>
-            <span style=color:#<%= unit.squad.color %>>
-            <%= unit.show %> 
-        <% end %></span>
+        <h3><%= planet.name %></h3>
+        <% fleet.each do |unit| %>
+          <span style=color:#<%= unit.squad.color %>>
+          <% case unit.generic_unit.type %>
+            <% when 'Warrior' %>
+              <span style=font-weight:strong;outline:dotted;background-color:#331100;color:#<%= unit.squad.color %>>
+              <%= unit.show %>
+            <% when 'Commander' %>
+              <span style=font-weight:strong;outline:solid;color:#<%= unit.squad.color %>>
+              <%= unit.show %>
+            <% when 'Facility' %>
+              <span style=color:#<%= unit.squad.color %>>
+              <%= unit.generic_unit.name %>
+              ( <%= unit.producing_unit.name if unit.producing_unit %> / <%= unit.producing_unit2.name if unit.producing_unit2 %> )
+            <% when 'CapitalShip' %>
+              <span style=color:#<%= unit.squad.color %>>
+              <%= unit.show %>
+            <% when 'Sensor' %>
+              <span style=color:#<%= unit.squad.color %>>
+              <%= unit.generic_unit.name %>
+            <% else %>
+              <span style=color:#<%= unit.squad.color %>>
+              <%= unit.show %> 
+          <% end %></span>
+          <span style=color:#40E0D0> <%= unit.show_results %> </span>
+          <br>
+        <% end %>
+      <% end %>
+      <% if round == @round %>
+        <p>
+        <a href = "" onclick="window.open('/planets/<%= planet.id %>/results', 'Resultados <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=630, height=540')">postar resultados</a>
+      <% end %>
 
-        <span style=color:#40E0D0> <%= unit.show_results %> </span>
-        <br>
-      <% end %>
-      <% end %>
     <% end %>
-
 
   <% end %>
  

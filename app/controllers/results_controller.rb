@@ -26,6 +26,7 @@ class ResultsController < ApplicationController
 
   def show_results
     @squad = current_squad
+    @round = Round.getInstance
     @rounds = Round.results_seen_by(current_squad)
   end
 
