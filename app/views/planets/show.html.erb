@@ -83,7 +83,8 @@ document.title = "<%= @planet.name %>"
         <%= submit_tag 'Mover' %>
         <br>
       <% end %>
-     Para cancelar um movimento deixe a qtde em branco.
+      <p>
+      Para cancelar um movimento deixe a qtde em branco.
    <% else %>
      <% @planet.generic_fleets.each do |fleet| %>
      <span style=color:#<%= fleet.squad.color %>>
@@ -118,7 +119,7 @@ document.title = "<%= @planet.name %>"
      <a href = "" onclick="window.open('/tradeports/<%= @planet.id %>', 'Tradeport <%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=465, height=260')">Tradeport</a> 
    <% end %>
 
-   <% if @round.move && !@planet.tradeport? && !@squad.ready? %>
+   <% if @round.move && !@planet.tradeport? && !@squad.ready? && @planet.able_to_construct?(@squad) %>
      <a href = "" onclick="window.open('/planets/<%= @planet.id %>/facility_fleets/new', 'Construir <%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">Construir fábrica</a> 
    <% end %>
 <p>
