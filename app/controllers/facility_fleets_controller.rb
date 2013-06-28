@@ -9,9 +9,13 @@ class FacilityFleetsController < ApplicationController
   end
 
   def create
+    @squad = current_squad
     @facility = GenericUnit.find(params[:facility_fleet][:generic_unit_id])
-    current_squad.buy @facility, 1, @planet if current_squad.credits >= @facility.price
-    redirect_to :close_popup
+    @sucess = nil
+    if current_squad.credits >= @facility.price
+      current_squad.buy @facility, 1, @planet
+      @sucess = true
+    end
   end
 
 

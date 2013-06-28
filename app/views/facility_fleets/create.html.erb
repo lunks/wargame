@@ -1,0 +1,14 @@
+<script>
+document.title = "Construir em <%= @planet.name %>"
+</script>
+<div class = "fleet">
+<h2> <%= @planet.name %> </h2>
+<span style=color:#<%= @squad.color %>>
+<% if @sucess == true %>
+  <%= @facility.name %> construída com sucesso!<br><br>
+  Custo da construção: <%= @facility.price %>
+<% else %>
+  Não há créditos suficientes para construir uma <%= @facility.name %>
+<% end %>
+</span>
+</div>
