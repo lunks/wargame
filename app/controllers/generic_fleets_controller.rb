@@ -38,7 +38,9 @@ class GenericFleetsController < ApplicationController
         @fleet.move nil unless current_squad.ready? || @round.attack? || !@fleet.type?(Facility)
       end
     end
-  redirect_to :back
+  #redirect_to :back
+  @planet = @fleet.planet
+  redirect_to :controller => 'planets', :action => 'show', :id => @planet.id
   end
 
   def move_facility
