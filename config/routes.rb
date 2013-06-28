@@ -54,6 +54,13 @@ Rpg::Application.routes.draw do
      end
    end
 
+   resources :light_transports do
+     member do
+       put :load_in
+       put :unload_from
+     end
+   end
+
    resources :fighters do
      member do
        put :arm

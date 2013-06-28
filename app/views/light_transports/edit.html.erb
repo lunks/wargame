@@ -1,0 +1,49 @@
+<script>
+document.title = " <%= @light_transport.show %>"
+</script>
+<div class="fleet">
+  <h2><%= @planet %></h2>
+  <h3><%= @light_transport.show %></h3>
+Unidades carregadas:
+<p>
+<table>
+<% @carried_fleets.each do |fleet| %>
+  <tr>
+  <%= simple_form_for fleet, :url => url_for(:controller => 'light_transports', :action => 'unload_from') do |f| %>
+    <td><span style=color:#<%= fleet.squad.color %>><%= fleet.show %></span></td>
+    <td align=right>
+        <% if fleet.type?(Warrior) || fleet.type?(Commander) || fleet.type?(CapitalShip) || fleet.type?(Facility) %>
+          <%= f.input :quantity, :collection => fleet.quantity..fleet.quantity, :label => false %>
+        <% else %>
+          <%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %>
+        <% end %>
+    </td>
+        <%= f.hidden_field :id, :value => fleet.id %>
+    <td><%= f.submit '>' %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+</div>
+<div class="fleet">
+Carregar unidades:
+<p>
+<table>
+<% @carriable_fleets.each do |fleet| %>
+  <tr>
+  <%= simple_form_for fleet, :url => url_for(:controller => 'light_transports', :action => 'load_in') do |f| %>
+    <td><span style=color:#<%= fleet.squad.color %>><%= fleet.show %></span></td>
+    <td align=right>
+        <% if fleet.type?(Warrior) || fleet.type?(Commander) || fleet.type?(CapitalShip) || fleet.type?(Facility) %>
+          <%= f.input :quantity, :collection => fleet.quantity..fleet.quantity, :label => false %>
+        <% else %>
+          <%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %>
+        <% end %>
+    </td>
+        <%= f.hidden_field :id, :value => fleet.id %>
+    <td><%= f.submit '<' %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+</div>

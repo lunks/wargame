@@ -181,7 +181,7 @@ class GenericFleet < ActiveRecord::Base
   end
 
   def group_fleets
-    unless self.generic_unit.is_a?(CapitalShip) || self.generic_unit.is_a?(Facility)|| self.generic_unit.is_a?(Sensor)
+    unless self.generic_unit.is_a?(CapitalShip) || self.generic_unit.is_a?(Facility) || self.generic_unit.is_a?(Sensor) || self.generic_unit.is_a?(LightTransport)
       fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit_id, :planet => self.planet, :squad => self.squad, :moving => self.moving, :destination_id => self.destination_id, :carried_by_id => self.carried_by_id, :weapon1_id => self.weapon1_id, :weapon2_id => self.weapon2_id)
       total_quantity = 0
       fleets.each do |fleet|
