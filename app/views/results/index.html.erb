@@ -72,8 +72,5 @@ ATENÇÃO: Nas fugas parciais, não esqueça de informar as unidades destruídas
         Defensor-> <span style=color:#<%= @planet.last_player.color %>><%= @planet.last_player.name %></span>
       </info>
     <% end %>
-    <% if @round.attack && @planet.under_attack? && @planet.tradeport? %>
-      Zona Neutra
-    <% end %>
 </div>
 <br>

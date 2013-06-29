@@ -8,13 +8,13 @@ class Tradeport < ActiveRecord::Base
   delegate :price, :to => :generic_unit
 
   def self.start
-    Squad.all.each do |squad|
-      planet = Planet.select { |planet| planet.generic_fleets.any? { |fleet| fleet.squad == squad } && !planet.generic_fleets.any? { |fleet| fleet.squad != squad } }[rand(Planet.select { |planet| planet.generic_fleets.any? { |fleet| fleet.squad == squad } && !planet.generic_fleets.any? { |fleet| fleet.squad != squad } }.count)]
-      if planet
-        planet.tradeport = true
-        planet.save
-      end
-    end
+    #Squad.all.each do |squad|
+      #planet = Planet.select { |planet| planet.generic_fleets.any? { |fleet| fleet.squad == squad } && !planet.generic_fleets.any? { |fleet| fleet.squad != squad } }[rand(Planet.select { |planet| planet.generic_fleets.any? { |fleet| fleet.squad == squad } && !planet.generic_fleets.any? { |fleet| fleet.squad != squad } }.count)]
+      #if planet
+        #planet.tradeport = true
+       # planet.save
+      #end
+    #end
     2.times do
       Squad.all.each do |squad|
         random_unit = Unit.where("price > ?", 105).reject! { |unit| unit.is_a? Commander }[rand(Unit.where("price > ?", 105).reject! { |unit| unit.is_a? Commander }.count)]

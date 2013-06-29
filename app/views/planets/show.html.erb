@@ -115,7 +115,7 @@ document.title = "<%= @planet.name %>"
    
    <% end %>
 <p>
-   <% if @round.move && @planet.tradeport? && !@squad.ready? %>
+   <% if @round.move && @planet.tradeport? && !@squad.ready? && !@planet.under_attack? %>
      <a href = "" onclick="window.open('/tradeports/<%= @planet.id %>', 'Tradeport <%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=465, height=260')">Tradeport</a> 
    <% end %>
 

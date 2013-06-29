@@ -13,6 +13,10 @@ Log de todas as batalhas do esquadrão:
         <tip>Conexão direta com <%= planet.routes.last %> </tip>
         <%= ' (wormhole) ' if planet.wormhole? %>
       </info>
+      <info class="tooltip">
+        <tip>Estacao de negociacao (zona neutra)<br>Vender: 50% do valor da unidade.<br>Comprar: Descontos de 10% a 50%</tip>
+      <%= ' (tradeport)' if planet.tradeport? %>
+      </info>
         </h3>
         <% fleet.each do |unit| %>
           <span style=color:#<%= unit.squad.color %>>

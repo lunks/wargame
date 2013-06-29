@@ -10,6 +10,10 @@ document.title = "Inteligência"
         <tip>Conexão direta com <%= planet.routes.last %> </tip>
         <%= ' (wormhole) ' if planet.wormhole? %>
       </info>
+      <info class="tooltip">
+        <tip>Estacao de negociacao (zona neutra)<br>Vender: 50% do valor da unidade.<br>Comprar: Descontos de 10% a 50%</tip>
+      <%= ' (tradeport)' if planet.tradeport? %>
+      </info>
     </h3>
     <p>
     <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
