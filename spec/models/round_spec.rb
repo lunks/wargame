@@ -92,6 +92,14 @@ describe Round do
       @round.end_moving!
       Fleet.where(:sabotaged => true).count.should == 0
     end
+    it 'should remove all tradeports when passing moving phase' do
+      2.times { Factory(:planet, :tradeport => true) }
+      Planet.where(:tradeport => true).count.should_not == 0
+      rebel.ready!
+      empire.ready!
+      @round.end_moving!
+      Planet.where(:tradeport => true).count.should == 0
+    end
 
     it 'should not reassembly facility in enemy planet' do
       facility_fleet = FacilityFleet.where(:squad => Squad.last).first
@@ -144,6 +152,10 @@ describe Round do
       @round.end_round!
       warrior_fleet = Fleet.last
       warrior_fleet.quantity.should_not == 2
+    end
+    it 'should randomize a tradeport for each squad' do
+      @round.end_round!
+      Planet.where(:tradeport => true).count.should == 2
     end
 
   end
