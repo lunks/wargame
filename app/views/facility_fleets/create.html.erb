@@ -6,7 +6,8 @@ document.title = "Construir em <%= @planet.name %>"
 <span style=color:#<%= @squad.color %>>
 <% if @sucess == true %>
   <%= @facility.name %> construída com sucesso!<br><br>
-  Custo da construção: <%= @facility.price %>
+  Custo da construção: <%= @facility.price %><br>
+  Atenção: Aguarde o refresh na tela de movimentos ou pressione F5 
 <% else %>
   Não há créditos suficientes para construir uma <%= @facility.name %>
 <% end %>
