@@ -24,28 +24,42 @@ xml.planetas do
       has_fleet = planet.generic_fleets.select { |fleet| fleet.squad == @current_squad }
       unless has_fleet.empty?
         planet.generic_fleets.each_with_index do |fleet, index|                   
-            unless fleet.moving && fleet.squad == @current_squad
-             if @round.move && fleet.squad != @current_squad
-               xml.corfleet fleet.squad.color
-               xml.fleet fleet.squad.name
-             else
+          unless fleet.moving && fleet.squad == @current_squad
+            if @round.move && fleet.squad != @current_squad
+              xml.corfleet fleet.squad.color
+              xml.fleet fleet.squad.name
+            else
               xml.corfleet fleet.squad.color
               xml.fleet fleet.show
-             end
-            else
-              xml.corfleet '00FFFF'            
-              xml.fleet fleet.show.first(12) + '->' + fleet.destination.name
             end
-            counter +=1
+          else
+            xml.corfleet '00FFFF'            
+            xml.fleet fleet.show.first(12) + '->' + fleet.destination.name
+          end
+          counter +=1
         end
         if counter < 18
           (18 - counter).times do
             xml.corfleet '.'
             xml.fleet '.'
           end
+        end
+        if planet.wormhole?
+          xml.corinfo1 'CCFF00'
+          xml.info1 'WH'
+        else
+          xml.corinfo1 '.'
+          xml.info1 '.'
+        end
+        if planet.tradeport?
+          xml.corinfo2 'CCFF00'
+          xml.info1 'TP'
+        else
+          xml.corinfo2 '.'
+          xml.info1 '.'
         end  
       else      
-        18.times do
+        22.times do
           xml.corfleet '.'
           xml.fleet '.'
         end
@@ -55,7 +69,7 @@ xml.planetas do
 
   xml.planeta do
     xml.nome 'Painel'
-    42.times { xml.available '.' }
+    46.times { xml.available '.' }
     xml.squad_name @current_squad.name
     xml.squad_name @current_squad.color
     xml.round @round.number
@@ -101,7 +115,7 @@ xml.planetas do
         xml.terra 'Neutral'
         xml.corterra ' '
       end
-      18.times do
+      22.times do
         xml.corfleet '.'
         xml.fleet '.'
       end
