@@ -5,11 +5,12 @@ document.title = "Inteligência"
 <h2> Centro de Inteligência </h2>
 Últimas informações de espionagem:<br>
   <% @planets.each do |planet| %>
-    <% unless planet.generic_fleets.any? { |fleet| fleet.squad == @squad } %>
-      <h3> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h3>
-    <% else %>
-      <h3> <%= planet.name %> <%= ' (wormhole) ' if planet.wormhole? %><%= ' (tradeport)' if planet.tradeport? %></h3>
-    <% end %>
+    <h3> <%= planet.name %>
+      <info class="tooltip">
+        <tip>Conexão direta com <%= planet.routes.last %> </tip>
+        <%= ' (wormhole) ' if planet.wormhole? %>
+      </info>
+    </h3>
     <p>
     <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
       <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @squad %>

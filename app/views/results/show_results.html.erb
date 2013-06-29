@@ -8,7 +8,12 @@ Log de todas as batalhas do esquadrão:
 
     <% round.results.group_by(&:planet).each do |planet, fleet| %>
       <% if fleet.any? { |unit| unit.squad == @squad } %>
-        <h3><%= planet.name %></h3>
+        <h3> <%= planet.name %>
+      <info class="tooltip">
+        <tip>Conexão direta com <%= planet.routes.last %> </tip>
+        <%= ' (wormhole) ' if planet.wormhole? %>
+      </info>
+        </h3>
         <% fleet.each do |unit| %>
           <span style=color:#<%= unit.squad.color %>>
           <% case unit.generic_unit.type %>
