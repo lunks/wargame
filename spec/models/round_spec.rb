@@ -154,6 +154,7 @@ describe Round do
       warrior_fleet.quantity.should_not == 2
     end
     it 'should randomize a tradeport for each squad' do
+      @round.end_moving!
       @round.end_round!
       Planet.where(:tradeport => true).count.should == 2
     end
