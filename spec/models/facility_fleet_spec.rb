@@ -171,6 +171,20 @@ describe FacilityFleet do
       facility_fleet.produce!
       Fleet.count.should be 0
     end
+    it 'should produce max 10 warriors lives and left over balance' do
+      facility_fleet.producing_unit = Factory(:warrior, :price => 10)
+      facility_fleet.save
+      facility_fleet.produce!
+      Fleet.last.quantity.should == 10
+      facility_fleet.balance.should == ( facility.price / 3 ) - 100
+    end
+    it 'should produce max 1 commander life and left over balance' do
+      facility_fleet.producing_unit = Factory(:commander, :price => 10)
+      facility_fleet.save
+      facility_fleet.produce!
+      Fleet.last.quantity.should == 1
+      facility_fleet.balance.should == ( facility.price / 3 ) - 100
+    end
 
   end
 

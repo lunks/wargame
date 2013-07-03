@@ -57,6 +57,7 @@ class FacilityFleet < GenericFleet
       while unit_price <= secondary_balance
         units += 1
         secondary_balance -= unit_price
+        break if ( units == 10 && producing_unit2.type == 'Warrior' ) || ( units == 1 && producing_unit2.type == 'Commander' )
       end
       Fleet.create_from_facility producing_unit2, units, self.planet, self.squad
       save
@@ -67,6 +68,7 @@ class FacilityFleet < GenericFleet
       while unit_price <= self.balance
         units += 1
         self.balance -= unit_price
+        break if ( units == 10 && producing_unit.type == 'Warrior' ) || ( units == 1 && producing_unit.type == 'Commander' )
       end
       Fleet.create_from_facility producing_unit, units, self.planet, self.squad
       save
