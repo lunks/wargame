@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.0.20'
 gem 'mysql'
 gem 'simple_form'
 gem 'devise'
 gem 'unicorn'
 gem 'meta_where'
-gem 'rake', '10.0.4'
+gem 'rake'
 
 group :development, :test do
   gem 'rspec-rails'
